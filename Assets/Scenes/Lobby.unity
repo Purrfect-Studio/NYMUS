@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005357758}
   - component: {fileID: 1005357757}
+  - component: {fileID: 1005357759}
   m_Layer: 3
   m_Name: Pasta de Jogos
   m_TagString: Untagged
@@ -291,6 +292,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005357759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005357756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501791ba69c885642b2988828dcbb25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1288594802
 GameObject:
   m_ObjectHideFlags: 0
