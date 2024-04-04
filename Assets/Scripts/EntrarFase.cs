@@ -6,6 +6,8 @@ public class EntrarFase : MonoBehaviour
 {
 
     public string fase;
+    public Collision collision;
+     
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,13 @@ public class EntrarFase : MonoBehaviour
     void Update()
     {
         
+    }
+
+   private void OnCollisionEnter (Collision colisao)
+    {
+        if (colisao.gameObject.tag = "tag")
+        {
+            SceneManager.LoadScene(fase);
+        }
     }
 }
