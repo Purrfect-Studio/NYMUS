@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503946775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.06, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3066,6 +3066,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1525309881}
   velocidade: 5
+  estadoPulo: 
+  forcaPulo: 10
+  tempoPulo: 0.2
 --- !u!50 &1525309881
 Rigidbody2D:
   serializedVersion: 4
@@ -3173,7 +3176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525309879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.37, y: 0.31, z: 0}
+  m_LocalPosition: {x: 1.19, y: -1.02, z: 0}
   m_LocalScale: {x: 2.3434002, y: 3.7742724, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3278,7 +3281,7 @@ GameObject:
   - component: {fileID: 2002781281}
   m_Layer: 6
   m_Name: "Ch\xE3o"
-  m_TagString: Untagged
+  m_TagString: Chao
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
