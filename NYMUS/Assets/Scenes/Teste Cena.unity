@@ -3080,6 +3080,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2317492783311188504, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
+      propertyPath: m_Size.x
+      value: 0.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317492783311188504, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
+      propertyPath: m_Size.y
+      value: 0.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317492783311188504, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 674759795, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    - target: {fileID: 2317492783311188504, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2317492783311188505, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
       propertyPath: m_Name
       value: BIGORNA TESTE
@@ -3098,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2317492783311188507, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2317492783311188507, guid: c2f614a8e0864dc428810ace2ccc1584, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3298,9 +3314,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.3125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.3125, y: 0.625}
-    newSize: {x: 1.3125, y: 0.625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71875, y: 0.71875}
+    newSize: {x: 0.71875, y: 0.71875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3448,7 +3464,7 @@ GameObject:
   - component: {fileID: 1525309882}
   - component: {fileID: 1525309881}
   - component: {fileID: 1525309880}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: L3H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3579,7 +3595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525309879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.19, y: -1.02, z: 0}
+  m_LocalPosition: {x: 1.13, y: -0.62, z: -0.1}
   m_LocalScale: {x: 2.3434002, y: 3.7742724, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
