@@ -12,8 +12,8 @@ public class PlayerControlador : MonoBehaviour
     private string Chao = "Chao";    // Variavel de apoio para estadoPulo
     private string Ar = "Ar";        // Variavel de apoio para estadoPulo
 
-    private int quantidadePulos = 2;
-    public bool possuiPuloDuplo;
+    private int quantidadePulos = 2; // Quantidade de pulos que o jogador pode dar
+    public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
     private bool estaPulando;        // Diz se o jogador esta pulando ou nao
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
