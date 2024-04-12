@@ -44,6 +44,18 @@ public class Movimentacao : MonoBehaviour
     private void FixedUpdate()
     {
         andar();
+        pulo();
+    }
+
+    void andar()
+    {
+        direcao = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
+    }
+
+    void pulo()
+    {
         if (estaPulando == true)
         {
             if (contadorTempoPulo > 0)
@@ -57,32 +69,36 @@ public class Movimentacao : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && estadoPulo == Chao)
+        inputTeclas();
+    }
+
+    void inputTeclas()
+    {
+        inputPulo();
+    }
+
+    void inputPulo()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && estadoPulo == Chao || Input.GetKeyDown(KeyCode.Space) && estadoPulo == Chao)
         {
             estaPulando = true;
         }
 
-        if (Input.GetKey(KeyCode.Space) && estaPulando == true)
+        if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
         {
             contadorTempoPulo -= Time.deltaTime;
             rb.velocity = Vector2.up * forcaPulo;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
         {
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
         }
-    }
-
-    void andar()
-    {
-        direcao = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
-        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
     }
 
 }
