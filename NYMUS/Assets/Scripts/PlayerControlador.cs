@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movimentacao : MonoBehaviour
+public class PlayerControlador : MonoBehaviour
 {
     public Rigidbody2D rb; // rb = rigidbody
     public int velocidade; // Velocidade maxima do jogador
@@ -12,6 +12,8 @@ public class Movimentacao : MonoBehaviour
     private string Chao = "Chao";    // Variavel de apoio para estadoPulo
     private string Ar = "Ar";        // Variavel de apoio para estadoPulo
 
+    private int quantidadePulos = 2;
+    public bool possuiPuloDuplo;
     private bool estaPulando;        // Diz se o jogador esta pulando ou nao
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
@@ -37,6 +39,7 @@ public class Movimentacao : MonoBehaviour
         if (estadoPulo == Chao)
         {
             if (collision.gameObject.tag == "Chao")
+                quantidadePulos = 2;
                 estadoPulo = Ar; //Jogador esta no ar
         }
     }
@@ -78,14 +81,43 @@ public class Movimentacao : MonoBehaviour
 
     void inputTeclas()
     {
-        inputPulo();
+        if (possuiPuloDuplo == true)
+        {
+            inputPuloDuplo();
+        }
+        else
+        {
+            inputPuloSimples();
+        }
     }
 
-    void inputPulo()
+    void inputPuloSimples()
     {
         if (Input.GetKeyDown(KeyCode.W) && estadoPulo == Chao || Input.GetKeyDown(KeyCode.Space) && estadoPulo == Chao)
         {
             estaPulando = true;
+        }
+
+        if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
+        {
+            contadorTempoPulo -= Time.deltaTime;
+            rb.velocity = Vector2.up * forcaPulo;
+        }
+
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
+        {
+            estaPulando = false;
+            contadorTempoPulo = tempoPulo;
+        }
+    }
+
+    void inputPuloDuplo()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && quantidadePulos > 0 || Input.GetKeyDown(KeyCode.Space) && quantidadePulos > 0)
+        {
+            estaPulando = true;
+            contadorTempoPulo = tempoPulo;
+            quantidadePulos -= 1;
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
