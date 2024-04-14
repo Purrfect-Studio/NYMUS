@@ -6,51 +6,39 @@ public class AudioControlador : MonoBehaviour
 {
     public AudioSource player;
     public AudioClip musicaDeFundo;
-    public float volumeInicial;
+    public float volumeInicial = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         player.clip = musicaDeFundo; // Define a música
 
-        player.volume = 0.5f; // Define o volume inicial como 0.5 para o fade in
+        player.volume = volumeInicial; // Define o volume inicial
 
-        StartCoroutine(FadeInVolume(volumeInicial, 1.0f, 3)); // Inicia o fade in de volume em 3 segundos
+
+        StartCoroutine(FadeVolume(3, volumeInicial, 1.0f)); // Inicia o fade in de volume em 3 segundos
+        //obs: para fazer Fades, use o script MudancaMusica.cs. O comando acima é uma excessão.
 
         player.Play(); // Toca a música
         player.loop = true; // Define para a música repetir em loop
     }
 
-    // Método para aumentar gradualmente o volume (Fade In)
-    IEnumerator FadeInVolume(float startVolume, float targetVolume, float fadeTimeSeconds)
+       
+    public IEnumerator FadeVolume(float delay, float volumeInicial, float volumeAlvo) // Parametros opcionais
     {
-        float currentTime = 0;
-        while (currentTime <= fadeTimeSeconds)
+        float tempoAtual = 0;
+        while (tempoAtual <= delay)
         {
-            float t = currentTime / fadeTimeSeconds;
-            player.volume = Mathf.Lerp(startVolume, targetVolume, t);
-            currentTime += Time.deltaTime;
+            float t = tempoAtual / delay;
+            player.volume = Mathf.Lerp(volumeInicial, volumeAlvo, t);
+            tempoAtual += Time.deltaTime;
             yield return null;
         }
-        player.volume = targetVolume; // Garante que o volume atingirá exatamente o valor final
+        player.volume = volumeAlvo; // Garante que o volume atingirá exatamente o valor final
     }
 
-    // Método para diminuir gradualmente o volume (Fade Out)
-    public void FadeOutVolume(float fadeTimeSeconds)
-    {
-        StartCoroutine(FadeOutCoroutine(player.volume, 0.2f, fadeTimeSeconds)); // Inicia o fade out de volume em 3 segundos
-    }
+    
+    
 
-    IEnumerator FadeOutCoroutine(float startVolume, float targetVolume, float fadeTimeSeconds)
-    {
-        float currentTime = 0;
-        while (currentTime <= fadeTimeSeconds)
-        {
-            float t = currentTime / fadeTimeSeconds;
-            player.volume = Mathf.Lerp(startVolume, targetVolume, t);
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
-        player.volume = targetVolume; // Garante que o volume atingirá exatamente o valor final
-    }
+ 
 }
