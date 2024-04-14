@@ -1,41 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntrarFase : MonoBehaviour
 {
-
-    public string fase;
-    public Collision collision;
-     
     // Start is called before the first frame update
-    void Start()
+    [SerializeField] public string nomeDaFase;
+    [SerializeField] public int delay;
+
+       public void esperarCarregar()
     {
-
-       if (true)
-        {
-
-        }
-        
-
-        //if (interagiu com a pasta){
-        //SceneManager.LoadScene("fase");
-        //}
+        // Chama a função para carregar o próximo nível após 3 segundos
+        Invoke("CarregarNivel", 3f);
     }
 
-    // Update is called once per frame
-    void Update()
+        public void CarregarNivel()
     {
-        
+        SceneManager.LoadScene(nomeDaFase);
     }
-    /*
-       private void OnCollisionEnter (Collision colisao)
-        {
-            if (colisao.gameObject.tag = "tag")
-            {
-                SceneManager.LoadScene(fase);
-            }
-        }
-    */
 
 }

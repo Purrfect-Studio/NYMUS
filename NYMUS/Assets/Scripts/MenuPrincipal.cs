@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MenuPrincipal : MonoBehaviour
@@ -8,11 +9,12 @@ public class MenuPrincipal : MonoBehaviour
     [SerializeField] private string nomeDoLevel;
     [SerializeField] private GameObject painelMenuInicial;
     [SerializeField] private GameObject painelOpcoes;
+    [SerializeField] private UnityEvent entrarFase;
 
     public void Jogar()
     {
         // Chama a função para carregar o próximo nível após 3 segundos
-        Invoke("CarregarProximoNivel", 3f);
+        entrarFase.Invoke();
     }
 
     private void CarregarProximoNivel()
