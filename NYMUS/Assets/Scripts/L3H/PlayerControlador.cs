@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerControlador : MonoBehaviour
 {
     public Rigidbody2D rb; // rb = rigidbody
+    public BoxCollider2D bc; //bc = box collider 
     public int velocidade; // Velocidade maxima do jogador
     private float direcao; // Direcao que o jogador esta se movimentando (esquerda ou direita)
 
     public string estadoPulo;        // Diz se o jogador esta no chao ou no ar
     private string Chao = "Chao";    // Variavel de apoio para estadoPulo
     private string Ar = "Ar";        // Variavel de apoio para estadoPulo
+
+    [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     private int quantidadePulos = 2; // Quantidade de pulos que o jogador pode dar
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
@@ -25,6 +29,7 @@ public class PlayerControlador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Chao")
@@ -42,6 +47,14 @@ public class PlayerControlador : MonoBehaviour
                 quantidadePulos = 2;
                 estadoPulo = Ar; //Jogador esta no ar
         }
+    }
+    */
+
+    private bool estaChao()
+    {
+
+        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.1f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
     private void FixedUpdate()
@@ -93,7 +106,7 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.W) && estadoPulo == Chao || Input.GetKeyDown(KeyCode.Space) && estadoPulo == Chao)
+        if (Input.GetKeyDown(KeyCode.W) && estaChao() || Input.GetKeyDown(KeyCode.Space) && estaChao())
         {
             estaPulando = true;
         }
