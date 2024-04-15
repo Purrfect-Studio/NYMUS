@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -52,7 +53,6 @@ public class PlayerControlador : MonoBehaviour
 
     private bool estaChao()
     {
-
         RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.1f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
@@ -106,7 +106,7 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.W) && estaChao() || Input.GetKeyDown(KeyCode.Space) && estaChao())
+        if (Input.GetKeyDown(KeyCode.W) && estaChao() == true || Input.GetKeyDown(KeyCode.Space) && estaChao() == true)
         {
             estaPulando = true;
         }
@@ -126,6 +126,11 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloDuplo()
     {
+        if (estaChao() == true)
+        {
+            quantidadePulos = 2;
+        }
+
         if (Input.GetKeyDown(KeyCode.W) && quantidadePulos > 0 || Input.GetKeyDown(KeyCode.Space) && quantidadePulos > 0)
         {
             estaPulando = true;
