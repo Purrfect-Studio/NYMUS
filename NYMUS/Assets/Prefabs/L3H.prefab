@@ -129,7 +129,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c6ba9948936995844b71949bab819f25, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -149,7 +149,6 @@ MonoBehaviour:
   rb: {fileID: 7797785698956322840}
   bc: {fileID: 7797785698956322843}
   velocidade: 15
-  estadoPulo: 
   layerChao:
     serializedVersion: 2
     m_Bits: 64

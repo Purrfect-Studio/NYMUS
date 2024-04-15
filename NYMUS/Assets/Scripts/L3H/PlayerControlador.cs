@@ -28,7 +28,7 @@ public class PlayerControlador : MonoBehaviour
 
     private bool estaChao()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.1f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
