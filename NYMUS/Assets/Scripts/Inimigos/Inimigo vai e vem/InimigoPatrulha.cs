@@ -6,15 +6,16 @@ public class InimigoPatrulha : MonoBehaviour
 {
     public Transform DetectaParede;
     public float distancia = 3;
-    public bool olhandoParaDireita;
+    public bool olhandoParaEsquerda;
     public float velocidade = 4;
-    public BoxCollider2D bcChao; // bc = box collider public
-    public BoxCollider2D bcParede; // bc = box collider 
+    public BoxCollider2D bcChao; // bc = box chao
+    public BoxCollider2D bcParede; // bc = box parede
+    public CircleCollider2D ccPlayer; 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()
     {
-        olhandoParaDireita = true;
+        olhandoParaEsquerda = true;
     }
 
     void Update()
@@ -40,15 +41,15 @@ public class InimigoPatrulha : MonoBehaviour
 
         if (chao() == false || parede() == true)
         {
-            if (olhandoParaDireita == false)
+            if (olhandoParaEsquerda == false)
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
-                olhandoParaDireita = true;
+                olhandoParaEsquerda = true;
             }
             else
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
-                olhandoParaDireita = false;
+                olhandoParaEsquerda = false;
             }
         }
     }
