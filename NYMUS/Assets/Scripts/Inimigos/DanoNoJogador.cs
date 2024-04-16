@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class DanoNoJogador : MonoBehaviour
 {
+    
     [SerializeField] public CircleCollider2D ccCookie;
     [SerializeField] private UnityEvent DanoCausado;
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
-    public float dano;
-     // 
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,10 @@ public class DanoNoJogador : MonoBehaviour
     {
         if (colisaoJogador() == true)
         {
-            DanoCausado.Invoke();
+            if(VidaJogador.invulneravel == false)
+            {
+                DanoCausado.Invoke();
+            }
         }
     }
 
