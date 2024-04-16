@@ -13,7 +13,7 @@ public class PlayerControlador : MonoBehaviour
 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
-    private int quantidadePulos = 2; // Quantidade de pulos que o jogador pode dar
+    private int puloExtra = 1; // Quantidade de pulos que o jogador pode dar
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
     private bool estaPulando;        // Diz se o jogador esta pulando ou nao
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
@@ -107,16 +107,16 @@ public class PlayerControlador : MonoBehaviour
         if (estaChao() == true)
         {
             //se o jogador encosta no chao reseta a quantidade de pulos
-            quantidadePulos = 2;
+            puloExtra = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && quantidadePulos > 0 || Input.GetKeyDown(KeyCode.Space) && quantidadePulos > 0)
+        if (Input.GetKeyDown(KeyCode.W) && puloExtra > 0 || Input.GetKeyDown(KeyCode.Space) && puloExtra > 0)
         {
             // se o jogador preciona W ou Espaco e a quantidade de pulos disponiveis for maior que 0-
             // estaPulando=true reseta o tempo do pulo e diminui 1 na quantidadePulos
             estaPulando = true;
             contadorTempoPulo = tempoPulo;
-            quantidadePulos -= 1;
+            --puloExtra;
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
