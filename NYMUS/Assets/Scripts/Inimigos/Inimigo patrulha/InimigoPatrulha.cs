@@ -10,7 +10,6 @@ public class InimigoPatrulha : MonoBehaviour
     public float velocidade = 4;
     public BoxCollider2D bcChao; // bc = box chao
     public BoxCollider2D bcParede; // bc = box parede
-    public CircleCollider2D ccPlayer; 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()

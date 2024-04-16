@@ -2973,6 +2973,9 @@ GameObject:
   - component: {fileID: 546957923}
   - component: {fileID: 546957924}
   - component: {fileID: 546957925}
+  - component: {fileID: 546957926}
+  - component: {fileID: 546957927}
+  - component: {fileID: 546957928}
   m_Layer: 0
   m_Name: cookie zumbi1
   m_TagString: Untagged
@@ -3082,7 +3085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectaParede: {fileID: 0}
   distancia: 3
-  olhandoParaDireita: 0
+  olhandoParaEsquerda: 0
   velocidade: 4
   bcChao: {fileID: 546957923}
   bcParede: {fileID: 546957924}
@@ -3157,6 +3160,79 @@ CircleCollider2D:
   m_Offset: {x: -0.0017303725, y: 0.008651818}
   serializedVersion: 2
   m_Radius: 0.15967338
+--- !u!50 &546957926
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546957918}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: c6ba9948936995844b71949bab819f25, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &546957927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546957918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ccCookie: {fileID: 546957925}
+  DanoCausado:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1525309885}
+        m_TargetAssemblyTypeName: Vida, Assembly-CSharp
+        m_MethodName: tomarDano
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  dano: 0
+--- !u!114 &546957928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546957918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ccCookie: {fileID: 546957925}
+  DanoCausado:
+    m_PersistentCalls:
+      m_Calls: []
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  dano: 0
 --- !u!1 &650474585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,7 +3575,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71875, y: 0.71875}
+    oldSize: {x: 0.359375, y: 0.359375}
     newSize: {x: 0.71875, y: 0.71875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3542,7 +3618,8 @@ GameObject:
   - component: {fileID: 1525309882}
   - component: {fileID: 1525309881}
   - component: {fileID: 1525309880}
-  m_Layer: 1
+  - component: {fileID: 1525309885}
+  m_Layer: 8
   m_Name: L3H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3684,6 +3761,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1525309885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525309879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e53c0c884206184f8ded69e858f39f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: 100
+  vidaAtual: 0
 --- !u!1 &1677237585
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,5 +133,4 @@ public class PlayerControlador : MonoBehaviour
             contadorTempoPulo = tempoPulo;
         }
     }
-
 }
