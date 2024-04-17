@@ -20,10 +20,13 @@ public class PlayerControlador : MonoBehaviour
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
 
+    public static bool podeMover;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        podeMover = true;
     }
 
     private bool estaChao()
@@ -34,15 +37,18 @@ public class PlayerControlador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        andar();
-        pulo();
+        if (podeMover == true)
+        {
+            andar();
+            pulo();
+        }
     }
 
     void andar()
     {
-        direcao = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
-        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
+       direcao = Input.GetAxis("Horizontal");
+       rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+       // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
     }
 
     void pulo()

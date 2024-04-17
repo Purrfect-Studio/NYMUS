@@ -2975,7 +2975,6 @@ GameObject:
   - component: {fileID: 546957925}
   - component: {fileID: 546957926}
   - component: {fileID: 546957927}
-  - component: {fileID: 546957928}
   m_Layer: 0
   m_Name: cookie zumbi1
   m_TagString: Untagged
@@ -3194,6 +3193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ccCookie: {fileID: 546957925}
+  jogador: {fileID: 1525309884}
   DanoCausado:
     m_PersistentCalls:
       m_Calls:
@@ -3209,25 +3209,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  layerJogador:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &546957928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546957918}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ccCookie: {fileID: 546957925}
-  DanoCausado:
-    m_PersistentCalls:
-      m_Calls: []
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
@@ -3775,6 +3756,10 @@ MonoBehaviour:
   vidaMaxima: 100
   vidaAtual: 0
   sprite: {fileID: 1525309883}
+  rb: {fileID: 1525309881}
+  forcaKnockbak: 10
+  contadorKnockback: 0
+  tempoKnockback: 0.5
 --- !u!1 &1677237585
 GameObject:
   m_ObjectHideFlags: 0
