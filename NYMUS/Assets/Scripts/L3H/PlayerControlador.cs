@@ -15,7 +15,7 @@ public class PlayerControlador : MonoBehaviour
 
     private int puloExtra = 1; // Quantidade de pulos que o jogador pode dar
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
-    private bool estaPulando;        // Diz se o jogador esta pulando ou nao
+    public bool estaPulando;        // Diz se o jogador esta pulando ou nao
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
@@ -28,7 +28,7 @@ public class PlayerControlador : MonoBehaviour
 
     private bool estaChao()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 

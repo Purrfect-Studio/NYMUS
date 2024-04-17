@@ -3043,7 +3043,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546957918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1, y: -2.01, z: -8.84}
+  m_LocalPosition: {x: 4.38, y: -1.82, z: -8.84}
   m_LocalScale: {x: 6, y: 6, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3212,7 +3212,6 @@ MonoBehaviour:
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
-  dano: 0
 --- !u!114 &546957928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,7 +3219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546957918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
   m_Name: 
@@ -3232,7 +3231,6 @@ MonoBehaviour:
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
-  dano: 0
 --- !u!1 &650474585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,6 +3643,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   possuiPuloDuplo: 1
+  estaPulando: 0
   forcaPulo: 10
   tempoPulo: 0.2
 --- !u!50 &1525309881
@@ -3681,7 +3680,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03, y: -0.05}
+  m_Offset: {x: -0.030000001, y: -0.020848349}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3692,8 +3691,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37, y: 0.9}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.32, y: 0.8416966}
+  m_EdgeRadius: 0.2
 --- !u!212 &1525309883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3773,7 +3772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e53c0c884206184f8ded69e858f39f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invulneravel: 0
   vidaMaxima: 100
   vidaAtual: 0
   sprite: {fileID: 1525309883}
