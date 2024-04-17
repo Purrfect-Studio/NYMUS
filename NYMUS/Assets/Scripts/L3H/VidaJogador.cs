@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VidaJogador : MonoBehaviour
@@ -14,7 +15,7 @@ public class VidaJogador : MonoBehaviour
     
     [SerializeField] public float contadorKnockback;
     [SerializeField] public float tempoKnockback;
-    [SerializeField] public static bool knockbackParaDireita;
+    [SerializeField] public static int knockbackParaDireita;
 
 
     // Start is called before the first frame update
@@ -26,7 +27,6 @@ public class VidaJogador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        knockback();
     }
     // Update is called once per frame
     void Update()
@@ -38,29 +38,26 @@ public class VidaJogador : MonoBehaviour
     {
         vidaAtual -= danoTomado;
         invulneravel = true;
-        contadorKnockback = tempoKnockback;
-        StartCoroutine (invulnerabilidade());
+        Knockback();
+        StartCoroutine("invulnerabilidade");
     }
 
-    void knockback()
+
+    void Knockback()
     {
-        if(contadorKnockback < 0)
-        {
-            PlayerControlador.podeMover = true;
-        }
-        else
-        {
-            PlayerControlador.podeMover = false;
-            if (knockbackParaDireita == true)
-            {
-               // rb.AddForce()(1 * forcaKnockbak, rb.velocity.y);
-            }
-            if (knockbackParaDireita == false)
-            {
-                rb.velocity = new Vector2(-1 * forcaKnockbak, rb.velocity.y);
-            }
-        }
-        contadorKnockback -= Time.deltaTime;
+        rb.AddForce(new Vector2(10 * -knockbackParaDireita, 10), ForceMode2D.Impulse);
+        StartCoroutine("Freeze");
+    }
+
+    IEnumerator Freeze()
+    {
+        // Retira o controle do personagem
+        PlayerControlador.podeMover = false;
+
+        yield return new WaitForSeconds(.5f);
+
+        // Devolve o controle do personagem
+        PlayerControlador.podeMover = true;
     }
 
     IEnumerator invulnerabilidade()

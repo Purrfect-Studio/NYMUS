@@ -29,11 +29,11 @@ public class DanoNoJogador : MonoBehaviour
             {
                 if(transform.position.x <= jogador.transform.position.x)
                 {
-                    VidaJogador.knockbackParaDireita = true;
+                    VidaJogador.knockbackParaDireita = -1;
                 }
                 else
                 {
-                    VidaJogador.knockbackParaDireita = false;
+                    VidaJogador.knockbackParaDireita = 1;
                 }
                 DanoCausado.Invoke();
             }
