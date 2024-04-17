@@ -12,7 +12,7 @@ public class InteragirBotao : MonoBehaviour
     [SerializeField]
     private UnityEvent botaoApertado;
 
-    private bool podeExecutar;
+    public bool podeExecutar;
 
 
     // Update is called once per frame
