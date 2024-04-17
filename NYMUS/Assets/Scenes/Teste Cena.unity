@@ -3344,6 +3344,7 @@ GameObject:
   - component: {fileID: 1525309881}
   - component: {fileID: 1525309880}
   - component: {fileID: 1525309885}
+  - component: {fileID: 1525309886}
   m_Layer: 8
   m_Name: L3H
   m_TagString: Untagged
@@ -3373,6 +3374,7 @@ MonoBehaviour:
   estaPulando: 0
   forcaPulo: 10
   tempoPulo: 0.2
+  animacao: {fileID: 1525309886}
 --- !u!50 &1525309881
 Rigidbody2D:
   serializedVersion: 4
@@ -3504,8 +3506,28 @@ MonoBehaviour:
   sprite: {fileID: 1525309883}
   rb: {fileID: 1525309881}
   forcaKnockbak: 10
-  contadorKnockback: 0
-  tempoKnockback: 0.5
+  animacao: {fileID: 1525309886}
+--- !u!95 &1525309886
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525309879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6e8bb686cd9feb45bc792e6843e7bf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1677237585
 GameObject:
   m_ObjectHideFlags: 0

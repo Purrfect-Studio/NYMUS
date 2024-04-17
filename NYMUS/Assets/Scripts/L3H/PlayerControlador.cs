@@ -29,6 +29,7 @@ public class PlayerControlador : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         podeMover = true;
+        animacao.SetBool("estaMorto", false);
     }
 
     private bool estaChao()
@@ -111,7 +112,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
-            animacao.SetBool("Pulou", true);
+            animacao.SetBool("estaPulando", true);
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
@@ -126,7 +127,7 @@ public class PlayerControlador : MonoBehaviour
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
-            animacao.SetBool("Pulou", false);
+            animacao.SetBool("estaPulando", false);
         }
     }
 
@@ -145,6 +146,7 @@ public class PlayerControlador : MonoBehaviour
             estaPulando = true;
             contadorTempoPulo = tempoPulo;
             --puloExtra;
+            animacao.SetBool("estaPulando", true);
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
@@ -159,6 +161,7 @@ public class PlayerControlador : MonoBehaviour
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
+            animacao.SetBool("estaPulando", false);
         }
     }
 }

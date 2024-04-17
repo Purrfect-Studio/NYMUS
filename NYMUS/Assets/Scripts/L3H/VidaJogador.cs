@@ -18,6 +18,7 @@ public class VidaJogador : MonoBehaviour
     public Rigidbody2D rb;   // rb = rigidbody
     public float forcaKnockbak;
     [SerializeField] public static int knockbackParaDireita;
+    public Animator animacao;
 
 
     // Start is called before the first frame update
@@ -38,8 +39,8 @@ public class VidaJogador : MonoBehaviour
     void morrer()
     {
         PlayerControlador.podeMover = false;
+        animacao.SetBool("estaMorto", true);
         StartCoroutine("morreu");
-
     }
 
     IEnumerator morreu()
@@ -80,10 +81,16 @@ public class VidaJogador : MonoBehaviour
         // Retira o controle do personagem
         PlayerControlador.podeMover = false;
 
+        // comeca a animacao de tomar dano
+        animacao.SetBool("tomarDano", true);
+
         yield return new WaitForSeconds(.5f);
 
         // Devolve o controle do personagem
         PlayerControlador.podeMover = true;
+
+        // termina a animacao de tomar dano
+        animacao.SetBool("tomarDano", false);
     }
 
     IEnumerator invulnerabilidade()
