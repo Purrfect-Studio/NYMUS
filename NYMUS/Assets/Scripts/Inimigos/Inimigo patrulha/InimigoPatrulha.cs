@@ -8,8 +8,8 @@ public class InimigoPatrulha : MonoBehaviour
     public float distancia = 3;
     public bool olhandoParaEsquerda;
     public float velocidade = 4;
-    public BoxCollider2D bcChao; // bc = box chao
-    public BoxCollider2D bcParede; // bc = box parede
+    public EdgeCollider2D ECparede; // ec = edge collider
+    public BoxCollider2D bcChao; // bc = box collider
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()
@@ -24,7 +24,7 @@ public class InimigoPatrulha : MonoBehaviour
 
     private bool parede()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(bcParede.bounds.center, bcParede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(ECparede.bounds.center, ECparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 

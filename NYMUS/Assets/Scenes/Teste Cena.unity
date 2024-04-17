@@ -4877,68 +4877,68 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1001 &8308258769907290824
+--- !u!1001 &3859225358864423149
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8308258770450970774, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_Name
-      value: cookie zumbi1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308258770450970799, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+    - target: {fileID: 3859225359410197130, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
       propertyPath: jogador
       value: 
       objectReference: {fileID: 1525309884}
-    - target: {fileID: 8308258770450970799, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+    - target: {fileID: 3859225359410197130, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
       propertyPath: DanoCausado.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525309885}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197133, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859225359410197171, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: m_Name
+      value: cookie zumbi Melhorado
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
