@@ -9,18 +9,20 @@ public class PlayerControlador : MonoBehaviour
     public Rigidbody2D rb;   // rb = rigidbody
     public BoxCollider2D bc; // bc = box collider 
     public int velocidade;   // Velocidade maxima do jogador
-    private float direcao;   // Direcao que o jogador esta se movimentando (esquerda ou direita)
-
+    private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
+    private bool olhandoDireita = true;           // Direcao para girar o sprite
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
-    private int puloExtra = 1; // Quantidade de pulos que o jogador pode dar
+    private int puloExtra = 1;       // Quantidade de pulos que o jogador pode dar
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
-    public bool estaPulando;        // Diz se o jogador esta pulando ou nao
+    public bool estaPulando;         // Diz se o jogador esta pulando ou nao
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
 
-    public static bool podeMover;
+    public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
+
+    public Animator animacao;
 
     // Start is called before the first frame update
     void Start()
@@ -46,9 +48,27 @@ public class PlayerControlador : MonoBehaviour
 
     void andar()
     {
-       direcao = Input.GetAxis("Horizontal");
+       //<- = -1
+       //-> = 1
+       direcao = Input.GetAxis("Horizontal"); 
        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
+       if (direcao > 0 && olhandoDireita == false || direcao < 0 && olhandoDireita == true)
+       {
+           olhandoDireita = !olhandoDireita;
+           transform.Rotate(0f, 180f, 0f);
+        }
+        if (direcao == 0)
+        {
+            animacao.SetBool("estaAndando", false);
+        }
+        else
+        {
+            animacao.SetBool("estaAndando", true);
+        }
+        //se estiver olhando a a direita e andando para a esquerda
+        //ou olhando para a esquerda e andando para a direita
+        //gira o sprite e inverte a variavel olhandoDireita
     }
 
     void pulo()
@@ -91,6 +111,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
+            animacao.SetBool("Pulou", true);
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
@@ -105,6 +126,7 @@ public class PlayerControlador : MonoBehaviour
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
+            animacao.SetBool("Pulou", false);
         }
     }
 
