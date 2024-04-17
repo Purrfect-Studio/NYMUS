@@ -1,24 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerControlador : MonoBehaviour
 {
-    public Rigidbody2D rb; // rb = rigidbody
-    public BoxCollider2D bc; //bc = box collider 
-    public int velocidade; // Velocidade maxima do jogador
-    private float direcao; // Direcao que o jogador esta se movimentando (esquerda ou direita)
-
-    public string estadoPulo;        // Diz se o jogador esta no chao ou no ar
-    private string Chao = "Chao";    // Variavel de apoio para estadoPulo
-    private string Ar = "Ar";        // Variavel de apoio para estadoPulo
+    public Rigidbody2D rb;   // rb = rigidbody
+    public BoxCollider2D bc; // bc = box collider 
+    public int velocidade;   // Velocidade maxima do jogador
+    private float direcao;   // Direcao que o jogador esta se movimentando (esquerda ou direita)
 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
-    private int quantidadePulos = 2; // Quantidade de pulos que o jogador pode dar
+    private int puloExtra = 1; // Quantidade de pulos que o jogador pode dar
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
-    private bool estaPulando;        // Diz se o jogador esta pulando ou nao
+    public bool estaPulando;        // Diz se o jogador esta pulando ou nao
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
@@ -29,31 +26,9 @@ public class PlayerControlador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Chao")
-        {
-            estadoPulo = Chao; //Jogador esta no chao (reseta o pulo)
-            estaPulando = false;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (estadoPulo == Chao)
-        {
-            if (collision.gameObject.tag == "Chao")
-                quantidadePulos = 2;
-                estadoPulo = Ar; //Jogador esta no ar
-        }
-    }
-    */
-
     private bool estaChao()
     {
-
-        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.1f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
@@ -72,15 +47,15 @@ public class PlayerControlador : MonoBehaviour
 
     void pulo()
     {
-        if (estaPulando == true)
+        if (estaPulando == true) 
         {
-            if (contadorTempoPulo > 0)
+            if (contadorTempoPulo > 0) // se estaPulando for true e o tempo do pulo for maior que zero:
             {
-                rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+                rb.velocity = new Vector2(rb.velocity.x, forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
             }
             else
             {
-                estaPulando = false;
+                estaPulando = false; // quando o contador do tempo do pulo chegar a 0 estaPulando=false
             }
         }
     }
@@ -94,7 +69,7 @@ public class PlayerControlador : MonoBehaviour
 
     void inputTeclas()
     {
-        if (possuiPuloDuplo == true)
+        if (possuiPuloDuplo == true) // verifica se o jogador possui pulo duplo para escolher qual metodo de pulo chamar
         {
             inputPuloDuplo();
         }
@@ -106,19 +81,22 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.W) && estaChao() || Input.GetKeyDown(KeyCode.Space) && estaChao())
+        if (Input.GetKeyDown(KeyCode.W) && estaChao() == true || Input.GetKeyDown(KeyCode.Space) && estaChao() == true)
         {
+            // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
         {
+            // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rb.velocity = Vector2.up * forcaPulo;
         }
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
         {
+            //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
         }
@@ -126,24 +104,33 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloDuplo()
     {
-        if (Input.GetKeyDown(KeyCode.W) && quantidadePulos > 0 || Input.GetKeyDown(KeyCode.Space) && quantidadePulos > 0)
+        if (estaChao() == true)
         {
+            //se o jogador encosta no chao reseta a quantidade de pulos
+            puloExtra = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) && puloExtra > 0 || Input.GetKeyDown(KeyCode.Space) && puloExtra > 0)
+        {
+            // se o jogador preciona W ou Espaco e a quantidade de pulos disponiveis for maior que 0-
+            // estaPulando=true reseta o tempo do pulo e diminui 1 na quantidadePulos
             estaPulando = true;
             contadorTempoPulo = tempoPulo;
-            quantidadePulos -= 1;
+            --puloExtra;
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
         {
+            // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rb.velocity = Vector2.up * forcaPulo;
         }
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
         {
+            //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
         }
     }
-
 }
