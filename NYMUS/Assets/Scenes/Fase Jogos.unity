@@ -5058,6 +5058,7 @@ MonoBehaviour:
   bcChao: {fileID: 1981897995}
   bcParede: {fileID: 1981897994}
   rb: {fileID: 1981897992}
+  alturaPulo: 5
   layerChao:
     serializedVersion: 2
     m_Bits: 64
@@ -5121,6 +5122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posicaoPlayer: {fileID: 2043723409}
+  distanciaMinima: 1
 --- !u!114 &1992807474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5139,7 +5141,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1992807473}
         m_TargetAssemblyTypeName: GrudarObjeto, Assembly-CSharp
-        m_MethodName: grudar
+        m_MethodName: Grudar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

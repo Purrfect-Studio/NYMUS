@@ -5,20 +5,59 @@ using UnityEngine;
 public class GrudarObjeto : MonoBehaviour
 {
     public Transform posicaoPlayer;
-    // Start is called before the first frame update
+    public float distanciaMinima = 1f; // Distância mínima entre o jogador e a caixa
+
+    private bool estaGrudado = false; // Verifica se a caixa está grudada no jogador
+
+    private Vector3 diferencaPosicao; // Armazena a diferença de posição inicial entre o jogador e a caixa
+
     void Start()
     {
-        
+        // Calcula a diferença de posição inicial entre o jogador e a caixa
+        diferencaPosicao = transform.position - posicaoPlayer.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Se a caixa estiver grudada, atualiza continuamente sua posição para seguir o jogador
+        if (estaGrudado)
+        {
+            AtualizarPosicao();
+        }
     }
 
-    public void grudar()
+    public void Grudar()
     {
-        //Transform.position.x = posicaoPlayer.transform.position.x;
+        if (estaGrudado==true)
+        {
+            Desgrudar();
+            return; 
+        }
+        // Define que a caixa está grudada no jogador
+        estaGrudado = true;
+
+        // Calcula a diferença de posição inicial entre a caixa e o jogador
+        diferencaPosicao = transform.position - posicaoPlayer.position;
+    }
+
+    public void Desgrudar()
+    {
+        // Define que a caixa não está mais grudada no jogador
+        estaGrudado = false;
+    }
+
+    private void AtualizarPosicao()
+    {
+        // Calcula a nova posição da caixa com base na posição atual do jogador e na diferença de posição inicial
+        Vector3 novaPosicao = posicaoPlayer.position + diferencaPosicao;
+
+        // Mantém a distância mínima entre o jogador e a caixa
+        if (Vector3.Distance(novaPosicao, posicaoPlayer.position) < distanciaMinima)
+        {
+            novaPosicao = posicaoPlayer.position + (novaPosicao - posicaoPlayer.position).normalized * distanciaMinima;
+        }
+
+        // Define a nova posição da caixa
+        transform.position = novaPosicao;
     }
 }

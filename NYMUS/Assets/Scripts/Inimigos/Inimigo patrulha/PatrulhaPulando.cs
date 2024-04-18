@@ -12,6 +12,7 @@ public class PatrulhaPulando : MonoBehaviour
     public BoxCollider2D bcChao; // bc = box chao
     public BoxCollider2D bcParede; // bc = box parede
     public Rigidbody2D rb;
+    public int alturaPulo = 5;
 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
@@ -62,7 +63,7 @@ public class PatrulhaPulando : MonoBehaviour
 
     public void Pular()
     {
-        transform.Translate(Vector2.up * 3 * Time.deltaTime);
+        transform.Translate(Vector2.up * alturaPulo * Time.deltaTime);
         //rb.AddForce(new Vector2(10, 100), ForceMode2D.Impulse);
         //Invoke("Pular", 3);
     }
