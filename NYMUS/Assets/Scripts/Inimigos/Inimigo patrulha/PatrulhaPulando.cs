@@ -1,30 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class InimigoPatrulha : MonoBehaviour
+public class PatrulhaPulando : MonoBehaviour
 {
     public Transform DetectaParede;
     public float distancia = 3;
     public bool olhandoParaEsquerda;
     public float velocidade = 4;
-    public EdgeCollider2D ECparede; // ec = edge collider
-    public BoxCollider2D bcChao; // bc = box collider
+    public BoxCollider2D bcChao; // bc = box chao
+    public BoxCollider2D bcParede; // bc = box parede
+    public Rigidbody2D rb;
+    public int alturaPulo = 5;
+
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
+
+    public bool teste;
 
     void Start()
     {
         olhandoParaEsquerda = true;
+        
     }
 
     void Update()
     {
         Patrulha();
+        Pular();
     }
 
     private bool parede()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(ECparede.bounds.center, ECparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(bcParede.bounds.center, bcParede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
@@ -51,5 +59,12 @@ public class InimigoPatrulha : MonoBehaviour
                 olhandoParaEsquerda = false;
             }
         }
+    }
+
+    public void Pular()
+    {
+        transform.Translate(Vector2.up * alturaPulo * Time.deltaTime);
+        //rb.AddForce(new Vector2(10, 100), ForceMode2D.Impulse);
+        //Invoke("Pular", 3);
     }
 }
