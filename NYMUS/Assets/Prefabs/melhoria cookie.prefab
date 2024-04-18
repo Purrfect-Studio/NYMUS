@@ -7,6 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4456294727058431810, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 3859225359410197131}
+    - target: {fileID: 4456294727058431810, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: cookie
+      value: 
+      objectReference: {fileID: 3859225359410197171}
+    - target: {fileID: 4456294727058431810, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 3859225359410197170}
+    - target: {fileID: 4456294727058431810, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: animacao
+      value: 
+      objectReference: {fileID: 3859225359410197132}
+    - target: {fileID: 4456294727058431810, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: vidaMaxima
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456294727058431810, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: forcaKnockbak
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970774, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_Name
       value: melhoria cookie
@@ -75,6 +99,21 @@ PrefabInstance:
     - {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
     - {fileID: 8308258770450970796, guid: c288edf4289712449b4623ee2d27100c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+--- !u!50 &3859225359410197131 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8308258770450970798, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+  m_PrefabInstance: {fileID: 5098748028350761509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3859225359410197132 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8308258770450970793, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+  m_PrefabInstance: {fileID: 5098748028350761509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &3859225359410197170 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8308258770450970775, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+  m_PrefabInstance: {fileID: 5098748028350761509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3859225359410197171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8308258770450970774, guid: c288edf4289712449b4623ee2d27100c, type: 3}
