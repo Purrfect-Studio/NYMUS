@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class VidaInimigo : MonoBehaviour
 {
+    [Header("Vida")]
     public float vidaMaxima;
     public float vidaAtual;
+
+    [Header("GameObject do inimigo")]
     public GameObject gameObject;
 
-    [Header("Knockback")]
+    [Header("RigidBody")]
     public Rigidbody2D rb;   // rb = rigidbody
+
+    [Header("Knockback")]
     public float forcaKnockbak;
     public static int knockbackParaDireita;
+
+    [Header("Animator")]
     public Animator animacao;
+
+    [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        vidaAtual = vidaMaxima;
-        animacao.SetBool("estaMorto", false);
+        vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
+        animacao.SetBool("estaMorto", false); // desativa a animacao de morte
     }
 
     // Update is called once per frame

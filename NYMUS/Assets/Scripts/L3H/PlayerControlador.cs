@@ -6,23 +6,34 @@ using UnityEngine;
 
 public class PlayerControlador : MonoBehaviour
 {
+    [Header("RigidBody")]
     public Rigidbody2D rb;   // rb = rigidbody
+    [Header("BoxCollider")]
     public BoxCollider2D bc; // bc = box collider 
+    [Header("Animator")]
+    public Animator animacao;
+
+    [Header("Andar")]
     public int velocidade;   // Velocidade maxima do jogador
     private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
     private bool olhandoDireita = true;           // Direcao para girar o sprite
-    [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
-
-    private int puloExtra = 1;       // Quantidade de pulos que o jogador pode dar
-    public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
-    public bool estaPulando;         // Diz se o jogador esta pulando ou nao
-    public float forcaPulo;          // Quanto maior o valor mais alto o pulo
-    public float tempoPulo;          // Tempo maximo do pulo antes de cair
-    private float contadorTempoPulo; // Contador de qunato tempo esta pulando
-
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
 
-    public Animator animacao;
+    [Header("Layer do Chao")]
+    [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
+
+    [Header("Pulo")]
+    public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
+    public float forcaPulo;          // Quanto maior o valor mais alto o pulo
+    public float tempoPulo;          // Tempo maximo do pulo antes de cair
+    private bool estaPulando;         // Diz se o jogador esta pulando ou nao
+    private float contadorTempoPulo; // Contador de qunato tempo esta pulando
+    private int puloExtra = 1;       // Quantidade de pulos que o jogador pode dar
+
+    [Header("Ataque")]
+    public float dano;
+    public BoxCollider2D bCAtaque;
+
 
     // Start is called before the first frame update
     void Start()
