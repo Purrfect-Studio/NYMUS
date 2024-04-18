@@ -4965,7 +4965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_Size.y
-      value: 0.27131653
+      value: 0.33999515
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_Offset.x
@@ -4973,7 +4973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_Offset.y
-      value: -0.27714324
+      value: -0.24280393
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308258770450970798, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970799, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_Enabled
@@ -5057,6 +5061,7 @@ MonoBehaviour:
   layerChao:
     serializedVersion: 2
     m_Bits: 64
+  teste: 0
 --- !u!50 &1981897992 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8308258770450970798, guid: c288edf4289712449b4623ee2d27100c, type: 3}
