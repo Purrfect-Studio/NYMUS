@@ -34,7 +34,6 @@ public class PlayerControlador : MonoBehaviour
     public float dano;
     public BoxCollider2D bCAtaque;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -102,10 +101,11 @@ public class PlayerControlador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputTeclas();
+        verificarPuloDuplo();
+        ataque();
     }
 
-    void inputTeclas()
+    void verificarPuloDuplo()
     {
         if (possuiPuloDuplo == true) // verifica se o jogador possui pulo duplo para escolher qual metodo de pulo chamar
         {
@@ -115,6 +115,12 @@ public class PlayerControlador : MonoBehaviour
         {
             inputPuloSimples();
         }
+
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            animacao.SetBool("estaAtacando", true);
+        }
+        
     }
 
     void inputPuloSimples()
@@ -174,5 +180,23 @@ public class PlayerControlador : MonoBehaviour
             contadorTempoPulo = tempoPulo;
             animacao.SetBool("estaPulando", false);
         }
+    }
+
+    void ataque()
+    {
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            animacao.SetBool("estaAtacando", true);
+            colisaoAtaque();
+        }
+        if(Input.GetKeyUp(KeyCode.J))
+        {
+            animacao.SetBool("estaAtacando", false);
+        }
+    }
+
+    void colisaoAtaque()
+    {
+
     }
 }
