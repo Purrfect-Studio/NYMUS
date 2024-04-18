@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PatrulhaPulando : MonoBehaviour
@@ -14,16 +15,18 @@ public class PatrulhaPulando : MonoBehaviour
 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
+    public bool teste;
+
     void Start()
     {
-
         olhandoParaEsquerda = true;
-        Pular();
+        
     }
 
     void Update()
     {
         Patrulha();
+        Pular();
     }
 
     private bool parede()
@@ -59,7 +62,8 @@ public class PatrulhaPulando : MonoBehaviour
 
     public void Pular()
     {
-        rb.AddForce(new Vector2(10, 100), ForceMode2D.Impulse);
-        Invoke("Pular", 3);
+        transform.Translate(Vector2.up * 3 * Time.deltaTime);
+        //rb.AddForce(new Vector2(10, 100), ForceMode2D.Impulse);
+        //Invoke("Pular", 3);
     }
 }
