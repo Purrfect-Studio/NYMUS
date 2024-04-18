@@ -17,7 +17,7 @@ public class VidaJogador : MonoBehaviour
     [Header("Knockback")]
     public Rigidbody2D rb;   // rb = rigidbody
     public float forcaKnockbak;
-    [SerializeField] public static int knockbackParaDireita;
+    public static int knockbackParaDireita;
     public Animator animacao;
 
 
