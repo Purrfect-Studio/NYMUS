@@ -8,14 +8,15 @@ public class PatrulhaPulando : MonoBehaviour
     public float distancia = 3;
     public bool olhandoParaEsquerda;
     public float velocidade = 4;
-    public float altura = 3;
     public BoxCollider2D bcChao; // bc = box chao
     public BoxCollider2D bcParede; // bc = box parede
-    public Rigidbody2D rb; //rb = RigidBody
+    public Rigidbody2D rb;
+
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()
     {
+
         olhandoParaEsquerda = true;
         Pular();
     }
@@ -39,8 +40,7 @@ public class PatrulhaPulando : MonoBehaviour
 
     public void Patrulha()
     {
-        transform.Translate(Vector2.up * altura * Time.deltaTime);
-       
+        transform.Translate(Vector2.right * velocidade * Time.deltaTime);
 
         if (chao() == false || parede() == true)
         {
@@ -56,10 +56,10 @@ public class PatrulhaPulando : MonoBehaviour
             }
         }
     }
+
     public void Pular()
     {
-        rb.AddForce(new Vector2(10 * 10, 10), ForceMode2D.Impulse);
-
+        rb.AddForce(new Vector2(10, 100), ForceMode2D.Impulse);
+        Invoke("Pular", 3);
     }
-
 }

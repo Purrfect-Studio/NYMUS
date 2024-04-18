@@ -4917,11 +4917,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.862417
+      value: 11.01
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7425096
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970792, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4956,6 +4956,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8308258770450970794, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.037032664
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.27131653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.17562464
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308258770450970795, guid: c288edf4289712449b4623ee2d27100c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.27714324
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308258770450970799, guid: c288edf4289712449b4623ee2d27100c, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -5031,9 +5051,8 @@ MonoBehaviour:
   distancia: 3
   olhandoParaEsquerda: 0
   velocidade: 4
-  altura: 3
-  bcChao: {fileID: 1981897994}
-  bcParede: {fileID: 1981897995}
+  bcChao: {fileID: 1981897995}
+  bcParede: {fileID: 1981897994}
   rb: {fileID: 1981897992}
   layerChao:
     serializedVersion: 2
