@@ -60,6 +60,16 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (podeMover == true)
+        {
+            verificarPuloDuplo();
+            ataque();
+        }
+    }
+
     void andar()
     {
        //<- = -1
@@ -100,13 +110,6 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        verificarPuloDuplo();
-        ataque();
-    }
 
     void verificarPuloDuplo()
     {
