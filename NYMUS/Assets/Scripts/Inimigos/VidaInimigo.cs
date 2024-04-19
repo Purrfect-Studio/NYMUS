@@ -26,6 +26,9 @@ public class VidaInimigo : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite;
 
+    [Header("jogador")]
+    public Transform jogador;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,14 @@ public class VidaInimigo : MonoBehaviour
 
     void Knockback()
     {
+        if (transform.position.x <= jogador.transform.position.x)
+        {
+            knockbackParaDireita = 1;
+        }
+        else
+        {
+            knockbackParaDireita = -1;
+        }
         rb.AddForce(new Vector2(10 * -knockbackParaDireita, 10), ForceMode2D.Impulse);
         StartCoroutine("Piscar");
     }

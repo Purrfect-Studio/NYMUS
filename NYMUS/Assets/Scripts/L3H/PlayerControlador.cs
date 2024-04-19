@@ -193,10 +193,10 @@ public class PlayerControlador : MonoBehaviour
             Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.position, alcanceAtaque);
             if(acertarInimigo != null)
             {
-                //Debug.Log("Atacando:" + acertarInimigo.name);
                 VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
                 if(inimigo != null)
                 {
+                    Debug.Log("Atacando:" + acertarInimigo.name);
                     inimigo.tomarDano(dano);
                 }
             }

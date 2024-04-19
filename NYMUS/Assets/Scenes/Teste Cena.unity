@@ -3405,7 +3405,7 @@ MonoBehaviour:
   possuiPuloDuplo: 1
   forcaPulo: 10
   tempoPulo: 0.2
-  dano: 0
+  dano: 5
   pontoDeAtaque: {fileID: 1363619813}
   alcanceAtaque: 1.66
 --- !u!50 &1525309881
@@ -4999,9 +4999,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3859225358864423150}
     - target: {fileID: 8869157909990315367, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: jogador
+      value: 
+      objectReference: {fileID: 1525309884}
+    - target: {fileID: 8869157909990315367, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
       propertyPath: gameObject
       value: 
       objectReference: {fileID: 3859225358864423150}
+    - target: {fileID: 8869157909990315367, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
+      propertyPath: forcaKnockbak
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9254b9cee816e29498d81ce5c86b0326, type: 3}
 --- !u!1 &3859225358864423150 stripped
