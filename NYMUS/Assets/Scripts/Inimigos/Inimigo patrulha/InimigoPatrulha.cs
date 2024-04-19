@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class InimigoPatrulha : MonoBehaviour
 {
-    public Transform DetectaParede;
     public float distancia = 3;
     public bool olhandoParaEsquerda;
     public float velocidade = 4;
-    public EdgeCollider2D ECparede; // ec = edge collider
+    public BoxCollider2D bCparede; // bc = box collider
     public BoxCollider2D bcChao; // bc = box collider
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
@@ -24,7 +23,7 @@ public class InimigoPatrulha : MonoBehaviour
 
     private bool parede()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(ECparede.bounds.center, ECparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(bCparede.bounds.center, bCparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
