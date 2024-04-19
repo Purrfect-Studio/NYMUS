@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class PlayerControlador : MonoBehaviour
@@ -26,13 +27,15 @@ public class PlayerControlador : MonoBehaviour
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
-    private bool estaPulando;         // Diz se o jogador esta pulando ou nao
+    private bool estaPulando;        // Diz se o jogador esta pulando ou nao
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
     private int puloExtra = 1;       // Quantidade de pulos que o jogador pode dar
 
     [Header("Ataque")]
     public float dano;
-    public BoxCollider2D bCAtaque;
+    public Transform pontoDeAtaque; // Ponto de onde se origina o ataque
+    public float alcanceAtaque;     // Area de alcance do ataque
+
 
     // Start is called before the first frame update
     void Start()
@@ -187,7 +190,16 @@ public class PlayerControlador : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.J))
         {
             animacao.SetBool("estaAtacando", true);
-            colisaoAtaque();
+            Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.position, alcanceAtaque);
+            if(acertarInimigo != null)
+            {
+                //Debug.Log("Atacando:" + acertarInimigo.name);
+                VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
+                if(inimigo != null)
+                {
+                    inimigo.tomarDano(dano);
+                }
+            }
         }
         if(Input.GetKeyUp(KeyCode.J))
         {
@@ -195,8 +207,8 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
-    void colisaoAtaque()
+    private void OnDrawGizmos()
     {
-
+        Gizmos.DrawWireSphere(pontoDeAtaque.position, alcanceAtaque);
     }
 }

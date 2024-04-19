@@ -11,7 +11,7 @@ public class VidaInimigo : MonoBehaviour
     public float vidaAtual;
 
     [Header("GameObject do inimigo")]
-    public GameObject gameObject;
+    public GameObject inimigo;
 
     [Header("RigidBody")]
     public Rigidbody2D rb;   // rb = rigidbody
@@ -36,16 +36,17 @@ public class VidaInimigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (vidaAtual <= 0)
-        {
-            morrer();
-        }
     }
 
     public void tomarDano(float dano)
     {
+        Debug.Log("Tomei dano" + dano);
         vidaAtual -= dano;
         Knockback();
+        if (vidaAtual <= 0)
+        {
+            morrer();
+        }
     }
 
     void Knockback()
@@ -74,6 +75,6 @@ public class VidaInimigo : MonoBehaviour
     IEnumerator morreu()
     {
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        Destroy(inimigo);
     }
 }
