@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8308258770450970797}
   - component: {fileID: 8308258770450970798}
   - component: {fileID: 8308258770450970799}
+  - component: {fileID: 4456294727058431810}
   m_Layer: 0
   m_Name: cookie zumbi1
   m_TagString: Untagged
@@ -128,8 +129,8 @@ MonoBehaviour:
   distancia: 3
   olhandoParaEsquerda: 0
   velocidade: 4
+  ECparede: {fileID: 0}
   bcChao: {fileID: 8308258770450970795}
-  bcParede: {fileID: 8308258770450970796}
   layerChao:
     serializedVersion: 2
     m_Bits: 64
@@ -254,3 +255,15 @@ MonoBehaviour:
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &4456294727058431810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308258770450970774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9c77257f9a93a4abc51810cd5f2324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
