@@ -22,6 +22,8 @@ public class DialogoControlador : MonoBehaviour
         fotoPersonagem.sprite = foto;
         sentencas = texto;
         nomePersonagem.text = nomedoPersonagem;
+        PlayerControlador.podeMover = false;
+        VidaJogador.invulneravel = true;
         StartCoroutine(EscreverSentenca());
     }
     
@@ -49,6 +51,8 @@ public class DialogoControlador : MonoBehaviour
                 textoFala.text = "";
                 index = 0;
                 dialogoObj.SetActive(false);
+                PlayerControlador.podeMover = true;
+                VidaJogador.invulneravel = false;
             }
         }
     }

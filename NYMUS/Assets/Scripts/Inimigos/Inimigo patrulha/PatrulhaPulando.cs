@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PatrulhaPulando : MonoBehaviour
 {
-    public Transform DetectaParede;
     public float distancia = 3;
     public bool olhandoParaEsquerda;
     public float velocidade = 4;
@@ -15,8 +14,6 @@ public class PatrulhaPulando : MonoBehaviour
     public int alturaPulo = 5;
 
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
-
-    public bool teste;
 
     void Start()
     {
