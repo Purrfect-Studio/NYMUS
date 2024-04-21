@@ -19,6 +19,7 @@ public class PlayerControlador : MonoBehaviour
     private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
     private bool olhandoDireita = true;           // Direcao para girar o sprite
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
+    public static bool pararParaDialogo;
 
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
@@ -42,6 +43,7 @@ public class PlayerControlador : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         podeMover = true;
+        pararParaDialogo = false;
         animacao.SetBool("estaMorto", false);
     }
 
@@ -53,6 +55,10 @@ public class PlayerControlador : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(pararParaDialogo == true)
+        {
+            rb.velocity = Vector2.zero;
+        }
         if (podeMover == true)
         {
             andar();
@@ -81,18 +87,18 @@ public class PlayerControlador : MonoBehaviour
        {
            olhandoDireita = !olhandoDireita;
            transform.Rotate(0f, 180f, 0f);
-        }
-        if (direcao == 0)
-        {
-            animacao.SetBool("estaAndando", false);
-        }
-        else
-        {
-            animacao.SetBool("estaAndando", true);
-        }
-        //se estiver olhando a a direita e andando para a esquerda
-        //ou olhando para a esquerda e andando para a direita
-        //gira o sprite e inverte a variavel olhandoDireita
+       }
+       if (direcao == 0)
+       {
+           animacao.SetBool("estaAndando", false);
+       }
+       else
+       {
+           animacao.SetBool("estaAndando", true);
+       }
+       //se estiver olhando a a direita e andando para a esquerda
+       //ou olhando para a esquerda e andando para a direita
+       //gira o sprite e inverte a variavel olhandoDireita
     }
 
     void pulo()
