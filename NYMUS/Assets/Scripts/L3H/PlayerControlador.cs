@@ -24,9 +24,6 @@ public class PlayerControlador : MonoBehaviour
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
 
-    [Header("Layer dos Espinhos")]
-    [SerializeField] private LayerMask layerEspinho; //Variavel de apoio para rechonhecer a layer do espinho
-
     [Header("Pulo")]
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
