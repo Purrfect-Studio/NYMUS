@@ -83,7 +83,22 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: estaMorto
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: estaAndando
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: estaPulando
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: estaAtacando
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: tomarDano
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3342653312773363290}
   m_Solo: 0
