@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1539475813
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 1710617737, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6673981174358497525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6673981174358497521}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1376dc1fbd762234c9c8072f934e14fb, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000d3af36476bc9895db353ed5761febb936589c25bab7b28baa5e46ac4ed51e5ce
+  m_ApplyToSortingLayers: 00000000d3af36476bc9895d6589c25bab7b28baa5e46ac4ed51e5ce
   m_ShapePath:
   - {x: -0.2734337, y: -0.2734375, z: 0}
   - {x: -0.2734337, y: 0.27343774, z: 0}
@@ -232,7 +232,7 @@ MonoBehaviour:
   - {x: 0.2734375, y: -0.2734375, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -236530
+  m_InstanceId: -107322
   m_LocalBounds:
     m_Center: {x: 0.0000019073486, y: 0.00000011920929, z: 0}
     m_Extent: {x: 0.2734356, y: 0.27343762, z: 0}

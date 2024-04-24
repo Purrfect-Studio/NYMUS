@@ -15,26 +15,39 @@ public class InteragirBotao : MonoBehaviour
     public bool podeExecutar;
 
 
+
+    private void Start()
+    {
+        podeExecutar = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(podeExecutar)
+        if (jogador.estaInteragindo && podeExecutar)
         {
-            if(jogador.estaInteragindo == true)
-            {
-                botaoApertado.Invoke();
-            }
+            botaoApertado.Invoke();
+        }
+    }
+
+
+
+
+    private void OnTriggerStay2D(Collider2D collision) //Entrou no range de interação
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            podeExecutar = true;
         }
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //Entrou no range de interação
-    {
-        podeExecutar = true;
-    }
-
     private void OnTriggerExit2D(Collider2D collision) //Saiu do range de interação
     {
-        podeExecutar = false;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            podeExecutar = false;
+
+        }
     }
 }
