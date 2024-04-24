@@ -8,7 +8,7 @@ public class SomPassos : MonoBehaviour
 
     [SerializeField] private AudioClip[] passosGramamp3;
 
-    private void Passos()
+    public void Passos()
     {
         playerAudio.PlayOneShot(passosGramamp3[Random.Range(0, passosGramamp3.Length)]);
     }
