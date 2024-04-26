@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,7 @@ public class DialogoControlador : MonoBehaviour
 
     public void PassarSentenca()
     {
+        Console.Write("passou sentenca");
         if (textoFala.text == sentencas[index])
         {
             if (index < sentencas.Length-1) // Verifica se ainda tem dialogos
