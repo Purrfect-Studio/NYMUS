@@ -96,7 +96,6 @@ public class InimigoAtira : MonoBehaviour
             PlayerControlador PlayerControlador = encontrarJogador.GetComponent<PlayerControlador>();
             if (PlayerControlador != null)
             {
-                Debug.Log("encontrei:" + PlayerControlador.name);
                 if (PlayerControlador.transform.position.x > transform.position.x && olhandoEsquerda == false)
                 {
                     olhandoEsquerda = true;
@@ -117,7 +116,4 @@ public class InimigoAtira : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, 25);
     }
-
-
-
 }

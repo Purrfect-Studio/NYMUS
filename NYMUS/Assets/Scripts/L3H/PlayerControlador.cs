@@ -28,7 +28,7 @@ public class PlayerControlador : MonoBehaviour
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
     public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
-    private bool estaPulando;        // Diz se o jogador esta pulando ou nao
+    public static bool estaPulando;  // Diz se o jogador esta pulando ou nao
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
     private int puloExtra = 1;       // Quantidade de pulos que o jogador pode dar
 
@@ -67,9 +67,6 @@ public class PlayerControlador : MonoBehaviour
         else
         {
             estaPulando = false;
-            animacao.SetBool("estaAndando", false);
-            animacao.SetBool("estaPulando", false);
-            animacao.SetBool("estaAtacando", false);
         }
     }
 
@@ -85,14 +82,6 @@ public class PlayerControlador : MonoBehaviour
 
     void andar()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
-        {
-            animacao.SetBool("estaAndando", true);
-        }
-        else
-        {
-            animacao.SetBool("estaAndando", false);
-        }
         //<- = -1
         //-> = 1
         direcao = Input.GetAxis("Horizontal"); 
