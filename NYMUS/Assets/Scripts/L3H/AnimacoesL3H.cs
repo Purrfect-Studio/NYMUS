@@ -55,7 +55,6 @@ public class AnimacoesL3H : MonoBehaviour
 
     void empurrarCaixa()
     {
-        /*
         if (GrudarObjeto.estaEmpurrando == true)
         {
             animacao.SetBool("EmpurrandoCaixa", true);
@@ -63,6 +62,6 @@ public class AnimacoesL3H : MonoBehaviour
         else
         {
             animacao.SetBool("EmpurrandoCaixa", false);
-        }*/
+        }
     }
 }
