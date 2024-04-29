@@ -64,6 +64,13 @@ public class PlayerControlador : MonoBehaviour
             andar();
             pulo();
         }
+        else
+        {
+            estaPulando = false;
+            animacao.SetBool("estaAndando", false);
+            animacao.SetBool("estaPulando", false);
+            animacao.SetBool("estaAtacando", false);
+        }
     }
 
     // Update is called once per frame
@@ -89,16 +96,16 @@ public class PlayerControlador : MonoBehaviour
         //<- = -1
         //-> = 1
         direcao = Input.GetAxis("Horizontal"); 
-       rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
-       // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
-       if (direcao > 0 && olhandoDireita == false || direcao < 0 && olhandoDireita == true)
-       {
+        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
+        if (direcao > 0 && olhandoDireita == false || direcao < 0 && olhandoDireita == true)
+        {
            olhandoDireita = !olhandoDireita;
            transform.Rotate(0f, 180f, 0f);
-       }
-       //se estiver olhando a a direita e andando para a esquerda
-       //ou olhando para a esquerda e andando para a direita
-       //gira o sprite e inverte a variavel olhandoDireita
+        }
+        //se estiver olhando a a direita e andando para a esquerda
+        //ou olhando para a esquerda e andando para a direita
+        //gira o sprite e inverte a variavel olhandoDireita
     }
 
     void pulo()
@@ -126,13 +133,7 @@ public class PlayerControlador : MonoBehaviour
         else
         {
             inputPuloSimples();
-        }
-
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            animacao.SetBool("estaAtacando", true);
-        }
-        
+        }        
     }
 
     void inputPuloSimples()
