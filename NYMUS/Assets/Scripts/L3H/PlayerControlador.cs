@@ -78,23 +78,23 @@ public class PlayerControlador : MonoBehaviour
 
     void andar()
     {
-       //<- = -1
-       //-> = 1
-       direcao = Input.GetAxis("Horizontal"); 
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            animacao.SetBool("estaAndando", true);
+        }
+        else
+        {
+            animacao.SetBool("estaAndando", false);
+        }
+        //<- = -1
+        //-> = 1
+        direcao = Input.GetAxis("Horizontal"); 
        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
        if (direcao > 0 && olhandoDireita == false || direcao < 0 && olhandoDireita == true)
        {
            olhandoDireita = !olhandoDireita;
            transform.Rotate(0f, 180f, 0f);
-       }
-       if (direcao == 0)
-       {
-           animacao.SetBool("estaAndando", false);
-       }
-       else
-       {
-           animacao.SetBool("estaAndando", true);
        }
        //se estiver olhando a a direita e andando para a esquerda
        //ou olhando para a esquerda e andando para a direita
