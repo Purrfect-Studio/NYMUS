@@ -106,7 +106,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: c6ba9948936995844b71949bab819f25, type: 2}
+  m_Material: {fileID: 6200000, guid: 1376dc1fbd762234c9c8072f934e14fb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posicaoPlayer: {fileID: 0}
   distanciaMinima: 1
+  estaGrudado: 0
 --- !u!114 &6437277204312646855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ MonoBehaviour:
   - {x: 0.2734375, y: -0.2734375, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -107322
+  m_InstanceId: -1652
   m_LocalBounds:
     m_Center: {x: 0.0000019073486, y: 0.00000011920929, z: 0}
     m_Extent: {x: 0.2734356, y: 0.27343762, z: 0}
