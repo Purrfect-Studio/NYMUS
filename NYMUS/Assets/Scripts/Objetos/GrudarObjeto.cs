@@ -48,6 +48,11 @@ public class GrudarObjeto : MonoBehaviour
                 estaGrudado = true;  // Define que esta caixa está grudada no jogador
                 estaEmpurrando = true; //
                 diferencaPosicao = transform.position - posicaoPlayer.position;
+                if((transform.position.x - posicaoPlayer.position.x < 0) && PlayerControlador.olhandoDireita == true || (transform.position.x - posicaoPlayer.position.x > 0) && PlayerControlador.olhandoDireita == false)
+                {
+                    PlayerControlador.olhandoDireita = !PlayerControlador.olhandoDireita;
+                    posicaoPlayer.transform.Rotate(0f, 180f, 0f);
+                }
             }
         }
        

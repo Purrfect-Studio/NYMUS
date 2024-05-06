@@ -17,7 +17,7 @@ public class PlayerControlador : MonoBehaviour
     [Header("Andar")]
     public int velocidade;   // Velocidade maxima do jogador
     private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
-    private bool olhandoDireita = true;           // Direcao para girar o sprite
+    public static bool olhandoDireita = true;           // Direcao para girar o sprite
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
     public static bool pararParaDialogo;
 
@@ -87,7 +87,7 @@ public class PlayerControlador : MonoBehaviour
         direcao = Input.GetAxis("Horizontal"); 
         rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
         // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
-        if (direcao > 0 && olhandoDireita == false || direcao < 0 && olhandoDireita == true)
+        if (direcao > 0 && olhandoDireita == false && GrudarObjeto.estaEmpurrando == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.estaEmpurrando == false)
         {
            olhandoDireita = !olhandoDireita;
            transform.Rotate(0f, 180f, 0f);
