@@ -24,7 +24,6 @@ public class DialogoControlador : MonoBehaviour
         sentencas = texto;
         nomePersonagem.text = nomedoPersonagem;
         PlayerControlador.podeMover = false;
-        PlayerControlador.pararParaDialogo = true;
         VidaJogador.invulneravel = true;
         StartCoroutine(EscreverSentenca());
     }
@@ -56,7 +55,6 @@ public class DialogoControlador : MonoBehaviour
                 dialogoObj.SetActive(false);
                 PlayerControlador.podeMover = true;
                 VidaJogador.invulneravel = false;
-                PlayerControlador.pararParaDialogo = false;
             }
         }
     }

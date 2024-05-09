@@ -19,7 +19,6 @@ public class PlayerControlador : MonoBehaviour
     private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
     public static bool olhandoDireita = true;           // Direcao para girar o sprite
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
-    public static bool pararParaDialogo;
 
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
@@ -43,7 +42,6 @@ public class PlayerControlador : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         podeMover = true;
-        pararParaDialogo = false;
         animacao.SetBool("estaMorto", false);
     }
 
@@ -55,10 +53,6 @@ public class PlayerControlador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(pararParaDialogo == true)
-        {
-            rb.velocity = Vector2.zero;
-        }
         if (podeMover == true)
         {
             andar();
