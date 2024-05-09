@@ -210,4 +210,19 @@ public class PlayerControlador : MonoBehaviour
     {
         Gizmos.DrawWireSphere(pontoDeAtaque.position, alcanceAtaque);
     }
+
+    public void TravarMovimentacao()
+    {
+        podeMover = false; // Impede que o jogador se mova
+        estaPulando = false; // Impede que o jogador pule
+        rb.velocity = Vector2.zero; // Zera a velocidade do jogador
+        animacao.SetBool("estaPulando", false); // Desativa a animação de pulo
+        animacao.SetBool("estaAtacando", false); // Desativa a animação de ataque
+    }
+
+    public void LiberarMovimentacao()
+    {
+        podeMover = true; // Permite que o jogador se mova novamente
+    }
+        
 }
