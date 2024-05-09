@@ -245,11 +245,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EdgeCollider2D: {fileID: 19656745}
   animacao: {fileID: 19656741}
-  temporizador: 0
-  temporizador2: 0
+  jogador: {fileID: 0}
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 0
+  DanoCausado:
+    m_PersistentCalls:
+      m_Calls: []
   tempoAtivarArmadilha: 4
   tempoDesativarArmadilha: 1
-  armadilhaAtiva: 0
 --- !u!68 &19656745
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3491,6 +3495,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!58 &894342121 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7767482349604521745, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+  m_PrefabInstance: {fileID: 3366313863029926468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &921528593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 921528594}
+  m_Layer: 9
+  m_Name: arma
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &921528594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921528593}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.305, y: 0.004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1560882862}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &977530132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3824,7 +3864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edf8bd8df616ac4b966534ddca0b5ab, type: 3}
---- !u!43 &1520479225
+--- !u!43 &1310744479
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3988,6 +4028,135 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1560882860
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2688799815470948606, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: jogador
+      value: 
+      objectReference: {fileID: 128088454}
+    - target: {fileID: 7767482349604521747, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: jogador
+      value: 
+      objectReference: {fileID: 128088454}
+    - target: {fileID: 7767482349604521747, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: CircleCollider2D
+      value: 
+      objectReference: {fileID: 1560882868}
+    - target: {fileID: 7767482349604521747, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: DanoCausado.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 128088449}
+    - target: {fileID: 7767482349604521747, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: DanoCausado.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: tomarDano
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767482349604521770, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: m_Name
+      value: Patrulha (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+--- !u!1 &1560882861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7767482349604521770, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+  m_PrefabInstance: {fileID: 1560882860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1560882862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7767482349604521748, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+  m_PrefabInstance: {fileID: 1560882860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1560882863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560882861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173b0c9966862664dbe97d33e5e14c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balaProjetil: {fileID: 2627624111849504346, guid: fe8f8292f70fec84796ffba179f0d567, type: 3}
+  arma: {fileID: 921528594}
+  forcaTiro: 10
+  municao: 2
+  intervaloTiro: 1
+  tempoRegarga: 4
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  jogador: {fileID: 128088454}
+  DanoCausado:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 128088449}
+        m_TargetAssemblyTypeName: VidaJogador, Assembly-CSharp
+        m_MethodName: tomarDano
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &1560882868 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7767482349604521745, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+  m_PrefabInstance: {fileID: 1560882860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1677237585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,6 +5566,10 @@ PrefabInstance:
       propertyPath: jogador
       value: 
       objectReference: {fileID: 128088454}
+    - target: {fileID: 7767482349604521747, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
+      propertyPath: CircleCollider2D
+      value: 
+      objectReference: {fileID: 894342121}
     - target: {fileID: 7767482349604521747, guid: 8b935181e979eb94d8c052e1749bf942, type: 3}
       propertyPath: DanoCausado.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
