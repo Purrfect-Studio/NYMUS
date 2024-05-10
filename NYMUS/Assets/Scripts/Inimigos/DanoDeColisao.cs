@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class DanoNoJogador : MonoBehaviour
+public class DanoDeColisao : MonoBehaviour
 {
-    public CircleCollider2D CircleCollider2D;
+    public Collider2D Collider2D;
     public Transform jogador;
     [SerializeField] private UnityEvent DanoCausado;
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
@@ -41,7 +41,7 @@ public class DanoNoJogador : MonoBehaviour
 
     private bool colisaoJogador()
     {
-        RaycastHit2D colisao = Physics2D.BoxCast(CircleCollider2D.bounds.center, CircleCollider2D.bounds.size, 0, Vector2.down, 0.05f, layerJogador); // Cria um segundo box collider para reconhecer o jogador
+        RaycastHit2D colisao = Physics2D.BoxCast(Collider2D.bounds.center, Collider2D.bounds.size, 0, Vector2.down, 0.05f, layerJogador); // Cria um segundo box collider para reconhecer o jogador
         return colisao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no jogador
     }
 }
