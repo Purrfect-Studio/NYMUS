@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogoControlador : MonoBehaviour
@@ -17,14 +18,16 @@ public class DialogoControlador : MonoBehaviour
     private string[] sentencas;
     private int index;
 
+    [SerializeField] private UnityEvent travarMovimentacao;
+    [SerializeField] private UnityEvent liberarMovimentacao;
+
     public void Fala(Sprite foto, string[] texto, string nomedoPersonagem)
     {
         dialogoObj.SetActive(true);
         fotoPersonagem.sprite = foto;
         sentencas = texto;
         nomePersonagem.text = nomedoPersonagem;
-        PlayerControlador.podeMover = false;
-        VidaJogador.invulneravel = true;
+        travarMovimentacao.Invoke();
         StartCoroutine(EscreverSentenca());
     }
     
@@ -53,8 +56,7 @@ public class DialogoControlador : MonoBehaviour
                 textoFala.text = "";
                 index = 0;
                 dialogoObj.SetActive(false);
-                PlayerControlador.podeMover = true;
-                VidaJogador.invulneravel = false;
+                liberarMovimentacao.Invoke();
             }
         }
     }
