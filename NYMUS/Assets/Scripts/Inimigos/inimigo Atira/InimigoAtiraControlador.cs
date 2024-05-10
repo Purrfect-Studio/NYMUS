@@ -58,13 +58,13 @@ public class InimigoAtiraControlador : MonoBehaviour
         }
 
         // Verifica a direção do jogador e atualiza a direção do inimigo
-        if (procurador.jogador.position.x > transform.position.x && olhandoEsquerda == false)
+        if (procurador.jogador.position.x < transform.position.x && olhandoEsquerda == false)
         {
             olhandoEsquerda = true;
             transform.Rotate(0f, 180f, 0f);
             atirador.forcaTiro *= -1;
         }
-        if (procurador.jogador.position.x < transform.position.x && olhandoEsquerda == true)
+        if (procurador.jogador.position.x > transform.position.x && olhandoEsquerda == true)
         {
             olhandoEsquerda = false;
             transform.Rotate(0f, 180f, 0f);
