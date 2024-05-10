@@ -245,13 +245,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EdgeCollider2D: {fileID: 19656745}
   animacao: {fileID: 19656741}
-  jogador: {fileID: 0}
+  jogador: {fileID: 128088454}
   layerJogador:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   DanoCausado:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 128088449}
+        m_TargetAssemblyTypeName: VidaJogador, Assembly-CSharp
+        m_MethodName: tomarDano
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1000
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   tempoAtivarArmadilha: 4
   tempoDesativarArmadilha: 1
 --- !u!68 &19656745
@@ -3424,6 +3436,18 @@ PrefabInstance:
       value: InimigoAtira 1 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3974183750393386400, guid: 2afd1dd6d5158404baaca0f466dee57b, type: 3}
+      propertyPath: municao
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974183750393386400, guid: 2afd1dd6d5158404baaca0f466dee57b, type: 3}
+      propertyPath: tempoRecarga
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974183750393386400, guid: 2afd1dd6d5158404baaca0f466dee57b, type: 3}
+      propertyPath: intervaloTiro
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974183750393386400, guid: 2afd1dd6d5158404baaca0f466dee57b, type: 3}
       propertyPath: olhandoEsquerda
       value: 0
       objectReference: {fileID: 0}
@@ -3964,7 +3988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edf8bd8df616ac4b966534ddca0b5ab, type: 3}
---- !u!43 &1624560313
+--- !u!43 &1286657915
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
