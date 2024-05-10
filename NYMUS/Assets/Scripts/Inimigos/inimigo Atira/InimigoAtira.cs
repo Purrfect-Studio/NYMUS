@@ -74,39 +74,39 @@ public class InimigoAtira : MonoBehaviour
     {
         if(quantidadesTiros == 0)
         {
-            contadorIntervaloTiro = tempoRegarga;
+            contadorIntervaloTiro = tempoRegarga; //pausa entre tiros
             quantidadesTiros = municao;
         }
         else
         {
-            contadorIntervaloTiro = intervaloTiro;
+            contadorIntervaloTiro = intervaloTiro; //intervalo entre as balas
             quantidadesTiros -= 1;
         }
-        GameObject temp = Instantiate(balaProjetil);
-        temp.transform.position = arma.position;
-        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(forcaTiro, 0);
-        Destroy(temp.gameObject, 3f);
+        GameObject temp = Instantiate(balaProjetil); // invoca a bala do prefab
+        temp.transform.position = arma.position; // define a posicao inicial da bala
+        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(forcaTiro, 0); // aplica uma forca para a bala se mover
+        Destroy(temp.gameObject, 3f); // destroi a bala depois de um tempo
     }
 
     void procurarJogador()
     {
         Collider2D encontrarJogador = Physics2D.OverlapCircle(transform.position, 25, layerJogador);
-        if(encontrarJogador != null)
+        if(encontrarJogador != null) // encontrou o jogador
         {
-            PlayerControlador PlayerControlador = encontrarJogador.GetComponent<PlayerControlador>();
+            PlayerControlador PlayerControlador = encontrarJogador.GetComponent<PlayerControlador>(); // verifica se o jogador tem o playerControlador
             if (PlayerControlador != null)
             {
-                if (PlayerControlador.transform.position.x > transform.position.x && olhandoEsquerda == false)
+                if (PlayerControlador.transform.position.x > transform.position.x && olhandoEsquerda == false) // inimigo virado para a direita e jogador a esquerda
                 {
                     olhandoEsquerda = true;
-                    transform.Rotate(0f, 180f, 0f);
-                    forcaTiro *= -1;
+                    transform.Rotate(0f, 180f, 0f); // flipa o sprite
+                    forcaTiro *= -1; // altera a direcao do tiro
                 }
-                if(PlayerControlador.transform.position.x < transform.position.x && olhandoEsquerda == true)
+                if(PlayerControlador.transform.position.x < transform.position.x && olhandoEsquerda == true) // inimigo virado para a esquerda e jogador a direita
                 {
                     olhandoEsquerda = false;
-                    transform.Rotate(0f, 180f, 0f);
-                    forcaTiro *= -1;
+                    transform.Rotate(0f, 180f, 0f); // flipa o sprite
+                    forcaTiro *= -1; // altera a direcao do tiro
                 }
             }
         }
