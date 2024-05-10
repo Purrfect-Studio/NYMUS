@@ -19,7 +19,7 @@ public class ProcurarJogador : MonoBehaviour
         if (encontrarJogador != null)
         {   
             // Se o jogador é encontrado, aciona o evento
-            JogadorEncontrado.Invoke();
+            //JogadorEncontrado.Invoke();
         }
     }
 
