@@ -7,13 +7,16 @@ using UnityEngine.UI;
 
 public class DialogoControlador : MonoBehaviour
 {
-    [Header("Components")]
+    [Header("GameObject do Dialogo")]
     public GameObject dialogoObj; //objeto do dialogo
+    [Header("Imagem")]
     public Image fotoPersonagem;
+    [Header("Texto do Dialogo")]
     public Text textoFala;
+    [Header("Nome do personagem")]
     public Text nomePersonagem;
 
-    [Header("Settings")]
+    [Header("Configuracoes")]
     public float velocidadeDigitacao; // Velocidade que vai aparecer os dígitos
     private string[] sentencas;
     private int index;

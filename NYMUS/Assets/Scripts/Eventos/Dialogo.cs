@@ -6,31 +6,40 @@ using UnityEngine.Events;
 
 public class Dialogo : MonoBehaviour
 {
-    public Sprite foto;
+    [Header("Sprite")]
+    public Sprite sprite;
+
+    [Header("Texto do Dialogo")]
     public string[] dialogoTexto;
     public string nomePersonagem = "NYMUS";
 
+    [Header("Layer do Jogador")]
     public LayerMask layerPlayer;
+
+    [Header("Interacoes")]
     public float raioInteracao;
     public bool estaNoRaio;
     public bool travado;
 
-    public DialogoControlador dc;
+    [Header("Controlador do Dialogo")]
+    public DialogoControlador dialogoControlador;
 
     private void Start()
     {
         travado = false;
-        dc = FindObjectOfType<DialogoControlador>();
+        dialogoControlador = FindObjectOfType<DialogoControlador>();
     }
+
     private void FixedUpdate()
     {
         InteragirDialogo();
     }
+
     private void Update()
     {
         if (estaNoRaio && travado == false)
         {
-            dc.Fala(foto, dialogoTexto, nomePersonagem);
+            dialogoControlador.Fala(sprite, dialogoTexto, nomePersonagem);
             travarDialogo();
         }
     }
@@ -45,7 +54,6 @@ public class Dialogo : MonoBehaviour
         {
             estaNoRaio = false;
         }
-
     }
 
     private void OnDrawGizmosSelected()
@@ -53,6 +61,7 @@ public class Dialogo : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, raioInteracao);
         //Este código so serve para a esfera de interação ser visível na cena.
     }
+
     public void travarDialogo()
     {
         travado = true;

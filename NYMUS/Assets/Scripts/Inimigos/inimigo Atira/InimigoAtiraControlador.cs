@@ -5,10 +5,13 @@ using UnityEngine;
 public class InimigoAtiraControlador : MonoBehaviour
 {
     // Componentes necessários e variáveis para controlar o comportamento de atirar do inimigo
-    public Atirar atirador; // Componente que lida com a lógica de atirar
-    public ProcurarJogador procurador; // Componente que lida com a lógica de procurar o jogador
+    [Header("Script Atirar")]
+    public Atirar atirar; // Componente que lida com a lógica de atirar
+    [Header("Script Procurar Jogador")]
+    public ProcurarJogador procurarJogador; // Componente que lida com a lógica de procurar o jogador
 
     // Configurações do tiro
+    [Header("Configuracoes do Tiro")]
     public int municao; // Quantidade de tiros antes de recarregar
     public float intervaloTiro; // Intervalo entre os tiros
     public float tempoRecarga; // Tempo de recarga depois de atirar
@@ -24,7 +27,7 @@ public class InimigoAtiraControlador : MonoBehaviour
         contadorIntervaloTiro = intervaloTiro;
         quantidadeTiros = municao;
         // Adiciona um listener para o evento de encontrar jogador
-        procurador.JogadorEncontrado.AddListener(Atirar);
+        procurarJogador.JogadorEncontrado.AddListener(Atirar);
     }
 
     void Atirar()
@@ -41,7 +44,7 @@ public class InimigoAtiraControlador : MonoBehaviour
             // Caso contrário, atira e decrementa a quantidade de tiros
             contadorIntervaloTiro = intervaloTiro;
             quantidadeTiros -= 1;
-            atirador.AtirarProjétil();
+            atirar.AtirarProjétil();
         }
     }
 
@@ -58,17 +61,17 @@ public class InimigoAtiraControlador : MonoBehaviour
         }
 
         // Verifica a direção do jogador e atualiza a direção do inimigo
-        if (procurador.jogador.position.x < transform.position.x && olhandoEsquerda == false)
+        if (procurarJogador.jogador.position.x < transform.position.x && olhandoEsquerda == false)
         {
             olhandoEsquerda = true;
             transform.Rotate(0f, 180f, 0f);
-            atirador.forcaTiro *= -1;
+            atirar.velocidadeTiro *= -1;
         }
-        if (procurador.jogador.position.x > transform.position.x && olhandoEsquerda == true)
+        if (procurarJogador.jogador.position.x > transform.position.x && olhandoEsquerda == true)
         {
             olhandoEsquerda = false;
             transform.Rotate(0f, 180f, 0f);
-            atirador.forcaTiro *= -1;
+            atirar.velocidadeTiro *= -1;
         }
     }
 }

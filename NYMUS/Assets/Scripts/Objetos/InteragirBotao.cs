@@ -6,15 +6,11 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class InteragirBotao : MonoBehaviour
 {
-    [SerializeField]
-    private JogadorInterage jogador;
-
-    [SerializeField]
-    private UnityEvent botaoApertado;
+    [Header("Jogador")]
+    [SerializeField] private JogadorInterage jogador;
+    [SerializeField] private UnityEvent botaoApertado;
 
     public bool podeExecutar;
-
-
 
     private void Start()
     {
@@ -30,24 +26,19 @@ public class InteragirBotao : MonoBehaviour
         }
     }
 
-
-
-
     private void OnTriggerStay2D(Collider2D collision) //Entrou no range de interação
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Jogador"))
         {
             podeExecutar = true;
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision) //Saiu do range de interação
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Jogador"))
         {
             podeExecutar = false;
-
         }
     }
 }

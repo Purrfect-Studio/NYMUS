@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class DetectaInimigo : MonoBehaviour
 {
+    [Header("Box Collider")]
     public BoxCollider2D bcInimigo;
+    [Header("Layer do Inimigo")]
     [SerializeField] private LayerMask layerInimigo;
+    [Header("Bool de apoio")]
     public static bool encontrouInimigo;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

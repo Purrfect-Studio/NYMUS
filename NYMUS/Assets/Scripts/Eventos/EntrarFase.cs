@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class EntrarFase : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Nome da Fase")]
     [SerializeField] public string nomeDaFase;
  
        public void esperarCarregar(float delay)
-    {
-        // Chama a função para carregar o próximo nível após 3 segundos
-        Invoke("CarregarNivel", delay);
-    }
+       {
+            // Chama a função para carregar o próximo nível após 3 segundos
+            Invoke("CarregarNivel", delay);
+       }
 
         public void CarregarNivel()
-    {
-        SceneManager.LoadScene(nomeDaFase);
-    }
+        {
+            SceneManager.LoadScene(nomeDaFase);
+        }
 
 }

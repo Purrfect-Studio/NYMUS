@@ -5,18 +5,13 @@ using UnityEngine.Events;
 
 public class Espinho : MonoBehaviour
 {
+    [Header("BoxCollider")]
     public BoxCollider2D bcEspinho;
+    [Header("Jogador")]
     public Transform jogador;
     [SerializeField] private UnityEvent DanoCausado;
+    [Header("Layer do Jogador")]
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

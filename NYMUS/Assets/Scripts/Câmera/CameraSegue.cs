@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CameraSegue : MonoBehaviour
 {
-    // Codigo para a movimentacao da camera
+    [Header("Jogador")]
     public Transform jogador; // Posicao do player
 
+    [Header("posicao Minima do X")]
     public float minX; // Movimentacao maxima para a esquerda
+    [Header("posicao Maxima do X")]
     public float maxX; // Movimentacao maxima para a direita
+    [Header("Delay para alcançar o Jogador")]
     public float delayTempo; //Delay da camera chegar no jogador
     
     private void FixedUpdate()

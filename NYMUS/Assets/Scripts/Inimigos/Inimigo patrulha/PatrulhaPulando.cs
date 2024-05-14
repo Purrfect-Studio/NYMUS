@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class PatrulhaPulando : MonoBehaviour
 {
-    public float distancia = 3;
+    [Header("Movimentacao")]
     public bool olhandoParaEsquerda;
-    public float velocidade = 4;
-    public BoxCollider2D bcChao; // bc = box chao
-    public BoxCollider2D bcParede; // bc = box parede
-    public Rigidbody2D rb;
-    public int alturaPulo = 5;
+    public float velocidade;
 
+    [Header("Box Collider do Chao")]
+    public BoxCollider2D bcChao; // bc = box chao
+    [Header("Box Collider da Parede")]
+    public BoxCollider2D bcParede; // bc = box parede
+
+    [Header("RigidBody")]
+    public Rigidbody2D rb;
+
+    [Header("Pulo")]
+    public int alturaPulo;
+
+    [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()
@@ -61,7 +69,5 @@ public class PatrulhaPulando : MonoBehaviour
     public void Pular()
     {
         transform.Translate(Vector2.up * alturaPulo * Time.deltaTime);
-        //rb.AddForce(new Vector2(10, 100), ForceMode2D.Impulse);
-        //Invoke("Pular", 3);
     }
 }

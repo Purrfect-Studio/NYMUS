@@ -34,7 +34,6 @@ public class VidaInimigo : MonoBehaviour
     void Start()
     {
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
-        animacao.SetBool("estaMorto", false); // desativa a animacao de morte
     }
 
     // Update is called once per frame

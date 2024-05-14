@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class AudioControlador : MonoBehaviour
 {
-    public AudioSource player;
+    public AudioSource jogador;
     public AudioClip musicaDeFundo;
     public float volumeInicial = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        player.clip = musicaDeFundo; // Define a música
+        jogador.clip = musicaDeFundo; // Define a música
 
-        player.volume = volumeInicial; // Define o volume inicial
+        jogador.volume = volumeInicial; // Define o volume inicial
 
 
         StartCoroutine(FadeVolume(3, volumeInicial, 1.0f)); // Inicia o fade in de volume em 3 segundos
         //obs: para fazer Fades, use o script MudancaMusica.cs. O comando acima é uma excessão.
 
-        player.Play(); // Toca a música
-        player.loop = true; // Define para a música repetir em loop
+        jogador.Play(); // Toca a música
+        jogador.loop = true; // Define para a música repetir em loop
     }
 
        
@@ -30,11 +30,11 @@ public class AudioControlador : MonoBehaviour
         while (tempoAtual <= delay)
         {
             float t = tempoAtual / delay;
-            player.volume = Mathf.Lerp(volumeInicial, volumeAlvo, t);
+            jogador.volume = Mathf.Lerp(volumeInicial, volumeAlvo, t);
             tempoAtual += Time.deltaTime;
             yield return null;
         }
-        player.volume = volumeAlvo; // Garante que o volume atingirá exatamente o valor final
+        jogador.volume = volumeAlvo; // Garante que o volume atingirá exatamente o valor final
     }
 
     

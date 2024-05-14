@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 5854170835905082914}
   m_Layer: 8
   m_Name: L3H final
-  m_TagString: Player
+  m_TagString: Jogador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,14 +434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c236731d0f3136d4f9661244551dbb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAudio: {fileID: 274580208066262856}
-  passosGramamp3:
-  - {fileID: 8300000, guid: fd576c2f916afad4e88e95105819851a, type: 3}
-  - {fileID: 8300000, guid: 7a329d12a61d6514db104236454ce231, type: 3}
-  - {fileID: 8300000, guid: e8129be656e122541bd8e3ccf1e4688d, type: 3}
-  - {fileID: 8300000, guid: 9e7b0c14ace488141ae2408decc309c7, type: 3}
-  - {fileID: 8300000, guid: f2c93a42048711f43844a4dbdbcddadc, type: 3}
-  - {fileID: 8300000, guid: d114ddea871cea74eaab5983f5bef00e, type: 3}
+  audioJogador: {fileID: 0}
+  passosGramaMP3: []
 --- !u!82 &274580208066262856
 AudioSource:
   m_ObjectHideFlags: 0

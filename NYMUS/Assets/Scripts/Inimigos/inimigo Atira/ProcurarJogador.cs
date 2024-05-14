@@ -6,10 +6,13 @@ using UnityEngine.Events;
 public class ProcurarJogador : MonoBehaviour
 {
     // Variáveis para configurar a busca do jogador
+    [Header("Jogador")]
     public Transform jogador; // Referência para o transform do jogador
+    [Header("Layer do Jogador")]
     public LayerMask layerJogador; // Layer do jogador
     public UnityEvent JogadorEncontrado; // Evento a ser acionado quando o jogador é encontrado
 
+    [Header("Raio do circulo para detectar o jogador")]
     public float raioDetecao = 25f; // Raio de detecção do jogador
 
     void Update()

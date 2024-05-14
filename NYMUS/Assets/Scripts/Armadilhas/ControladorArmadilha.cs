@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ControladorArmadilha : MonoBehaviour
 {
+    [Header("Intervalo de Ativacao da armadilha")]
     public Vector2 intervaloParaAtivarArmadilha;
+    [Header("Animator")]
     private Animator animator;
 
     private void Awake()
@@ -12,7 +14,7 @@ public class ControladorArmadilha : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.enabled = false;
     }
-    // Start is called before the first frame update
+
     IEnumerator Start()
     {
         yield return new WaitForSeconds(Random.Range(intervaloParaAtivarArmadilha.x, intervaloParaAtivarArmadilha.y));

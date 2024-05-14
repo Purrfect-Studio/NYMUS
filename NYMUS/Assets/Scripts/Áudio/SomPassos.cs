@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SomPassos : MonoBehaviour
 {
-    [SerializeField] private AudioSource playerAudio;
-
-    [SerializeField] private AudioClip[] passosGramamp3;
+    [SerializeField] private AudioSource audioJogador;
+    [SerializeField] private AudioClip[] passosGramaMP3;
 
     public void Passos()
     {
-        playerAudio.PlayOneShot(passosGramamp3[Random.Range(0, passosGramamp3.Length)]);
+        audioJogador.PlayOneShot(passosGramaMP3[Random.Range(0, passosGramaMP3.Length)]);
     }
 }

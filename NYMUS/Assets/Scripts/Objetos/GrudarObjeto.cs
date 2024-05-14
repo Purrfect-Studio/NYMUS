@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class GrudarObjeto : MonoBehaviour
 {
-    public Transform posicaoPlayer;
-    public float distanciaMinima = 1f; // Distância mínima entre o jogador e a caixa
+    [Header("Jogador")]
+    public Transform posicaoJogador;
 
-    static public bool estaEmpurrando; // Verifica se o jogador está grudado em alguma caixa
+    [Header("Distancia Minima")]
+    public float distanciaMinimaJogadorCaixa = 1f; // Distância mínima entre o jogador e a caixa
+
+    [Header("Bool de apoio")]
+    public static bool estaEmpurrando; // Verifica se o jogador está grudado em alguma caixa
     public bool estaGrudado; //Verifica se a caixa específica está sendo empurrada
 
     private Vector3 diferencaPosicao; // Armazena a diferença de posição inicial entre o jogador e a caixa
@@ -18,7 +22,7 @@ public class GrudarObjeto : MonoBehaviour
         // Calcula a diferença de posição inicial entre o jogador e a caixa
         estaEmpurrando = false;
         estaGrudado = false;
-        diferencaPosicao = transform.position - posicaoPlayer.position;
+        diferencaPosicao = transform.position - posicaoJogador.position;
     }
 
     void Update()
@@ -46,12 +50,12 @@ public class GrudarObjeto : MonoBehaviour
             {
                 Debug.Log("Grudou");
                 estaGrudado = true;  // Define que esta caixa está grudada no jogador
-                estaEmpurrando = true; //
-                diferencaPosicao = transform.position - posicaoPlayer.position;
-                if((transform.position.x - posicaoPlayer.position.x < 0) && PlayerControlador.olhandoDireita == true || (transform.position.x - posicaoPlayer.position.x > 0) && PlayerControlador.olhandoDireita == false)
+                estaEmpurrando = true;
+                diferencaPosicao = transform.position - posicaoJogador.position;
+                if((transform.position.x - posicaoJogador.position.x < 0) && PlayerControlador.olhandoDireita == true || (transform.position.x - posicaoJogador.position.x > 0) && PlayerControlador.olhandoDireita == false)
                 {
                     PlayerControlador.olhandoDireita = !PlayerControlador.olhandoDireita;
-                    posicaoPlayer.transform.Rotate(0f, 180f, 0f);
+                    posicaoJogador.transform.Rotate(0f, 180f, 0f);
                 }
             }
         }
@@ -68,12 +72,12 @@ public class GrudarObjeto : MonoBehaviour
     private void AtualizarPosicao()
     {
         // Calcula a nova posição da caixa com base na posição atual do jogador e na diferença de posição inicial
-        Vector3 novaPosicao = posicaoPlayer.position + diferencaPosicao;
+        Vector3 novaPosicao = posicaoJogador.position + diferencaPosicao;
 
         // Mantém a distância mínima entre o jogador e a caixa
-        if (Vector3.Distance(novaPosicao, posicaoPlayer.position) < distanciaMinima)
+        if (Vector3.Distance(novaPosicao, posicaoJogador.position) < distanciaMinimaJogadorCaixa)
         {
-            novaPosicao = posicaoPlayer.position + (novaPosicao - posicaoPlayer.position).normalized * distanciaMinima;
+            novaPosicao = posicaoJogador.position + (novaPosicao - posicaoJogador.position).normalized * distanciaMinimaJogadorCaixa;
         }
 
         // Define a nova posição da caixa

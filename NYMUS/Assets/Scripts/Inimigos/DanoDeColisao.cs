@@ -18,14 +18,6 @@ public class DanoDeColisao : MonoBehaviour
     [SerializeField] private LayerMask layerInimigo;
     public float danoNoInimigo;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

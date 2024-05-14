@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class InimigoPatrulha : MonoBehaviour
 {
-    public float distancia = 3;
+    [Header("Movimentacao")]
     public bool olhandoParaEsquerda;
-    public float velocidade = 4;
-    private float variavelDeSuporte;
+    public float velocidade;
+    //private float variavelDeSuporte;
+    [Header("Box Collider da Parede")]
     public BoxCollider2D bCparede; // bc = box collider
+    [Header("Box Collider do Chao")]
     public BoxCollider2D bcChao; // bc = box collider
-
+    [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()
