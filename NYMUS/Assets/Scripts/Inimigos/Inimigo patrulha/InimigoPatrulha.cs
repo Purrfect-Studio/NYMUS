@@ -7,8 +7,10 @@ public class InimigoPatrulha : MonoBehaviour
     public float distancia = 3;
     public bool olhandoParaEsquerda;
     public float velocidade = 4;
+    private float variavelDeSuporte;
     public BoxCollider2D bCparede; // bc = box collider
     public BoxCollider2D bcChao; // bc = box collider
+
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
 
     void Start()
@@ -23,8 +25,8 @@ public class InimigoPatrulha : MonoBehaviour
 
     private bool parede()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(bCparede.bounds.center, bCparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
-        return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
+        RaycastHit2D parede = Physics2D.BoxCast(bCparede.bounds.center, bCparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        return parede.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
     private bool chao()
@@ -32,12 +34,15 @@ public class InimigoPatrulha : MonoBehaviour
         RaycastHit2D chao = Physics2D.BoxCast(bcChao.bounds.center, bcChao.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
-
+    
     public void Patrulha()
     {
         transform.Translate(Vector2.right * velocidade * Time.deltaTime);
-
-        if (chao() == false || parede() == true)
+        /*if(DetectaInimigo.encontrouInimigo == true)
+        {
+            StartCoroutine("aumentarVelocidade");
+        }*/
+        if (chao() == false || parede() == true || DetectaInimigo.encontrouInimigo == true)
         {
             if (olhandoParaEsquerda == false)
             {
@@ -49,6 +54,15 @@ public class InimigoPatrulha : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 olhandoParaEsquerda = false;
             }
+            DetectaInimigo.encontrouInimigo = false;
         }
     }
+
+    /*IEnumerator aumentarVelocidade()
+    {
+        variavelDeSuporte = velocidade;
+        velocidade += 0.8f;
+        yield return new WaitForSeconds(Random.Range(0.1f, 1f));
+        velocidade = variavelDeSuporte;
+    }*/
 }
