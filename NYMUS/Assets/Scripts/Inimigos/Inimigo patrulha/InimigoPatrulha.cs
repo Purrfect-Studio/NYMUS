@@ -7,7 +7,7 @@ public class InimigoPatrulha : MonoBehaviour
     [Header("Movimentacao")]
     public bool olhandoParaEsquerda;
     public float velocidade;
-    //private float variavelDeSuporte;
+    private float variavelDeSuporte;
     [Header("Box Collider da Parede")]
     public BoxCollider2D bCparede; // bc = box collider
     [Header("Box Collider do Chao")]
@@ -40,10 +40,10 @@ public class InimigoPatrulha : MonoBehaviour
     public void Patrulha()
     {
         transform.Translate(Vector2.right * velocidade * Time.deltaTime);
-        /*if(DetectaInimigo.encontrouInimigo == true)
+        if(DetectaInimigo.encontrouInimigo == true)
         {
             StartCoroutine("aumentarVelocidade");
-        }*/
+        }
         if (chao() == false || parede() == true || DetectaInimigo.encontrouInimigo == true)
         {
             if (olhandoParaEsquerda == false)
@@ -60,11 +60,11 @@ public class InimigoPatrulha : MonoBehaviour
         }
     }
 
-    /*IEnumerator aumentarVelocidade()
+    IEnumerator aumentarVelocidade()
     {
         variavelDeSuporte = velocidade;
-        velocidade += 0.8f;
+        velocidade = velocidade + 0.8f;
         yield return new WaitForSeconds(Random.Range(0.1f, 1f));
         velocidade = variavelDeSuporte;
-    }*/
+    }
 }
