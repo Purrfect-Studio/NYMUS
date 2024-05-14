@@ -214,7 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ccCookie: {fileID: 3800828331445148406}
+  Collider2D: {fileID: 3800828331445148406}
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
   jogador: {fileID: 0}
   DanoCausado:
     m_PersistentCalls:
@@ -231,9 +234,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  layerJogador:
+  layerInimigo:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
+  danoNoInimigo: 0
 --- !u!114 &8801278449538055449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f045f3d1967654db0367f676e3ec83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancia: 3
   olhandoParaEsquerda: 0
   velocidade: 4
   bcChao: {fileID: 3800828331445148400}
