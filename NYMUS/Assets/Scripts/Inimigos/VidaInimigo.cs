@@ -9,6 +9,7 @@ public class VidaInimigo : MonoBehaviour
     [Header("Vida")]
     public float vidaMaxima;
     public float vidaAtual;
+    [SerializeField] public static bool invulneravel;
 
     [Header("GameObject do inimigo")]
     public GameObject inimigo;
@@ -43,13 +44,21 @@ public class VidaInimigo : MonoBehaviour
 
     public void tomarDano(float dano)
     {
-        Debug.Log("Tomei dano" + dano);
-        vidaAtual -= dano;
-        Knockback();
-        if (vidaAtual <= 0)
+        if(invulneravel == false)
         {
-            morrer();
-        }
+            Debug.Log("Tomei dano" + dano);
+            vidaAtual -= dano;
+            if (vidaAtual <= 0)
+            {
+                morrer();
+                StartCoroutine("Invulnerabilidade");
+            }
+            else
+            {
+                Knockback();
+                StartCoroutine("Invulnerabilidade");
+            } 
+        }   
     }
 
     void Knockback()
@@ -64,6 +73,7 @@ public class VidaInimigo : MonoBehaviour
         }
         rb.AddForce(new Vector2(10 * -knockbackParaDireita, 10), ForceMode2D.Impulse);
         StartCoroutine("Piscar");
+        
     }
 
     IEnumerator Piscar()
@@ -75,6 +85,13 @@ public class VidaInimigo : MonoBehaviour
             sprite.enabled = true;
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    IEnumerator Invulnerabilidade()
+    {
+        invulneravel = true;
+        yield return new WaitForSeconds(1f);
+        invulneravel = false;
     }
 
     void morrer()

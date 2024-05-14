@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armadilha2 : MonoBehaviour
+public class ControladorArmadilha : MonoBehaviour
 {
     public Vector2 intervaloParaAtivarArmadilha;
     private Animator animator;
