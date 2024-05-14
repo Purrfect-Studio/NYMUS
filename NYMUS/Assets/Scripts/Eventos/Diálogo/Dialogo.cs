@@ -17,28 +17,20 @@ public class Dialogo : MonoBehaviour
     public LayerMask layerPlayer;
 
     [Header("Interacoes")]
-    public float raioInteracao;
-    public bool estaNoRaio;
     public bool travado;
 
     [Header("Controladores do Dialogo")]
     public DialogoControlador dialogoControlador;
-    public EscolherDiálogo condicao; 
+
 
 
     private void Start()
     {
         travado = false;
         dialogoControlador = FindObjectOfType<DialogoControlador>();
-        condicao = FindObjectOfType<EscolherDiálogo>();
     }
     
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, raioInteracao);
-        //Este código so serve para a esfera de interação ser visível na cena.
-    }
-
+   
     public void travarDialogo() 
     {
         travado = true;
