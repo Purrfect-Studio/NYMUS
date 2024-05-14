@@ -9,6 +9,7 @@ public class VidaJogador : MonoBehaviour
     [Header("Vida")]
     public float vidaMaxima;                        // Vida maxima do L3H
     [SerializeField] private float vidaAtual;       // Vida atual do L3H
+    public BarraDeVida barraDeVida;
 
     [Header("Invulnerabilidade")]
     public static bool invulneravel;                //Liga e desliga a invulnerabilidade
@@ -32,6 +33,7 @@ public class VidaJogador : MonoBehaviour
     {
         vidaAtual = vidaMaxima; //Coloca o L3h na vida maxima quando comeca a fase
         invulneravel = false;   //Desativa a invulnerabilidade
+        barraDeVida.definirVidaMaxima(vidaMaxima);
     }
 
     // Update é ativado a cada frame da fase
@@ -65,6 +67,7 @@ public class VidaJogador : MonoBehaviour
             {
                 vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
             }
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
         }
     }
 
@@ -72,6 +75,7 @@ public class VidaJogador : MonoBehaviour
     {
         vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
         invulneravel = true;                // ativa a invulnerabilidade
+        barraDeVida.ajustarBarraDeVida(vidaAtual);
         StartCoroutine("Invulnerabilidade");// chama a co-rotina "Invulnerabilidade"
         Knockback();                        // chama o metodo de knockback
     }
