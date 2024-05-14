@@ -43,6 +43,7 @@ public class PlayerControlador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         podeMover = true;
         animacao.SetBool("estaMorto", false);
+        contadorTempoPulo = tempoPulo;
     }
 
     private bool estaChao()
@@ -57,10 +58,6 @@ public class PlayerControlador : MonoBehaviour
         {
             andar();
             pulo();
-        }
-        else
-        {
-            estaPulando = false;
         }
     }
 
