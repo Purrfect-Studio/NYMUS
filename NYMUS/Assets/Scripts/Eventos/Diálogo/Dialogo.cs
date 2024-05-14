@@ -21,49 +21,35 @@ public class Dialogo : MonoBehaviour
     public bool estaNoRaio;
     public bool travado;
 
-    [Header("Controlador do Dialogo")]
+    [Header("Controladores do Dialogo")]
     public DialogoControlador dialogoControlador;
+    public EscolherDiálogo condicao; 
+
 
     private void Start()
     {
         travado = false;
         dialogoControlador = FindObjectOfType<DialogoControlador>();
+        condicao = FindObjectOfType<EscolherDiálogo>();
     }
-
-    private void FixedUpdate()
-    {
-        InteragirDialogo();
-    }
-
-    private void Update()
-    {
-        if (estaNoRaio && travado == false)
-        {
-            dialogoControlador.Fala(sprite, dialogoTexto, nomePersonagem);
-            travarDialogo();
-        }
-    }
-    public void InteragirDialogo()
-    {
-        Collider2D areaInteracao = Physics2D.OverlapCircle(transform.position, raioInteracao, layerPlayer); // Cria a área que faz o diálogo aparecer
-        if (areaInteracao != null) //encostou no player
-        {
-            estaNoRaio = true;
-        }
-        else
-        {
-            estaNoRaio = false;
-        }
-    }
-
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, raioInteracao);
         //Este código so serve para a esfera de interação ser visível na cena.
     }
 
-    public void travarDialogo()
+    public void travarDialogo() 
     {
         travado = true;
+    }
+
+    public void falar()
+    {
+        if (travado == false)
+        {
+            dialogoControlador.Fala(sprite, dialogoTexto, nomePersonagem);
+            travarDialogo();
+        }         
     }
 }

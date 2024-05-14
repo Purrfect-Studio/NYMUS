@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6529597754438908281}
   - component: {fileID: 6529597754438908280}
+  - component: {fileID: 8659483422860446794}
+  - component: {fileID: 8047514594839947791}
   m_Layer: 0
   m_Name: Mensagem
   m_TagString: Untagged
@@ -44,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9202287a5ab902047999a5fbee8af624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foto: {fileID: 21300000, guid: e5ba852a5f4555e4fa6abae0690a1aee, type: 3}
+  sprite: {fileID: 0}
   dialogoTexto:
   - Parece aquele jogo transformause
   - Aperte w para po1lar :)
@@ -55,4 +57,47 @@ MonoBehaviour:
   raioInteracao: 2
   estaNoRaio: 0
   travado: 0
-  dc: {fileID: 0}
+  dialogoControlador: {fileID: 0}
+--- !u!58 &8659483422860446794
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529597754438908283}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.110137016}
+  serializedVersion: 2
+  m_Radius: 6.9980917
+--- !u!114 &8047514594839947791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529597754438908283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a45b78c1955e440811466b57fb68dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evento:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6529597754438908280}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: falar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
