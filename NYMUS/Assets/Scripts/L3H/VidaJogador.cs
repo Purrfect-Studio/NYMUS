@@ -18,7 +18,8 @@ public class VidaJogador : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite; //Sprite do L3H
 
     [Header("Knockback")]
-    public float forcaKnockbak;                     // Forca do knockback
+    public float forcaKnockbackX;          // Forca do knockback
+    public float forcaKnockbackY;          // Forca do knockback
     public static int knockbackParaDireita;         // Direcao do knockback
 
     [Header("RigidBody")]
@@ -83,7 +84,7 @@ public class VidaJogador : MonoBehaviour
 
     void Knockback()
     {
-        rb.AddForce(new Vector2(10 * -knockbackParaDireita, 10), ForceMode2D.Impulse); // aplica uma forca na diagonal para empurrar o jogador para longe do inimigo
+        rb.AddForce(new Vector2(forcaKnockbackX * -knockbackParaDireita, forcaKnockbackY), ForceMode2D.Impulse); // aplica uma forca na diagonal para empurrar o jogador para longe do inimigo
         StartCoroutine("Parar"); // chama a co-rotina "Parar"
     }
 

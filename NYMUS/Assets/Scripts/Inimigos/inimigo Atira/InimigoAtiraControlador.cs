@@ -7,9 +7,9 @@ public class InimigoAtiraControlador : MonoBehaviour
     // Componentes necessários e variáveis para controlar o comportamento de atirar do inimigo
     [Header("Script Atirar")]
     public Atirar atirar; // Componente que lida com a lógica de atirar
-    [Header("Script Procurar Jogador")]
-    public ProcurarJogador procurarJogador; // Componente que lida com a lógica de procurar o jogador
-
+    public ProcurarJogador procurarJogador;
+    [Header("Jogador")]
+    public Transform jogador; // Referência para o transform do jogador
     // Configurações do tiro
     [Header("Configuracoes do Tiro")]
     public int municao; // Quantidade de tiros antes de recarregar
@@ -27,7 +27,7 @@ public class InimigoAtiraControlador : MonoBehaviour
         contadorIntervaloTiro = intervaloTiro;
         quantidadeTiros = municao;
         // Adiciona um listener para o evento de encontrar jogador
-        procurarJogador.JogadorEncontrado.AddListener(Atirar);
+        //procurarJogador.JogadorEncontrado.AddListener(Atirar);
     }
 
     void Atirar()
@@ -61,17 +61,20 @@ public class InimigoAtiraControlador : MonoBehaviour
         }
 
         // Verifica a direção do jogador e atualiza a direção do inimigo
-        if (procurarJogador.jogador.position.x < transform.position.x && olhandoEsquerda == false)
+        if(procurarJogador.procurarJogador()==true)
         {
-            olhandoEsquerda = true;
-            transform.Rotate(0f, 180f, 0f);
-            atirar.velocidadeTiro *= -1;
-        }
-        if (procurarJogador.jogador.position.x > transform.position.x && olhandoEsquerda == true)
-        {
-            olhandoEsquerda = false;
-            transform.Rotate(0f, 180f, 0f);
-            atirar.velocidadeTiro *= -1;
+            if (jogador.position.x < transform.position.x && olhandoEsquerda == false)
+            {
+                olhandoEsquerda = true;
+                transform.Rotate(0f, 180f, 0f);
+                atirar.velocidadeTiro *= -1;
+            }
+            if (jogador.position.x > transform.position.x && olhandoEsquerda == true)
+            {
+                olhandoEsquerda = false;
+                transform.Rotate(0f, 180f, 0f);
+                atirar.velocidadeTiro *= -1;
+            }
         }
     }
 }

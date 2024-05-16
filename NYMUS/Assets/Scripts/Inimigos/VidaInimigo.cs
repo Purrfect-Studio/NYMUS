@@ -18,8 +18,9 @@ public class VidaInimigo : MonoBehaviour
     public Rigidbody2D rb;   // rb = rigidbody
 
     [Header("Knockback")]
-    public float forcaKnockbak;
-    public static int knockbackParaDireita;
+    public float forcaKnockbackX;
+    public float forcaKnockbackY;
+    public static int direcaoDoKnockback; // 1 eh pra direita e -1 pra esquerda
 
     [Header("Animator")]
     public Animator animacao;
@@ -64,13 +65,13 @@ public class VidaInimigo : MonoBehaviour
     {
         if (transform.position.x <= jogador.transform.position.x)
         {
-            knockbackParaDireita = 1;
+            direcaoDoKnockback = 1;
         }
         else
         {
-            knockbackParaDireita = -1;
+            direcaoDoKnockback = -1;
         }
-        rb.AddForce(new Vector2(10 * -knockbackParaDireita, 10), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(forcaKnockbackX * -direcaoDoKnockback, forcaKnockbackY), ForceMode2D.Impulse);
         StartCoroutine("Piscar");
         
     }

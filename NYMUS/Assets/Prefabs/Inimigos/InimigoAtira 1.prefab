@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3974183750072932081}
   - component: {fileID: 3974183750072932082}
-  - component: {fileID: 3974183750393386402}
+  - component: {fileID: 5117377418132728994}
   - component: {fileID: 3974183750393386401}
   - component: {fileID: 3974183750393386400}
   - component: {fileID: 7453688134325946019}
-  - component: {fileID: 5117377418132728994}
+  - component: {fileID: 1062836325228817203}
   m_Layer: 0
   m_Name: InimigoAtira 1
   m_TagString: Untagged
@@ -90,26 +90,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3974183750393386402
-MonoBehaviour:
+--- !u!50 &5117377418132728994
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974183750072932084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91def9fc5d0575346b46aa37fd925762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jogador: {fileID: 0}
-  layerJogador:
-    serializedVersion: 2
-    m_Bits: 256
-  JogadorEncontrado:
-    m_PersistentCalls:
-      m_Calls: []
-  raioDetecao: 25
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &3974183750393386401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atirar: {fileID: 3974183750393386401}
-  procurarJogador: {fileID: 3974183750393386402}
+  procurarJogador: {fileID: 1062836325228817203}
+  jogador: {fileID: 0}
   municao: 3
   intervaloTiro: 1
   tempoRecarga: 3
@@ -159,31 +161,28 @@ MonoBehaviour:
   vidaAtual: 50
   inimigo: {fileID: 3974183750072932084}
   rb: {fileID: 5117377418132728994}
-  forcaKnockbak: 0.5
+  forcaKnockbackX: 0
+  forcaKnockbackY: 0
   animacao: {fileID: 0}
   sprite: {fileID: 3974183750072932082}
   jogador: {fileID: 0}
---- !u!50 &5117377418132728994
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &1062836325228817203
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974183750072932084}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91def9fc5d0575346b46aa37fd925762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jogador: {fileID: 0}
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  raioDetecao: 25
 --- !u!1 &3974183750896620508
 GameObject:
   m_ObjectHideFlags: 0
