@@ -48,6 +48,8 @@ GameObject:
   - component: {fileID: 8857691327103373101}
   - component: {fileID: 6861670330375925674}
   - component: {fileID: 5854170835905082914}
+  - component: {fileID: 517350288}
+  - component: {fileID: 517350309}
   m_Layer: 8
   m_Name: L3H final
   m_TagString: Jogador
@@ -210,8 +212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 100
   vidaAtual: 0
+  barraDeVida: {fileID: 0}
   sprite: {fileID: 6861670330375925679}
-  forcaKnockbak: 10
+  forcaKnockbackX: 0
+  forcaKnockbackY: 0
   rb: {fileID: 6861670330375925677}
   animacao: {fileID: 6861670330375925674}
 --- !u!114 &8857691327103373101
@@ -260,6 +264,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animacao: {fileID: 6861670330375925674}
+--- !u!114 &517350288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861670330375925667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000d3af36476bc9895d6589c25bab7b28baa5e46ac4ed51e5ce530c328f
+  m_ShapePath:
+  - {x: -0.625, y: -0.625, z: 0}
+  - {x: -0.625, y: 0.625, z: 0}
+  - {x: 0.625, y: 0.625, z: 0}
+  - {x: 0.625, y: -0.625, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 30038
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.625, y: 0.625, z: 0}
+--- !u!114 &517350309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861670330375925667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236731d0f3136d4f9661244551dbb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioJogador: {fileID: 1936601223}
+  passosGramaMP3:
+  - {fileID: 8300000, guid: fd576c2f916afad4e88e95105819851a, type: 3}
+  - {fileID: 8300000, guid: 7a329d12a61d6514db104236454ce231, type: 3}
+  - {fileID: 8300000, guid: e8129be656e122541bd8e3ccf1e4688d, type: 3}
+  - {fileID: 8300000, guid: 9e7b0c14ace488141ae2408decc309c7, type: 3}
+  - {fileID: 8300000, guid: f2c93a42048711f43844a4dbdbcddadc, type: 3}
+  - {fileID: 8300000, guid: d114ddea871cea74eaab5983f5bef00e, type: 3}
 --- !u!1 &7695755410459178363
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,8 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7695755411832282261}
-  - component: {fileID: 7219943132618832720}
-  - component: {fileID: 274580208066262856}
+  - component: {fileID: 1936601223}
   m_Layer: 8
   m_Name: "\xC1udios"
   m_TagString: Untagged
@@ -422,21 +475,7 @@ Transform:
   m_Father: {fileID: 6861670330375925672}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7219943132618832720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7695755411832282260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c236731d0f3136d4f9661244551dbb12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioJogador: {fileID: 0}
-  passosGramaMP3: []
---- !u!82 &274580208066262856
+--- !u!82 &1936601223
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
