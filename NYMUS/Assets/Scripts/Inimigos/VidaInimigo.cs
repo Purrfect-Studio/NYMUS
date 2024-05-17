@@ -46,7 +46,7 @@ public class VidaInimigo : MonoBehaviour
     {
         if(invulneravel == false)
         {
-            Debug.Log("Tomei dano" + dano);
+            //Debug.Log("Tomei dano" + dano);
             vidaAtual -= dano;
             if (vidaAtual <= 0)
             {

@@ -23,8 +23,9 @@ public class InimigoAtiraControlador : MonoBehaviour
     private float contadorIntervaloTiro; // Contador para o intervalo entre os tiros
 
     [Header("Interacoes com o Jogador")]
-    [SerializeField] private UnityEvent DanoCausado; // evento de causar dano
+    [SerializeField] private UnityEvent DanoCausado;
     public static bool acertouJogador;               // diz se o tiro acertou ou nao
+    public float danoJogador;
 
     void Start()
     {
@@ -63,8 +64,8 @@ public class InimigoAtiraControlador : MonoBehaviour
             {
                 VidaJogador.knockbackParaDireita = 1;
             }
-            acertouJogador = false;
             DanoCausado.Invoke();
+            acertouJogador = false;
         }
         // Atualiza o intervalo entre os tiros
         if (contadorIntervaloTiro < 0)

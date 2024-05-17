@@ -10,7 +10,6 @@ public class ScriptBala : MonoBehaviour
         if (collision.gameObject.CompareTag("Jogador"))
         {
             InimigoAtiraControlador.acertouJogador = true;
-            //Debug.Log("projetil acertou o jogador");
         }
         if (collision != null)
         {

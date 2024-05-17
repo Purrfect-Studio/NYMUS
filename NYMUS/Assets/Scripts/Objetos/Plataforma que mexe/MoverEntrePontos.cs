@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class MoverEntrePontos : MonoBehaviour
 {
+    [Header("Pontos de Movimentacao")]
     public Transform[] pontos;
-    public float velocidade;
-    public int proximoPonto;
-    public bool procurarPonto = true;
-    public float raioDetecao; // Raio de detecção do jogador
     [SerializeField] public LayerMask layerPontosDeMovimento;
+    [Header("Variaveis de Controle")]
+    public int proximoPonto;
+    public bool procurarPonto;
+    public float raioDetecao;
+    [Header("Pra Aumentar a Velocidade precisa Diminuir o Tempo")]
+    public float velocidade;
+    public float tempoSegundos;
+
     // Start is called before the first frame update
     void Start()
     {
+        proximoPonto = 0;
+        procurarPonto = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if (procurarPonto == true)
-        {
-            detectarPonto();
-        }
-        else
+        if (procurarPonto == false)
         {
             StartCoroutine("Esperar");
         }
-
+        else
+        {
+            detectarPonto();
+        }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (proximoPonto == pontos.Length)
+        {
+            proximoPonto = 0;
+        }
         movimentacao();
     }
 
@@ -40,19 +53,20 @@ public class MoverEntrePontos : MonoBehaviour
         Collider2D encontrarPonto = Physics2D.OverlapCircle(transform.position, raioDetecao, layerPontosDeMovimento);
         if (encontrarPonto != null)
         {
-            //Debug.Log("Cheguei no ponto: "+encontrarPonto.gameObject.name);
-            proximoPonto += 1;
             procurarPonto = false;
+            //Debug.Log("Cheguei no ponto: "+encontrarPonto.gameObject.name);
+            proximoPonto++;
             if (proximoPonto >= pontos.Length)
             {
                 proximoPonto = 0;
             }
+            //Debug.Log("Proximo Ponto = " + proximoPonto);
         }
     }
 
     IEnumerator Esperar()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(tempoSegundos);
         procurarPonto = true;
     }
 

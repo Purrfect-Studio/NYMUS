@@ -42,7 +42,7 @@ public class DanoDeColisao : MonoBehaviour
                 VidaInimigo inimigo = colisaoInimigo.GetComponent<VidaInimigo>();
                 if (inimigo != null && VidaInimigo.invulneravel == false)
                 {
-                    Debug.Log("Dano no Inimigo:" + colisaoInimigo.name);
+                    //Debug.Log("Dano no Inimigo:" + colisaoInimigo.name);
                     inimigo.tomarDano(danoNoInimigo);
                 }
             }
