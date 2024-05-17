@@ -34,7 +34,6 @@ public class InimigoAtira : MonoBehaviour
     void Start()
     {
         contadorIntervaloTiro = intervaloTiro;
-        acertouJogador = false;
         quantidadesTiros = municao;
     }
 

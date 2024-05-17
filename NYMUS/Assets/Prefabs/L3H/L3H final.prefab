@@ -214,8 +214,8 @@ MonoBehaviour:
   vidaAtual: 0
   barraDeVida: {fileID: 0}
   sprite: {fileID: 6861670330375925679}
-  forcaKnockbackX: 0
-  forcaKnockbackY: 0
+  forcaKnockbackX: 10
+  forcaKnockbackY: 10
   rb: {fileID: 6861670330375925677}
   animacao: {fileID: 6861670330375925674}
 --- !u!114 &8857691327103373101
@@ -290,7 +290,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30038
+  m_InstanceId: 46416
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}

@@ -7,12 +7,10 @@ public class ScriptBala : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Jogador"))
         {
-            if(VidaJogador.invulneravel == false)
-            {
-                InimigoAtira.acertouJogador = true;
-            }
+            InimigoAtiraControlador.acertouJogador = true;
+            //Debug.Log("projetil acertou o jogador");
         }
         if (collision != null)
         {

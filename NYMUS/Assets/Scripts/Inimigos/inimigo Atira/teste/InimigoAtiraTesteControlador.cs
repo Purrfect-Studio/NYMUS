@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InimigoAtiraControlador : MonoBehaviour
+public class InimigoAtiraTesteControlador : MonoBehaviour
 {
     // Componentes necessários e variáveis para controlar o comportamento de atirar do inimigo
     [Header("Script Atirar")]
-    public Atirar atirar; // Componente que lida com a lógica de atirar
+    public TiroTeste atirar; // Componente que lida com a lógica de atirar
     public ProcurarJogador procurarJogador;
     [Header("Jogador")]
     public Transform jogador; // Referência para o transform do jogador
@@ -21,16 +21,15 @@ public class InimigoAtiraControlador : MonoBehaviour
     // Variáveis de controle
     private int quantidadeTiros; // Quantidade atual de tiros disponíveis
     private float contadorIntervaloTiro; // Contador para o intervalo entre os tiros
-
-    [Header("Interacoes com o Jogador")]
-    [SerializeField] private UnityEvent DanoCausado; // evento de causar dano
-    public static bool acertouJogador;               // diz se o tiro acertou ou nao
+    
 
     void Start()
     {
         // Inicialização das variáveis
         contadorIntervaloTiro = intervaloTiro;
         quantidadeTiros = municao;
+        // Adiciona um listener para o evento de encontrar jogador
+        //procurarJogador.JogadorEncontrado.AddListener(Atirar);
     }
 
     void Atirar()
@@ -53,19 +52,6 @@ public class InimigoAtiraControlador : MonoBehaviour
 
     void Update()
     {
-        if (acertouJogador == true && VidaJogador.invulneravel == false)
-        {
-            if (transform.position.x <= jogador.transform.position.x)
-            {
-                VidaJogador.knockbackParaDireita = -1;
-            }
-            else
-            {
-                VidaJogador.knockbackParaDireita = 1;
-            }
-            acertouJogador = false;
-            DanoCausado.Invoke();
-        }
         // Atualiza o intervalo entre os tiros
         if (contadorIntervaloTiro < 0)
         {

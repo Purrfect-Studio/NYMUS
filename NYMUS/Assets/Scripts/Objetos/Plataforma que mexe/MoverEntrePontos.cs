@@ -40,7 +40,7 @@ public class MoverEntrePontos : MonoBehaviour
         Collider2D encontrarPonto = Physics2D.OverlapCircle(transform.position, raioDetecao, layerPontosDeMovimento);
         if (encontrarPonto != null)
         {
-            Debug.Log("Cheguei no ponto: "+encontrarPonto.gameObject.name);
+            //Debug.Log("Cheguei no ponto: "+encontrarPonto.gameObject.name);
             proximoPonto += 1;
             procurarPonto = false;
             if (proximoPonto >= pontos.Length)

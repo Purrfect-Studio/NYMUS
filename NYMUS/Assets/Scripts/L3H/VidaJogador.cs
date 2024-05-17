@@ -74,7 +74,10 @@ public class VidaJogador : MonoBehaviour
 
     public void tomarDano(float danoTomado)
     {
+        
         vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
+        Debug.Log("Jogador tomou dano: " + danoTomado);
+        Debug.Log("Vida atual: " + vidaAtual);
         invulneravel = true;                // ativa a invulnerabilidade
         barraDeVida.ajustarBarraDeVida(vidaAtual);
         StartCoroutine("Invulnerabilidade");// chama a co-rotina "Invulnerabilidade"
