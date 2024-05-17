@@ -10,7 +10,7 @@ public class ProcurarJogador : MonoBehaviour
     [Header("Layer do Jogador")]
     public LayerMask layerJogador; // Layer do jogador
     [Header("Raio do circulo para detectar o jogador")]
-    public float raioDetecao = 25f; // Raio de detecção do jogador
+    public float raioDetecao; // Raio de detecção do jogador
 
     public bool procurarJogador()
     {
