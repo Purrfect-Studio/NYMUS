@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoverEntreDoisPontos : MonoBehaviour
+public class MoverEntrePontos : MonoBehaviour
 {
     public Transform[] pontos;
     public float velocidade;
