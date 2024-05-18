@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InimigoAtiraTesteControlador : MonoBehaviour
+public class AtiraOndaControlador : MonoBehaviour
 {
     // Componentes necessários e variáveis para controlar o comportamento de atirar do inimigo
     [Header("Script Atirar")]
-    public TiroTeste atirar; // Componente que lida com a lógica de atirar
+    public AtirarEmOnda atirar; // Componente que lida com a lógica de atirar
     public ProcurarJogador procurarJogador;
     [Header("Jogador")]
     public Transform jogador; // Referência para o transform do jogador

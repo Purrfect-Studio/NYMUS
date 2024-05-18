@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TiroTeste : MonoBehaviour
+public class AtirarEmOnda : MonoBehaviour
 {
     [Header("Projetil do Prefab")]
     public GameObject balaProjetil;
@@ -11,14 +11,15 @@ public class TiroTeste : MonoBehaviour
     public Transform arma; // Posição de onde o projétil será disparado
 
     [Header("Velocidade do Tiro")]
-    public float velocidadeTiro; // Força do tiro
-
+    public float velocidadeTiro;
+    [SerializeField] public static float velocidadeTiroX; // Força do tiro
     public void AtirarProjétil()
     {
+        velocidadeTiroX = velocidadeTiro;
         // Instancia o projétil e define sua posição e velocidade
         GameObject temp = Instantiate(balaProjetil);
         temp.transform.position = arma.position;
-        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiro, 0);
+        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiroX, 0);
         // Destroi o projétil depois de um tempo para evitar vazamento de memória
         Destroy(temp.gameObject, 3f);
     }
