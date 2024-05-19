@@ -17,7 +17,7 @@ public class PlayerControlador : MonoBehaviour
     [Header("Andar")]
     public int velocidade;   // Velocidade maxima do jogador
     private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
-    public static bool olhandoDireita = true;           // Direcao para girar o sprite
+    public static bool olhandoDireita;           // Direcao para girar o sprite
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
 
     [Header("Layer do Chao")]
@@ -44,6 +44,9 @@ public class PlayerControlador : MonoBehaviour
         podeMover = true;
         animacao.SetBool("estaMorto", false);
         contadorTempoPulo = tempoPulo;
+
+        olhandoDireita = true;
+        direcao = 1;
     }
 
     private bool estaChao()
