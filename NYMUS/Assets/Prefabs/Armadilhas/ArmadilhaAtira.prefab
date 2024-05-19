@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8023712517890877102}
   - component: {fileID: 8023712517890877101}
   - component: {fileID: 8023712517890877100}
-  - component: {fileID: 8023712517890877103}
+  - component: {fileID: 2119760912}
   m_Layer: 0
   m_Name: ArmadilhaAtira
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   arma: {fileID: 8023712518813621939}
   velocidadeTiro: -10
   tempoTiro: 5
---- !u!114 &8023712517890877103
+--- !u!114 &2119760912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,22 +112,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8023712517890877098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12feadc173b37ba40a840b30f61aeb24, type: 3}
+  m_Script: {fileID: 11500000, guid: e39fdb2f26a49c6439739217bb0e7965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempoSegundos: 3
-  evento:
+  atirar: {fileID: 8023712517890877100}
+  jogador: {fileID: 0}
+  procuraJogador: 0
+  procurarJogador: {fileID: 0}
+  municao: 1
+  intervaloTiro: 1
+  tempoRecarga: 0
+  olhandoEsquerda: 0
+  DanoCausado:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8023712517890877100}
-        m_TargetAssemblyTypeName: Atirar, Assembly-CSharp
-        m_MethodName: "AtirarProj\xE9til"
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VidaJogador, Assembly-CSharp
+        m_MethodName: tomarDano
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

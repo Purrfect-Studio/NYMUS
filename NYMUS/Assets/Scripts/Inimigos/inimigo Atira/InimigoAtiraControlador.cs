@@ -5,14 +5,18 @@ using UnityEngine.Events;
 
 public class InimigoAtiraControlador : MonoBehaviour
 {
-    // Componentes necessários e variáveis para controlar o comportamento de atirar do inimigo
     [Header("Script Atirar")]
     public Atirar atirar; // Componente que lida com a lógica de atirar
-    public ProcurarJogador procurarJogador;
+
     [Header("Jogador")]
     public Transform jogador; // Referência para o transform do jogador
-    // Configurações do tiro
-    [Header("Configuracoes do Tiro")]
+    
+
+    [Header("Script Procurar Jogador")]
+    public bool procuraJogador = true;
+    public ProcurarJogador procurarJogador = null;
+
+    [Header("Configurações do Tiro")]
     public int municao; // Quantidade de tiros antes de recarregar
     public float intervaloTiro; // Intervalo entre os tiros
     public float tempoRecarga; // Tempo de recarga depois de atirar
@@ -22,10 +26,9 @@ public class InimigoAtiraControlador : MonoBehaviour
     private int quantidadeTiros; // Quantidade atual de tiros disponíveis
     private float contadorIntervaloTiro; // Contador para o intervalo entre os tiros
 
-    [Header("Interacoes com o Jogador")]
+    [Header("Interações com o Jogador")]
     [SerializeField] private UnityEvent DanoCausado;
-    public static bool acertouJogador;               // diz se o tiro acertou ou nao
-    public float danoJogador;
+    public static bool acertouJogador; // diz se o tiro acertou ou não
 
     void Start()
     {
@@ -54,7 +57,7 @@ public class InimigoAtiraControlador : MonoBehaviour
 
     void Update()
     {
-        if (acertouJogador == true && VidaJogador.invulneravel == false)
+        if (acertouJogador && !VidaJogador.invulneravel)
         {
             if (transform.position.x <= jogador.transform.position.x)
             {
@@ -67,6 +70,7 @@ public class InimigoAtiraControlador : MonoBehaviour
             DanoCausado.Invoke();
             acertouJogador = false;
         }
+
         // Atualiza o intervalo entre os tiros
         if (contadorIntervaloTiro < 0)
         {
@@ -77,20 +81,23 @@ public class InimigoAtiraControlador : MonoBehaviour
             contadorIntervaloTiro -= Time.deltaTime;
         }
 
-        // Verifica a direção do jogador e atualiza a direção do inimigo
-        if(procurarJogador.procurarJogador()==true)
+        // Verifica a direção do jogador e atualiza a direção do inimigo se procuraJogador for true
+        if (procuraJogador)
         {
-            if (jogador.position.x < transform.position.x && olhandoEsquerda == false)
+            if (procurarJogador != null && procurarJogador.procurarJogador()) // Verifica se as variáveis desnecessárias 
             {
-                olhandoEsquerda = true;
-                transform.Rotate(0f, 180f, 0f);
-                atirar.velocidadeTiro *= -1;
-            }
-            if (jogador.position.x > transform.position.x && olhandoEsquerda == true)
-            {
-                olhandoEsquerda = false;
-                transform.Rotate(0f, 180f, 0f);
-                atirar.velocidadeTiro *= -1;
+                if (jogador != null && jogador.position.x < transform.position.x && !olhandoEsquerda)
+                {
+                    olhandoEsquerda = true;
+                    transform.Rotate(0f, 180f, 0f);
+                    atirar.velocidadeTiro *= -1;
+                }
+                else if (jogador != null && jogador.position.x > transform.position.x && olhandoEsquerda)
+                {
+                    olhandoEsquerda = false;
+                    transform.Rotate(0f, 180f, 0f);
+                    atirar.velocidadeTiro *= -1;
+                }
             }
         }
     }
