@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +10,9 @@ public class Atirar : MonoBehaviour
     [Header("GameObject da Arma")]
     public Transform arma; // Posição de onde o projétil será disparado
 
-    [Header("Velocidade do Tiro")]
+    [Header("Sobre o Tiro")]
     public float velocidadeTiro; // Força do tiro
+    public int tempoTiro = 3; // Tempo que o tiro fica no ar até ser destruído 
 
     public void AtirarProjétil()
     {
@@ -20,6 +21,6 @@ public class Atirar : MonoBehaviour
         temp.transform.position = arma.position;
         temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiro, 0);
         // Destroi o projétil depois de um tempo para evitar vazamento de memória
-        Destroy(temp.gameObject, 3f);
+        Destroy(temp.gameObject, tempoTiro);
     }
 }
