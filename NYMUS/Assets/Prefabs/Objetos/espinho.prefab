@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8349118145028121144}
   - component: {fileID: 8349118145028121145}
   - component: {fileID: 8349118145028121151}
-  - component: {fileID: 8349118145028121150}
+  - component: {fileID: 7505602392502781044}
   m_Layer: 10
   m_Name: espinho
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1539475813
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a474f04e9c2e8d94582a87254b973ed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9185219, y: 0.5417077}
   m_EdgeRadius: 0
---- !u!114 &8349118145028121150
+--- !u!114 &7505602392502781044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,26 +121,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8349118145028121146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a39585dfe85133745871331633e61ef1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bcEspinho: {fileID: 8349118145028121151}
-  jogador: {fileID: 0}
-  DanoCausado:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VidaJogador, Assembly-CSharp
-        m_MethodName: tomarDano
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 10000
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  Collider2D: {fileID: 8349118145028121151}
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
+  jogador: {fileID: 0}
+  danoNoJogador: 1000
+  layerInimigo:
+    serializedVersion: 2
+    m_Bits: 0
+  danoNoInimigo: 0
