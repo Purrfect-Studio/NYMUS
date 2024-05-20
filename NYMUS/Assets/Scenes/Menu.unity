@@ -1101,11 +1101,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.26
+  m_Value: 0.52
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 866081969}
         m_TargetAssemblyTypeName: MusicasScript, Assembly-CSharp
         m_MethodName: slideConfiguracaoVolume
         m_Mode: 1
@@ -3226,6 +3226,10 @@ PrefabInstance:
     - target: {fileID: 3350034204810542017, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350034204810542019, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
+      propertyPath: m_Volume
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 3350034204810542020, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
       propertyPath: m_Name
