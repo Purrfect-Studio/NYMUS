@@ -6,20 +6,28 @@ using UnityEngine;
 public class ControladorArmadilha : MonoBehaviour
 {
     [Header("Intervalo de Ativacao da armadilha")]
-    public Vector2 intervaloParaAtivarArmadilha;
-    public bool ativarArmadilha;
+    public float tempoDesativada;
+    public float quantidadeDeEspetadas;
     [Header("Animator")]
     private Animator animator;
 
-    IEnumerator ativar()
+    IEnumerator Ativar()
     {
-        yield return new WaitForSeconds(Random.Range(intervaloParaAtivarArmadilha.x, intervaloParaAtivarArmadilha.y));
+        yield return new WaitForSeconds(tempoDesativada);
         animator.SetBool("ativarArmadilha", true);
+        StartCoroutine("Desativar");
     }
 
-    private void Update()
+    IEnumerator Desativar()
     {
-        StartCoroutine("ativar"); 
+        yield return new WaitForSeconds(quantidadeDeEspetadas);
+        animator.SetBool("ativarArmadilha", false);
+        StartCoroutine("Ativar");
+    }
+
+    private void Start()
+    {
+        StartCoroutine("Ativar"); 
     }
 
     private void Awake()
