@@ -59,6 +59,7 @@ public class InimigoAtiraControlador : MonoBehaviour
     {
         if (acertouJogador && !VidaJogador.invulneravel)
         {
+            acertouJogador = false;
             if (transform.position.x <= jogador.transform.position.x)
             {
                 VidaJogador.knockbackParaDireita = -1;
@@ -68,7 +69,6 @@ public class InimigoAtiraControlador : MonoBehaviour
                 VidaJogador.knockbackParaDireita = 1;
             }
             DanoCausado.Invoke();
-            acertouJogador = false;
         }
 
         // Atualiza o intervalo entre os tiros
