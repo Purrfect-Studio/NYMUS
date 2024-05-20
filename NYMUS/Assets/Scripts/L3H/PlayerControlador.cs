@@ -218,5 +218,21 @@ public class PlayerControlador : MonoBehaviour
         podeMover = true; // Permite que o jogador se mova novamente
         VidaJogador.invulneravel = false;
     }
-        
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "PlataformaMove")
+        {
+            transform.parent = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "PlataformaMove")
+        {
+            transform.parent = null;
+        }
+    }
+
 }
