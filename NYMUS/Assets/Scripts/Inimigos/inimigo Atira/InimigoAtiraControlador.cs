@@ -10,7 +10,6 @@ public class InimigoAtiraControlador : MonoBehaviour
 
     [Header("Jogador")]
     public Transform jogador; // Referência para o transform do jogador
-    
 
     [Header("Script Procurar Jogador")]
     public bool procuraJogador = true;
@@ -25,10 +24,6 @@ public class InimigoAtiraControlador : MonoBehaviour
     // Variáveis de controle
     private int quantidadeTiros; // Quantidade atual de tiros disponíveis
     private float contadorIntervaloTiro; // Contador para o intervalo entre os tiros
-
-    [Header("Interações com o Jogador")]
-    [SerializeField] private UnityEvent DanoCausado;
-    public static bool acertouJogador; // diz se o tiro acertou ou não
 
     void Start()
     {
@@ -57,20 +52,6 @@ public class InimigoAtiraControlador : MonoBehaviour
 
     void Update()
     {
-        if (acertouJogador && !VidaJogador.invulneravel)
-        {
-            acertouJogador = false;
-            if (transform.position.x <= jogador.transform.position.x)
-            {
-                VidaJogador.knockbackParaDireita = -1;
-            }
-            else
-            {
-                VidaJogador.knockbackParaDireita = 1;
-            }
-            DanoCausado.Invoke();
-        }
-
         // Atualiza o intervalo entre os tiros
         if (contadorIntervaloTiro < 0)
         {

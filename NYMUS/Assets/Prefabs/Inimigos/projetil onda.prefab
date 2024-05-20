@@ -100,7 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5345702860031860508}
-  velocidadeX: 0
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  danoNoJogador: 10
+  Collider2D: {fileID: 2769626360105280930}
 --- !u!50 &5345702860031860508
 Rigidbody2D:
   serializedVersion: 4

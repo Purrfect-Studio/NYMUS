@@ -12,7 +12,7 @@ public class DanoDeColisao : MonoBehaviour
     [Header("Jogador")]
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
     public Transform jogador;
-    [SerializeField] private UnityEvent DanoCausado;
+    public float danoNoJogador;
 
     [Header("Inimigo")]
     [SerializeField] private LayerMask layerInimigo;
@@ -21,17 +21,22 @@ public class DanoDeColisao : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (colisaoJogador() == true && VidaJogador.invulneravel == false)
+        if (colisaoJogador() == true)
         {
-            if(transform.position.x <= jogador.transform.position.x)
+            Collider2D colisaoJogador = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerJogador);
+            VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
+            if(vidaJogador != null && VidaJogador.invulneravel == false)
             {
-                VidaJogador.knockbackParaDireita = -1;
+                if (transform.position.x <= jogador.transform.position.x)
+                {
+                    VidaJogador.knockbackParaDireita = -1;
+                }
+                else
+                {
+                    VidaJogador.knockbackParaDireita = 1;
+                }
+                vidaJogador.tomarDano(danoNoJogador);
             }
-            else
-            {
-                VidaJogador.knockbackParaDireita = 1;
-            }
-            DanoCausado.Invoke();
         }
 
         if(colisaoInimigo() == true)

@@ -136,3 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36440a642b987ac4e9f9d462e7a2b24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  danoNoJogador: 10
+  Collider2D: {fileID: 5201063190086497737}

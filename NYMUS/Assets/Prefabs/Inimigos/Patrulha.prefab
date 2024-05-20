@@ -295,21 +295,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jogador: {fileID: 0}
-  DanoCausado:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VidaJogador, Assembly-CSharp
-        m_MethodName: tomarDano
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 10
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  danoNoJogador: 10
   layerInimigo:
     serializedVersion: 2
     m_Bits: 0
@@ -330,7 +316,8 @@ MonoBehaviour:
   vidaAtual: 0
   inimigo: {fileID: 7767482349604521770}
   rb: {fileID: 7767482349604521746}
-  forcaKnockbak: 1.5
+  forcaKnockbackX: 5
+  forcaKnockbackY: 5
   animacao: {fileID: 7767482349604521749}
   sprite: {fileID: 7767482349604521771}
   jogador: {fileID: 0}
@@ -346,7 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f339e0589d00249a2ce1060e0fdfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancia: 3
   olhandoParaEsquerda: 0
   velocidade: 4
   bCparede: {fileID: 7767482349604521744}

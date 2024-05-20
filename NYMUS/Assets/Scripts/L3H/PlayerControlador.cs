@@ -33,7 +33,7 @@ public class PlayerControlador : MonoBehaviour
 
     [Header("Ataque")]
     public float dano;
-    public Transform pontoDeAtaque; // Ponto de onde se origina o ataque
+    public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
     public float alcanceAtaque;     // Area de alcance do ataque
 
 
@@ -182,7 +182,9 @@ public class PlayerControlador : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.J))
         {
             animacao.SetTrigger("estaAtacando");
-            Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.position, alcanceAtaque);
+            Animator animator = pontoDeAtaque.GetComponent<Animator>();
+            animator.SetTrigger("estaAtacando");
+            Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.transform.position, alcanceAtaque);
             if(acertarInimigo != null)
             {
                 VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
@@ -198,7 +200,7 @@ public class PlayerControlador : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(pontoDeAtaque.position, alcanceAtaque);
+        Gizmos.DrawWireSphere(pontoDeAtaque.transform.position, alcanceAtaque);
     }
 
     public void TravarMovimentacao()
