@@ -330,7 +330,8 @@ MonoBehaviour:
   vidaAtual: 0
   inimigo: {fileID: 2769989527036415872}
   rb: {fileID: 2769989527036415928}
-  forcaKnockbak: 1.5
+  forcaKnockbackX: 5
+  forcaKnockbackY: 5
   animacao: {fileID: 2769989527036415935}
   sprite: {fileID: 2769989527036415873}
   jogador: {fileID: 0}
@@ -346,7 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f339e0589d00249a2ce1060e0fdfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancia: 3
   olhandoParaEsquerda: 0
   velocidade: 4
   bCparede: {fileID: 2769989527036415930}

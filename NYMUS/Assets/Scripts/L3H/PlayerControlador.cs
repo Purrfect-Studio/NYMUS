@@ -188,8 +188,8 @@ public class PlayerControlador : MonoBehaviour
                 VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
                 if(inimigo != null && VidaInimigo.invulneravel == false)
                 {
-                    Debug.Log("Atacando:" + acertarInimigo.name);
-                    Debug.Log("Causei:" + dano + " de dano");
+                    //Debug.Log("Atacando:" + acertarInimigo.name);
+                    //Debug.Log("Causei:" + dano + " de dano");
                     inimigo.tomarDano(dano);
                 }
             }

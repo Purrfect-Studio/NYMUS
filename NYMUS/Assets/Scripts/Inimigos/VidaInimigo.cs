@@ -45,10 +45,12 @@ public class VidaInimigo : MonoBehaviour
 
     public void tomarDano(float dano)
     {
-        Debug.Log("Tomei dano" + dano);
+        //Debug.Log("Tomei dano" + dano);
         vidaAtual -= dano;
+        StartCoroutine("Piscar");
         if (vidaAtual <= 0)
         {
+            Knockback();
             morrer();
             StartCoroutine("Invulnerabilidade");
         }
@@ -70,8 +72,6 @@ public class VidaInimigo : MonoBehaviour
             direcaoDoKnockback = -1;
         }
         rb.AddForce(new Vector2(forcaKnockbackX * -direcaoDoKnockback, forcaKnockbackY), ForceMode2D.Impulse);
-        StartCoroutine("Piscar");
-        
     }
 
     IEnumerator Piscar()

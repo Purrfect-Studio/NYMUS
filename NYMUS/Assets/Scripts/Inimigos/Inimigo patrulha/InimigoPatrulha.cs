@@ -18,6 +18,7 @@ public class InimigoPatrulha : MonoBehaviour
     void Start()
     {
         olhandoParaEsquerda = true;
+        variavelDeSuporte = velocidade;
     }
 
     void Update()
@@ -62,7 +63,6 @@ public class InimigoPatrulha : MonoBehaviour
 
     IEnumerator aumentarVelocidade()
     {
-        variavelDeSuporte = velocidade;
         velocidade = velocidade + 0.8f;
         yield return new WaitForSeconds(Random.Range(0.1f, 1f));
         velocidade = variavelDeSuporte;
