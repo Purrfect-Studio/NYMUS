@@ -42,7 +42,6 @@ public class PlayerControlador : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         podeMover = true;
-        animacao.SetBool("estaMorto", false);
         contadorTempoPulo = tempoPulo;
 
         olhandoDireita = true;
@@ -182,21 +181,18 @@ public class PlayerControlador : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            animacao.SetBool("estaAtacando", true);
+            animacao.SetTrigger("estaAtacando");
             Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.position, alcanceAtaque);
             if(acertarInimigo != null)
             {
                 VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
-                if(inimigo != null)
+                if(inimigo != null && VidaInimigo.invulneravel == false)
                 {
                     Debug.Log("Atacando:" + acertarInimigo.name);
+                    Debug.Log("Causei:" + dano + " de dano");
                     inimigo.tomarDano(dano);
                 }
             }
-        }
-        if(Input.GetKeyUp(KeyCode.J))
-        {
-            animacao.SetBool("estaAtacando", false);
         }
     }
 

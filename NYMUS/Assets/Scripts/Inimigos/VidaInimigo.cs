@@ -34,6 +34,7 @@ public class VidaInimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        invulneravel = false;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
     }
 
@@ -44,20 +45,17 @@ public class VidaInimigo : MonoBehaviour
 
     public void tomarDano(float dano)
     {
-        if(invulneravel == false)
+        Debug.Log("Tomei dano" + dano);
+        vidaAtual -= dano;
+        if (vidaAtual <= 0)
         {
-            //Debug.Log("Tomei dano" + dano);
-            vidaAtual -= dano;
-            if (vidaAtual <= 0)
-            {
-                morrer();
-                StartCoroutine("Invulnerabilidade");
-            }
-            else
-            {
-                Knockback();
-                StartCoroutine("Invulnerabilidade");
-            } 
+            morrer();
+            StartCoroutine("Invulnerabilidade");
+        }
+        else
+        {
+            Knockback();
+            StartCoroutine("Invulnerabilidade");
         }   
     }
 
