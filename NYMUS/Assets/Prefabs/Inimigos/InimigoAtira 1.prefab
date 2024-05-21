@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3974183750393386400}
   - component: {fileID: 7453688134325946019}
   - component: {fileID: 1062836325228817203}
+  - component: {fileID: 6840456736707044341}
   m_Layer: 0
   m_Name: InimigoAtira 1
   m_TagString: Untagged
@@ -126,6 +127,7 @@ MonoBehaviour:
   balaProjetil: {fileID: 2627624111849504346, guid: fe8f8292f70fec84796ffba179f0d567, type: 3}
   arma: {fileID: 3974183750896620507}
   velocidadeTiro: 10
+  tempoTiro: 3
 --- !u!114 &3974183750393386400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,27 +141,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atirar: {fileID: 3974183750393386401}
-  procurarJogador: {fileID: 1062836325228817203}
   jogador: {fileID: 0}
+  procuraJogador: 1
+  procurarJogador: {fileID: 1062836325228817203}
   municao: 3
   intervaloTiro: 1
   tempoRecarga: 3
   olhandoEsquerda: 0
-  DanoCausado:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &7453688134325946019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +186,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   raioDetecao: 25
+--- !u!114 &6840456736707044341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974183750072932084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4e1a9d42614cf4b92ea1912c8a9fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3974183750896620508
 GameObject:
   m_ObjectHideFlags: 0

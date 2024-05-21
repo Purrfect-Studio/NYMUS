@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,15 +12,16 @@ public class Atirar : MonoBehaviour
 
     [Header("Sobre o Tiro")]
     public float velocidadeTiro; // Força do tiro
-    public int tempoTiro = 3; // Tempo que o tiro fica no ar até ser destruído 
-
+    [SerializeField] public static float velocidadeTiroX; // Força do tiro
+    public float duracaoDoTiro; // Tempo que o tiro fica no ar até ser destruído 
     public void AtirarProjétil()
     {
+        velocidadeTiroX = velocidadeTiro;
         // Instancia o projétil e define sua posição e velocidade
         GameObject temp = Instantiate(balaProjetil);
         temp.transform.position = arma.position;
-        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiro, 0);
+        temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiroX, 0);
         // Destroi o projétil depois de um tempo para evitar vazamento de memória
-        Destroy(temp.gameObject, tempoTiro);
+        Destroy(temp.gameObject, duracaoDoTiro);
     }
 }

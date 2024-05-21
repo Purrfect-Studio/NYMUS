@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 2769989527036415929}
   - component: {fileID: 7560373794268620884}
   - component: {fileID: 7137310785737719722}
+  - component: {fileID: 1859872676135152912}
   m_Layer: 9
   m_Name: Patrulha (1)
   m_TagString: Untagged
@@ -340,3 +341,15 @@ MonoBehaviour:
   layerChao:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1859872676135152912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769989527036415872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4e1a9d42614cf4b92ea1912c8a9fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

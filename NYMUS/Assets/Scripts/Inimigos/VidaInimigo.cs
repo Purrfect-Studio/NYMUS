@@ -51,7 +51,7 @@ public class VidaInimigo : MonoBehaviour
         if (vidaAtual <= 0)
         {
             Knockback();
-            morrer();
+            StartCoroutine("morreu");
             StartCoroutine("Invulnerabilidade");
         }
         else
@@ -90,12 +90,6 @@ public class VidaInimigo : MonoBehaviour
         invulneravel = true;
         yield return new WaitForSeconds(1f);
         invulneravel = false;
-    }
-
-    void morrer()
-    {
-        animacao.SetBool("estaMorto", true);
-        StartCoroutine("morreu");
     }
 
     IEnumerator morreu()

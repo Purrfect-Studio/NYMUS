@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class ScriptBala : MonoBehaviour
+public class BalaEmOnda : MonoBehaviour
 {
+    public Rigidbody2D rb;
+    private float velocidadeX;
     [Header("Jogador")]
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
     public float danoNoJogador;
     [Header("Collider 2D")]
     public Collider2D Collider2D;
+
+    private void Start()
+    {
+        velocidadeX = Atirar.velocidadeTiroX;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Jogador"))
@@ -34,5 +41,9 @@ public class ScriptBala : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void Update()
+    {
+        rb.velocity = new Vector2(velocidadeX, Mathf.Cos(transform.position.x) * 10);
     }
 }

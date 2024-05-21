@@ -13,6 +13,7 @@ public class VidaJogador : MonoBehaviour
 
     [Header("Invulnerabilidade")]
     public static bool invulneravel;                //Liga e desliga a invulnerabilidade
+    public bool tomeiDano;
 
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite; //Sprite do L3H
@@ -30,6 +31,7 @@ public class VidaJogador : MonoBehaviour
     {
         vidaAtual = vidaMaxima; //Coloca o L3h na vida maxima quando comeca a fase
         invulneravel = false;   //Desativa a invulnerabilidade
+        tomeiDano = false;
         barraDeVida.definirVidaMaxima(vidaMaxima);
     }
 
@@ -70,6 +72,7 @@ public class VidaJogador : MonoBehaviour
     IEnumerator Invulnerabilidade()
     {
         invulneravel = true;                // ativa a invulnerabilidade
+        tomeiDano = true;
         //animacao de piscar
         for (float i = 0f; i < 1f; i += 0.1f)
         {
@@ -78,6 +81,7 @@ public class VidaJogador : MonoBehaviour
             sprite.enabled = true; // ativa o sprite
             yield return new WaitForSeconds(0.1f); //espera 0.1 segundos
         }
+        tomeiDano = true;
         invulneravel = false; // desativa a invulnerabilidade
     }
 
