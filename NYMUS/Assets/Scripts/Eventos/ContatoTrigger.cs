@@ -10,9 +10,9 @@ public class ContatoTrigger : MonoBehaviour
     public UnityEvent evento;
 
     [Header("Configurações")]
-    public int quantidadeAtivacoes = 0; // Quantidade de ativações permitidas
-    public bool ativarSempre = true; // Se verdadeiro, ativa o evento sempre
-
+    public bool ativarSempreOuLimitarAtivacoes; // True = ativa o evento sempre / False = LimitarAtivacoes
+    public int quantidadeAtivacoes; // Quantidade de ativações permitidas
+    
 
     private int ativacoesRestantes; // Contador de ativações restantes
 
@@ -24,7 +24,7 @@ public class ContatoTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ativarSempre)
+        if (ativarSempreOuLimitarAtivacoes)
         {
             // Invoca o evento sempre que o gatilho for acionado
             evento.Invoke();

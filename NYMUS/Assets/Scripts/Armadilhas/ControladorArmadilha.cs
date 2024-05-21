@@ -34,10 +34,4 @@ public class ControladorArmadilha : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-
-    /*IEnumerator Start()
-    {
-        yield return new WaitForSeconds(Random.Range(intervaloParaAtivarArmadilha.x, intervaloParaAtivarArmadilha.y));
-        animator.enabled = true;
-    }*/
 }

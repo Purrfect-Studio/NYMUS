@@ -6,7 +6,17 @@ public class AnimacoesL3H : MonoBehaviour
 {
     [Header("Animator")]
     public Animator animacao;
+    [Header("Acesso a outros Scripts do L3H")]
+    private PlayerControlador playerControlador;
+    private VidaJogador vidaJogador;
+    private Animator animacaoPontoDeAtaque;
 
+    private void Start()
+    {
+        playerControlador = this.GetComponent<PlayerControlador>();
+        animacaoPontoDeAtaque = playerControlador.pontoDeAtaque.GetComponent<Animator>();
+        vidaJogador = this.GetComponent<VidaJogador>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -14,13 +24,14 @@ public class AnimacoesL3H : MonoBehaviour
         {
             animacao.SetBool("estaAndando", false);
             animacao.SetBool("estaPulando", false);
-            animacao.SetBool("estaAtacando", false);
         }
         else
         {
             andar();
+            atacar();
             pular();
             empurrarCaixa();
+            morrer();
         }
     }
 
@@ -33,6 +44,15 @@ public class AnimacoesL3H : MonoBehaviour
         else
         {
             animacao.SetBool("estaAndando", false);
+        }
+    }
+
+    void atacar()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            animacao.SetTrigger("estaAtacando");
+            animacaoPontoDeAtaque.SetTrigger("estaAtacando");
         }
     }
 
@@ -50,13 +70,21 @@ public class AnimacoesL3H : MonoBehaviour
 
     void empurrarCaixa()
     {
-        if (GrudarObjeto.estaEmpurrando == true)
+        if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == true)
         {
             animacao.SetBool("EmpurrandoCaixa", true);
         }
         else
         {
             animacao.SetBool("EmpurrandoCaixa", false);
+        }
+    }
+
+    void morrer()
+    {
+        if (vidaJogador.vidaAtual <= 0)
+        {
+            animacao.SetTrigger("estaMorto");
         }
     }
 }

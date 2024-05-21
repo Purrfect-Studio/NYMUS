@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class InteragirBotao : MonoBehaviour
 {
     [Header("Jogador")]
-    [SerializeField] private JogadorInterage jogador;
+    [SerializeField] private PlayerControlador jogador;
     [SerializeField] private UnityEvent botaoApertado;
 
     public bool podeExecutar;

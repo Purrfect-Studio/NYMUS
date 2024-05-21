@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 6861670330375925677}
   - component: {fileID: 6861670330375925676}
   - component: {fileID: 6861670330375925673}
-  - component: {fileID: 8857691327103373101}
   - component: {fileID: 6861670330375925674}
   - component: {fileID: 5854170835905082914}
   - component: {fileID: 517350288}
@@ -216,20 +215,7 @@ MonoBehaviour:
   sprite: {fileID: 6861670330375925679}
   forcaKnockbackX: 10
   forcaKnockbackY: 10
-  rb: {fileID: 6861670330375925677}
-  animacao: {fileID: 6861670330375925674}
---- !u!114 &8857691327103373101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6861670330375925667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 181da72f6da989a4cb7562ecb2bc510d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  rigidBody2D: {fileID: 0}
 --- !u!95 &6861670330375925674
 Animator:
   serializedVersion: 5
@@ -290,7 +276,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 73852
+  m_InstanceId: 45618
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}

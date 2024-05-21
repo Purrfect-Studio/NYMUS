@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a10fea8351c6594a94cba4c9173d542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontos:
+  pontosDeMovimentacao:
   - {fileID: 4209855312730671459}
   - {fileID: 4209855313923524721}
   - {fileID: 4209855313768086068}
@@ -423,7 +423,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   proximoPonto: 0
-  procurarPonto: 0
+  detectarPontoLigado: 0
   raioDetecao: 0.5
   velocidade: 4
-  tempoSegundos: 0.6
+  tempoDetectarPontoFicaDesativado: 0.5

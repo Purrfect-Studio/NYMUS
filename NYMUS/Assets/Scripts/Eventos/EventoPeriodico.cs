@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class EventoPeriodico : MonoBehaviour
 {
-    [Header("Configurações")]
+    [Header("Intervalo entre Eventos")]
     public int tempoSegundos;
 
     [Header("Evento")]

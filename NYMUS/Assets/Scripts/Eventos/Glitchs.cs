@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Glitchs : MonoBehaviour
 {
-    
     // Referência ao SpriteRenderer do objeto
     private SpriteRenderer spriteRenderer;
 
@@ -23,7 +22,6 @@ public class Glitchs : MonoBehaviour
             objetoTransform = GetComponent<Transform>();
         }
     }
-
 
     // Método para flipar o eixo X
     public void FlipX()
@@ -59,6 +57,22 @@ public class Glitchs : MonoBehaviour
         {
             Vector3 novaPosicao = objetoTransform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0); 
             objetoTransform.position = novaPosicao;
+        }
+    }
+
+    public void Piscar()
+    {
+        StartCoroutine("piscar");
+    }
+
+    IEnumerator piscar()
+    {
+        for (float i = 0f; i < 1f; i += 0.1f)
+        {
+            spriteRenderer.enabled = false; //desativa o sprite
+            yield return new WaitForSeconds(0.1f); //espera 0.1 segundos
+            spriteRenderer.enabled = true; // ativa o sprite
+            yield return new WaitForSeconds(0.1f); //espera 0.1 segundos
         }
     }
 }

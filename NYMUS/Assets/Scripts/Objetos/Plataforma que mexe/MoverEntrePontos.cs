@@ -5,28 +5,28 @@ using UnityEngine;
 public class MoverEntrePontos : MonoBehaviour
 {
     [Header("Pontos de Movimentacao")]
-    public Transform[] pontos;
-    [SerializeField] public LayerMask layerPontosDeMovimento;
+    public Transform[] pontosDeMovimentacao; //Array com todos os pontos de movimentacao
+    [SerializeField] private LayerMask layerPontosDeMovimento;
     [Header("Variaveis de Controle")]
     public int proximoPonto;
-    public bool procurarPonto;
+    public bool detectarPontoLigado;
     public float raioDetecao;
     [Header("Pra Aumentar a Velocidade precisa Diminuir o Tempo")]
     public float velocidade;
-    public float tempoSegundos;
+    public float tempoDetectarPontoFicaDesativado;
 
     // Start is called before the first frame update
     void Start()
     {
         proximoPonto = 0;
-        procurarPonto = true;
+        detectarPontoLigado = true;
     }
 
     private void FixedUpdate()
     {
-        if (procurarPonto == false)
+        if (detectarPontoLigado == false)
         {
-            StartCoroutine("Esperar");
+            StartCoroutine("LigarDetectarPonto");
         }
         else
         {
@@ -36,7 +36,7 @@ public class MoverEntrePontos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (proximoPonto == pontos.Length)
+        if (proximoPonto == pontosDeMovimentacao.Length)
         {
             proximoPonto = 0;
         }
@@ -45,7 +45,7 @@ public class MoverEntrePontos : MonoBehaviour
 
     void movimentacao()
     {
-        transform.position = Vector2.MoveTowards(transform.position, pontos[proximoPonto].transform.position, velocidade * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, pontosDeMovimentacao[proximoPonto].transform.position, velocidade * Time.deltaTime);
     }
 
     void detectarPonto()
@@ -53,10 +53,10 @@ public class MoverEntrePontos : MonoBehaviour
         Collider2D encontrarPonto = Physics2D.OverlapCircle(transform.position, raioDetecao, layerPontosDeMovimento);
         if (encontrarPonto != null)
         {
-            procurarPonto = false;
+            detectarPontoLigado = false;
             //Debug.Log("Cheguei no ponto: "+encontrarPonto.gameObject.name);
             proximoPonto++;
-            if (proximoPonto >= pontos.Length)
+            if (proximoPonto >= pontosDeMovimentacao.Length)
             {
                 proximoPonto = 0;
             }
@@ -64,10 +64,10 @@ public class MoverEntrePontos : MonoBehaviour
         }
     }
 
-    IEnumerator Esperar()
+    IEnumerator LigarDetectarPonto()
     {
-        yield return new WaitForSeconds(tempoSegundos);
-        procurarPonto = true;
+        yield return new WaitForSeconds(tempoDetectarPontoFicaDesativado);
+        detectarPontoLigado = true;
     }
 
     private void OnDrawGizmos()

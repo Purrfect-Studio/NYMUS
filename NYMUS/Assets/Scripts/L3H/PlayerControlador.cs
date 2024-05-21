@@ -36,6 +36,8 @@ public class PlayerControlador : MonoBehaviour
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
     public float alcanceAtaque;     // Area de alcance do ataque
 
+    public bool estaInteragindo { get; set; }
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +68,7 @@ public class PlayerControlador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        interagir();
         if (podeMover == true)
         {
             verificarPuloDuplo();
@@ -80,7 +83,7 @@ public class PlayerControlador : MonoBehaviour
         direcao = Input.GetAxis("Horizontal"); 
         rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
         // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
-        if (direcao > 0 && olhandoDireita == false && GrudarObjeto.estaEmpurrando == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.estaEmpurrando == false)
+        if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
            olhandoDireita = !olhandoDireita;
            transform.Rotate(0f, 180f, 0f);
@@ -124,7 +127,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
-            animacao.SetBool("estaPulando", true);
+            //animacao.SetBool("estaPulando", true);
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
@@ -139,7 +142,7 @@ public class PlayerControlador : MonoBehaviour
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
-            animacao.SetBool("estaPulando", false);
+            //animacao.SetBool("estaPulando", false);
         }
     }
 
@@ -158,7 +161,6 @@ public class PlayerControlador : MonoBehaviour
             estaPulando = true;
             contadorTempoPulo = tempoPulo;
             --puloExtra;
-            animacao.SetBool("estaPulando", true);
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
@@ -173,7 +175,6 @@ public class PlayerControlador : MonoBehaviour
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
-            animacao.SetBool("estaPulando", false);
         }
     }
 
@@ -181,9 +182,6 @@ public class PlayerControlador : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            animacao.SetTrigger("estaAtacando");
-            Animator animator = pontoDeAtaque.GetComponent<Animator>();
-            animator.SetTrigger("estaAtacando");
             Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.transform.position, alcanceAtaque);
             if(acertarInimigo != null)
             {
@@ -195,6 +193,18 @@ public class PlayerControlador : MonoBehaviour
                     inimigo.tomarDano(dano);
                 }
             }
+        }
+    }
+
+    void interagir()
+    {
+        if (Input.GetButtonDown("Interagir"))
+        {
+            estaInteragindo = true;
+        }
+        else
+        {
+            estaInteragindo = false;
         }
     }
 
@@ -210,7 +220,6 @@ public class PlayerControlador : MonoBehaviour
         estaPulando = false; // Impede que o jogador pule
         rb.velocity = Vector2.zero; // Zera a velocidade do jogador
         animacao.SetBool("estaPulando", false); // Desativa a animação de pulo
-        animacao.SetBool("estaAtacando", false); // Desativa a animação de ataque
         animacao.SetBool("estaAndando", false); // Desativa a animação de ataque
         animacao.SetBool("tomarDano", false); // Desativa a animação de ataque
     }
