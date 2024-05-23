@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3974183750072932081}
   - component: {fileID: 3974183750072932082}
   - component: {fileID: 5117377418132728994}
-  - component: {fileID: 3974183750393386401}
+  - component: {fileID: 198315952874499686}
   - component: {fileID: 3974183750393386400}
   - component: {fileID: 7453688134325946019}
   - component: {fileID: 1062836325228817203}
@@ -112,7 +112,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3974183750393386401
+--- !u!114 &198315952874499686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,13 +121,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3974183750072932084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc00d868f6076e041a3f4cde0d68e6d6, type: 3}
+  m_Script: {fileID: 11500000, guid: fb6b452cc6c5cee40a753425675c2a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   balaProjetil: {fileID: 2627624111849504346, guid: fe8f8292f70fec84796ffba179f0d567, type: 3}
-  arma: {fileID: 3974183750896620507}
+  arma:
+  - {fileID: 3974183750896620507}
   velocidadeTiro: 10
-  tempoTiro: 3
+  duracaoDoTiro: 3
+  delayParaInstanciarProjetil: 0
 --- !u!114 &3974183750393386400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,8 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39fdb2f26a49c6439739217bb0e7965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atirar: {fileID: 3974183750393386401}
-  jogador: {fileID: 0}
+  atirar: {fileID: 198315952874499686}
   procuraJogador: 1
   procurarJogador: {fileID: 1062836325228817203}
   municao: 3

@@ -15,7 +15,7 @@ public class BalaEmOnda : MonoBehaviour
 
     private void Start()
     {
-        velocidadeX = Atirar.velocidadeTiroX;
+        velocidadeX = AtirarEmVariosPontos.velocidadeTiroX;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

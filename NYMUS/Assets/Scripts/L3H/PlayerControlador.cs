@@ -8,11 +8,11 @@ using UnityEngine.Events;
 public class PlayerControlador : MonoBehaviour
 {
     [Header("RigidBody")]
-    public Rigidbody2D rb;   // rb = rigidbody
+    private Rigidbody2D rigidBody2D;   // rb = rigidbody
     [Header("BoxCollider")]
-    public BoxCollider2D bc; // bc = box collider 
+    private BoxCollider2D boxCollider2D; // bc = box collider 
     [Header("Animator")]
-    public Animator animacao;
+    private Animator animacao;
 
     [Header("Andar")]
     public int velocidade;   // Velocidade maxima do jogador
@@ -42,7 +42,9 @@ public class PlayerControlador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        animacao = GetComponent<Animator>();
         podeMover = true;
         contadorTempoPulo = tempoPulo;
 
@@ -52,7 +54,7 @@ public class PlayerControlador : MonoBehaviour
 
     private bool estaChao()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        RaycastHit2D chao = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
@@ -80,8 +82,8 @@ public class PlayerControlador : MonoBehaviour
     {
         //<- = -1
         //-> = 1
-        direcao = Input.GetAxis("Horizontal"); 
-        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+        direcao = Input.GetAxis("Horizontal");
+        rigidBody2D.velocity = new Vector2(direcao * velocidade, rigidBody2D.velocity.y);
         // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
         if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
@@ -99,7 +101,7 @@ public class PlayerControlador : MonoBehaviour
         {
             if (contadorTempoPulo > 0) // se estaPulando for true e o tempo do pulo for maior que zero:
             {
-                rb.velocity = new Vector2(rb.velocity.x, forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
+                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
             }
             else
             {
@@ -134,7 +136,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
-            rb.velocity = Vector2.up * forcaPulo;
+            rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
@@ -167,7 +169,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
-            rb.velocity = Vector2.up * forcaPulo;
+            rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
@@ -218,7 +220,7 @@ public class PlayerControlador : MonoBehaviour
         VidaJogador.invulneravel = true;
         podeMover = false; // Impede que o jogador se mova
         estaPulando = false; // Impede que o jogador pule
-        rb.velocity = Vector2.zero; // Zera a velocidade do jogador
+        rigidBody2D.velocity = Vector2.zero; // Zera a velocidade do jogador
         animacao.SetBool("estaPulando", false); // Desativa a animação de pulo
         animacao.SetBool("estaAndando", false); // Desativa a animação de ataque
         animacao.SetBool("tomarDano", false); // Desativa a animação de ataque

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8023712517890877102}
   - component: {fileID: 8023712517890877101}
-  - component: {fileID: 8023712517890877100}
   - component: {fileID: 2119760912}
+  - component: {fileID: 6355635329109112809}
   m_Layer: 0
   m_Name: ArmadilhaAtira
   m_TagString: Untagged
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8023712517890877100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8023712517890877098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc00d868f6076e041a3f4cde0d68e6d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balaProjetil: {fileID: 5201063190086497743, guid: 0c67b41c1ee28d24e9261edb7a7178d4, type: 3}
-  arma: {fileID: 8023712518813621939}
-  velocidadeTiro: -10
-  duracaoDoTiro: 3
 --- !u!114 &2119760912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,14 +99,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39fdb2f26a49c6439739217bb0e7965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atirar: {fileID: 8023712517890877100}
-  jogador: {fileID: 0}
+  atirar: {fileID: 6355635329109112809}
   procuraJogador: 0
   procurarJogador: {fileID: 0}
   municao: 1
   intervaloTiro: 1
   tempoRecarga: 0
   olhandoEsquerda: 0
+--- !u!114 &6355635329109112809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023712517890877098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6b452cc6c5cee40a753425675c2a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balaProjetil: {fileID: 5201063190086497743, guid: 0c67b41c1ee28d24e9261edb7a7178d4, type: 3}
+  arma:
+  - {fileID: 8023712518813621939}
+  velocidadeTiro: -10
+  duracaoDoTiro: 3
+  delayParaInstanciarProjetil: 0
 --- !u!1 &8023712518813621938
 GameObject:
   m_ObjectHideFlags: 0

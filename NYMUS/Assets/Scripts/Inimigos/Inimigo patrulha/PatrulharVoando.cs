@@ -92,7 +92,7 @@ public class PatrulharVoando : MonoBehaviour
 
     void VoarParaJogador()
     {
-        Vector3 direcaoParaJogador = (procurarJogadorScript.jogador.position - transform.position).normalized;
+        Vector3 direcaoParaJogador = (procurarJogadorScript.jogador.transform.position - transform.position).normalized;
         direcao = new Vector2(direcaoParaJogador.x, direcaoParaJogador.y);
         Mover();
     }

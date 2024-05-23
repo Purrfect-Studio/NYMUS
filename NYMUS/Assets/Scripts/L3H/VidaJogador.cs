@@ -16,7 +16,7 @@ public class VidaJogador : MonoBehaviour
     public bool tomeiDano;
 
     [Header("Sprite")]
-    [SerializeField] private SpriteRenderer sprite; //Sprite do L3H
+    private SpriteRenderer sprite; //Sprite do L3H
 
     [Header("Knockback")]
     public float forcaKnockbackX;          // Forca do knockback
@@ -24,15 +24,16 @@ public class VidaJogador : MonoBehaviour
     public static int knockbackParaDireita;         // Direcao do knockback
 
     [Header("RigidBody")]
-    public Rigidbody2D rigidBody2D;                          // rb = rigidbody
+    private Rigidbody2D rigidBody2D;                          // rb = rigidbody
 
     // Start é ativado no primeiro frame de cada fase
     void Start()
     {
         vidaAtual = vidaMaxima; //Coloca o L3h na vida maxima quando comeca a fase
         invulneravel = false;   //Desativa a invulnerabilidade
-        tomeiDano = false;
         barraDeVida.definirVidaMaxima(vidaMaxima);
+        sprite = GetComponent<SpriteRenderer>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     public void curar(float cura)

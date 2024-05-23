@@ -6,14 +6,14 @@ using UnityEngine.Events;
 public class InimigoAtiraControlador : MonoBehaviour
 {
     [Header("Script Atirar")]
-    public Atirar atirar; // Componente que lida com a lógica de atirar
+    public AtirarEmVariosPontos atirar; // Componente que lida com a lógica de atirar
 
     [Header("Jogador")]
-    public Transform jogador; // Referência para o transform do jogador
+    private GameObject jogador; // Referência para o transform do jogador
 
     [Header("Script Procurar Jogador")]
-    public bool procuraJogador = true;
-    public ProcurarJogador procurarJogador = null;
+    public bool procuraJogador;
+    public ProcurarJogador procurarJogador;
 
     [Header("Configurações do Tiro")]
     public int municao; // Quantidade de tiros antes de recarregar
@@ -30,6 +30,12 @@ public class InimigoAtiraControlador : MonoBehaviour
         // Inicialização das variáveis
         contadorIntervaloTiro = intervaloTiro;
         quantidadeTiros = municao;
+        if(procuraJogador)
+        {
+            procurarJogador = GetComponent<ProcurarJogador>();
+        }
+        atirar = GetComponent<AtirarEmVariosPontos>();
+        jogador = GameObject.FindWithTag("Jogador");
     }
 
     void Atirar()
@@ -67,13 +73,13 @@ public class InimigoAtiraControlador : MonoBehaviour
         {
             if (procurarJogador != null && procurarJogador.procurarJogador()) // Verifica se as variáveis desnecessárias 
             {
-                if (jogador != null && jogador.position.x < transform.position.x && !olhandoEsquerda)
+                if (jogador != null && jogador.transform.position.x < transform.position.x && !olhandoEsquerda)
                 {
                     olhandoEsquerda = true;
                     transform.Rotate(0f, 180f, 0f);
                     atirar.velocidadeTiro *= -1;
                 }
-                else if (jogador != null && jogador.position.x > transform.position.x && olhandoEsquerda)
+                else if (jogador != null && jogador.transform.position.x > transform.position.x && olhandoEsquerda)
                 {
                     olhandoEsquerda = false;
                     transform.Rotate(0f, 180f, 0f);
