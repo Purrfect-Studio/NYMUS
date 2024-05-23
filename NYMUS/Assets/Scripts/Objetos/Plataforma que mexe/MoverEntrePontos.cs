@@ -8,6 +8,7 @@ public class MoverEntrePontos : MonoBehaviour
     public Transform[] pontosDeMovimentacao; //Array com todos os pontos de movimentacao
     [SerializeField] private LayerMask layerPontosDeMovimento;
     [Header("Variaveis de Controle")]
+    public bool ligado = true;
     public int proximoPonto;
     public bool detectarPontoLigado;
     public float raioDetecao;
@@ -40,6 +41,7 @@ public class MoverEntrePontos : MonoBehaviour
         {
             proximoPonto = 0;
         }
+        if(ligado)
         movimentacao();
     }
 
@@ -75,4 +77,14 @@ public class MoverEntrePontos : MonoBehaviour
         // Desenha uma esfera de gizmos para visualizar a área de busca
         Gizmos.DrawWireSphere(transform.position, raioDetecao);
     }
+
+    public void ligar()
+    {
+        ligado = true;
+    }
+    public void desligar()
+    {
+        ligado = false;
+    }
+
 }
