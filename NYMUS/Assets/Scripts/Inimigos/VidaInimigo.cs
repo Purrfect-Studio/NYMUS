@@ -25,17 +25,20 @@ public class VidaInimigo : MonoBehaviour
     [Header("Animator")]
     public Animator animacao;
 
+    [Header("jogador")]
+    public GameObject jogador;
+
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite;
 
-    [Header("jogador")]
-    public Transform jogador;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         invulneravel = false;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
+        jogador = GameObject.FindGameObjectWithTag("Jogador");
     }
 
     // Update is called once per frame
