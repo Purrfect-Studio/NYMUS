@@ -38,8 +38,9 @@ public class PlayerControlador : MonoBehaviour
     public float alcanceAtaque;     // Area de alcance do ataque
 
     [Header("Chave")]
-    public Text chaveText;
-    private int quantidadesDeChaves;
+    public Inventario inventario;
+    /*public Text chaveText;
+    private int quantidadesDeChaves;*/
     public bool estaInteragindo { get; set; }
 
 
@@ -49,12 +50,13 @@ public class PlayerControlador : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animacao = GetComponent<Animator>();
+        inventario = GetComponent<Inventario>();
+
         podeMover = true;
         contadorTempoPulo = tempoPulo;
 
         olhandoDireita = true;
         direcao = 1;
-        quantidadesDeChaves = 0;
     }
 
     private bool estaChao()
@@ -84,7 +86,7 @@ public class PlayerControlador : MonoBehaviour
             verificarPuloDuplo();
             ataque();
         }
-        chaveText.text = quantidadesDeChaves.ToString();
+        //chaveText.text = quantidadesDeChaves.ToString();
     }
 
     void andar()
@@ -257,12 +259,5 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Chave"))
-        {
-            quantidadesDeChaves += 1;
-            Destroy(collision.gameObject);
-        }
-    }
+    
 }
