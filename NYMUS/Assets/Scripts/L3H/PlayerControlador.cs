@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 public class PlayerControlador : MonoBehaviour
@@ -36,6 +37,9 @@ public class PlayerControlador : MonoBehaviour
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
     public float alcanceAtaque;     // Area de alcance do ataque
 
+    [Header("Chave")]
+    public Text chaveText;
+    private int quantidadesDeChaves;
     public bool estaInteragindo { get; set; }
 
 
@@ -50,6 +54,7 @@ public class PlayerControlador : MonoBehaviour
 
         olhandoDireita = true;
         direcao = 1;
+        quantidadesDeChaves = 0;
     }
 
     private bool estaChao()
@@ -79,6 +84,7 @@ public class PlayerControlador : MonoBehaviour
             verificarPuloDuplo();
             ataque();
         }
+        chaveText.text = quantidadesDeChaves.ToString();
     }
 
     void andar()
@@ -251,4 +257,12 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Chave"))
+        {
+            quantidadesDeChaves += 1;
+            Destroy(collision.gameObject);
+        }
+    }
 }
