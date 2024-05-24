@@ -63,7 +63,10 @@ public class PlayerControlador : MonoBehaviour
         if (podeMover == true)
         {
             andar();
-            pulo();
+            if(GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa ==false)
+            {
+                pulo();
+            }
         }
     }
 
@@ -71,7 +74,7 @@ public class PlayerControlador : MonoBehaviour
     void Update()
     {
         interagir();
-        if (podeMover == true)
+        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
             verificarPuloDuplo();
             ataque();

@@ -28,10 +28,13 @@ public class AnimacoesL3H : MonoBehaviour
         else
         {
             andar();
-            atacar();
-            pular();
             empurrarCaixa();
             morrer();
+            if(GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+            {
+                atacar();
+                pular();
+            }
         }
     }
 
