@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 5854170835905082914}
   - component: {fileID: 517350288}
   - component: {fileID: 517350309}
+  - component: {fileID: 6563516998424386374}
   m_Layer: 8
   m_Name: L3H final
   m_TagString: Jogador
@@ -269,6 +270,7 @@ MonoBehaviour:
   dano: 5
   pontoDeAtaque: {fileID: 6861670330181198320}
   alcanceAtaque: 1.66
+  inventario: {fileID: 6563516998424386374}
 --- !u!114 &6861670330375925673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +349,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67898
+  m_InstanceId: 30106
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}
@@ -371,6 +373,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e7b0c14ace488141ae2408decc309c7, type: 3}
   - {fileID: 8300000, guid: f2c93a42048711f43844a4dbdbcddadc, type: 3}
   - {fileID: 8300000, guid: d114ddea871cea74eaab5983f5bef00e, type: 3}
+--- !u!114 &6563516998424386374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861670330375925667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201eff9d77afb904ba0b9ecf7d6eeb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7695755410459178363
 GameObject:
   m_ObjectHideFlags: 0

@@ -155,8 +155,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -999627611
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -622838323, guid: 111b102ba84a41944988e4ecdc29edd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -320,8 +320,8 @@ MonoBehaviour:
   forcaKnockbackX: 5
   forcaKnockbackY: 5
   animacao: {fileID: 2769989527036415935}
-  sprite: {fileID: 2769989527036415873}
   jogador: {fileID: 0}
+  sprite: {fileID: 2769989527036415873}
 --- !u!114 &7137310785737719722
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -156,15 +156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9c77257f9a93a4abc51810cd5f2324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
-  vidaAtual: 100
+  vidaMaxima: 30
+  vidaAtual: 30
   inimigo: {fileID: 2543594680010361501}
   rb: {fileID: 576308968}
-  forcaKnockbackX: 0
-  forcaKnockbackY: 0
-  animacao: {fileID: 0}
-  sprite: {fileID: 2543594680010361500}
+  forcaKnockbackX: 5
+  forcaKnockbackY: 5
+  animacao: {fileID: 2543594680010361506}
   jogador: {fileID: 0}
+  sprite: {fileID: 2543594680010361500}
 --- !u!114 &576308970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4e1a9d42614cf4b92ea1912c8a9fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2543594680010361506 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3800828331445148402, guid: 6112b5f8c23bf8b4d92cab2a199aba7a, type: 3}
+  m_PrefabInstance: {fileID: 1725979098210111568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!58 &2543594680010361510 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3800828331445148406, guid: 6112b5f8c23bf8b4d92cab2a199aba7a, type: 3}

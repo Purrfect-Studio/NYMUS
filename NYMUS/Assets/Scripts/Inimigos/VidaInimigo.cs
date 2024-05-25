@@ -39,6 +39,10 @@ public class VidaInimigo : MonoBehaviour
         invulneravel = false;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        if(animacao != null)
+        {
+            animacao = GetComponent<Animator>();
+        }
     }
 
     // Update is called once per frame
@@ -48,7 +52,7 @@ public class VidaInimigo : MonoBehaviour
 
     public void tomarDano(float dano)
     {
-        //Debug.Log("Tomei dano" + dano);
+        Debug.Log("Tomei dano" + dano);
         vidaAtual -= dano;
         StartCoroutine("Piscar");
         if (vidaAtual <= 0)

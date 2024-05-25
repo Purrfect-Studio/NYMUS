@@ -11,13 +11,17 @@ public class DanoDeColisao : MonoBehaviour
 
     [Header("Jogador")]
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
-    public Transform jogador;
+    public GameObject jogador;
     public float danoNoJogador;
 
     [Header("Inimigo")]
     [SerializeField] private LayerMask layerInimigo;
     public float danoNoInimigo;
 
+    private void Start()
+    {
+        jogador = GameObject.FindWithTag("Jogador");
+    }
     // Update is called once per frame
     void Update()
     {

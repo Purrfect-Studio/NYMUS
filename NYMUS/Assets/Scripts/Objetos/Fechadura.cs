@@ -24,6 +24,7 @@ public class Fechadura : MonoBehaviour
     {
         if (travado && Inventario.chavesAtual>0)
         {
+            Inventario.chavesAtual -= 1;
             travado = false;
             animacao.SetBool("ativarAlavanca", true);
             eventoDestravado.Invoke();
