@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 6220971515930712558}
   - component: {fileID: 5790264944581202506}
   - component: {fileID: 1887602307692047394}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Plataforma com mato
   m_TagString: PlataformaMove
   m_Icon: {fileID: 0}
@@ -422,6 +422,7 @@ MonoBehaviour:
   layerPontosDeMovimento:
     serializedVersion: 2
     m_Bits: 2048
+  ligado: 1
   proximoPonto: 0
   detectarPontoLigado: 0
   raioDetecao: 0.5

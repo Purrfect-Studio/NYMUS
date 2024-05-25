@@ -12,9 +12,18 @@ public class InteragirBotao : MonoBehaviour
 
     public bool podeExecutar;
 
+    [Header("Tecla")]
+    public GameObject tecla;
+    private SpriteRenderer spriteTecla;
+
     private void Start()
     {
         podeExecutar = false;
+        if (tecla != null)
+        {
+            spriteTecla = tecla.GetComponent<SpriteRenderer>();
+            spriteTecla.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -23,6 +32,17 @@ public class InteragirBotao : MonoBehaviour
         if (jogador.estaInteragindo && podeExecutar)
         {
             botaoApertado.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Jogador"))
+        {
+            if(tecla != null)
+            {
+                spriteTecla.enabled = true;
+            }
         }
     }
 
@@ -39,6 +59,10 @@ public class InteragirBotao : MonoBehaviour
         if (collision.gameObject.CompareTag("Jogador"))
         {
             podeExecutar = false;
+            if (tecla != null)
+            {
+                spriteTecla.enabled = false;
+            }
         }
     }
 }
