@@ -8,57 +8,95 @@ using UnityEngine.UI;
 public class DialogoControlador : MonoBehaviour
 {
     [Header("GameObject do Dialogo")]
-    public GameObject dialogoObj; //objeto do dialogo
+    public GameObject dialogoObj; // Objeto do diálogo na interface
     [Header("Imagem")]
-    public Image fotoPersonagem;
+    public Image fotoPersonagem; // Imagem do personagem que está falando
     [Header("Texto do Dialogo")]
-    public Text textoFala;
+    public Text textoFala; // Texto do diálogo
     [Header("Nome do personagem")]
-    public Text nomePersonagem;
+    public Text nomePersonagem; // Nome do personagem que está falando
 
     [Header("Configuracoes")]
-    public float velocidadeDigitacao; // Velocidade que vai aparecer os dígitos
-    private string[] sentencas;
-    private int index;
+    public float velocidadeDigitacao; // Velocidade que as letras do texto aparecem
+    private string[] sentencas; // Array de sentenças que compõem o diálogo
+    private int index; // Índice da sentença atual
 
-    [SerializeField] private UnityEvent travarMovimentacao;
-    [SerializeField] private UnityEvent liberarMovimentacao;
+    // Flag para verificar se uma sentença está sendo escrita no momento
+    private bool escrevendoSentenca;
+    // Variável para armazenar a corrotina ativa
+    private Coroutine corrotinaEscrever;
+
+    [SerializeField] private UnityEvent travarMovimentacao; // Evento para travar a movimentação do personagem
+    [SerializeField] private UnityEvent liberarMovimentacao; // Evento para liberar a movimentação do personagem
 
     public void Fala(Sprite foto, string[] texto, string nomedoPersonagem)
     {
+        // Ativa o objeto de diálogo na interface
         dialogoObj.SetActive(true);
+        // Define a imagem do personagem
         fotoPersonagem.sprite = foto;
+        // Define as sentenças do diálogo
         sentencas = texto;
+        // Define o nome do personagem
         nomePersonagem.text = nomedoPersonagem;
+        // Invoca o evento para travar a movimentação
         travarMovimentacao.Invoke();
-        StartCoroutine(EscreverSentenca());
+        // Inicia a corrotina para escrever a sentença
+        index = 0; // Certifica-se que o índice comece do zero
+        corrotinaEscrever = StartCoroutine(EscreverSentenca());
     }
-    
+
     IEnumerator EscreverSentenca()
     {
+        // Seta a flag para indicar que uma sentença está sendo escrita
+        escrevendoSentenca = true;
+        // Limpa o texto atual
+        textoFala.text = "";
+
+        // Itera sobre cada letra da sentença atual e a adiciona ao texto de fala
         foreach (char letra in sentencas[index].ToCharArray())
         {
-            textoFala.text += letra; //Somando uma letra no string da fala por vez
-            yield return new WaitForSeconds(velocidadeDigitacao);
+            textoFala.text += letra; // Adiciona uma letra ao texto
+            yield return new WaitForSeconds(velocidadeDigitacao); // Aguarda um intervalo de tempo antes de adicionar a próxima letra
         }
+
+        // Seta a flag para indicar que a sentença terminou de ser escrita
+        escrevendoSentenca = false;
     }
 
     public void PassarSentenca()
     {
         Console.Write("passou sentenca");
-        if (textoFala.text == sentencas[index])
+        // Verifica se uma sentença está sendo escrita
+        if (escrevendoSentenca)
         {
-            if (index < sentencas.Length-1) // Verifica se ainda tem dialogos
+            // Para a corrotina de escrita
+            StopCoroutine(corrotinaEscrever);
+            // Completa imediatamente a sentença atual
+            textoFala.text = sentencas[index];
+            // Seta a flag para indicar que a sentença terminou de ser escrita
+            escrevendoSentenca = false;
+        }
+        // Verifica se o texto atual é igual à sentença atual
+        else if (textoFala.text == sentencas[index])
+        {
+            // Verifica se ainda existem sentenças a serem mostradas
+            if (index < sentencas.Length - 1)
             {
+                // Incrementa o índice para a próxima sentença
                 index++;
-                textoFala.text = ""; //limpa a caixa de texto para o prox texto
-                StartCoroutine(EscreverSentenca());
+                // Inicia a corrotina para escrever a próxima sentença
+                corrotinaEscrever = StartCoroutine(EscreverSentenca());
             }
-            else //acabou os textos
+            else // Todas as sentenças foram mostradas
             {
+                // Limpa o texto de fala
                 textoFala.text = "";
+                // Reseta o índice
                 index = 0;
+                // Desativa o objeto de diálogo
                 dialogoObj.SetActive(false);
+                // Invoca o evento para liberar a movimentação
                 liberarMovimentacao.Invoke();
             }
         }
