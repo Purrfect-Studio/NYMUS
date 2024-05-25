@@ -93,8 +93,8 @@ public class PatrulharVoando : MonoBehaviour
     void VoarParaJogador()
     {
         Vector2 direcaoParaJogador = (procurarJogadorScript.jogador.transform.position - transform.position).normalized;
-        direcao = new Vector2(direcaoParaJogador.x, direcaoParaJogador.y);
-        Mover();
+        // Movimenta o morcego em direção ao jogador sem alterar a direção original
+        transform.position = Vector2.MoveTowards(transform.position, procurarJogadorScript.jogador.transform.position, velocidade * Time.deltaTime);
     }
 
     // Método para desenhar o raio limite no Editor
