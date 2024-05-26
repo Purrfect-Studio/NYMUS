@@ -8,6 +8,7 @@ public class ControladorArmadilha : MonoBehaviour
     [Header("Intervalo de Ativacao da armadilha")]
     public float tempoDesativada;
     public float quantidadeDeEspetadas;
+    public float delayParaComecar;
     [Header("Animator")]
     private Animator animator;
 
@@ -25,9 +26,15 @@ public class ControladorArmadilha : MonoBehaviour
         StartCoroutine("Ativar");
     }
 
+    IEnumerator Comecar()
+    {
+        yield return new WaitForSeconds(delayParaComecar);
+        StartCoroutine("Ativar");
+    }
+
     private void Start()
     {
-        StartCoroutine("Ativar"); 
+        StartCoroutine("Comecar"); 
     }
 
     private void Awake()
