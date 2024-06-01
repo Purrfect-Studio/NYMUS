@@ -30,7 +30,8 @@ public class PlayerControlador : MonoBehaviour
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
     public static bool estaPulando;  // Diz se o jogador esta pulando ou nao
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
-    private int puloExtra = 1;       // Quantidade de pulos que o jogador pode dar
+    public int quantidadeDePulosExtras;
+    public int puloExtra;       // Quantidade de pulos que o jogador pode dar
 
     [Header("Ataque")]
     public float dano;
@@ -39,8 +40,6 @@ public class PlayerControlador : MonoBehaviour
 
     [Header("Chave")]
     public Inventario inventario;
-    /*public Text chaveText;
-    private int quantidadesDeChaves;*/
     public bool estaInteragindo { get; set; }
 
 
@@ -54,6 +53,7 @@ public class PlayerControlador : MonoBehaviour
 
         podeMover = true;
         contadorTempoPulo = tempoPulo;
+        puloExtra = quantidadeDePulosExtras;
 
         olhandoDireita = true;
         direcao = 1;
@@ -70,10 +70,10 @@ public class PlayerControlador : MonoBehaviour
         if (podeMover == true)
         {
             andar();
-            if(GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa ==false)
-            {
-                pulo();
-            }
+        }
+        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+        {
+            pulo();
         }
     }
 
@@ -86,7 +86,6 @@ public class PlayerControlador : MonoBehaviour
             verificarPuloDuplo();
             ataque();
         }
-        //chaveText.text = quantidadesDeChaves.ToString();
     }
 
     void andar()
@@ -110,7 +109,7 @@ public class PlayerControlador : MonoBehaviour
     {
         if (estaPulando == true) 
         {
-            if (contadorTempoPulo > 0) // se estaPulando for true e o tempo do pulo for maior que zero:
+            if (contadorTempoPulo > 0 && possuiPuloDuplo == false || possuiPuloDuplo == true && (puloExtra > 0 && contadorTempoPulo > 0)) // se estaPulando for true e o tempo do pulo for maior que zero:
             {
                 rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
             }
@@ -140,7 +139,6 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
-            //animacao.SetBool("estaPulando", true);
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
@@ -155,7 +153,6 @@ public class PlayerControlador : MonoBehaviour
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
-            //animacao.SetBool("estaPulando", false);
         }
     }
 
@@ -164,7 +161,7 @@ public class PlayerControlador : MonoBehaviour
         if (estaChao() == true)
         {
             //se o jogador encosta no chao reseta a quantidade de pulos
-            puloExtra = 1;
+            puloExtra = quantidadeDePulosExtras;
         }
 
         if (Input.GetKeyDown(KeyCode.W) && puloExtra > 0 || Input.GetKeyDown(KeyCode.Space) && puloExtra > 0)
@@ -173,7 +170,7 @@ public class PlayerControlador : MonoBehaviour
             // estaPulando=true reseta o tempo do pulo e diminui 1 na quantidadePulos
             estaPulando = true;
             contadorTempoPulo = tempoPulo;
-            --puloExtra;
+            puloExtra--;
         }
 
         if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
