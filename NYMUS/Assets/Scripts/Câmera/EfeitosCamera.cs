@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EfeitosCamera : MonoBehaviour
 {
-    [Header("Movimentacao")]
-
+    [Header("Configurações")]
     public Camera cameraprincipal;
     private float tamanhoNormal;
 
-    int tamanhoFinal = 15;
-    float delay = 3;
+    private bool estaComZoom = false;
+    float tamanhoFinal = 15f; // Depois tentar colocar esse valor como parâmetro no método
+    float delay = 3; // Depois tentar colocar esse valor como parâmetro no método
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +23,19 @@ public class EfeitosCamera : MonoBehaviour
  
     public void MudarTamanho()
     {        
-        StartCoroutine(MudarAoLongoDoTempo(tamanhoFinal, delay));
+        if (estaComZoom == false)
+        {
+            StartCoroutine(MudarAoLongoDoTempo(tamanhoFinal, delay));
+            estaComZoom = true; 
+        }
+        else
+        {
+            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal, delay));
+            estaComZoom = false;
+        }
     }
 
-    public IEnumerator MudarAoLongoDoTempo(int tamanhoFinal, float delay)
+    public IEnumerator MudarAoLongoDoTempo(float tamanhoFinal, float delay)
     {
         float tamanhoInicial = cameraprincipal.orthographicSize;
         float tempoInicial = Time.time;
