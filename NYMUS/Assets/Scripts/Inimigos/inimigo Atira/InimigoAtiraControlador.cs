@@ -6,6 +6,9 @@ using UnityEngine.Events;
 public class InimigoAtiraControlador : MonoBehaviour
 {
     [Header("Script Atirar")]
+    public bool ligado = true;
+
+    [Header("Script Atirar")]
     public AtirarEmVariosPontos atirar; // Componente que lida com a lógica de atirar
 
     [Header("Jogador")]
@@ -59,13 +62,18 @@ public class InimigoAtiraControlador : MonoBehaviour
     void Update()
     {
         // Atualiza o intervalo entre os tiros
-        if (contadorIntervaloTiro < 0)
+        if (ligado)
         {
-            Atirar();
-        }
-        else
-        {
-            contadorIntervaloTiro -= Time.deltaTime;
+
+
+            if (contadorIntervaloTiro < 0)
+            {
+                Atirar();
+            }
+            else
+            {
+                contadorIntervaloTiro -= Time.deltaTime;
+            }
         }
 
         // Verifica a direção do jogador e atualiza a direção do inimigo se procuraJogador for true
@@ -87,5 +95,13 @@ public class InimigoAtiraControlador : MonoBehaviour
                 }
             }
         }
+    }
+    public void ligar()
+    {
+        ligado = true;
+    }
+    public void desligar()
+    {
+        ligado = false;
     }
 }
