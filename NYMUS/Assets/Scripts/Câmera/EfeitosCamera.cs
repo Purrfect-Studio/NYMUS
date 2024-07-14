@@ -9,7 +9,7 @@ public class EfeitosCamera : MonoBehaviour
     private float tamanhoNormal;
 
     private bool estaComZoom = false;
-    float tamanhoFinal = 15f; // Depois tentar colocar esse valor como parâmetro no método
+    float tamanhoFinal = 10f; // Depois tentar colocar esse valor como parâmetro no método
     float delay = 3; // Depois tentar colocar esse valor como parâmetro no método
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,30 @@ public class EfeitosCamera : MonoBehaviour
     // Update is called once per frame
 
 
- 
+
+
+    public void DarZoom()
+    {
+        if (!estaComZoom)
+        {
+            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal/1.6f, delay));
+            estaComZoom = true;
+        }
+    }
+    public void DarZoomOut()
+    {
+        if (estaComZoom)
+        {
+            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal* 1.6f, delay));
+            estaComZoom = false;
+        }
+    }
+    public void TirarZoom()
+    {
+           StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal, delay));
+            estaComZoom = false;
+    }
+
     public void MudarTamanho()
     {        
         if (estaComZoom == false)
@@ -49,3 +72,7 @@ public class EfeitosCamera : MonoBehaviour
         cameraprincipal.orthographicSize = tamanhoFinal;
     }
 }
+
+
+
+

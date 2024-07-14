@@ -13,7 +13,7 @@ public class CameraSegue : MonoBehaviour
     public float delayTempo; // Delay da câmera chegar no jogador
     public float velocidadeDeIrPraPontos;
 
-    private Vector3 cameraDestination; // Posição de destino da câmera quando não estiver seguindo o jogador
+    private Vector3 destinoCamera; // Posição de destino da câmera quando não estiver seguindo o jogador
     private bool seguindoJogador = true; // Flag para indicar se a câmera está seguindo o jogador
 
     private void FixedUpdate()
@@ -28,23 +28,16 @@ public class CameraSegue : MonoBehaviour
         else
         {
             // Se não estiver seguindo o jogador, move para a posição de destino
-            transform.position = Vector3.Lerp(transform.position, cameraDestination, velocidadeDeIrPraPontos * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, destinoCamera, velocidadeDeIrPraPontos * Time.deltaTime);
         }
     }
 
     // Método para fazer a câmera parar de seguir o jogador e ir para uma posição específica
     public void MoverCamera(GameObject ponto)
     {
-        if (seguindoJogador)
-        {
             Vector3 destino = ponto.transform.position;
             seguindoJogador = false;
-            cameraDestination = destino + new Vector3(0, 0, -10); // Afasta a câmera do cenário
-        }
-        else
-        {
-            VoltarASeguirJogador();
-        }
+            destinoCamera = destino + new Vector3(0, 0, -10); // Afasta a câmera do cenário
     }
 
     // Método para fazer a câmera voltar a seguir o jogador
