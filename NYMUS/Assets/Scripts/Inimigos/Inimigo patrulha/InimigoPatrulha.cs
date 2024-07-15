@@ -23,7 +23,10 @@ public class InimigoPatrulha : MonoBehaviour
 
     void Update()
     {
-        Patrulha();
+        if (VidaInimigo.podeMover == true)
+        {
+            Patrulha();
+        }
     }
 
     private bool parede()
