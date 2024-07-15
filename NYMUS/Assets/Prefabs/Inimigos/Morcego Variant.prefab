@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3800828331445148402, guid: 6112b5f8c23bf8b4d92cab2a199aba7a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5d70cac53fc7615408357c99b5f947dd, type: 2}
     - target: {fileID: 3800828331445148403, guid: 6112b5f8c23bf8b4d92cab2a199aba7a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -124,6 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 5
   raioMovimentacao: 20
+  olhandoDireita: 0
+  sprite: {fileID: 0}
   intervaloBaterAsas: 1
   alturaPulo: 1
   layerColisao:

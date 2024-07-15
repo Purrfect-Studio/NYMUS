@@ -264,12 +264,21 @@ MonoBehaviour:
   layerChao:
     serializedVersion: 2
     m_Bits: 64
+  layerEscada:
+    serializedVersion: 2
+    m_Bits: 4096
   possuiPuloDuplo: 0
   forcaPulo: 10
   tempoPulo: 0.2
+  quantidadeDePulosExtras: 0
+  puloExtra: 0
   dano: 5
   pontoDeAtaque: {fileID: 6861670330181198320}
   alcanceAtaque: 1.66
+  estaSubindoEscada: 0
+  estaDescendoEscada: 0
+  podeInteragirEscada: 0
+  velocidadeEscada: 10
   inventario: {fileID: 6563516998424386374}
 --- !u!114 &6861670330375925673
 MonoBehaviour:
@@ -349,7 +358,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30106
+  m_InstanceId: 109118
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}

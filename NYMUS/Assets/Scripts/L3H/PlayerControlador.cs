@@ -23,6 +23,8 @@ public class PlayerControlador : MonoBehaviour
 
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
+    [Header("Layer da Escada")]
+    [SerializeField] private LayerMask layerEscada;
 
     [Header("Pulo")]
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
@@ -32,11 +34,18 @@ public class PlayerControlador : MonoBehaviour
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
     public int quantidadeDePulosExtras;
     public int puloExtra;       // Quantidade de pulos que o jogador pode dar
+    private float gravidade;
 
     [Header("Ataque")]
     public float dano;
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
     public float alcanceAtaque;     // Area de alcance do ataque
+
+    [Header("Escada")]
+    public bool estaSubindoEscada;
+    public bool estaDescendoEscada;
+    public bool podeInteragirEscada;
+    public float velocidadeEscada;
 
     [Header("Chave")]
     public Inventario inventario;
@@ -54,6 +63,7 @@ public class PlayerControlador : MonoBehaviour
         podeMover = true;
         contadorTempoPulo = tempoPulo;
         puloExtra = quantidadeDePulosExtras;
+        gravidade = rigidBody2D.gravityScale;
 
         olhandoDireita = true;
         direcao = 1;
@@ -71,7 +81,7 @@ public class PlayerControlador : MonoBehaviour
         {
             andar();
         }
-        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
         {
             pulo();
         }
@@ -80,8 +90,19 @@ public class PlayerControlador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        verificarSubirEscada();
+        if(podeInteragirEscada == true)
+        {
+            rigidBody2D.gravityScale = 0;
+        }
+        else
+        {
+            rigidBody2D.gravityScale = gravidade;
+            estaSubindoEscada = false;
+            estaDescendoEscada = false;
+        }
         interagir();
-        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
         {
             verificarPuloDuplo();
             ataque();
@@ -217,6 +238,58 @@ public class PlayerControlador : MonoBehaviour
             estaInteragindo = false;
         }
     }
+    void subirEscada()
+    {
+        if (estaDescendoEscada == true || estaSubindoEscada == true)
+        {
+            if (estaDescendoEscada == true)
+            {
+                rigidBody2D.velocity = Vector2.down * velocidadeEscada;
+            }
+            if (estaSubindoEscada == true)
+            {
+                rigidBody2D.velocity = Vector2.up * velocidadeEscada;
+            }
+        }
+        else
+        {
+            rigidBody2D.velocity = Vector2.zero;
+        }
+    }
+    void verificarSubirEscada()
+    {
+        if(colisaoEscada())
+        {
+            podeInteragirEscada = true;
+            if (Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.W))
+            {
+                estaSubindoEscada = true;
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                estaSubindoEscada = false;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.S))
+            {
+                estaDescendoEscada = true;
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                estaDescendoEscada = false;
+            }
+            subirEscada();
+        }
+        else
+        {
+            podeInteragirEscada = false;
+        }
+    }
+
+    public bool colisaoEscada()
+    {
+        RaycastHit2D colisao = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.05f, layerEscada);
+        return colisao.collider != null; 
+    }
 
     private void OnDrawGizmos()
     {
@@ -246,6 +319,11 @@ public class PlayerControlador : MonoBehaviour
         {
             transform.parent = collision.transform;
         }
+        if (collision.transform.tag == "Escada")
+        {
+            podeInteragirEscada = true;
+            rigidBody2D.gravityScale = 0;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -254,7 +332,10 @@ public class PlayerControlador : MonoBehaviour
         {
             transform.parent = null;
         }
+        if (collision.transform.tag == "Escada")
+        {
+           podeInteragirEscada = false;
+           rigidBody2D.gravityScale = gravidade;
+        }
     }
-
-    
 }
