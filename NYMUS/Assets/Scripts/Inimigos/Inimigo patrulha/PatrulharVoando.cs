@@ -32,21 +32,24 @@ public class PatrulharVoando : MonoBehaviour
 
     void Update()
     {
-        tempoDesdeUltimoPulo += Time.deltaTime;
+        if (VidaInimigo.podeMover == true)
+        {
+            tempoDesdeUltimoPulo += Time.deltaTime;
 
-        if (tempoDesdeUltimoPulo >= intervaloBaterAsas)
-        {
-            BaterAsas();
-            tempoDesdeUltimoPulo = 0;
-        }
+            if (tempoDesdeUltimoPulo >= intervaloBaterAsas)
+            {
+                BaterAsas();
+                tempoDesdeUltimoPulo = 0;
+            }
 
-        if (procurarJogadorScript.procurarJogador())
-        {
-            VoarParaJogador();
-        }
-        else
-        {
-            Mover();
+            if (procurarJogadorScript.procurarJogador())
+            {
+                VoarParaJogador();
+            }
+            else
+            {
+                Mover();
+            }
         }
 
         VerificarLimites();
