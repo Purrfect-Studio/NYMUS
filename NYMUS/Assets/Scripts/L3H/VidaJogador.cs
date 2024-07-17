@@ -51,6 +51,7 @@ public class VidaJogador : MonoBehaviour
 
     public void tomarDano(float danoTomado)
     {
+        tomeiDano = true;
         vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
         if (vidaAtual <= 0)
         {
@@ -73,7 +74,6 @@ public class VidaJogador : MonoBehaviour
     IEnumerator Invulnerabilidade()
     {
         invulneravel = true;                // ativa a invulnerabilidade
-        tomeiDano = true;
         //animacao de piscar
         for (float i = 0f; i < 1f; i += 0.1f)
         {
@@ -82,7 +82,7 @@ public class VidaJogador : MonoBehaviour
             sprite.enabled = true; // ativa o sprite
             yield return new WaitForSeconds(0.1f); //espera 0.1 segundos
         }
-        tomeiDano = true;
+        tomeiDano = false;
         invulneravel = false; // desativa a invulnerabilidade
     }
 

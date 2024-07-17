@@ -11,15 +11,19 @@ public class AnimacoesL3H : MonoBehaviour
     private VidaJogador vidaJogador;
     private Animator animacaoPontoDeAtaque;
 
+    private int contadorParaAnimacaoDeTomarDano;
+
     private void Start()
     {
         playerControlador = this.GetComponent<PlayerControlador>();
         animacaoPontoDeAtaque = playerControlador.pontoDeAtaque.GetComponent<Animator>();
         vidaJogador = this.GetComponent<VidaJogador>();
+        contadorParaAnimacaoDeTomarDano = 0;
     }
     // Update is called once per frame
     void Update()
     {
+        tomarDano();
         if (PlayerControlador.podeMover == false)
         {
             animacao.SetBool("estaAndando", false);
@@ -30,7 +34,7 @@ public class AnimacoesL3H : MonoBehaviour
             andar();
             empurrarCaixa();
             morrer();
-            if(GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+            if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
             {
                 atacar();
                 pular();
@@ -88,6 +92,19 @@ public class AnimacoesL3H : MonoBehaviour
         if (vidaJogador.vidaAtual <= 0)
         {
             animacao.SetTrigger("estaMorto");
+        }
+    }
+
+    void tomarDano()
+    {
+        if (vidaJogador.tomeiDano == true && contadorParaAnimacaoDeTomarDano == 1)
+        {
+            animacao.SetTrigger("tomarDano");
+            contadorParaAnimacaoDeTomarDano = 0;
+        }
+        if(vidaJogador.tomeiDano == false && contadorParaAnimacaoDeTomarDano == 0)
+        {
+            contadorParaAnimacaoDeTomarDano = 1;
         }
     }
 }
