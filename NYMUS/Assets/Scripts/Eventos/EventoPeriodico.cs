@@ -9,6 +9,7 @@ public class EventoPeriodico : MonoBehaviour
 
     [Header("Evento")]
     public UnityEvent evento;
+    public bool ligado = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,21 @@ public class EventoPeriodico : MonoBehaviour
     // Coroutine que aciona o evento a cada "tempoSegundos"
     private IEnumerator AcionarEventoPeriodicamente()
     {
-        while (true)
+        while (ligado)
         {
             yield return new WaitForSeconds(tempoSegundos);
             evento.Invoke();
         }
+    }
+
+    public void ligar()
+    {
+        ligado = true;
+        StartCoroutine(AcionarEventoPeriodicamente());
+
+    }
+    public void desligar()
+    {
+        ligado = false;
     }
 }

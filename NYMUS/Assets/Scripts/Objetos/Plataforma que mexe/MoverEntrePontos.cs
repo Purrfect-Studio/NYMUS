@@ -8,6 +8,7 @@ public class MoverEntrePontos : MonoBehaviour
     public Transform[] pontosDeMovimentacao; //Array com todos os pontos de movimentacao
     [SerializeField] private LayerMask layerPontosDeMovimento;
     [Header("Variaveis de Controle")]
+    public bool pararEntrePontos = false;
     public bool ligado = true;
     public int proximoPonto;
     public bool detectarPontoLigado;
@@ -19,7 +20,14 @@ public class MoverEntrePontos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        proximoPonto = 0;
+        if (pararEntrePontos && ligado == false)
+        {
+            proximoPonto = -1; // O valor é acrescentado em 1 quando for ligado
+        }
+        else
+        {
+            proximoPonto = 0;
+        }
         detectarPontoLigado = true;
     }
 
@@ -55,9 +63,18 @@ public class MoverEntrePontos : MonoBehaviour
         Collider2D encontrarPonto = Physics2D.OverlapCircle(transform.position, raioDetecao, layerPontosDeMovimento);
         if (encontrarPonto != null)
         {
-            detectarPontoLigado = false;
+            if (pararEntrePontos)
+            {
+                desligar();
+            }
+            else
+            {
+                proximoPonto++;
+                detectarPontoLigado = false;
+            }
+
             //Debug.Log("Cheguei no ponto: "+encontrarPonto.gameObject.name);
-            proximoPonto++;
+
             if (proximoPonto >= pontosDeMovimentacao.Length)
             {
                 proximoPonto = 0;
@@ -80,7 +97,10 @@ public class MoverEntrePontos : MonoBehaviour
 
     public void ligar()
     {
+        detectarPontoLigado = false;
+        proximoPonto++;
         ligado = true;
+       
     }
     public void desligar()
     {

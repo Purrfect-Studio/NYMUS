@@ -24,16 +24,19 @@ public class ContatoTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ativarSempreOuLimitarAtivacoes)
+        if (collision.gameObject.CompareTag("Jogador"))
         {
-            // Invoca o evento sempre que o gatilho for acionado
-            evento.Invoke();
-        }
-        else if (ativacoesRestantes > 0)
-        {
-            // Invoca o evento se ainda houver ativações restantes
-            evento.Invoke();
-            ativacoesRestantes--; // Decrementa o contador de ativações restantes
+                if (ativarSempreOuLimitarAtivacoes)
+            {
+                // Invoca o evento sempre que o gatilho for acionado
+                evento.Invoke();
+            }
+            else if (ativacoesRestantes > 0)
+            {
+                // Invoca o evento se ainda houver ativações restantes
+                evento.Invoke();
+                ativacoesRestantes--; // Decrementa o contador de ativações restantes
+            }
         }
     }
 }

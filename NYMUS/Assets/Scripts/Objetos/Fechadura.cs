@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public class Fechadura : MonoBehaviour
 {
 
-    public bool travado = true;
+    private bool travado = true;
+    public bool precisa_Chave = true;
+
     public UnityEvent eventoDestravado;
     private Animator animacao;
     // Start is called before the first frame update
@@ -22,12 +24,24 @@ public class Fechadura : MonoBehaviour
 
     public void destravar ()
     {
-        if (travado && Inventario.chavesAtual>0)
+        if (travado) 
         {
-            Inventario.chavesAtual -= 1;
-            travado = false;
-            animacao.SetBool("ativarAlavanca", true);
-            eventoDestravado.Invoke();
+            if (precisa_Chave == false)
+            {
+                travado = false;
+                animacao.SetBool("ativarAlavanca", true);
+                eventoDestravado.Invoke();
+            }
+            else
+            {
+                if (Inventario.chavesAtual > 0)
+                {
+                    Inventario.chavesAtual -= 1;
+                    travado = false;
+                    animacao.SetBool("ativarAlavanca", true);
+                    eventoDestravado.Invoke();
+                }
+            }
         }
     }
 
