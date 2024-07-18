@@ -10,6 +10,7 @@ public class VidaJogador : MonoBehaviour
     public float vidaMaxima;                        // Vida maxima do L3H
     public float vidaAtual;       // Vida atual do L3H
     public BarraDeVida barraDeVida;
+    public static bool estaMorto;
 
     [Header("Invulnerabilidade")]
     public static bool invulneravel;                //Liga e desliga a invulnerabilidade
@@ -17,6 +18,9 @@ public class VidaJogador : MonoBehaviour
 
     [Header("Sprite")]
     private SpriteRenderer sprite; //Sprite do L3H
+
+    [Header("PlayerControlador")]
+    private PlayerControlador playerControlador;
 
     [Header("Knockback")]
     public float forcaKnockbackX;          // Forca do knockback
@@ -29,11 +33,13 @@ public class VidaJogador : MonoBehaviour
     // Start é ativado no primeiro frame de cada fase
     void Start()
     {
+        estaMorto = false;
         vidaAtual = vidaMaxima; //Coloca o L3h na vida maxima quando comeca a fase
         invulneravel = false;   //Desativa a invulnerabilidade
         barraDeVida.definirVidaMaxima(vidaMaxima);
         sprite = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
+        playerControlador = GetComponent<PlayerControlador>();
     }
 
     public void curar(float cura)
@@ -99,13 +105,26 @@ public class VidaJogador : MonoBehaviour
 
     void morrer()
     {
+        playerControlador.TravarMovimentacao();
         PlayerControlador.podeMover = false; // desativa a movimentacao do jogador
         StartCoroutine("morreu"); // chama a co-rotina "morreu"
     }
 
     IEnumerator morreu()
     {
+        estaMorto = true;
         yield return new WaitForSeconds(1.5f); // espera 1.5 segundos
-        SceneManager.LoadScene("Lobby"); // volta pro lobby
+        playerControlador.LiberarMovimentacao();
+        estaMorto = false;
+        if (playerControlador.ultimoCheckpoint != null)
+        {
+            transform.position = new Vector2(playerControlador.ultimoCheckpoint.transform.position.x, playerControlador.ultimoCheckpoint.transform.position.y);
+            vidaAtual = vidaMaxima;
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
+        }
+        else
+        {
+            SceneManager.LoadScene("Lobby"); // volta pro lobby
+        }
     }
 }

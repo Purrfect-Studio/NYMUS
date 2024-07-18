@@ -47,6 +47,9 @@ public class PlayerControlador : MonoBehaviour
     public bool podeInteragirEscada;
     public float velocidadeEscada;
 
+    [Header("CheckPoint")]
+    public GameObject ultimoCheckpoint;
+
     [Header("Chave")]
     public Inventario inventario;
     public bool estaInteragindo { get; set; }
@@ -61,6 +64,11 @@ public class PlayerControlador : MonoBehaviour
         inventario = GetComponent<Inventario>();
 
         podeMover = true;
+        estaSubindoEscada = false;
+        estaDescendoEscada = false;
+        podeInteragirEscada = false;
+        estaPulando = false;
+
         contadorTempoPulo = tempoPulo;
         puloExtra = quantidadeDePulosExtras;
         gravidade = rigidBody2D.gravityScale;
@@ -311,6 +319,11 @@ public class PlayerControlador : MonoBehaviour
     {
         podeMover = true; // Permite que o jogador se mova novamente
         VidaJogador.invulneravel = false;
+    }
+
+    public void DefinirCheckpoint(GameObject checkpoint)
+    {
+        ultimoCheckpoint = checkpoint;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
