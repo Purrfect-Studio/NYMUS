@@ -11,6 +11,9 @@ public class EventoPeriodico : MonoBehaviour
     public UnityEvent evento;
     public bool ligado = true;
 
+    [Header("Aleatório")]
+    public bool aleatorio = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +21,13 @@ public class EventoPeriodico : MonoBehaviour
         StartCoroutine(AcionarEventoPeriodicamente());
     }
 
-    // Coroutine que aciona o evento a cada "tempoSegundos"
+    // Coroutine que aciona o evento periodicamente
     private IEnumerator AcionarEventoPeriodicamente()
     {
         while (ligado)
         {
-            yield return new WaitForSeconds(tempoSegundos);
+            float intervalo = aleatorio ? Random.Range(0, tempoSegundos) : tempoSegundos;
+            yield return new WaitForSeconds(intervalo);
             evento.Invoke();
         }
     }
@@ -32,8 +36,8 @@ public class EventoPeriodico : MonoBehaviour
     {
         ligado = true;
         StartCoroutine(AcionarEventoPeriodicamente());
-
     }
+
     public void desligar()
     {
         ligado = false;

@@ -10,11 +10,11 @@ public class ContatoTrigger : MonoBehaviour
     public UnityEvent evento;
 
     [Header("Configurações")]
-    public bool ativarSempreOuLimitarAtivacoes; // True = ativa o evento sempre / False = LimitarAtivacoes
+    public bool ativarSempre = true; // True = ativa o evento sempre / False = LimitarAtivacoes
     public int quantidadeAtivacoes; // Quantidade de ativações permitidas
     
 
-    private int ativacoesRestantes; // Contador de ativações restantes
+    private int ativacoesRestantes = 0; // Contador de ativações restantes
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class ContatoTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Jogador"))
         {
-                if (ativarSempreOuLimitarAtivacoes)
+                if (ativarSempre)
             {
                 // Invoca o evento sempre que o gatilho for acionado
                 evento.Invoke();
