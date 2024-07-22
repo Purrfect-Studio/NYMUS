@@ -10,6 +10,7 @@ public class VidaBoss : MonoBehaviour
     public float vidaMaxima;
     public float vidaAtual;
     [SerializeField] public static bool podeMover;
+    public BarraDeVida barraDeVida;
 
     [Header("GameObject do inimigo")]
     public GameObject inimigo;
@@ -33,11 +34,17 @@ public class VidaBoss : MonoBehaviour
     {
         podeMover = true;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
+
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        inimigo = GetComponent<GameObject>();
+        rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         if (animacao != null)
         {
             animacao = GetComponent<Animator>();
         }
+
+        barraDeVida.definirVidaMaxima(vidaMaxima);
     }
 
     // Update is called once per frame
