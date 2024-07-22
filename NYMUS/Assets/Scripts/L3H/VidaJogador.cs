@@ -18,6 +18,8 @@ public class VidaJogador : MonoBehaviour
 
     [Header("Sprite")]
     private SpriteRenderer sprite; //Sprite do L3H
+    private Color corRoxo;
+    private Color corOriginal;
 
     [Header("PlayerControlador")]
     private PlayerControlador playerControlador;
@@ -40,6 +42,9 @@ public class VidaJogador : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         playerControlador = GetComponent<PlayerControlador>();
+
+        corRoxo = new Color (r: (138 / 255f), g: (43 / 255f), b: (226 / 255f));
+        corOriginal = sprite.color;
     }
 
     public void curar(float cura)
@@ -52,6 +57,24 @@ public class VidaJogador : MonoBehaviour
                 vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
             }
             barraDeVida.ajustarBarraDeVida(vidaAtual);
+        }
+    }
+
+    public void envenenar(int veneno)
+    {
+        
+        StartCoroutine(Veneno(veneno));
+    }
+
+    IEnumerator Veneno(int veneno)
+    {
+        for (int i = 0; i < veneno; i++)
+        {
+            vidaAtual -= 1;
+            sprite.color = corRoxo;
+            yield return new WaitForSeconds(0.2f);
+            sprite.color = corOriginal;
+            yield return new WaitForSeconds(0.8f);
         }
     }
 
