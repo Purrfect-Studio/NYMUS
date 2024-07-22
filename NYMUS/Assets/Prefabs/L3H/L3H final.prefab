@@ -279,6 +279,7 @@ MonoBehaviour:
   estaDescendoEscada: 0
   podeInteragirEscada: 0
   velocidadeEscada: 10
+  ultimoCheckpoint: {fileID: 0}
   inventario: {fileID: 6563516998424386374}
 --- !u!114 &6861670330375925673
 MonoBehaviour:
@@ -332,6 +333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animacao: {fileID: 6861670330375925674}
+  layerChao:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &517350288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +362,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 109118
+  m_InstanceId: 44306
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}

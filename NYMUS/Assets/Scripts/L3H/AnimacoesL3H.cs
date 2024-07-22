@@ -10,15 +10,22 @@ public class AnimacoesL3H : MonoBehaviour
     private PlayerControlador playerControlador;
     private VidaJogador vidaJogador;
     private Animator animacaoPontoDeAtaque;
+    [Header("Layer do Chao")]
+    [SerializeField] private LayerMask layerChao;
+    [Header("BoxCollider")]
+    private BoxCollider2D boxCollider2D; 
 
     private int contadorParaAnimacaoDeTomarDano;
+    private bool pulei;
 
     private void Start()
     {
         playerControlador = this.GetComponent<PlayerControlador>();
         animacaoPontoDeAtaque = playerControlador.pontoDeAtaque.GetComponent<Animator>();
         vidaJogador = this.GetComponent<VidaJogador>();
+        boxCollider2D = this.GetComponent<BoxCollider2D>();
         contadorParaAnimacaoDeTomarDano = 0;
+        pulei = false;
     }
     // Update is called once per frame
     void Update()
@@ -68,22 +75,38 @@ public class AnimacoesL3H : MonoBehaviour
         if (PlayerControlador.estaPulando == true)
         {
             animacao.SetBool("estaPulando", true);
+            pulei = true;
         }
         else
         {
             animacao.SetBool("estaPulando", false);
+            if(pulei == true && estaChao())
+            {
+                animacao.SetBool("estaChao", true);
+                pulei = false;
+            }
+            else
+            {
+                animacao.SetBool("estaChao", false);
+            }
         }
+    }
+
+    private bool estaChao()
+    {
+        RaycastHit2D chao = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
+        return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
     void empurrarCaixa()
     {
         if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == true)
         {
-            animacao.SetBool("EmpurrandoCaixa", true);
+            animacao.SetBool("empurrandoCaixa", true);
         }
         else
         {
-            animacao.SetBool("EmpurrandoCaixa", false);
+            animacao.SetBool("empurrandoCaixa", false);
         }
     }
 

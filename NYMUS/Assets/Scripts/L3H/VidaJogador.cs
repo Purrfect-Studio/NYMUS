@@ -62,7 +62,6 @@ public class VidaJogador : MonoBehaviour
 
     public void envenenar(int veneno)
     {
-        
         StartCoroutine(Veneno(veneno));
     }
 
@@ -71,6 +70,7 @@ public class VidaJogador : MonoBehaviour
         for (int i = 0; i < veneno; i++)
         {
             vidaAtual -= 1;
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
             sprite.color = corRoxo;
             yield return new WaitForSeconds(0.2f);
             sprite.color = corOriginal;
