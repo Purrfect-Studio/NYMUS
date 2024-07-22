@@ -17,7 +17,7 @@ public class BalaEmOnda : MonoBehaviour
     {   
         if(GameObject.FindWithTag("Boss") == true)
         {
-            velocidadeX = BossControlador.velocidadeTiroSimplesX;
+            velocidadeX = BossControlador.velocidadeFirewallX;
         }
         else
         {

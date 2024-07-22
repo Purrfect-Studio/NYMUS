@@ -13,8 +13,8 @@ public class BossControlador : MonoBehaviour
     public float cooldownAtaque;
     public enum ataquesBoss
     {
-        TiroSimples,
-        TiroAmplo,
+        Firewall,
+        RaioDeVeneno,
         InvocarInimigo,
         //Adicionar todos os ataques e ações do boss
     }
@@ -23,34 +23,27 @@ public class BossControlador : MonoBehaviour
     private float cooldownRestante;
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
 
-    [Header("Projetil do Prefab 'Tiro Simples'")]
-    public GameObject projetilTiroSimples;
-    [Header("Atributos 'Tiro Simples'")]
-    public float velocidadeTiroSimples;
-    [SerializeField] public static float velocidadeTiroSimplesX; // Força do tiro
-    public float duracaoDoTiroSimples; // Tempo que o tiro fica no ar até ser destruído 
-    [Header("GameObject da Arma 'Tiro Simples'")]
-    public Transform armaTiroSimples; // Posição de onde o projétil será disparado
+    [Header("Projetil do Prefab 'Firewall'")]
+    public GameObject projetilFirewall;
+    [Header("Atributos 'Firewall'")]
+    public float velocidadeFirewall;
+    [SerializeField] public static float velocidadeFirewallX; // Força do tiro
+    public float duracaoDoFirewall; // Tempo que o tiro fica no ar até ser destruído 
+    [Header("GameObject da Arma 'Firewall'")]
+    public Transform armaFirewall; // Posição de onde o projétil será disparado
 
-    [Header("Projetil do Prefab 'Tiro Amplo'")]
-    public GameObject projetilTiroAmplo;
-
-    [Header("GameObject da Arma")]
-    public Transform[] armaTiroAmplo; // Posição de onde o projétil será disparado
-
-    [Header("Sobre o Tiro")]
-    public float velocidadeTiroAmplo; // Força do tiro
-    [SerializeField] public static float velocidadeTiroAmploY; // Força do tiro
-    public float duracaoDoTiroAmplo; // Tempo que o tiro fica no ar até ser destruído 
-    public float delayParaInstanciarProjetilTiroAmplo;
+    [Header("Projetil do Prefab 'Raio de Veneno'")]
+    public GameObject projetilRaioDeVeneno;
+    [Header("GameObject da Arma 'Raio de Veneno'")]
+    public Transform armaRaioDeVeneno; // Posição de onde o projétil será disparado
 
     // Start is called before the first frame update
     void Start()
     {
         //Definindo ataques disponíveis iniciais
 
-        ataquesDisponiveis.Add(ataquesBoss.TiroSimples);
-        ataquesDisponiveis.Add(ataquesBoss.TiroAmplo);
+        ataquesDisponiveis.Add(ataquesBoss.Firewall);
+        ataquesDisponiveis.Add(ataquesBoss.RaioDeVeneno);
         // if vida <50%, adicionarAtaque(ataquesBoss.InvocarInimigo) ...
 
         //procurarJogador = GetComponent<ProcurarJogador>();
@@ -79,35 +72,24 @@ public class BossControlador : MonoBehaviour
     {
         switch (ataque)
         {
-            case ataquesBoss.TiroSimples:
-                Debug.Log("Boss está executando TiroSimples");
+            case ataquesBoss.Firewall:
+                Debug.Log("Boss está executando Firewall");
 
-                velocidadeTiroSimplesX = velocidadeTiroSimples;
+                velocidadeFirewallX = velocidadeFirewall;
                 // Instancia o projétil e define sua posição e velocidade
-                GameObject temp = Instantiate(projetilTiroSimples);
-                temp.transform.position = armaTiroSimples.position;
-                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiroSimplesX, 0);
+                GameObject firewall = Instantiate(projetilFirewall);
+                firewall.transform.position = armaFirewall.position;
+                firewall.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeFirewallX, 0);
                 // Destroi o projétil depois de um tempo para evitar vazamento de memória
-                Destroy(temp.gameObject, duracaoDoTiroSimples);
+                Destroy(firewall.gameObject, duracaoDoFirewall);
 
                 break;
 
-            case ataquesBoss.TiroAmplo:
-                Debug.Log("Boss está executando TiroAmplo");
-
-                for (int i = 0; i < armaTiroAmplo.Length; i++)
-                {
-                    velocidadeTiroAmploY = velocidadeTiroAmplo;
-                    GameObject temp1 = Instantiate(projetilTiroAmplo);
-                    temp1.transform.position = armaTiroAmplo[i].position;
-                    // Define uma velocidade pro projetil
-                    temp1.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , velocidadeTiroAmploY);
-                    // Destroi o projétil depois de um tempo para evitar vazamento de memória
-                    Destroy(temp1.gameObject, duracaoDoTiroAmplo);
-                    // Espera um tempo antes de criar o proximo projetil
-                    //yield return new WaitForSeconds(delayParaInstanciarProjetilTiroAmplo);
-                }
-
+            case ataquesBoss.RaioDeVeneno:
+                Debug.Log("Boss está executando RaioDeVeneno");
+                GameObject raioDeVeneno = Instantiate(projetilRaioDeVeneno);
+                raioDeVeneno.transform.position = armaRaioDeVeneno.position;
+                Destroy(raioDeVeneno.gameObject, 2.5f);
                 break;
 
             case ataquesBoss.InvocarInimigo:
