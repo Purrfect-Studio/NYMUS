@@ -1,17 +1,11 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Dialogo : MonoBehaviour
 {
-    [Header("Sprite")]
-    public Sprite sprite;
-
-    [Header("Texto do Dialogo")]
-    public string[] dialogoTexto;
-    public string nomePersonagem = "NYMUS";
+    [Header("Dialogo")]
+    public List<Fala> falas;
 
     [Header("Layer do Jogador")]
     public LayerMask layerPlayer;
@@ -22,26 +16,23 @@ public class Dialogo : MonoBehaviour
     [Header("Controladores do Dialogo")]
     public DialogoControlador dialogoControlador;
 
-
-
     private void Start()
     {
         travado = false;
         dialogoControlador = FindObjectOfType<DialogoControlador>();
     }
-    
-   
-    public void travarDialogo() 
+
+    public void travarDialogo()
     {
         travado = true;
     }
 
     public void falar()
     {
-        if (travado == false)
+        if (!travado)
         {
-            dialogoControlador.Fala(sprite, dialogoTexto, nomePersonagem);
+            dialogoControlador.IniciarDialogo(falas);
             travarDialogo();
-        }         
+        }
     }
 }
