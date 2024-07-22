@@ -16,6 +16,7 @@ public class Glitchs : MonoBehaviour
     // Tempo de mudança dos tiles no Tilemap
     [Header("Configurações de Mudança de Tilemap")]
     public float tempoMudancaTilemap = 5.0f;
+    public bool comecarSozinho = false;
 
     // Método chamado ao iniciar o script
     void Start()
@@ -23,6 +24,10 @@ public class Glitchs : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         tileMap = GetComponent<Tilemap>();
         objetoTransform = GetComponent<Transform>();
+        if (comecarSozinho)
+        {
+            StartCoroutine(MudarCoresTiles());       
+        }    
     }
 
     // Método para flipar o eixo X do SpriteRenderer
