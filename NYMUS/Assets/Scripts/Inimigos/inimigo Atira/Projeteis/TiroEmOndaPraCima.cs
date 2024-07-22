@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BalaEmOnda : MonoBehaviour
+public class TiroEmOndaPraCima : MonoBehaviour
 {
     public Rigidbody2D rb;
-    private float velocidadeX;
+    private float velocidadeY;
     [Header("Jogador")]
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
     public float danoNoJogador;
@@ -14,16 +13,15 @@ public class BalaEmOnda : MonoBehaviour
     public Collider2D Collider2D;
 
     private void Start()
-    {   
-        if(GameObject.FindWithTag("Boss") == true)
+    {
+        if (GameObject.FindWithTag("Boss") == true)
         {
-            velocidadeX = BossControlador.velocidadeTiroSimplesX;
+            velocidadeY = BossControlador.velocidadeTiroAmploY;
         }
-        else
+        /*else
         {
             velocidadeX = AtirarEmVariosPontos.velocidadeTiroX;
-        }
-        
+        }*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -45,13 +43,13 @@ public class BalaEmOnda : MonoBehaviour
                 vidaJogador.tomarDano(danoNoJogador);
             }
         }
-        if (collision != null)
+        /*if (collision != null)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
     void Update()
     {
-        rb.velocity = new Vector2(velocidadeX, Mathf.Cos(transform.position.x) * 10);
+        rb.velocity = new Vector2(Mathf.Cos(transform.position.y) * 10 , velocidadeY);
     }
 }

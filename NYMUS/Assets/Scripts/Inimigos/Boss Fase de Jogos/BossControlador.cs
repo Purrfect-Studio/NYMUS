@@ -32,6 +32,18 @@ public class BossControlador : MonoBehaviour
     [Header("GameObject da Arma 'Tiro Simples'")]
     public Transform armaTiroSimples; // Posição de onde o projétil será disparado
 
+    [Header("Projetil do Prefab 'Tiro Amplo'")]
+    public GameObject projetilTiroAmplo;
+
+    [Header("GameObject da Arma")]
+    public Transform[] armaTiroAmplo; // Posição de onde o projétil será disparado
+
+    [Header("Sobre o Tiro")]
+    public float velocidadeTiroAmplo; // Força do tiro
+    [SerializeField] public static float velocidadeTiroAmploY; // Força do tiro
+    public float duracaoDoTiroAmplo; // Tempo que o tiro fica no ar até ser destruído 
+    public float delayParaInstanciarProjetilTiroAmplo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +81,7 @@ public class BossControlador : MonoBehaviour
         {
             case ataquesBoss.TiroSimples:
                 Debug.Log("Boss está executando TiroSimples");
+
                 velocidadeTiroSimplesX = velocidadeTiroSimples;
                 // Instancia o projétil e define sua posição e velocidade
                 GameObject temp = Instantiate(projetilTiroSimples);
@@ -76,10 +89,25 @@ public class BossControlador : MonoBehaviour
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiroSimplesX, 0);
                 // Destroi o projétil depois de um tempo para evitar vazamento de memória
                 Destroy(temp.gameObject, duracaoDoTiroSimples);
+
                 break;
 
             case ataquesBoss.TiroAmplo:
                 Debug.Log("Boss está executando TiroAmplo");
+
+                for (int i = 0; i < armaTiroAmplo.Length; i++)
+                {
+                    velocidadeTiroAmploY = velocidadeTiroAmplo;
+                    GameObject temp1 = Instantiate(projetilTiroAmplo);
+                    temp1.transform.position = armaTiroAmplo[i].position;
+                    // Define uma velocidade pro projetil
+                    temp1.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , velocidadeTiroAmploY);
+                    // Destroi o projétil depois de um tempo para evitar vazamento de memória
+                    Destroy(temp1.gameObject, duracaoDoTiroAmplo);
+                    // Espera um tempo antes de criar o proximo projetil
+                    //yield return new WaitForSeconds(delayParaInstanciarProjetilTiroAmplo);
+                }
+
                 break;
 
             case ataquesBoss.InvocarInimigo:

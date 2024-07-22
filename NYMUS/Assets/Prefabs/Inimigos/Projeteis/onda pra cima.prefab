@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7601446130986165730}
   - component: {fileID: 5266677029838016580}
-  - component: {fileID: 4708856884121110559}
   - component: {fileID: 5345702860031860508}
   - component: {fileID: 2769626360105280930}
+  - component: {fileID: 9102853483930512627}
   m_Layer: 0
-  m_Name: projetil onda
+  m_Name: onda pra cima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,24 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4708856884121110559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8816494410171202230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bfc0294251a5cf47ac96f8fb5cb5f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5345702860031860508}
-  layerJogador:
-    serializedVersion: 2
-    m_Bits: 256
-  danoNoJogador: 10
-  Collider2D: {fileID: 2769626360105280930}
 --- !u!50 &5345702860031860508
 Rigidbody2D:
   serializedVersion: 4
@@ -142,3 +124,21 @@ CircleCollider2D:
   m_Offset: {x: 0.0013790131, y: 0}
   serializedVersion: 2
   m_Radius: 0.10521698
+--- !u!114 &9102853483930512627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816494410171202230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168cad44897a7c7458455341401f2ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5345702860031860508}
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  danoNoJogador: 10
+  Collider2D: {fileID: 2769626360105280930}
