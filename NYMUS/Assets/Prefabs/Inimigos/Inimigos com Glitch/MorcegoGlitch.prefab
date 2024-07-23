@@ -126,7 +126,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0071380762, y: -0.05705835}
@@ -221,6 +221,7 @@ MonoBehaviour:
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 10
+  causarDanoNoInimigo: 0
   layerInimigo:
     serializedVersion: 2
     m_Bits: 0
