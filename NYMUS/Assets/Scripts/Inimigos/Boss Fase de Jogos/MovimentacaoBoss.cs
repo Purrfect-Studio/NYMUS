@@ -10,7 +10,7 @@ public class MovimentacaoBoss : MonoBehaviour
 
     [Header("Configurações")]
     [SerializeField] public static bool podeMover;
-    public bool seguindoJogador;
+    [SerializeField] public static bool seguindoJogador;
     public float velocidade = 2f; // Velocidade de seguimento do jogaor
     public float delay = 0.5f; //Atraso em segundos
 

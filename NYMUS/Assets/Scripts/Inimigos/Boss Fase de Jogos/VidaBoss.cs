@@ -11,6 +11,7 @@ public class VidaBoss : MonoBehaviour
     public float vidaAtual;
     public BarraDeVidaBoss barraDeVidaBoss;
     public static bool invulneravel = false;
+    public static bool invulnerabilidade = true;
 
     [Header("GameObject do inimigo")]
     public GameObject inimigo;
@@ -24,6 +25,12 @@ public class VidaBoss : MonoBehaviour
     [Header("Sprite")]
     private SpriteRenderer sprite;
 
+    private Rigidbody2D rigidbody2d;
+
+    private BossControlador bossControlador;
+
+    public float tempoParaLevantar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +39,7 @@ public class VidaBoss : MonoBehaviour
 
         animacao = GetComponent<Animator>();
         jogador = GameObject.FindGameObjectWithTag("Jogador");
-        
+        rigidbody2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
 
         barraDeVidaBoss.definirVidaMaxima(vidaMaxima);
@@ -41,11 +48,36 @@ public class VidaBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(invulnerabilidade == true)
+        {
+            invulneravel = true;
+        }
+    }
+
+    public void derrubarBoss()
+    {
+        invulnerabilidade = false;
+        invulneravel = false;
+        rigidbody2d.gravityScale = 10f;
+        BossControlador.podeExecutarAcoes = false;
+        MovimentacaoBoss.podeMover = false;
+        MovimentacaoBoss.seguindoJogador = false;
+        StartCoroutine("LevantarBoss");
+    }
+
+    IEnumerator LevantarBoss()
+    {
+        yield return new WaitForSeconds(tempoParaLevantar);
+        invulnerabilidade = true;
+        rigidbody2d.gravityScale = 0f;
+        BossControlador.podeExecutarAcoes = true;
+        MovimentacaoBoss.podeMover = true;
+        MovimentacaoBoss.seguindoJogador = true;
     }
 
     public void tomarDano(float dano)
     {
-        Debug.Log("Tomei dano" + dano);
+        Debug.Log("Boss Tomei dano" + dano);
         vidaAtual -= dano;
         barraDeVidaBoss.ajustarBarraDeVida(vidaAtual);
         StartCoroutine("Piscar");

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BossControlador : MonoBehaviour
 {
     [Header("Configurações de ataque")]
     public float cooldownAtaque;
-    private bool podeAtacar = false;
+    public static bool podeExecutarAcoes = false;
     public enum ataquesBoss
     {
         Firewall,
@@ -17,7 +18,7 @@ public class BossControlador : MonoBehaviour
     }
 
     [Header("Variáveis privadas de apoio")]
-    private float cooldownRestante;
+    private float cooldownRestanteAtaque;
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
     private GameObject jogador;
 
@@ -39,16 +40,27 @@ public class BossControlador : MonoBehaviour
     public GameObject projetilExplosaoDeDados;
     [Header("GameObject da Arma 'Explosao de Dados'")]
     public Transform armaExplosaoDeDados; // Posição de onde o projétil será disparado
+    [Header("Configuracoes 'Explosao de Dados'")]
     public float intervaloEntreExplosaoDeDados;
     public int quantidadeDeExplosaoDeDados;
     private bool executarExplosaoDeDados = false;
     private float contadorExplosaoDeDados;
     private int quantidadeDeExplosaoDeDadosExecutadas = 0;
 
+    [Header("Mecanica de causar dano no Boss")]
+    public GameObject[] portas;
+    public float tempoParaDesativarPorta;
+    public float cooldownParaInvocarPorta;
+    private float cooldownRestanteParaInvocarPorta;
+    private bool portaInvocada;
+    
+    
+
     // Start is called before the first frame update
     void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        
         contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
         //Definindo ataques disponíveis iniciais
         ataquesDisponiveis.Add(ataquesBoss.Firewall);
@@ -56,43 +68,58 @@ public class BossControlador : MonoBehaviour
         ataquesDisponiveis.Add(ataquesBoss.ExplosaoDeDados);
         // if vida <50%, adicionarAtaque(ataquesBoss.InvocarInimigo) ...
 
-        //procurarJogador = GetComponent<ProcurarJogador>();
-        cooldownRestante = cooldownAtaque;
+        cooldownRestanteAtaque = cooldownAtaque;
+        cooldownRestanteParaInvocarPorta = cooldownParaInvocarPorta;
+
+        for(int i = 0; i < portas.Length; i++)
+        {
+            portas[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        cooldownRestante -= Time.deltaTime;
-        if(cooldownRestante <= 0 && podeAtacar == true)
+        cooldownRestanteAtaque -= Time.deltaTime;
+        cooldownRestanteParaInvocarPorta -= Time.deltaTime;
+
+        if(cooldownRestanteAtaque <= 0 && podeExecutarAcoes == true)
         {
             ExecutarAtaque(EscolherAtaqueAtual());
-            cooldownRestante = cooldownAtaque;
+            cooldownRestanteAtaque = cooldownAtaque;
         }
 
         ExecutarExplosaoDeDados();
         iniciarAtaque();
+
+
+        if(cooldownRestanteParaInvocarPorta <= 0 && portaInvocada == false && podeExecutarAcoes == true)
+        {
+            InvocarPorta(EscolherPorta());
+            cooldownRestanteParaInvocarPorta = cooldownParaInvocarPorta;
+            portaInvocada = true;
+        }
     }
 
     void iniciarAtaque()
     {
         if(MovimentacaoBoss.podeMover == true)
         {
-            if(podeAtacar == false)
+            if(podeExecutarAcoes == false)
             {
                 StartCoroutine("delayParaIniciarAtaque");
             }
         }
         else
         {
-            podeAtacar = false;
+            podeExecutarAcoes = false;
         }
     }
 
     IEnumerator delayParaIniciarAtaque()
     {
         yield return new WaitForSeconds(5f);
-        podeAtacar = true;
+        podeExecutarAcoes = true;
     }
 
     public void ExecutarExplosaoDeDados()
@@ -131,27 +158,24 @@ public class BossControlador : MonoBehaviour
         switch (ataque)
         {
             case ataquesBoss.Firewall:
-                Debug.Log("Boss está executando Firewall");
-
+                //Debug.Log("Boss está executando Firewall");
                 velocidadeFirewallX = velocidadeFirewall;
                 // Instancia o projétil e define sua posição e velocidade
                 GameObject firewall = Instantiate(projetilFirewall);
                 firewall.transform.position = armaFirewall.position;
                 firewall.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeFirewallX, 0);
-                // Destroi o projétil depois de um tempo para evitar vazamento de memória
                 Destroy(firewall.gameObject, duracaoDoFirewall);
-
                 break;
 
             case ataquesBoss.InjecaoDeDados:
-                Debug.Log("Boss está executando RaioDeVeneno");
+                //Debug.Log("Boss está executando InjecaoDeDados");
                 GameObject raioDeVeneno = Instantiate(projetilInjecaoDeDados);
                 raioDeVeneno.transform.position = armaInjecaoDeDados.position;
                 Destroy(raioDeVeneno.gameObject, 2.5f);
                 break;
 
             case ataquesBoss.ExplosaoDeDados:
-                Debug.Log("Boss está executando ExplosaoDeDados");
+                //Debug.Log("Boss está executando ExplosaoDeDados");
                 executarExplosaoDeDados = true;
                 break;
         }
@@ -160,5 +184,23 @@ public class BossControlador : MonoBehaviour
     public void LigarNovoAtaque(ataquesBoss ataqueNovo)
     {
         ataquesDisponiveis.Add(ataqueNovo);
+    }
+
+    public void InvocarPorta(int indexPorta)
+    {
+        portas[indexPorta].SetActive(true);
+        StartCoroutine(DesativarPorta(indexPorta));
+    }
+
+    public int EscolherPorta()
+    {
+        return Random.Range(0, portas.Length);
+    }
+
+    IEnumerator DesativarPorta(int indexPorta)
+    {
+        yield return new WaitForSeconds(tempoParaDesativarPorta);
+        portas[indexPorta].SetActive(false);
+        portaInvocada = false;
     }
 }

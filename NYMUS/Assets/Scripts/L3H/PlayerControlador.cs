@@ -227,17 +227,21 @@ public class PlayerControlador : MonoBehaviour
                 VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
                 if(inimigo != null && VidaInimigo.invulneravel == false)
                 {
-                    //Debug.Log("Atacando:" + acertarInimigo.name);
-                    //Debug.Log("Causei:" + dano + " de dano");
                     inimigo.tomarDano(dano);
                 }
                 VidaBoss boss = acertarInimigo.GetComponent<VidaBoss>();
-                if (boss != null && VidaBoss.invulneravel == false)
+                if (boss != null && VidaBoss.invulneravel == false && VidaBoss.invulnerabilidade == false)
                 {
-                    //Debug.Log("Atacando:" + acertarInimigo.name);
-                    //Debug.Log("Causei:" + dano + " de dano");
+                    Debug.Log("Acertei o boss");
                     boss.tomarDano(dano);
                 }
+                if(acertarInimigo.CompareTag("PortaBoss") && VidaBoss.invulnerabilidade == true)
+                {
+                    GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
+                    VidaBoss DerrubarBoss = Boss.GetComponent<VidaBoss>();
+                    DerrubarBoss.derrubarBoss();
+                }
+                
             }
         }
     }
