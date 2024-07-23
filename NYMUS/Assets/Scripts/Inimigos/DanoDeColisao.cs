@@ -50,7 +50,7 @@ public class DanoDeColisao : MonoBehaviour
     {
         if (colisaoJogador() == true)
         {
-            Collider2D colisaoJogador = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerJogador);
+            Collider2D colisaoJogador = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size + new Vector3(1, 1, 1), 0, layerJogador);
             vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
             if (vidaJogador != null && VidaJogador.invulneravel == false)
             {
