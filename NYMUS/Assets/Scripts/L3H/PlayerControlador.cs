@@ -231,6 +231,13 @@ public class PlayerControlador : MonoBehaviour
                     //Debug.Log("Causei:" + dano + " de dano");
                     inimigo.tomarDano(dano);
                 }
+                VidaBoss boss = acertarInimigo.GetComponent<VidaBoss>();
+                if (boss != null && boss.invulneravel == false)
+                {
+                    //Debug.Log("Atacando:" + acertarInimigo.name);
+                    //Debug.Log("Causei:" + dano + " de dano");
+                    boss.tomarDano(dano);
+                }
             }
         }
     }

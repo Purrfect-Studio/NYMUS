@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaioDeVeneno : MonoBehaviour
+public class InjecaoDeDados : MonoBehaviour
 {
     public Animator animacao;
     public BoxCollider2D boxCollider2D;
