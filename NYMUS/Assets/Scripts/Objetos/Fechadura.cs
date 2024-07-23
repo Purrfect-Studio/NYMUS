@@ -8,6 +8,7 @@ public class Fechadura : MonoBehaviour
 
     private bool travado = true;
     public bool precisa_Chave = true;
+    public bool precisa_ChaveEspecial = false;
 
     public UnityEvent eventoDestravado;
     private Animator animacao;
@@ -16,30 +17,25 @@ public class Fechadura : MonoBehaviour
     {
         animacao = GetComponent<Animator>();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void destravar ()
     {
         if (travado) 
         {
-            if (precisa_Chave == false)
+            if (precisa_ChaveEspecial && Inventario.temChaveEspecial == true)
             {
-                travado = false;
-                animacao.SetBool("ativarAlavanca", true);
-                eventoDestravado.Invoke();
+                destravarAlavanca();
+            }
+            if (precisa_Chave == false && precisa_ChaveEspecial == false)
+            {
+                destravarAlavanca();
             }
             else
             {
                 if (Inventario.chavesAtual > 0)
                 {
                     Inventario.chavesAtual -= 1;
-                    travado = false;
-                    animacao.SetBool("ativarAlavanca", true);
-                    eventoDestravado.Invoke();
+                    destravarAlavanca();
                 }
             }
         }
@@ -48,5 +44,12 @@ public class Fechadura : MonoBehaviour
     public void travar ()
     {
         travado = true;
+    }
+
+    private void destravarAlavanca()
+    {
+        travado = false;
+        animacao.SetBool("ativarAlavanca", true);
+        eventoDestravado.Invoke();
     }
 }
