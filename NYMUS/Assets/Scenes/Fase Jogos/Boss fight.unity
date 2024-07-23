@@ -513,7 +513,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &352140802
+--- !u!43 &348193053
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20252,8 +20252,10 @@ MonoBehaviour:
   armaFirewall: {fileID: 1539756440}
   projetilInjecaoDeDados: {fileID: 3174847459273001356, guid: 823e4143bd24f514485c1759f59c1eea, type: 3}
   armaInjecaoDeDados: {fileID: 163311449}
-  projetilExplosaoDeDados: {fileID: 0}
+  projetilExplosaoDeDados: {fileID: 8104718444879468968, guid: 9034ca85452bc954987c7bd5ad6703f8, type: 3}
   armaExplosaoDeDados: {fileID: 1217323126}
+  intervaloEntreExplosaoDeDados: 1
+  quantidadeDeExplosaoDeDados: 3
 --- !u!50 &1988409883
 Rigidbody2D:
   serializedVersion: 4
@@ -20311,12 +20313,7 @@ MonoBehaviour:
   vidaMaxima: 100
   vidaAtual: 100
   barraDeVidaBoss: {fileID: 428471998}
-  invulneravel: 0
-  inimigo: {fileID: 0}
-  rb: {fileID: 0}
-  animacao: {fileID: 0}
-  jogador: {fileID: 0}
-  sprite: {fileID: 0}
+  inimigo: {fileID: 1988409876}
 --- !u!1 &1988910975
 GameObject:
   m_ObjectHideFlags: 0
