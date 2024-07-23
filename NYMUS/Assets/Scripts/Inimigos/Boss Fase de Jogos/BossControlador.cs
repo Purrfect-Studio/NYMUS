@@ -71,22 +71,28 @@ public class BossControlador : MonoBehaviour
         }
 
         ExecutarExplosaoDeDados();
-        delayParaIniciarAtaque();
+        iniciarAtaque();
     }
 
-    void delayParaIniciarAtaque()
+    void iniciarAtaque()
     {
         if(MovimentacaoBoss.podeMover == true)
         {
             if(podeAtacar == false)
             {
-                podeAtacar = true;
+                StartCoroutine("delayParaIniciarAtaque");
             }
         }
         else
         {
             podeAtacar = false;
         }
+    }
+
+    IEnumerator delayParaIniciarAtaque()
+    {
+        yield return new WaitForSeconds(5f);
+        podeAtacar = true;
     }
 
     public void ExecutarExplosaoDeDados()
