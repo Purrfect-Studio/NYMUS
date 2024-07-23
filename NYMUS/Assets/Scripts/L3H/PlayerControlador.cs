@@ -25,6 +25,8 @@ public class PlayerControlador : MonoBehaviour
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
     [Header("Layer da Escada")]
     [SerializeField] private LayerMask layerEscada;
+    [Header("Layer da Plataforma")]
+    [SerializeField] private LayerMask layerPlataforma;
 
     [Header("Pulo")]
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
@@ -77,6 +79,12 @@ public class PlayerControlador : MonoBehaviour
         direcao = 1;
     }
 
+    private bool estaPlataforma()
+    {
+        RaycastHit2D plataforma = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.3f, layerPlataforma); // Cria um segundo box collider para reconhecer o chao
+        return plataforma.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
+    }
+
     private bool estaChao()
     {
         RaycastHit2D chao = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
@@ -109,12 +117,15 @@ public class PlayerControlador : MonoBehaviour
             estaSubindoEscada = false;
             estaDescendoEscada = false;
         }
+
         interagir();
         if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
         {
             verificarPuloDuplo();
             ataque();
         }
+
+
     }
 
     void andar()
@@ -302,6 +313,21 @@ public class PlayerControlador : MonoBehaviour
         {
             podeInteragirEscada = false;
         }
+    }
+
+    public void CairDaPlataforma()
+    {
+        if(estaPlataforma() == true && Input.GetKey(KeyCode.S) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
+        {
+            StartCoroutine("CairPlataforma");
+        }
+    }
+
+    IEnumerator CairPlataforma()
+    {
+        Physics2D.IgnoreLayerCollision(8, 13, true);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreLayerCollision(8, 13, false);
     }
 
     public bool colisaoEscada()

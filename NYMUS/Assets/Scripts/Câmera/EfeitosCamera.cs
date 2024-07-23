@@ -17,11 +17,6 @@ public class EfeitosCamera : MonoBehaviour
         tamanhoNormal = cameraprincipal.orthographicSize;
     }
 
-    // Update is called once per frame
-
-
-
-
     public void DarZoom()
     {
         if (!estaComZoom)
@@ -34,7 +29,7 @@ public class EfeitosCamera : MonoBehaviour
     {
         if (estaComZoom)
         {
-            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal* 1.6f, delay));
+            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal* 2f, delay));
             estaComZoom = false;
         }
     }

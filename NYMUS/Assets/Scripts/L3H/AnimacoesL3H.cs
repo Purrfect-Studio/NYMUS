@@ -12,11 +12,14 @@ public class AnimacoesL3H : MonoBehaviour
     private Animator animacaoPontoDeAtaque;
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao;
+    [Header("Layer da Plataforma")]
+    [SerializeField] private LayerMask layerPlataforma;
     [Header("BoxCollider")]
     private BoxCollider2D boxCollider2D; 
 
     private int contadorParaAnimacaoDeTomarDano;
     private bool pulei;
+    private bool estavaNaPlataforma;
 
     private void Start()
     {
@@ -26,6 +29,7 @@ public class AnimacoesL3H : MonoBehaviour
         boxCollider2D = this.GetComponent<BoxCollider2D>();
         contadorParaAnimacaoDeTomarDano = 0;
         pulei = false;
+        estavaNaPlataforma = false;
     }
     // Update is called once per frame
     void Update()
@@ -74,28 +78,64 @@ public class AnimacoesL3H : MonoBehaviour
     {
         if (PlayerControlador.estaPulando == true)
         {
+            animacao.SetBool("estaChao", false);
+            animacao.SetBool("estaPlataforma", false);
             animacao.SetBool("estaPulando", true);
             pulei = true;
         }
         else
         {
             animacao.SetBool("estaPulando", false);
-            if(pulei == true && estaChao())
+            if (pulei == true)
             {
-                animacao.SetBool("estaChao", true);
-                pulei = false;
-            }
-            else
-            {
-                animacao.SetBool("estaChao", false);
+                if (estaChao())
+                {
+                    animacao.SetBool("estaChao", true);
+                    pulei = false;
+                    estavaNaPlataforma = false;
+                }
+                if (estaPlataforma() && estavaNaPlataforma == true)
+                {
+                    animacao.SetBool("estaPlataforma", true);
+                    pulei = false;
+                    estavaNaPlataforma = false;
+                }else if(estaPlataforma() && estavaNaPlataforma == false)
+                {
+                    StartCoroutine(DesativarPuloCaindoNaPlataforma());
+                }
             }
         }
+        if (estaPlataforma() && estavaNaPlataforma == false && animacao.GetBool("estaPlataforma") == true)
+        {
+            estavaNaPlataforma = true;
+        }
+    }
+
+    IEnumerator DesativarPuloCaindoNaPlataforma()
+    {
+        yield return new WaitForSeconds(0.6f);
+        if (estaChao())
+        {
+            animacao.SetBool("estaChao", true);
+        }
+        if (estaPlataforma())
+        {
+            animacao.SetBool("estaPlataforma", true);
+        }
+        pulei = false;
+        estavaNaPlataforma = false;
     }
 
     private bool estaChao()
     {
         RaycastHit2D chao = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.3f, layerChao); // Cria um segundo box collider para reconhecer o chao
         return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
+    }
+
+    private bool estaPlataforma()
+    {
+        RaycastHit2D plataforma = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.3f, layerPlataforma); // Cria um segundo box collider para reconhecer o chao
+        return plataforma.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
     }
 
     void empurrarCaixa()
