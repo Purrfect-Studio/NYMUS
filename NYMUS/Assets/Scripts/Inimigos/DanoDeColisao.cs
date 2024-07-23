@@ -13,8 +13,10 @@ public class DanoDeColisao : MonoBehaviour
     [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
     public GameObject jogador;
     public float danoNoJogador;
+    private VidaJogador vidaJogador;
 
     [Header("Inimigo")]
+    public bool causarDanoNoInimigo;
     [SerializeField] private LayerMask layerInimigo;
     public float danoNoInimigo;
 
@@ -23,13 +25,34 @@ public class DanoDeColisao : MonoBehaviour
         jogador = GameObject.FindWithTag("Jogador");
     }
     // Update is called once per frame
-    void Update()
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        CausarDanoNoJogador();
+
+        if (causarDanoNoInimigo == true)
+        {
+            CausarDanoNoInimigo();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        CausarDanoNoJogador();
+
+        if (causarDanoNoInimigo == true)
+        {
+            CausarDanoNoInimigo();
+        }
+    }
+
+    public void CausarDanoNoJogador()
     {
         if (colisaoJogador() == true)
         {
             Collider2D colisaoJogador = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerJogador);
-            VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
-            if(vidaJogador != null && VidaJogador.invulneravel == false)
+            vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
+            if (vidaJogador != null && VidaJogador.invulneravel == false)
             {
                 if (transform.position.x <= jogador.transform.position.x)
                 {
@@ -42,8 +65,11 @@ public class DanoDeColisao : MonoBehaviour
                 vidaJogador.tomarDano(danoNoJogador);
             }
         }
+    }
 
-        if(colisaoInimigo() == true)
+    public void CausarDanoNoInimigo()
+    {
+        if (colisaoInimigo() == true && causarDanoNoInimigo == true)
         {
             Collider2D colisaoInimigo = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerInimigo);
             if (colisaoInimigo != null)

@@ -130,7 +130,8 @@ MonoBehaviour:
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 1000
+  causarDanoNoInimigo: 1
   layerInimigo:
     serializedVersion: 2
-    m_Bits: 0
-  danoNoInimigo: 0
+    m_Bits: 512
+  danoNoInimigo: 1000
