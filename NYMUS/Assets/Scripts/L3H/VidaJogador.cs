@@ -147,7 +147,7 @@ public class VidaJogador : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Lobby"); // volta pro lobby
+            SceneManager.LoadScene("Menu"); // volta pro lobby
         }
     }
 }

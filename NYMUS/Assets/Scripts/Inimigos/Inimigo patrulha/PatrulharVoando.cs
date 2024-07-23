@@ -9,8 +9,8 @@ public class PatrulharVoando : MonoBehaviour
     public float raioMovimentacao;
     private Vector2 direcao;
     private Vector3 pontoInicial;
-    public bool olhandoDireita;
-    public SpriteRenderer sprite;
+    //public bool olhandoDireita;
+    //public SpriteRenderer sprite;
 
     [Header("Bater Asas")]
     public float intervaloBaterAsas = 0.5f; // Intervalo entre os pulinhos
@@ -27,8 +27,8 @@ public class PatrulharVoando : MonoBehaviour
 
     void Start()
     {
-        olhandoDireita = true;
-        sprite = GetComponent<SpriteRenderer>();
+        //olhandoDireita = true;
+        //sprite = GetComponent<SpriteRenderer>();
         pontoInicial = transform.position;
         EscolherNovaDirecao();
         tempoDesdeUltimoPulo = 0;
@@ -76,11 +76,11 @@ public class PatrulharVoando : MonoBehaviour
     void Mover()
     {
         transform.Translate(direcao * velocidade * Time.deltaTime);
-        if ((transform.position.x - procurarJogadorScript.jogador.transform.position.x) < 0 && olhandoDireita == false || (transform.position.x - procurarJogadorScript.jogador.transform.position.x) > 0 && olhandoDireita == true)
+        /*if ((transform.position.x - procurarJogadorScript.jogador.transform.position.x) < 0 && olhandoDireita == false || (transform.position.x - procurarJogadorScript.jogador.transform.position.x) > 0 && olhandoDireita == true)
         {
             olhandoDireita = !olhandoDireita;
             sprite.transform.Rotate(0, -180, 0);
-        }
+        }*/
     }
 
     void VerificarLimites()
