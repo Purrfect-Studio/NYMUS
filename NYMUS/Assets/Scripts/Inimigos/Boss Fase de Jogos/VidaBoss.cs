@@ -9,41 +9,31 @@ public class VidaBoss : MonoBehaviour
     [Header("Vida")]
     public float vidaMaxima;
     public float vidaAtual;
-    [SerializeField] public static bool podeMover;
     public BarraDeVidaBoss barraDeVidaBoss;
-    public bool invulneravel;
+    public static bool invulneravel = false;
 
     [Header("GameObject do inimigo")]
     public GameObject inimigo;
 
-    [Header("RigidBody")]
-    public Rigidbody2D rb;   // rb = rigidbody
-
     [Header("Animator")]
-    public Animator animacao;
+    private Animator animacao;
 
     [Header("jogador")]
-    public GameObject jogador;
+    private GameObject jogador;
 
     [Header("Sprite")]
-    [SerializeField] private SpriteRenderer sprite;
-
+    private SpriteRenderer sprite;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        podeMover = true;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
 
+        animacao = GetComponent<Animator>();
         jogador = GameObject.FindGameObjectWithTag("Jogador");
-        inimigo = GetComponent<GameObject>();
-        rb = GetComponent<Rigidbody2D>();
+        
         sprite = GetComponent<SpriteRenderer>();
-        if (animacao != null)
-        {
-            animacao = GetComponent<Animator>();
-        }
 
         barraDeVidaBoss.definirVidaMaxima(vidaMaxima);
     }
@@ -67,6 +57,7 @@ public class VidaBoss : MonoBehaviour
 
     IEnumerator Piscar()
     {
+        invulneravel = true;
         for (float i = 0f; i < 0.2f; i += 0.1f)
         {
             sprite.enabled = false;
@@ -74,11 +65,12 @@ public class VidaBoss : MonoBehaviour
             sprite.enabled = true;
             yield return new WaitForSeconds(0.1f);
         }
+        invulneravel = false;
     }
 
     IEnumerator morreu()
     {
-        podeMover = false;
+        MovimentacaoBoss.podeMover = false;
         yield return new WaitForSeconds(1f);
         Destroy(inimigo);
     }

@@ -9,15 +9,21 @@ public class MovimentacaoBoss : MonoBehaviour
     public Transform jogador;
 
     [Header("Configurações")]
+    [SerializeField] public static bool podeMover;
     public bool seguindoJogador;
     public float velocidade = 2f; // Velocidade de seguimento do jogaor
     public float delay = 0.5f; //Atraso em segundos
+
+    [Header("RigidBody")]
+    private Rigidbody2D rb;   // rb = rigidbody
 
     private Vector3 posicaoAlvo; //Posicao do alvo para seguir
     // Start is called before the first frame update
     void Start()
     {
         posicaoAlvo = jogador.position;
+        rb = GetComponent<Rigidbody2D>();
+        podeMover = false;
     }
 
     // Update is called once per frame
@@ -34,5 +40,6 @@ public class MovimentacaoBoss : MonoBehaviour
     public void ligarMovimentação()
     {
         seguindoJogador = true;
+        podeMover = true;
     }
 }

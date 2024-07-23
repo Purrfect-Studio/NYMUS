@@ -17,11 +17,29 @@ public class ExplosaoDeDados : MonoBehaviour
         animacao = GetComponent<Animator>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         vidaJogador = GetComponent<VidaJogador>();
+        circleCollider2D.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Jogador"))
+        {
+            Collider2D colisaoJogador = Physics2D.OverlapBox(circleCollider2D.bounds.center, circleCollider2D.bounds.size, 0, layerJogador);
+            VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
+            if (vidaJogador != null && VidaJogador.invulneravel == false)
+            {
+                vidaJogador.tomarDano(dano);
+            }
+        }
+    }
+
+    public void ativarCollider()
+    {
+        circleCollider2D.enabled = true;
+    }
+
+    public void desativarCollider()
+    {
+        circleCollider2D.enabled = false;
     }
 }

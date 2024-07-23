@@ -232,7 +232,7 @@ public class PlayerControlador : MonoBehaviour
                     inimigo.tomarDano(dano);
                 }
                 VidaBoss boss = acertarInimigo.GetComponent<VidaBoss>();
-                if (boss != null && boss.invulneravel == false)
+                if (boss != null && VidaBoss.invulneravel == false)
                 {
                     //Debug.Log("Atacando:" + acertarInimigo.name);
                     //Debug.Log("Causei:" + dano + " de dano");

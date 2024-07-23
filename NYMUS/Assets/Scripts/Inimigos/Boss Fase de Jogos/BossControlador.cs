@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class BossControlador : MonoBehaviour
 {
-
-    [Header("Script Procurar Jogador")]
-    //public ProcurarJogador procurarJogador;
-
     [Header("Configurações de ataque")]
     public float cooldownAtaque;
+    private bool podeAtacar = false;
     public enum ataquesBoss
     {
         Firewall,
@@ -22,6 +19,7 @@ public class BossControlador : MonoBehaviour
     [Header("Variáveis privadas de apoio")]
     private float cooldownRestante;
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
+    private GameObject jogador;
 
     [Header("Projetil do Prefab 'Firewall'")]
     public GameObject projetilFirewall;
@@ -41,10 +39,17 @@ public class BossControlador : MonoBehaviour
     public GameObject projetilExplosaoDeDados;
     [Header("GameObject da Arma 'Explosao de Dados'")]
     public Transform armaExplosaoDeDados; // Posição de onde o projétil será disparado
+    public float intervaloEntreExplosaoDeDados;
+    public int quantidadeDeExplosaoDeDados;
+    private bool executarExplosaoDeDados = false;
+    private float contadorExplosaoDeDados;
+    private int quantidadeDeExplosaoDeDadosExecutadas = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        jogador = GameObject.FindGameObjectWithTag("Jogador");
+        contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
         //Definindo ataques disponíveis iniciais
         ataquesDisponiveis.Add(ataquesBoss.Firewall);
         ataquesDisponiveis.Add(ataquesBoss.InjecaoDeDados);
@@ -59,12 +64,55 @@ public class BossControlador : MonoBehaviour
     void Update()
     {
         cooldownRestante -= Time.deltaTime;
-        if(cooldownRestante<=0)
+        if(cooldownRestante <= 0 && podeAtacar == true)
         {
             ExecutarAtaque(EscolherAtaqueAtual());
             cooldownRestante = cooldownAtaque;
         }
-        
+
+        ExecutarExplosaoDeDados();
+        delayParaIniciarAtaque();
+    }
+
+    void delayParaIniciarAtaque()
+    {
+        if(MovimentacaoBoss.podeMover == true)
+        {
+            if(podeAtacar == false)
+            {
+                podeAtacar = true;
+            }
+        }
+        else
+        {
+            podeAtacar = false;
+        }
+    }
+
+    public void ExecutarExplosaoDeDados()
+    {
+        if (executarExplosaoDeDados == true)
+        {
+            if (contadorExplosaoDeDados < 0)
+            {
+                GameObject[] explosaoDeDados = new GameObject[quantidadeDeExplosaoDeDados];
+                explosaoDeDados[quantidadeDeExplosaoDeDadosExecutadas] = Instantiate(projetilExplosaoDeDados);
+                explosaoDeDados[quantidadeDeExplosaoDeDadosExecutadas].transform.position = jogador.transform.position; //armaExplosaoDeDados.position; 
+                Destroy(explosaoDeDados[quantidadeDeExplosaoDeDadosExecutadas].gameObject, 1.5f);
+                contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
+                quantidadeDeExplosaoDeDadosExecutadas++;
+                if (quantidadeDeExplosaoDeDadosExecutadas == quantidadeDeExplosaoDeDados)
+                {
+                    quantidadeDeExplosaoDeDadosExecutadas = 0;
+                    executarExplosaoDeDados = false;
+                    contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
+                }
+            }
+            else
+            {
+                contadorExplosaoDeDados -= Time.deltaTime;
+            }
+        }
     }
 
     public ataquesBoss EscolherAtaqueAtual()
@@ -97,10 +145,12 @@ public class BossControlador : MonoBehaviour
                 break;
 
             case ataquesBoss.ExplosaoDeDados:
-                Debug.Log("Boss está executando InvocarInimigo");
+                Debug.Log("Boss está executando ExplosaoDeDados");
+                executarExplosaoDeDados = true;
                 break;
         }
     }
+
     public void LigarNovoAtaque(ataquesBoss ataqueNovo)
     {
         ataquesDisponiveis.Add(ataqueNovo);
