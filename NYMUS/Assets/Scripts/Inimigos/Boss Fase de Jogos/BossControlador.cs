@@ -14,8 +14,8 @@ public class BossControlador : MonoBehaviour
     public enum ataquesBoss
     {
         Firewall,
-        RaioDeVeneno,
-        InvocarInimigo,
+        InjecaoDeDados,
+        ExplosaoDeDados,
         //Adicionar todos os ataques e ações do boss
     }
 
@@ -32,23 +32,27 @@ public class BossControlador : MonoBehaviour
     [Header("GameObject da Arma 'Firewall'")]
     public Transform armaFirewall; // Posição de onde o projétil será disparado
 
-    [Header("Projetil do Prefab 'Raio de Veneno'")]
-    public GameObject projetilRaioDeVeneno;
-    [Header("GameObject da Arma 'Raio de Veneno'")]
-    public Transform armaRaioDeVeneno; // Posição de onde o projétil será disparado
+    [Header("Projetil do Prefab 'Injecao de Dados'")]
+    public GameObject projetilInjecaoDeDados;
+    [Header("GameObject da Arma 'Injecao de Dados'")]
+    public Transform armaInjecaoDeDados; // Posição de onde o projétil será disparado
+
+    [Header("Projetil do Prefab 'Explosao de Dados'")]
+    public GameObject projetilExplosaoDeDados;
+    [Header("GameObject da Arma 'Explosao de Dados'")]
+    public Transform armaExplosaoDeDados; // Posição de onde o projétil será disparado
 
     // Start is called before the first frame update
     void Start()
     {
         //Definindo ataques disponíveis iniciais
-
         ataquesDisponiveis.Add(ataquesBoss.Firewall);
-        ataquesDisponiveis.Add(ataquesBoss.RaioDeVeneno);
+        ataquesDisponiveis.Add(ataquesBoss.InjecaoDeDados);
+        ataquesDisponiveis.Add(ataquesBoss.ExplosaoDeDados);
         // if vida <50%, adicionarAtaque(ataquesBoss.InvocarInimigo) ...
 
         //procurarJogador = GetComponent<ProcurarJogador>();
         cooldownRestante = cooldownAtaque;
-
     }
 
     // Update is called once per frame
@@ -85,14 +89,14 @@ public class BossControlador : MonoBehaviour
 
                 break;
 
-            case ataquesBoss.RaioDeVeneno:
+            case ataquesBoss.InjecaoDeDados:
                 Debug.Log("Boss está executando RaioDeVeneno");
-                GameObject raioDeVeneno = Instantiate(projetilRaioDeVeneno);
-                raioDeVeneno.transform.position = armaRaioDeVeneno.position;
+                GameObject raioDeVeneno = Instantiate(projetilInjecaoDeDados);
+                raioDeVeneno.transform.position = armaInjecaoDeDados.position;
                 Destroy(raioDeVeneno.gameObject, 2.5f);
                 break;
 
-            case ataquesBoss.InvocarInimigo:
+            case ataquesBoss.ExplosaoDeDados:
                 Debug.Log("Boss está executando InvocarInimigo");
                 break;
         }

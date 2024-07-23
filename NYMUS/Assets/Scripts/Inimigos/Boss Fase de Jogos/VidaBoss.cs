@@ -10,7 +10,8 @@ public class VidaBoss : MonoBehaviour
     public float vidaMaxima;
     public float vidaAtual;
     [SerializeField] public static bool podeMover;
-    public BarraDeVida barraDeVida;
+    public BarraDeVidaBoss barraDeVidaBoss;
+    public bool invulneravel;
 
     [Header("GameObject do inimigo")]
     public GameObject inimigo;
@@ -44,7 +45,7 @@ public class VidaBoss : MonoBehaviour
             animacao = GetComponent<Animator>();
         }
 
-        barraDeVida.definirVidaMaxima(vidaMaxima);
+        barraDeVidaBoss.definirVidaMaxima(vidaMaxima);
     }
 
     // Update is called once per frame
@@ -56,6 +57,7 @@ public class VidaBoss : MonoBehaviour
     {
         Debug.Log("Tomei dano" + dano);
         vidaAtual -= dano;
+        barraDeVidaBoss.ajustarBarraDeVida(vidaAtual);
         StartCoroutine("Piscar");
         if (vidaAtual <= 0)
         {
