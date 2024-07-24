@@ -391,7 +391,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: dialogoControlador
@@ -399,69 +399,79 @@ PrefabInstance:
       objectReference: {fileID: 1155486752}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[0].texto
-      value: "-\xC9 assim mesmo?"
+      value: "-Este \xE9 um acesso antecipado de NYMUS. Esta demonstra\xE7\xE3o cont\xE9m
+        imagens e v\xEDdeos que poodem ser prejudiciais para pessoas com epilepsia
+        fotossens\xEDvel."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[1].texto
-      value: "-Isso mesmo. J\xE1 estamos quase l\xE1."
+      value: "-O jogo come\xE7a a seguir."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[2].texto
+      value: "-\xC9 assim mesmo?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[3].texto
+      value: "-Isso mesmo. J\xE1 estamos quase l\xE1."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[4].texto
       value: "-Geralmente n\xE3o \xE9 assim que se remove v\xEDrus do computador,
         mas voltaremos ao m\xE9todo arcaico."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[3].texto
+      propertyPath: falas.Array.data[5].texto
       value: "-Vamos remov\xEA-lo manualmente. De forma literal mesmo."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[4].texto
+      propertyPath: falas.Array.data[6].texto
       value: "-Estou me sentindo meio esquisito. Ent\xE3o \xE9 assim que \xE9 entrar
         em um computador?"
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[5].texto
+      propertyPath: falas.Array.data[7].texto
       value: '-Exatamente. E vamos direto para o nosso objetivo: a pasta de jogos.'
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[6].texto
+      propertyPath: falas.Array.data[8].texto
       value: "-Vamos ter que verificar qual jogo est\xE1 com o problema primeiro.
         E ent\xE3o vamos ver como retirar o v\xEDrus."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[7].texto
+      propertyPath: falas.Array.data[9].texto
       value: "-Eu n\xE3o devia ter baixado aquele jogo pirata. Tava todo mundo jogando
         e eu so queria fazer parte disso tamb\xE9m..."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[8].texto
+      propertyPath: falas.Array.data[10].texto
       value: "-Isso acontece. Mas existem consequ\xEAncias. Parece que alguns outros
         jogos come\xE7aram a dar problema tamb\xE9m ent\xE3o precisamos investigar."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[9].texto
+      propertyPath: falas.Array.data[11].texto
       value: "-Mas n\xE3o se preocuppe com isso. Eu estarei te vendo daqui e estarei
         com voc\xEA te ajudando."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[10].texto
+      propertyPath: falas.Array.data[12].texto
       value: "-Talvez n\xE3o v\xE1 ser uma tarefa t\xE3o dif\xEDcil afinal n\xE9..."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[11].texto
+      propertyPath: falas.Array.data[13].texto
       value: "-Vamos l\xE1. Estou pronto."
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[0].nomePersonagem
-      value: L3h
+      value: ALERTA!
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[1].nomePersonagem
-      value: NYMUS
+      value: ALERTA!
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[2].nomePersonagem
-      value: NYMUS
+      value: L3h
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[3].nomePersonagem
@@ -469,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[4].nomePersonagem
-      value: L3h
+      value: NYMUS
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[5].nomePersonagem
@@ -477,11 +487,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[6].nomePersonagem
-      value: NYMUS
+      value: L3h
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[7].nomePersonagem
-      value: L3h
+      value: NYMUS
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[8].nomePersonagem
@@ -489,28 +499,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[9].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[10].nomePersonagem
       value: L3h
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[10].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[11].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[12].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[13].nomePersonagem
       value: L3h
       objectReference: {fileID: 0}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[0].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
+      objectReference: {fileID: 21300000, guid: 6b5cbd266b8b69d499619f4545c14716, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[1].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+      objectReference: {fileID: 21300000, guid: 6b5cbd266b8b69d499619f4545c14716, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[2].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[3].imagemPersonagem
       value: 
@@ -518,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[4].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[5].imagemPersonagem
       value: 
@@ -526,11 +544,11 @@ PrefabInstance:
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[6].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[7].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 1274ea04bff54de40b3ee8ca6021eb82, type: 3}
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[8].imagemPersonagem
       value: 
@@ -538,13 +556,21 @@ PrefabInstance:
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[9].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+      objectReference: {fileID: 21300000, guid: 1274ea04bff54de40b3ee8ca6021eb82, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[10].imagemPersonagem
       value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
     - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
       propertyPath: falas.Array.data[11].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[12].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[13].imagemPersonagem
       value: 
       objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
     - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
@@ -832,7 +858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd2f82edea1496041ad0bf94928a9cfb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b5cbd266b8b69d499619f4545c14716, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1518,6 +1544,7 @@ GameObject:
   - component: {fileID: 1381261996}
   - component: {fileID: 1381261995}
   - component: {fileID: 1381261994}
+  - component: {fileID: 1381261997}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1591,6 +1618,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381261997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381261993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &1503399488
 PrefabInstance:
   m_ObjectHideFlags: 0
