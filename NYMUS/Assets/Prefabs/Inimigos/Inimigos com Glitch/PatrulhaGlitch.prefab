@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -5606822489149571785}
   m_Layer: 9
   m_Name: PatrulhaGlitch
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,6 +300,7 @@ MonoBehaviour:
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 10
+  causarDanoNoInimigo: 0
   layerInimigo:
     serializedVersion: 2
     m_Bits: 0

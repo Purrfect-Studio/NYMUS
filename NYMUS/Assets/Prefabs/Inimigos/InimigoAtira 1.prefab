@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6840456736707044341}
   m_Layer: 0
   m_Name: InimigoAtira 1
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39fdb2f26a49c6439739217bb0e7965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ligado: 1
   atirar: {fileID: 198315952874499686}
   procuraJogador: 1
   procurarJogador: {fileID: 1062836325228817203}
@@ -168,8 +169,8 @@ MonoBehaviour:
   forcaKnockbackX: 0
   forcaKnockbackY: 0
   animacao: {fileID: 0}
-  sprite: {fileID: 3974183750072932082}
   jogador: {fileID: 0}
+  sprite: {fileID: 3974183750072932082}
 --- !u!114 &1062836325228817203
 MonoBehaviour:
   m_ObjectHideFlags: 0

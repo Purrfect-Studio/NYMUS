@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class DanoDeColisao : MonoBehaviour
 {
     [Header("Collider 2D")]
     public Collider2D Collider2D;
 
     [Header("Jogador")]
-    [SerializeField] private LayerMask layerJogador; //Variavel de apoio para rechonhecer a layer do chao;
+    [SerializeField] private LayerMask layerJogador;
     public GameObject jogador;
     public float danoNoJogador;
     private VidaJogador vidaJogador;
@@ -24,75 +23,66 @@ public class DanoDeColisao : MonoBehaviour
     {
         jogador = GameObject.FindWithTag("Jogador");
     }
-    // Update is called once per frame
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CausarDanoNoJogador();
-
-        if (causarDanoNoInimigo == true)
+        if (colisaoJogador(collision))
         {
-            CausarDanoNoInimigo();
+            CausarDanoNoJogador(collision);
+        }
+
+        if (colisaoInimigo(collision) && causarDanoNoInimigo)
+        {
+            CausarDanoNoInimigo(collision);
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        CausarDanoNoJogador();
-
-        if (causarDanoNoInimigo == true)
+        if (colisaoJogador(collision))
         {
-            CausarDanoNoInimigo();
+            CausarDanoNoJogador(collision);
+        }
+
+        if (colisaoInimigo(collision) && causarDanoNoInimigo)
+        {
+            CausarDanoNoInimigo(collision);
         }
     }
 
-    public void CausarDanoNoJogador()
+    public void CausarDanoNoJogador(Collider2D collision)
     {
-        if (colisaoJogador() == true)
+        vidaJogador = collision.GetComponent<VidaJogador>();
+        if (vidaJogador != null && !VidaJogador.invulneravel)
         {
-            Collider2D colisaoJogador = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size + new Vector3(1, 1, 1), 0, layerJogador);
-            vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
-            if (vidaJogador != null && VidaJogador.invulneravel == false)
+            if (transform.position.x <= jogador.transform.position.x)
             {
-                if (transform.position.x <= jogador.transform.position.x)
-                {
-                    VidaJogador.knockbackParaDireita = -1;
-                }
-                else
-                {
-                    VidaJogador.knockbackParaDireita = 1;
-                }
-                vidaJogador.tomarDano(danoNoJogador);
+                VidaJogador.knockbackParaDireita = -1;
             }
-        }
-    }
-
-    public void CausarDanoNoInimigo()
-    {
-        if (colisaoInimigo() == true && causarDanoNoInimigo == true)
-        {
-            Collider2D colisaoInimigo = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerInimigo);
-            if (colisaoInimigo != null)
+            else
             {
-                VidaInimigo inimigo = colisaoInimigo.GetComponent<VidaInimigo>();
-                if (inimigo != null && VidaInimigo.invulneravel == false)
-                {
-                    //Debug.Log("Dano no Inimigo:" + colisaoInimigo.name);
-                    inimigo.tomarDano(danoNoInimigo);
-                }
+                VidaJogador.knockbackParaDireita = 1;
             }
+            vidaJogador.tomarDano(danoNoJogador);
         }
     }
 
-    private bool colisaoJogador()
+    public void CausarDanoNoInimigo(Collider2D collision)
     {
-        RaycastHit2D colisao = Physics2D.BoxCast(Collider2D.bounds.center, Collider2D.bounds.size, 0, Vector2.down, 0.05f, layerJogador); // Cria um segundo box collider para reconhecer o jogador
-        return colisao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no jogador
+        VidaInimigo inimigo = collision.GetComponent<VidaInimigo>();
+        if (inimigo != null && !VidaInimigo.invulneravel)
+        {
+            inimigo.tomarDano(danoNoInimigo);
+        }
     }
 
-    private bool colisaoInimigo()
+    private bool colisaoJogador(Collider2D collision)
     {
-        RaycastHit2D colisao = Physics2D.BoxCast(Collider2D.bounds.center, Collider2D.bounds.size, 0, Vector2.down, 0.05f, layerInimigo); // Cria um segundo box collider para reconhecer o jogador
-        return colisao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no jogador
+        return collision.gameObject.CompareTag("Jogador");
+    }
+
+    private bool colisaoInimigo(Collider2D collision)
+    {
+        return collision.gameObject.CompareTag("Inimigo");
     }
 }

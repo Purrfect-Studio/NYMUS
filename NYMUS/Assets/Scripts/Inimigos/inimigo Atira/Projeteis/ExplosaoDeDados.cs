@@ -22,14 +22,10 @@ public class ExplosaoDeDados : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Jogador"))
         {
-            Collider2D colisaoJogador = Physics2D.OverlapBox(circleCollider2D.bounds.center, circleCollider2D.bounds.size, 0, layerJogador);
-            if(colisaoJogador != null )
+            VidaJogador vidaJogador = collision.GetComponent<VidaJogador>();
+            if (vidaJogador != null && !VidaJogador.invulneravel)
             {
-                VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
-                if (vidaJogador != null && VidaJogador.invulneravel == false)
-                {
-                    vidaJogador.tomarDano(dano);
-                }
+                vidaJogador.tomarDano(dano);
             }
         }
     }
@@ -38,14 +34,10 @@ public class ExplosaoDeDados : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Jogador"))
         {
-            Collider2D colisaoJogador = Physics2D.OverlapBox(circleCollider2D.bounds.center, circleCollider2D.bounds.size, 0, layerJogador);
-            if (colisaoJogador != null)
+            VidaJogador vidaJogador = collision.GetComponent<VidaJogador>();
+            if (vidaJogador != null && !VidaJogador.invulneravel)
             {
-                VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
-                if (vidaJogador != null && VidaJogador.invulneravel == false)
-                {
-                    vidaJogador.tomarDano(dano);
-                }
+                vidaJogador.tomarDano(dano);
             }
         }
     }
