@@ -29,6 +29,8 @@ public class VidaBoss : MonoBehaviour
 
     private BossControlador bossControlador;
 
+    private MovimentacaoBoss movimentacaoBoss;
+
     public float tempoParaLevantar;
 
 
@@ -41,6 +43,7 @@ public class VidaBoss : MonoBehaviour
         jogador = GameObject.FindGameObjectWithTag("Jogador");
         rigidbody2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        bossControlador = GetComponent<BossControlador>();
 
         barraDeVidaBoss.definirVidaMaxima(vidaMaxima);
     }
@@ -59,8 +62,8 @@ public class VidaBoss : MonoBehaviour
         invulnerabilidade = false;
         invulneravel = false;
         rigidbody2d.gravityScale = 10f;
-        BossControlador.podeExecutarAcoes = false;
         MovimentacaoBoss.podeMover = false;
+        BossControlador.podeExecutarAcoes = false;
         MovimentacaoBoss.seguindoJogador = false;
         StartCoroutine("LevantarBoss");
     }
@@ -73,6 +76,7 @@ public class VidaBoss : MonoBehaviour
         BossControlador.podeExecutarAcoes = true;
         MovimentacaoBoss.podeMover = true;
         MovimentacaoBoss.seguindoJogador = true;
+        
     }
 
     public void tomarDano(float dano)

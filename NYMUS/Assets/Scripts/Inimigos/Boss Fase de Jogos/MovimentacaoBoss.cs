@@ -29,6 +29,11 @@ public class MovimentacaoBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SeguirJogador();
+    }
+
+    public void SeguirJogador()
+    {
         if (seguindoJogador)
         {
             posicaoAlvo = Vector3.Lerp(posicaoAlvo, jogador.position, velocidade * Time.deltaTime / delay);
