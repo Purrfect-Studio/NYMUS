@@ -22,12 +22,12 @@ public class Fechadura : MonoBehaviour
     {
         if (travado) 
         {
-            if (precisa_ChaveEspecial == true && Inventario.chavesEspeciasAtual > 0 && precisa_Chave == false)
+            if (precisa_ChaveEspecial == true && Inventario.chavesEspeciasAtual > 0)
             {
                 destravarAlavanca();
                 Inventario.chavesEspeciasAtual -= 1;
             }
-            if (precisa_Chave == true && precisa_ChaveEspecial == false && Inventario.chavesAtual > 0)
+            if (precisa_Chave == true && Inventario.chavesAtual > 0)
             {
                 destravarAlavanca();
                 Inventario.chavesAtual -= 1;
