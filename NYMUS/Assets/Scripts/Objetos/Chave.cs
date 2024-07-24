@@ -11,7 +11,7 @@ public class Chave : MonoBehaviour
         {
             if (chaveEspecial)
             {
-                Inventario.temChaveEspecial = true;
+                Inventario.receberChaveEspecial();
             }
             else
             {            

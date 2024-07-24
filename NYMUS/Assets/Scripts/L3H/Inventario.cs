@@ -7,6 +7,9 @@ public class Inventario : MonoBehaviour
     static public int chavesTotal;
     static public int chavesAtual;
 
+    static public int chavesEspeciaisTotal;
+    static public int chavesEspeciasAtual;
+
     static public bool temChaveEspecial;
 
     private void Start()
@@ -17,6 +20,11 @@ public class Inventario : MonoBehaviour
     {
         chavesTotal += 1;
         chavesAtual += 1;
+    }
+    public static void receberChaveEspecial()
+    {
+        chavesEspeciaisTotal += 1;
+        chavesEspeciasAtual += 1;
     }
 
 

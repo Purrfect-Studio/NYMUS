@@ -22,21 +22,15 @@ public class Fechadura : MonoBehaviour
     {
         if (travado) 
         {
-            if (precisa_ChaveEspecial && Inventario.temChaveEspecial == true)
+            if (precisa_ChaveEspecial == true && Inventario.chavesEspeciasAtual > 0 && precisa_Chave == false)
             {
                 destravarAlavanca();
+                Inventario.chavesEspeciasAtual -= 1;
             }
-            if (precisa_Chave == false && precisa_ChaveEspecial == false)
+            if (precisa_Chave == true && precisa_ChaveEspecial == false && Inventario.chavesAtual > 0)
             {
                 destravarAlavanca();
-            }
-            else
-            {
-                if (Inventario.chavesAtual > 0)
-                {
-                    Inventario.chavesAtual -= 1;
-                    destravarAlavanca();
-                }
+                Inventario.chavesAtual -= 1;
             }
         }
     }
