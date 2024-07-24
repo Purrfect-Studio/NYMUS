@@ -96,36 +96,39 @@ public class PlayerControlador : MonoBehaviour
         if (podeMover == true)
         {
             andar();
-        }
-        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
-        {
-            pulo();
+            if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
+            {
+                pulo();
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        verificarSubirEscada();
-        if(podeInteragirEscada == true)
+        if(podeMover == true)
         {
-            rigidBody2D.gravityScale = 0;
-        }
-        else
-        {
-            rigidBody2D.gravityScale = gravidade;
-            estaSubindoEscada = false;
-            estaDescendoEscada = false;
-        }
+            verificarSubirEscada();
+            if (podeInteragirEscada == true)
+            {
+                rigidBody2D.gravityScale = 0;
+            }
+            else
+            {
+                rigidBody2D.gravityScale = gravidade;
+                estaSubindoEscada = false;
+                estaDescendoEscada = false;
+            }
 
-        interagir();
-        if (podeMover == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
-        {
-            verificarPuloDuplo();
-            ataque();
+            interagir();
+            if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
+            {
+                verificarPuloDuplo();
+                ataque();
+            }
+
+            CairDaPlataforma();
         }
-
-
     }
 
     void andar()
@@ -175,20 +178,20 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.W) && estaChao() == true || Input.GetKeyDown(KeyCode.Space) && estaChao() == true)
+        if (Input.GetKeyDown(KeyCode.Space) && estaChao() == true || Input.GetKeyDown(KeyCode.W) && estaChao() == true)
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
         }
 
-        if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
+        if (Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.W) && estaPulando == true)
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W))
         {
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
@@ -317,7 +320,7 @@ public class PlayerControlador : MonoBehaviour
 
     public void CairDaPlataforma()
     {
-        if(estaPlataforma() == true && Input.GetKey(KeyCode.S) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
+        if(estaPlataforma() == true && Input.GetKeyDown(KeyCode.S)/* && Input.GetKeyDown(KeyCode.W)*/)
         {
             StartCoroutine("CairPlataforma");
         }
@@ -326,7 +329,7 @@ public class PlayerControlador : MonoBehaviour
     IEnumerator CairPlataforma()
     {
         Physics2D.IgnoreLayerCollision(8, 13, true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
         Physics2D.IgnoreLayerCollision(8, 13, false);
     }
 
@@ -355,6 +358,22 @@ public class PlayerControlador : MonoBehaviour
     public void LiberarMovimentacao()
     {
         podeMover = true; // Permite que o jogador se mova novamente
+        VidaJogador.invulneravel = false;
+    }
+
+    public void TravarMovimentacaoPorUmTempo(float tempo)
+    {
+        StartCoroutine(travarPorUmTempo(tempo));
+    }
+
+    IEnumerator travarPorUmTempo(float tempo)
+    {
+
+        podeMover = false;
+        VidaJogador.invulneravel = true;
+        rigidBody2D.velocity = Vector2.zero; // Zera a velocidade do jogador
+        yield return new WaitForSeconds(tempo);
+        podeMover = true;
         VidaJogador.invulneravel = false;
     }
 

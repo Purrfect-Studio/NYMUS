@@ -90,7 +90,7 @@ public class VidaBoss : MonoBehaviour
     IEnumerator Piscar()
     {
         invulneravel = true;
-        for (float i = 0f; i < 0.2f; i += 0.1f)
+        for (float i = 0f; i < 0.3f; i += 0.1f)
         {
             sprite.enabled = false;
             yield return new WaitForSeconds(0.1f);

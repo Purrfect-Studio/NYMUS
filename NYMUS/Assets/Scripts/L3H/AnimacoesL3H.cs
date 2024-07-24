@@ -17,7 +17,7 @@ public class AnimacoesL3H : MonoBehaviour
     [Header("BoxCollider")]
     private BoxCollider2D boxCollider2D; 
 
-    private int contadorParaAnimacaoDeTomarDano;
+    private bool contadorParaAnimacaoDeTomarDano;
     private bool pulei;
     private bool estavaNaPlataforma;
 
@@ -27,7 +27,7 @@ public class AnimacoesL3H : MonoBehaviour
         animacaoPontoDeAtaque = playerControlador.pontoDeAtaque.GetComponent<Animator>();
         vidaJogador = this.GetComponent<VidaJogador>();
         boxCollider2D = this.GetComponent<BoxCollider2D>();
-        contadorParaAnimacaoDeTomarDano = 0;
+        contadorParaAnimacaoDeTomarDano = false;
         pulei = false;
         estavaNaPlataforma = false;
     }
@@ -113,7 +113,7 @@ public class AnimacoesL3H : MonoBehaviour
 
     IEnumerator DesativarPuloCaindoNaPlataforma()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
         if (estaChao())
         {
             animacao.SetBool("estaChao", true);
@@ -160,14 +160,14 @@ public class AnimacoesL3H : MonoBehaviour
 
     void tomarDano()
     {
-        if (vidaJogador.tomeiDano == true && contadorParaAnimacaoDeTomarDano == 1)
+        if (vidaJogador.tomeiDano == true && contadorParaAnimacaoDeTomarDano)
         {
             animacao.SetTrigger("tomarDano");
-            contadorParaAnimacaoDeTomarDano = 0;
+            contadorParaAnimacaoDeTomarDano = false;
         }
-        if(vidaJogador.tomeiDano == false && contadorParaAnimacaoDeTomarDano == 0)
+        if(vidaJogador.tomeiDano == false && !contadorParaAnimacaoDeTomarDano)
         {
-            contadorParaAnimacaoDeTomarDano = 1;
+            contadorParaAnimacaoDeTomarDano = true;
         }
     }
 }

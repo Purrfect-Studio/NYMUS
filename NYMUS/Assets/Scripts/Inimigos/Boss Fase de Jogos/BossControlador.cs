@@ -7,6 +7,7 @@ using UnityEngine;
 public class BossControlador : MonoBehaviour
 {
     [Header("Configurações de ataque")]
+    public float delayParaIniciarAcoes;
     public float cooldownAtaque;
     public static bool podeExecutarAcoes = false;
     public enum ataquesBoss
@@ -107,7 +108,7 @@ public class BossControlador : MonoBehaviour
         {
             if(podeExecutarAcoes == false)
             {
-                StartCoroutine("delayParaIniciarAtaque");
+                StartCoroutine("DelayParaIniciarAcoes");
             }
         }
         else
@@ -116,9 +117,9 @@ public class BossControlador : MonoBehaviour
         }
     }
 
-    IEnumerator delayParaIniciarAtaque()
+    IEnumerator DelayParaIniciarAcoes()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(delayParaIniciarAcoes);
         podeExecutarAcoes = true;
     }
 
