@@ -129,8 +129,7 @@ public class VidaBoss : MonoBehaviour
         BossControlador.podeExecutarAcoes = false;
         MovimentacaoBoss.seguindoJogador = false;
         yield return new WaitForSeconds(1f);
-        Destroy(inimigo);
-        yield return new WaitForSeconds(0.3f);
         evento.Invoke();
+        Destroy(inimigo);  
     }
 }
