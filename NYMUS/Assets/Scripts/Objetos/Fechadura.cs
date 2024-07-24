@@ -32,6 +32,10 @@ public class Fechadura : MonoBehaviour
                 destravarAlavanca();
                 Inventario.chavesAtual -= 1;
             }
+            if (precisa_Chave == false && precisa_ChaveEspecial == false)
+            {
+                destravarAlavanca();
+            }
         }
     }
 
