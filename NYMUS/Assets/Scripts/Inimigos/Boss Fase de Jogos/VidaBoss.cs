@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class VidaBoss : MonoBehaviour
@@ -19,17 +20,15 @@ public class VidaBoss : MonoBehaviour
     [Header("Animator")]
     private Animator animacao;
 
-    [Header("jogador")]
-    private GameObject jogador;
-
     [Header("Sprite")]
-    private SpriteRenderer sprite;
+    private Color corOriginal;
+    private SpriteRenderer spriteRenderer;
+    public static bool frenesi = false;
+
+    [Header("Evento")]
+    public UnityEvent evento;
 
     private Rigidbody2D rigidbody2d;
-
-    private BossControlador bossControlador;
-
-    private MovimentacaoBoss movimentacaoBoss;
 
     public float tempoParaLevantar;
 
@@ -38,13 +37,10 @@ public class VidaBoss : MonoBehaviour
     void Start()
     {
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
-
         animacao = GetComponent<Animator>();
-        jogador = GameObject.FindGameObjectWithTag("Jogador");
         rigidbody2d = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        bossControlador = GetComponent<BossControlador>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        corOriginal = spriteRenderer.color;
         barraDeVidaBoss.definirVidaMaxima(vidaMaxima);
     }
 
@@ -55,13 +51,34 @@ public class VidaBoss : MonoBehaviour
         {
             invulneravel = true;
         }
+
+        if (vidaAtual <= vidaMaxima/2 && frenesi == false)
+        {
+            StartCoroutine(frenesiAtivado());
+            frenesi = true;
+        }
+    }
+
+    IEnumerator frenesiAtivado()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(FrenesiAtivado());
+    }
+
+    IEnumerator FrenesiAtivado()
+    {
+        spriteRenderer.color = corOriginal;
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(frenesiAtivado());
     }
 
     public void derrubarBoss()
     {
+        animacao.SetTrigger("Desativar");
         invulnerabilidade = false;
         invulneravel = false;
-        rigidbody2d.gravityScale = 10f;
+        rigidbody2d.gravityScale = 8f;
         MovimentacaoBoss.podeMover = false;
         BossControlador.podeExecutarAcoes = false;
         MovimentacaoBoss.seguindoJogador = false;
@@ -71,17 +88,18 @@ public class VidaBoss : MonoBehaviour
     IEnumerator LevantarBoss()
     {
         yield return new WaitForSeconds(tempoParaLevantar);
+        animacao.SetTrigger("Ativar");
         invulnerabilidade = true;
         rigidbody2d.gravityScale = 0f;
         BossControlador.podeExecutarAcoes = true;
         MovimentacaoBoss.podeMover = true;
         MovimentacaoBoss.seguindoJogador = true;
-        
     }
 
     public void tomarDano(float dano)
     {
         Debug.Log("Boss Tomei dano" + dano);
+        animacao.SetTrigger("TomarDano");
         vidaAtual -= dano;
         barraDeVidaBoss.ajustarBarraDeVida(vidaAtual);
         StartCoroutine("Piscar");
@@ -96,18 +114,23 @@ public class VidaBoss : MonoBehaviour
         invulneravel = true;
         for (float i = 0f; i < 0.3f; i += 0.1f)
         {
-            sprite.enabled = false;
-            yield return new WaitForSeconds(0.1f);
-            sprite.enabled = true;
-            yield return new WaitForSeconds(0.1f);
+            //sprite.enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            //sprite.enabled = true;
+            //yield return new WaitForSeconds(0.1f);
         }
         invulneravel = false;
     }
 
     IEnumerator morreu()
     {
+        animacao.SetTrigger("Morrer");
         MovimentacaoBoss.podeMover = false;
+        BossControlador.podeExecutarAcoes = false;
+        MovimentacaoBoss.seguindoJogador = false;
         yield return new WaitForSeconds(1f);
         Destroy(inimigo);
+        yield return new WaitForSeconds(0.3f);
+        evento.Invoke();
     }
 }

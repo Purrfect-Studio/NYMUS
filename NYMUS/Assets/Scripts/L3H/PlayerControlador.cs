@@ -231,6 +231,7 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
+    private BossControlador bossControlador;
     void ataque()
     {
         if(Input.GetKeyDown(KeyCode.J))
@@ -251,15 +252,19 @@ public class PlayerControlador : MonoBehaviour
                 }
                 if(acertarInimigo.CompareTag("PortaBoss") && VidaBoss.invulnerabilidade == true)
                 {
-                    Collider2D collider = acertarInimigo.GetComponent<BoxCollider2D>();
-                    collider.enabled = false;
-                    Animator animacao = acertarInimigo.GetComponent<Animator>();
-                    animacao.SetTrigger("FecharPorta");
+                    int index = int.Parse(acertarInimigo.name);
                     GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
                     VidaBoss DerrubarBoss = Boss.GetComponent<VidaBoss>();
+                    bossControlador = Boss.GetComponent<BossControlador>();
+                    bossControlador.desativaPorta(index);
                     DerrubarBoss.derrubarBoss();
+
+                    //Collider2D collider = acertarInimigo.GetComponent<BoxCollider2D>();
+                    //collider.enabled = false;
+                    //Animator animacao = acertarInimigo.GetComponent<Animator>();
+                    //animacao.SetTrigger("FecharPorta");
                 }
-                
+
             }
         }
     }

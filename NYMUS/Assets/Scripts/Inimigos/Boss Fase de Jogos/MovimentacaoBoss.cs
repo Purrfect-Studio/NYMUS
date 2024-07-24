@@ -17,6 +17,8 @@ public class MovimentacaoBoss : MonoBehaviour
     [Header("RigidBody")]
     private Rigidbody2D rb;   // rb = rigidbody
 
+    private Vector3 novaPosicao;
+
     private Vector3 posicaoAlvo; //Posicao do alvo para seguir
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,9 @@ public class MovimentacaoBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        posicaoAlvo = Vector3.Lerp(posicaoAlvo, jogador.position, velocidade * Time.deltaTime / delay);
+        novaPosicao = new Vector3(transform.position.x, posicaoAlvo.y, transform.position.z);
+
         SeguirJogador();
     }
 
@@ -36,8 +41,6 @@ public class MovimentacaoBoss : MonoBehaviour
     {
         if (seguindoJogador)
         {
-            posicaoAlvo = Vector3.Lerp(posicaoAlvo, jogador.position, velocidade * Time.deltaTime / delay);
-            Vector3 novaPosicao = new Vector3(transform.position.x, posicaoAlvo.y, transform.position.z);
             transform.position = novaPosicao;
         }
     }

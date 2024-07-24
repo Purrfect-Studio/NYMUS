@@ -9,6 +9,7 @@ public class BossControlador : MonoBehaviour
     [Header("Configurações de ataque")]
     public float delayParaIniciarAcoes;
     public float cooldownAtaque;
+    public float cooldownAtaqueFrenesi;
     public static bool podeExecutarAcoes = false;
     public enum ataquesBoss
     {
@@ -24,7 +25,8 @@ public class BossControlador : MonoBehaviour
     private GameObject jogador;
     private Animator animatorPortas;
     private Collider2D collider2DPortas;
-
+    private bool podeAtivarAnimacaoDeAtaque;
+    private Animator animacao;
 
     [Header("Projetil do Prefab 'Firewall'")]
     public GameObject projetilFirewall;
@@ -64,6 +66,8 @@ public class BossControlador : MonoBehaviour
     void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        animacao = GetComponent<Animator>();
+        
         
         contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
         //Definindo ataques disponíveis iniciais
@@ -88,10 +92,22 @@ public class BossControlador : MonoBehaviour
         cooldownRestanteAtaque -= Time.deltaTime;
         cooldownRestanteParaInvocarPorta -= Time.deltaTime;
 
+        
+
+        if(cooldownRestanteAtaque <= 0.6f && podeExecutarAcoes == true && podeAtivarAnimacaoDeAtaque == true)
+        {
+            podeAtivarAnimacaoDeAtaque = false;
+            animacao.SetTrigger("Atacar");
+        }
         if (cooldownRestanteAtaque <= 0 && podeExecutarAcoes == true)
         {
             ExecutarAtaque(EscolherAtaqueAtual());
+            if (VidaBoss.frenesi == true)
+            {
+                cooldownAtaque = cooldownAtaqueFrenesi;
+            }
             cooldownRestanteAtaque = cooldownAtaque;
+            podeAtivarAnimacaoDeAtaque = true;
         }
 
         ExecutarExplosaoDeDados();
@@ -126,6 +142,7 @@ public class BossControlador : MonoBehaviour
     {
         yield return new WaitForSeconds(delayParaIniciarAcoes);
         podeExecutarAcoes = true;
+        podeAtivarAnimacaoDeAtaque = true;
     }
 
     public void ExecutarExplosaoDeDados()
@@ -161,6 +178,7 @@ public class BossControlador : MonoBehaviour
 
     public void ExecutarAtaque(ataquesBoss ataque)
     {
+
         switch (ataque)
         {
             case ataquesBoss.Firewall:
@@ -209,6 +227,11 @@ public class BossControlador : MonoBehaviour
     IEnumerator DesativarPorta(int indexPorta)
     {
         yield return new WaitForSeconds(tempoParaDesativarPorta);
+        desativaPorta(indexPorta);
+    }
+
+    public void desativaPorta(int indexPorta)
+    {
         animatorPortas = portas[indexPorta].GetComponent<Animator>();
         animatorPortas.SetTrigger("FecharPorta");
         collider2DPortas = portas[indexPorta].GetComponent<BoxCollider2D>();
