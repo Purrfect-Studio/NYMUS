@@ -7,6 +7,6 @@ public class FecharJogo : MonoBehaviour
     // Start is called before the first frame update
    public void fecharJogo()
     {
-        Application.Quit();
+        Application.Quit(); 
     }
 }

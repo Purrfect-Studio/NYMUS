@@ -27,6 +27,7 @@ public class AudioControlador : MonoBehaviour
         {
             Destroy(gameObject); // Destroi duplicatas
         }
+        Start();
     }
 
     private void Start()
