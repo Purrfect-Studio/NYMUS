@@ -20,6 +20,11 @@ public class DialogoControlador : MonoBehaviour
     private List<Fala> falas; // Lista de falas que compõem o diálogo
     private int index; // Índice da fala atual
 
+
+    [Header("Para Cutscene")]
+    public bool acabouDialogo = false;
+
+
     // Flag para verificar se uma fala está sendo escrita no momento
     private bool escrevendoFala;
     // Variável para armazenar a corrotina ativa
@@ -88,6 +93,8 @@ public class DialogoControlador : MonoBehaviour
             }
             else // Todas as falas foram mostradas
             {
+                acabouDialogo = true;
+
                 // Limpa o texto de fala
                 textoFala.text = "";
                 // Reseta o índice
