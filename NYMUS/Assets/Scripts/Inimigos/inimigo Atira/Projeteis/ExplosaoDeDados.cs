@@ -6,7 +6,6 @@ public class ExplosaoDeDados : MonoBehaviour
 {
     public Animator animacao;
     public CircleCollider2D circleCollider2D;
-    public VidaJogador vidaJogador;
     [SerializeField] private LayerMask layerJogador;
 
     public int dano;
@@ -16,7 +15,6 @@ public class ExplosaoDeDados : MonoBehaviour
     {
         animacao = GetComponent<Animator>();
         circleCollider2D = GetComponent<CircleCollider2D>();
-        vidaJogador = GetComponent<VidaJogador>();
         circleCollider2D.enabled = false;
     }
 
@@ -25,10 +23,29 @@ public class ExplosaoDeDados : MonoBehaviour
         if (collision.gameObject.CompareTag("Jogador"))
         {
             Collider2D colisaoJogador = Physics2D.OverlapBox(circleCollider2D.bounds.center, circleCollider2D.bounds.size, 0, layerJogador);
-            VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
-            if (vidaJogador != null && VidaJogador.invulneravel == false)
+            if(colisaoJogador != null )
             {
-                vidaJogador.tomarDano(dano);
+                VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
+                if (vidaJogador != null && VidaJogador.invulneravel == false)
+                {
+                    vidaJogador.tomarDano(dano);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Jogador"))
+        {
+            Collider2D colisaoJogador = Physics2D.OverlapBox(circleCollider2D.bounds.center, circleCollider2D.bounds.size, 0, layerJogador);
+            if (colisaoJogador != null)
+            {
+                VidaJogador vidaJogador = colisaoJogador.GetComponent<VidaJogador>();
+                if (vidaJogador != null && VidaJogador.invulneravel == false)
+                {
+                    vidaJogador.tomarDano(dano);
+                }
             }
         }
     }
