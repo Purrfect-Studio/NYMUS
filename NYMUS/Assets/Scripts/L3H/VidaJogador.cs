@@ -11,6 +11,7 @@ public class VidaJogador : MonoBehaviour
     public float vidaAtual;       // Vida atual do L3H
     public BarraDeVida barraDeVida;
     public static bool estaMorto;
+    public string nomeDaFaseVoltada = "Menu";
 
     [Header("Invulnerabilidade")]
     public static bool invulneravel;                //Liga e desliga a invulnerabilidade
@@ -147,7 +148,7 @@ public class VidaJogador : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Menu"); // volta pro lobby
+            SceneManager.LoadScene(nomeDaFaseVoltada); // volta pro lobby
         }
     }
 }
