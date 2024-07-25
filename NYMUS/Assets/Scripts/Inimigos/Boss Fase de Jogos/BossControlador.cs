@@ -26,6 +26,7 @@ public class BossControlador : MonoBehaviour
     private Collider2D collider2DPortas;
     private bool podeAtivarAnimacaoDeAtaque;
     private Animator animacao;
+    private VidaBoss vidaBoss;
 
     [Header("Projetil do Prefab 'Firewall'")]
     public GameObject projetilFirewall;
@@ -58,15 +59,13 @@ public class BossControlador : MonoBehaviour
     public float cooldownParaInvocarPorta;
     private float cooldownRestanteParaInvocarPorta;
     private bool portaInvocada;
-    
-    
 
     // Start is called before the first frame update
     void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Jogador");
         animacao = GetComponent<Animator>();
-        
+        vidaBoss = GetComponent<VidaBoss>();
         
         contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
         //Definindo ataques disponíveis iniciais
@@ -91,8 +90,6 @@ public class BossControlador : MonoBehaviour
         cooldownRestanteAtaque -= Time.deltaTime;
         cooldownRestanteParaInvocarPorta -= Time.deltaTime;
 
-        
-
         if(cooldownRestanteAtaque <= 0.6f && podeExecutarAcoes == true && podeAtivarAnimacaoDeAtaque == true)
         {
             podeAtivarAnimacaoDeAtaque = false;
@@ -101,7 +98,7 @@ public class BossControlador : MonoBehaviour
         if (cooldownRestanteAtaque <= 0 && podeExecutarAcoes == true)
         {
             ExecutarAtaque(EscolherAtaqueAtual());
-            if (VidaBoss.frenesi == true)
+            if (vidaBoss.frenesi == true)
             {
                 cooldownAtaque = cooldownAtaqueFrenesi;
             }

@@ -23,7 +23,7 @@ public class VidaBoss : MonoBehaviour
     [Header("Sprite")]
     private Color corOriginal;
     private SpriteRenderer spriteRenderer;
-    public static bool frenesi = false;
+    public bool frenesi = false;
 
     [Header("Evento")]
     public UnityEvent evento;
@@ -42,6 +42,7 @@ public class VidaBoss : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         corOriginal = spriteRenderer.color;
         barraDeVidaBoss.definirVidaMaxima(vidaMaxima);
+        frenesi = false;
     }
 
     // Update is called once per frame
