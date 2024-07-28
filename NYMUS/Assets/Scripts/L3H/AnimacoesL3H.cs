@@ -67,7 +67,7 @@ public class AnimacoesL3H : MonoBehaviour
 
     void atacar()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             animacao.SetTrigger("estaAtacando");
             animacaoPontoDeAtaque.SetTrigger("estaAtacando");
