@@ -144,6 +144,7 @@ public class VidaJogador : MonoBehaviour
         {
             transform.position = new Vector2(playerControlador.ultimoCheckpoint.transform.position.x, playerControlador.ultimoCheckpoint.transform.position.y);
             vidaAtual = vidaMaxima;
+            estaMorto = false;
             barraDeVida.ajustarBarraDeVida(vidaAtual);
         }
         else

@@ -51,10 +51,10 @@ public class MoverEntrePontos : MonoBehaviour
         }
         if(ligado)
         movimentacao();
-        if (VidaJogador.estaMorto == true)
+        /*if (VidaJogador.estaMorto == true)
         {
             resetEmMorte();
-        }
+        }*/
     }
 
     void movimentacao()
@@ -111,9 +111,10 @@ public class MoverEntrePontos : MonoBehaviour
         ligado = false;
     }
 
-    void resetEmMorte()
+    /*void resetEmMorte()
     {
+        pontoAnterior = proximoPonto;
         proximoPonto = 0;
-    }
+    }*/
 
 }
