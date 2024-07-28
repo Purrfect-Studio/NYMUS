@@ -255,14 +255,10 @@ public class PlayerControlador : MonoBehaviour
                     int index = int.Parse(acertarInimigo.name);
                     GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
                     VidaBoss DerrubarBoss = Boss.GetComponent<VidaBoss>();
-                    bossControlador = Boss.GetComponent<BossControlador>();
-                    bossControlador.desativaPorta(index);
+                    GameObject PortaVirut = GameObject.FindGameObjectWithTag("ControladorPortasVirut");
+                    PortaVirut portaVirut = PortaVirut.GetComponent<PortaVirut>();
+                    portaVirut.jogadorDesativaPorta(index);
                     DerrubarBoss.derrubarBoss();
-
-                    //Collider2D collider = acertarInimigo.GetComponent<BoxCollider2D>();
-                    //collider.enabled = false;
-                    //Animator animacao = acertarInimigo.GetComponent<Animator>();
-                    //animacao.SetTrigger("FecharPorta");
                 }
 
             }

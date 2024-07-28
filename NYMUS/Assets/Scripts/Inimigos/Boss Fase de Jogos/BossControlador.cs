@@ -53,12 +53,7 @@ public class BossControlador : MonoBehaviour
     private float contadorExplosaoDeDados;
     private int quantidadeDeExplosaoDeDadosExecutadas = 0;
 
-    [Header("Mecanica de causar dano no Boss")]
-    public GameObject[] portas;
-    public float tempoParaDesativarPorta;
-    public float cooldownParaInvocarPorta;
-    private float cooldownRestanteParaInvocarPorta;
-    private bool portaInvocada;
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,22 +69,12 @@ public class BossControlador : MonoBehaviour
         ataquesDisponiveis.Add(ataquesBoss.ExplosaoDeDados);
         // if vida <50%, adicionarAtaque(ataquesBoss.InvocarInimigo) ...
 
-        cooldownRestanteAtaque = cooldownAtaque;
-        cooldownRestanteParaInvocarPorta = cooldownParaInvocarPorta;
-
-        for(int i = 0; i < portas.Length; i++)
-        {
-            collider2DPortas = portas[i].GetComponent<BoxCollider2D>();
-            collider2DPortas.enabled = false;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         cooldownRestanteAtaque -= Time.deltaTime;
-        cooldownRestanteParaInvocarPorta -= Time.deltaTime;
-
         if(cooldownRestanteAtaque <= 0.6f && podeExecutarAcoes == true && podeAtivarAnimacaoDeAtaque == true)
         {
             podeAtivarAnimacaoDeAtaque = false;
@@ -109,12 +94,7 @@ public class BossControlador : MonoBehaviour
         ExecutarExplosaoDeDados();
         iniciarAtaque();
 
-        if (cooldownRestanteParaInvocarPorta <= 0 && portaInvocada == false && podeExecutarAcoes == true)
-        {
-            InvocarPorta(EscolherPorta());
-            cooldownRestanteParaInvocarPorta = cooldownParaInvocarPorta;
-            portaInvocada = true;
-        }
+        
     }
 
     void iniciarAtaque()
@@ -130,7 +110,6 @@ public class BossControlador : MonoBehaviour
         {
             podeExecutarAcoes = false;
             cooldownRestanteAtaque = cooldownAtaque;
-            cooldownRestanteParaInvocarPorta = cooldownParaInvocarPorta;
         }
     }
 
@@ -206,32 +185,5 @@ public class BossControlador : MonoBehaviour
         ataquesDisponiveis.Add(ataqueNovo);
     }
 
-    public int EscolherPorta()
-    {
-        return Random.Range(0, portas.Length);
-    }
-
-    public void InvocarPorta(int indexPorta)
-    {
-        animatorPortas = portas[indexPorta].GetComponent<Animator>();
-        animatorPortas.SetTrigger("AbrirPorta");
-        collider2DPortas = portas[indexPorta].GetComponent<BoxCollider2D>();
-        collider2DPortas.enabled = true;
-        StartCoroutine(DesativarPorta(indexPorta));
-    }
-
-    IEnumerator DesativarPorta(int indexPorta)
-    {
-        yield return new WaitForSeconds(tempoParaDesativarPorta);
-        desativaPorta(indexPorta);
-    }
-
-    public void desativaPorta(int indexPorta)
-    {
-        animatorPortas = portas[indexPorta].GetComponent<Animator>();
-        animatorPortas.SetTrigger("FecharPorta");
-        collider2DPortas = portas[indexPorta].GetComponent<BoxCollider2D>();
-        collider2DPortas.enabled = false;
-        portaInvocada = false;
-    }
+    
 }
