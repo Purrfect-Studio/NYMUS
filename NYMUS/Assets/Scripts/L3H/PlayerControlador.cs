@@ -178,20 +178,20 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && estaChao() == true || Input.GetKeyDown(KeyCode.W) && estaChao() == true)
+        if (Input.GetKeyDown(KeyCode.Space) && estaChao() == true || Input.GetKeyDown(KeyCode.W) && estaChao() == true || Input.GetKeyDown(KeyCode.UpArrow) && estaChao() == true)
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
         }
 
-        if (Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.W) && estaPulando == true)
+        if (Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true)
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
         {
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
@@ -207,7 +207,7 @@ public class PlayerControlador : MonoBehaviour
             puloExtra = quantidadeDePulosExtras;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && puloExtra > 0 || Input.GetKeyDown(KeyCode.Space) && puloExtra > 0)
+        if (Input.GetKeyDown(KeyCode.W) && puloExtra > 0 || Input.GetKeyDown(KeyCode.Space) && puloExtra > 0 || Input.GetKeyDown(KeyCode.UpArrow) && puloExtra > 0)
         {
             // se o jogador preciona W ou Espaco e a quantidade de pulos disponiveis for maior que 0-
             // estaPulando=true reseta o tempo do pulo e diminui 1 na quantidadePulos
@@ -216,14 +216,14 @@ public class PlayerControlador : MonoBehaviour
             puloExtra--;
         }
 
-        if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true)
+        if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true)
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
         {
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
@@ -234,7 +234,7 @@ public class PlayerControlador : MonoBehaviour
     private BossControlador bossControlador;
     void ataque()
     {
-        if(Input.GetKeyDown(KeyCode.J))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.transform.position, alcanceAtaque);
             if(acertarInimigo != null)
@@ -303,19 +303,19 @@ public class PlayerControlador : MonoBehaviour
         if(colisaoEscada())
         {
             podeInteragirEscada = true;
-            if (Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 estaSubindoEscada = true;
             }
-            if (Input.GetKeyUp(KeyCode.W))
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
             {
                 estaSubindoEscada = false;
             }
-            if (Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 estaDescendoEscada = true;
             }
-            if (Input.GetKeyUp(KeyCode.S))
+            if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
             {
                 estaDescendoEscada = false;
             }
@@ -329,7 +329,7 @@ public class PlayerControlador : MonoBehaviour
 
     public void CairDaPlataforma()
     {
-        if(estaPlataforma() == true && Input.GetKeyDown(KeyCode.S)/* && Input.GetKeyDown(KeyCode.W)*/)
+        if(estaPlataforma() == true && Input.GetKeyDown(KeyCode.S) || estaPlataforma() == true && Input.GetKeyDown(KeyCode.DownArrow)/* && Input.GetKeyDown(KeyCode.W)*/)
         {
             StartCoroutine("CairPlataforma");
         }
