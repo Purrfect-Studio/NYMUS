@@ -8,7 +8,6 @@ public class MusicasScript : MonoBehaviour
     public AudioClip[] trilhasSonoras;
 
     [Header("Configuracoes Opcionais")]
-    public Slider alteradorVolumeMusica;
     public bool comecarAutomaticamente = true;
     public float duracaoFade = 3;
 
@@ -27,10 +26,7 @@ public class MusicasScript : MonoBehaviour
         }
 
         // Configura o slider para alterar o volume da música
-        if (alteradorVolumeMusica != null)
-        {
-            audioControlador.ConfigurarSliderVolumeMusica(alteradorVolumeMusica);
-        }
+      
     }
 
     public void TrocarMusica(int indiceArrayMusicas)

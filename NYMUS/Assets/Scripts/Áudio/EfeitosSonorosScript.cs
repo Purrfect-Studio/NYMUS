@@ -7,8 +7,6 @@ public class EfeitosSonorosScript : MonoBehaviour
     public AudioClip[] efeitosSonoros;
 
     [Header("Configuracoes Opcionais")]
-    public Slider alteradorVolumeEfeitos;
-
     private AudioControlador audioControlador;
     private AudioSource tocadorEfeitoAudio;
 
@@ -16,12 +14,6 @@ public class EfeitosSonorosScript : MonoBehaviour
     {
         audioControlador = AudioControlador.Instancia;
         tocadorEfeitoAudio = audioControlador.tocadorEfeitoAudio;
-
-        // Configura o slider para alterar o volume dos efeitos sonoros
-        if (alteradorVolumeEfeitos != null)
-        {
-            audioControlador.ConfigurarSliderVolumeEfeitos(alteradorVolumeEfeitos);
-        }
     }
 
     public void TocarEfeitoSonoro(int indiceEfeito)
