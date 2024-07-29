@@ -1,5 +1,6 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioControlador : MonoBehaviour
 {
@@ -9,85 +10,75 @@ public class AudioControlador : MonoBehaviour
     public AudioSource tocadorMusica;
     public AudioSource tocadorEfeitoAudio;
 
-    [Header("Clips de áudio")]
-    public AudioClip musicaDeFundo;
-    public AudioClip efeitoAudio;
-
     [Header("Volumes")]
     public float volumeMusicaConfiguracao = 1;
-    public float volumeEfeitosAudioConfiguracao;
+    public float volumeEfeitosAudioConfiguracao = 1;
+
+    [Header("Configurações do Slider")]
+    public float valorMaximoSlider = 10f; // Valor máximo do slider, deve ser ajustado conforme a configuração do slider
 
     private void Awake()
     {
-        // Verifica se já existe uma instância do AudioControlador
+        GerenciarInstancia();
+        EncontrarAudioSources();
+    }
+
+    private void GerenciarInstancia()
+    {
         if (Instancia != null && Instancia != this)
         {
-            // Se existir, destrua a instância recém-criada (a duplicata)
             Destroy(gameObject);
         }
         else
         {
-            // Se não existir, defina a nova instância e faça com que persista entre as cenas
             Instancia = this;
-            DontDestroyOnLoad(gameObject); // Persiste entre cenas
+            DontDestroyOnLoad(gameObject);
         }
     }
 
-    private void Start()
+    private void EncontrarAudioSources()
     {
-        if (tocadorMusica == null)
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        HashSet<AudioSource> audioSourceSet = new HashSet<AudioSource>(audioSources);
+
+        if (audioSourceSet.Count >= 2)
         {
-            tocadorMusica = GetComponent<AudioSource>();
+            AudioSource[] uniqueAudioSources = new AudioSource[2];
+            audioSourceSet.CopyTo(uniqueAudioSources);
+            tocadorMusica = uniqueAudioSources[0];
+            tocadorEfeitoAudio = uniqueAudioSources[1];
         }
-    }
-
-    public static IEnumerator FadeVolume(float delay, float volumeInicial, float volumeAlvo)
-    {
-        if (Instancia.tocadorMusica == null) yield break;
-
-        float tempoAtual = 0;
-        while (tempoAtual <= delay)
+        else
         {
-            float t = tempoAtual / delay;
-            Instancia.tocadorMusica.volume = Mathf.Lerp(volumeInicial, volumeAlvo, t);
-            tempoAtual += Time.deltaTime;
-            yield return null;
+            Debug.LogWarning("Não há AudioSources suficientes no objeto para inicializar ambos os tocadores de música e efeito.");
         }
-        Instancia.tocadorMusica.volume = volumeAlvo; // Garante que o volume atingirá exatamente o valor final
     }
 
-    public void mudarVolumeMusica(float volume)
+    // Muda o volume da música
+    public void MudarVolumeMusica(float valorSlider)
     {
-        volumeMusicaConfiguracao = volume;
+        float volume = valorSlider / valorMaximoSlider; // Converte o valor do slider para o intervalo 0-1
+        volumeMusicaConfiguracao = Mathf.Clamp(volume, 0, 1); // Garante que o valor esteja dentro do intervalo permitido
         tocadorMusica.volume = volumeMusicaConfiguracao;
     }
 
-    public void mudarVolumeEfeitos(float volume)
+    // Muda o volume dos efeitos sonoros
+    public void MudarVolumeEfeitos(float valorSlider)
     {
-        volumeEfeitosAudioConfiguracao = volume;
+        float volume = valorSlider / valorMaximoSlider; // Converte o valor do slider para o intervalo 0-1
+        volumeEfeitosAudioConfiguracao = Mathf.Clamp(volume, 0, 1); // Garante que o valor esteja dentro do intervalo permitido
         tocadorEfeitoAudio.volume = volumeEfeitosAudioConfiguracao;
     }
 
-    public void colocarMusica(AudioClip musica)
+    // Configura o slider para mudar o volume da música
+    public void ConfigurarSliderVolumeMusica(Slider slider)
     {
-        musicaDeFundo = musica;
-        tocadorMusica.clip = musicaDeFundo;
-        tocadorMusica.loop = true;
-        tocadorMusica.Play();
+        slider.onValueChanged.AddListener(MudarVolumeMusica);
     }
 
-    public void colocarEfeitoSonoro(AudioClip efeito)
+    // Configura o slider para mudar o volume dos efeitos sonoros
+    public void ConfigurarSliderVolumeEfeitos(Slider slider)
     {
-        efeitoAudio = efeito;
-        tocadorEfeitoAudio.clip = efeito;
-        tocadorEfeitoAudio.Play();
-    }
-
-    public void pararMusica()
-    {
-        if (tocadorMusica.isPlaying)
-        {
-            tocadorMusica.Stop();
-        }
+        slider.onValueChanged.AddListener(MudarVolumeEfeitos);
     }
 }
