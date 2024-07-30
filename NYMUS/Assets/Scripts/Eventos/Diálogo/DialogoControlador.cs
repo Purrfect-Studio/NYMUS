@@ -56,7 +56,8 @@ public class DialogoControlador : MonoBehaviour
         escrevendoFala = true;
         AtualizarInterface(falas[index]);
 
-        foreach (char letra in falas[index].texto.ToCharArray())
+        string textoTraduzido = GerenciadorDeLocalizacao.Instancia.ObterTextoLocalizado(falas[index].chaveTexto);
+        foreach (char letra in textoTraduzido.ToCharArray())
         {
             textoFala.text += letra;
             yield return new WaitForSeconds(velocidadeDigitacao);
@@ -85,7 +86,8 @@ public class DialogoControlador : MonoBehaviour
     {
         // Completa a fala atual instantaneamente
         StopCoroutine(corrotinaEscrever);
-        textoFala.text = falas[index].texto;
+        string textoTraduzido = GerenciadorDeLocalizacao.Instancia.ObterTextoLocalizado(falas[index].chaveTexto);
+        textoFala.text = textoTraduzido;
         escrevendoFala = false;
     }
 
@@ -106,7 +108,8 @@ public class DialogoControlador : MonoBehaviour
 
         index = falas.Count - 1;
         AtualizarInterface(falas[index]);
-        textoFala.text = falas[index].texto;
+        string textoTraduzido = GerenciadorDeLocalizacao.Instancia.ObterTextoLocalizado(falas[index].chaveTexto);
+        textoFala.text = textoTraduzido;
 
         acabouDialogo = true;
         StartCoroutine(EsperarEFinalizar());

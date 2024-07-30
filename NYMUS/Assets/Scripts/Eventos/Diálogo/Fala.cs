@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Fala
 {
-    public Sprite imagemPersonagem; // Imagem do personagem que está falando
-    public string nomePersonagem;   // Nome do personagem que está falando
-    public string texto;            // Texto do diálogo
+    public string nomePersonagem;   // Nome do personagem
+    //public string texto;            // Texto da fala
+    public string chaveTexto;       // Chave para identificar o texto traduzido
+    public Sprite imagemPersonagem; // Caminho para a imagem do personagem
 }
