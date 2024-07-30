@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: 3800828331445148407}
   - component: {fileID: 3800828331445148406}
   - component: {fileID: 3800828331445148405}
-  - component: {fileID: 3800828331445148404}
   - component: {fileID: 8801278449538055449}
   - component: {fileID: 5184659600413819755}
   - component: {fileID: 7219031186001729100}
   - component: {fileID: -1654482889428824351}
   - component: {fileID: -8707528584536740527}
+  - component: {fileID: 4578468332500014669}
   m_Layer: 9
   m_Name: PatrulhaPulandoGlitch
   m_TagString: Inimigo
@@ -205,29 +205,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3800828331445148404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800828331445148365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb096ed8cc03e4d4db8fcab41017d671, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Collider2D: {fileID: 3800828331445148406}
-  layerJogador:
-    serializedVersion: 2
-    m_Bits: 256
-  jogador: {fileID: 0}
-  danoNoJogador: 10
-  causarDanoNoInimigo: 0
-  layerInimigo:
-    serializedVersion: 2
-    m_Bits: 0
-  danoNoInimigo: 0
 --- !u!114 &8801278449538055449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +226,8 @@ MonoBehaviour:
   animacao: {fileID: 3800828331445148402}
   jogador: {fileID: 0}
   sprite: {fileID: 3800828331445148364}
+  slime: 1
+  morcego: 0
 --- !u!114 &5184659600413819755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,3 +321,21 @@ MonoBehaviour:
         m_CallState: 2
   ligado: 1
   aleatorio: 1
+--- !u!114 &4578468332500014669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800828331445148365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c1be0161a20c24e86cdb6628162339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Collider2D: {fileID: 3800828331445148406}
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  jogador: {fileID: 0}
+  danoNoJogador: 0

@@ -33,11 +33,23 @@ public class VidaInimigo : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite;
 
+    [Header("Tipo de Inimigo")]
+    public bool slime;
+    public bool morcego;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
+        if(slime == true)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaSlime;
+        }else if(morcego == true)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaMorcego;
+        }
+
         podeMover = true;
         invulneravel = false;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
