@@ -396,17 +396,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3350034204810542020, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
   m_PrefabInstance: {fileID: 3350034205627968109}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &293415607 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3350034204810542022, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
-  m_PrefabInstance: {fileID: 3350034205627968109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293415605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efe09d2ee243c274b98b5587a8a6f397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &293415609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1336,7 +1325,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 293415607}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioControlador, Assembly-CSharp
         m_MethodName: ConfigurarSliderVolumeMusica
         m_Mode: 2
@@ -2586,27 +2575,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170699818}
   m_CullTransparentMesh: 1
---- !u!1 &1236792850 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 993435639301195255, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-  m_PrefabInstance: {fileID: 993435639570316317}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1236792852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236792850}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31cdea3bec66e64e85f303365dd9a73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trilhasSonoras:
-  - {fileID: 8300000, guid: 5387557eb4650b04f9247cffd369509c, type: 3}
-  comecarAutomaticamente: 1
-  duracaoFade: 3
 --- !u!1 &1335914555
 GameObject:
   m_ObjectHideFlags: 0
@@ -3661,7 +3629,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 293415607}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioControlador, Assembly-CSharp
         m_MethodName: ConfigurarSliderVolumeEfeitos
         m_Mode: 2
@@ -4180,72 +4148,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1001 &993435639570316317
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.1111045
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.724125
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9.713228
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195249, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993435639301195254, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: alteradorVolume
-      value: 
-      objectReference: {fileID: 608149556}
-    - target: {fileID: 993435639301195254, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: trilhasSonoras.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5387557eb4650b04f9247cffd369509c, type: 3}
-    - target: {fileID: 993435639301195255, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-      propertyPath: m_Name
-      value: "Alterador\xC1udio"
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 993435639301195254, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c1c825ba719314498c9b69ef3e50455, type: 3}
 --- !u!1001 &3350034205627968109
 PrefabInstance:
   m_ObjectHideFlags: 0

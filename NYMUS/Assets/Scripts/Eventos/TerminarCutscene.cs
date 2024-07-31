@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class TerminarCutscene : MonoBehaviour
 {
-    DialogoControlador terminadorDialogo;
+    public DialogoControlador terminadorDialogo;
     public UnityEvent eventoTerminar;
 
     // Start is called before the first frame update
     void Start()
     {
-        terminadorDialogo = GetComponent<DialogoControlador>();
+        //terminadorDialogo = GetComponent<DialogoControlador>();
         StartCoroutine(verificarTerminacao());
     }
 

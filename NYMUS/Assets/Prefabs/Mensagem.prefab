@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6529597754438908280}
   - component: {fileID: 8659483422860446794}
   - component: {fileID: 8047514594839947791}
-  - component: {fileID: 6587912102551534434}
   m_Layer: 0
   m_Name: Mensagem
   m_TagString: Untagged
@@ -95,16 +94,3 @@ MonoBehaviour:
         m_CallState: 2
   ativarSempre: 1
   quantidadeAtivacoes: 0
---- !u!114 &6587912102551534434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6529597754438908283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f9e1f643de38b458c4ec411db32066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idiomaAtual: pt-br

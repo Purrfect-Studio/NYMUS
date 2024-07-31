@@ -18,25 +18,19 @@ public class EfeitosCamera : MonoBehaviour
     }
 
     public void DarZoom()
-    {
-        if (!estaComZoom)
-        {
-            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal/1.6f, delay));
-            estaComZoom = true;
-        }
+    {     
+        StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal/1.6f, delay));
+        estaComZoom = true;
     }
     public void DarZoomOut()
     {
-        if (estaComZoom)
-        {
-            StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal* 2f, delay));
-            estaComZoom = false;
-        }
+        StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal* 2f, delay));
+        estaComZoom = false;
     }
     public void TirarZoom()
     {
-           StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal, delay));
-            estaComZoom = false;
+        StartCoroutine(MudarAoLongoDoTempo(tamanhoNormal, delay));
+        estaComZoom = false;
     }
 
     public void MudarTamanho()

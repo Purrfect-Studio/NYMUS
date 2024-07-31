@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogoControlador : MonoBehaviour
@@ -27,9 +26,23 @@ public class DialogoControlador : MonoBehaviour
     private bool escrevendoFala;
     // Variável para armazenar a corrotina ativa
     private Coroutine corrotinaEscrever;
+    private PlayerControlador L3h;
 
-    [SerializeField] private UnityEvent travarMovimentacao; // Evento para travar a movimentação do personagem
-    [SerializeField] private UnityEvent liberarMovimentacao; // Evento para liberar a movimentação do personagem
+    private void Awake()
+    {
+        try
+        {
+            L3h = FindObjectOfType<PlayerControlador>();
+            if (L3h == null)
+            {
+                throw new System.Exception("PlayerControlador não encontrado na cena.");
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning(ex.Message);
+        }
+    }
 
     public void IniciarDialogo(List<Fala> falas)
     {
@@ -38,7 +51,12 @@ public class DialogoControlador : MonoBehaviour
         this.falas = falas;
         index = 0;
         acabouDialogo = false;
-        travarMovimentacao.Invoke();
+
+        if (L3h != null)
+        {
+            L3h.TravarMovimentacao();
+        }
+
         corrotinaEscrever = StartCoroutine(EscreverFala());
     }
 
@@ -120,7 +138,11 @@ public class DialogoControlador : MonoBehaviour
         // Limpa o diálogo e libera a movimentação do personagem
         acabouDialogo = true;
         dialogoObj.SetActive(false);
-        liberarMovimentacao.Invoke();
+
+        if (L3h != null)
+        {
+            L3h.LiberarMovimentacao();
+        }
     }
 
     private IEnumerator EsperarEFinalizar()
