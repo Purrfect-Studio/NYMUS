@@ -6,7 +6,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
 {
     public static GerenciadorDeLocalizacao Instancia { get; private set; }
 
-    private Dictionary<string, string> textosLocalizados; // Atualizei para string
+    private Dictionary<string, string> textosLocalizados;
     public string idiomaAtual = "en";
 
     private void Awake()
@@ -25,7 +25,14 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
 
     private void CarregarTextosLocalizados()
     {
-        textosLocalizados = new Dictionary<string, string>(); // Inicializa o dicionário
+        if (textosLocalizados == null)
+        {
+            textosLocalizados = new Dictionary<string, string>();
+        }
+        else
+        {
+            textosLocalizados.Clear(); // Limpa o dicionário antes de carregar novos textos
+        }
 
         string caminho = Path.Combine(Application.streamingAssetsPath, $"{idiomaAtual}_textos.json");
         if (File.Exists(caminho))
@@ -44,6 +51,9 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
                     {
                         textosLocalizados[item.chave] = item.texto;
                     }
+
+                    // Notifica outros componentes que o idioma foi alterado
+                    NotificarAlteracaoDeIdioma();
                 }
                 else
                 {
@@ -60,7 +70,6 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
             Debug.LogError($"Arquivo de localização não encontrado: {caminho}");
         }
     }
-
 
     public string ObterTextoLocalizado(string chave)
     {
@@ -83,6 +92,17 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
     {
         idiomaAtual = idioma;
         CarregarTextosLocalizados();
+    }
+
+    private void NotificarAlteracaoDeIdioma()
+    {
+        // Envia um evento ou chama um método para atualizar os textos na UI
+        // Exemplo: Mensagens para atualizar a UI
+        /*MensagemParaAtualizarUI[] componentesParaAtualizar = FindObjectsOfType<MensagemParaAtualizarUI>();
+        foreach (var componente in componentesParaAtualizar)
+        {
+            componente.AtualizarTexto();
+        }*/
     }
 }
 
