@@ -11,14 +11,12 @@ GameObject:
   - component: {fileID: 3800828331445148403}
   - component: {fileID: 3800828331445148364}
   - component: {fileID: 3800828331445148402}
-  - component: {fileID: 3800828331445148400}
-  - component: {fileID: 3800828331445148407}
   - component: {fileID: 3800828331445148406}
   - component: {fileID: 3800828331445148405}
   - component: {fileID: 8801278449538055449}
-  - component: {fileID: 5184659600413819755}
   - component: {fileID: 7219031186001729100}
   - component: {fileID: 2064080510754166139}
+  - component: {fileID: 379594901756339112}
   m_Layer: 9
   m_Name: Patrulha Pulando
   m_TagString: Inimigo
@@ -114,58 +112,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &3800828331445148400
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800828331445148365}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.19529778, y: -0.15705226}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.31}
-    newSize: {x: 0.5, y: 0.31}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.053234577, y: 0.6544106}
-  m_EdgeRadius: 0
---- !u!61 &3800828331445148407
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800828331445148365}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.18984345, y: 0.039532237}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.31}
-    newSize: {x: 0.5, y: 0.31}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.03429568, y: 0.17925178}
-  m_EdgeRadius: 0
 --- !u!58 &3800828331445148406
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -226,27 +172,6 @@ MonoBehaviour:
   sprite: {fileID: 3800828331445148364}
   slime: 1
   morcego: 0
---- !u!114 &5184659600413819755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800828331445148365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f045f3d1967654db0367f676e3ec83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  olhandoParaEsquerda: 0
-  velocidade: 4
-  bcChao: {fileID: 3800828331445148400}
-  bcParede: {fileID: 3800828331445148407}
-  rb: {fileID: 3800828331445148405}
-  alturaPulo: 5
-  layerChao:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &7219031186001729100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +206,18 @@ MonoBehaviour:
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 0
+--- !u!114 &379594901756339112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800828331445148365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b9a6dff81e7254d85f42c01b542d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 10
+  forcaPulo: 18
+  cooldownPulo: 3
