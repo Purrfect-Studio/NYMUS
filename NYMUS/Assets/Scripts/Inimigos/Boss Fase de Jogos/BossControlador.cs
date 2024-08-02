@@ -28,20 +28,26 @@ public class BossControlador : MonoBehaviour
     private Animator animacao;
     private VidaBoss vidaBoss;
 
+    [Header("FIREWALL")]
     [Header("Projetil do Prefab 'Firewall'")]
     public GameObject projetilFirewall;
     [Header("Atributos 'Firewall'")]
     public float velocidadeFirewall;
+    public float danoFirewall;
     [SerializeField] public static float velocidadeFirewallX; // Força do tiro
     public float duracaoDoFirewall; // Tempo que o tiro fica no ar até ser destruído 
     [Header("GameObject da Arma 'Firewall'")]
     public Transform armaFirewall; // Posição de onde o projétil será disparado
 
+    [Header("INJECAO DE DADOS")]
     [Header("Projetil do Prefab 'Injecao de Dados'")]
     public GameObject projetilInjecaoDeDados;
     [Header("GameObject da Arma 'Injecao de Dados'")]
     public Transform armaInjecaoDeDados; // Posição de onde o projétil será disparado
+    [Header("Configuracoes Injecao de Dados")]
+    public float danoInjecaoDeDados;
 
+    [Header("EXPLOSAO DE DADOS")]
     [Header("Projetil do Prefab 'Explosao de Dados'")]
     public GameObject projetilExplosaoDeDados;
     [Header("GameObject da Arma 'Explosao de Dados'")]
@@ -49,6 +55,7 @@ public class BossControlador : MonoBehaviour
     [Header("Configuracoes 'Explosao de Dados'")]
     public float intervaloEntreExplosaoDeDados;
     public int quantidadeDeExplosaoDeDados;
+    public float danoExplosaoDeDados;
     private bool executarExplosaoDeDados = false;
     private float contadorExplosaoDeDados;
     private int quantidadeDeExplosaoDeDadosExecutadas = 0;
