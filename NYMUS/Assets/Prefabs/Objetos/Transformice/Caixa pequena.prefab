@@ -150,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000008940697, y: -0.18359944}
+  m_Offset: {x: -0.0006875545, y: -0.18359944}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -161,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83538586, y: 0.10099059}
+  m_Size: {x: 0.6436596, y: 0.10099059}
   m_EdgeRadius: 0
 --- !u!114 &3236200892538067762
 MonoBehaviour:
@@ -192,6 +192,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   podeExecutar: 0
+  tecla: {fileID: 0}
 --- !u!114 &5367343647029488974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b6e4d7eda1393418035feb74275fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posicaoPlayer: {fileID: 0}
-  distanciaMinima: 1
-  estaGrudado: 0
+  posicaoJogador: {fileID: 0}
+  distanciaMinimaJogadorCaixa: 1
+  caixaEstaSendoEmpurrada: 0
 --- !u!114 &6437277204312646855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
   - {x: 0.2734375, y: -0.2734375, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1652
+  m_InstanceId: 72850
   m_LocalBounds:
     m_Center: {x: 0.0000019073486, y: 0.00000011920929, z: 0}
     m_Extent: {x: 0.2734356, y: 0.27343762, z: 0}
