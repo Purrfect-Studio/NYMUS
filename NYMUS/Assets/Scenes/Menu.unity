@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1526478670}
         m_TargetAssemblyTypeName: AudioControlador, Assembly-CSharp
         m_MethodName: ConfigurarSliderVolumeMusica
         m_Mode: 2
@@ -3232,6 +3232,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521178624}
   m_CullTransparentMesh: 1
+--- !u!114 &1526478670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 663184379741428669, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
+  m_PrefabInstance: {fileID: 3350034205627968109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe09d2ee243c274b98b5587a8a6f397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1537677193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,7 +4182,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1526478670}
         m_TargetAssemblyTypeName: AudioControlador, Assembly-CSharp
         m_MethodName: ConfigurarSliderVolumeEfeitos
         m_Mode: 2
