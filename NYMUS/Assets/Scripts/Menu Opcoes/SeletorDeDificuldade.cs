@@ -55,6 +55,7 @@ public class SeletorDeDificuldade : MonoBehaviour
 
     public void definirValoresDaDificuldade()
     {
+        Debug.Log("Dificuldade alterada para: " + dificuldadeEscolhida);
         switch(dificuldadeEscolhida)
         {
             case dificuldadesExistentes.Facil:
