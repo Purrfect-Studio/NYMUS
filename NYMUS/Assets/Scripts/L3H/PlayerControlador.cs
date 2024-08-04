@@ -77,6 +77,8 @@ public class PlayerControlador : MonoBehaviour
 
         olhandoDireita = true;
         direcao = 1;
+
+        Physics2D.IgnoreLayerCollision(8, 13, false);
     }
 
     private bool estaPlataforma()

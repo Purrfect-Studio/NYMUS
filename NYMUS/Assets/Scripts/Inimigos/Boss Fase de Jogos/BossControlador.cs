@@ -76,7 +76,6 @@ public class BossControlador : MonoBehaviour
         danoFirewall = SeletorDeDificuldade.danoFirewall;
         danoExplosaoDeDados = SeletorDeDificuldade.danoExplosaoDeDados;
         quantidadeDeExplosaoDeDados = SeletorDeDificuldade.quantidadeDeExplosaoDeDados;
-        
         cooldownAtaque = SeletorDeDificuldade.cooldownAtaqueVirut;
         cooldownAtaqueFrenesi = SeletorDeDificuldade.cooldownAtaqueFrenesiVirut;
 
