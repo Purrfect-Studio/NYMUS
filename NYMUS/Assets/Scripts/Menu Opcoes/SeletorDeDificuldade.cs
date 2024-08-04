@@ -35,14 +35,23 @@ public class SeletorDeDificuldade : MonoBehaviour
     [SerializeField] public static int quantidadeDeExplosaoDeDados;
     [SerializeField] public static float cooldownAtaqueVirut;
     [SerializeField] public static float cooldownAtaqueFrenesiVirut;
-    
-    // Start is called before the first frame update
-    void Start()
+
+
+    public static SeletorDeDificuldade Instancia { get; private set; }
+    private void Awake()
     {
-        //Definir dificuldade padrão como Medio
-        dificuldadeEscolhida = dificuldadesExistentes.Medio;
-        definirValoresDaDificuldade();
+        if (Instancia == null)
+        {
+            Instancia = this;
+            DontDestroyOnLoad(gameObject);
+            definirDificuldadeMedia();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+    
 
     public void definirValoresDaDificuldade()
     {
