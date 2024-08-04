@@ -10,15 +10,15 @@ public class InjecaoDeDados : MonoBehaviour
     [SerializeField] private LayerMask layerJogador;
 
     public float dano;
-    public int veneno;
 
     void Start()
     {
+        dano = BossControlador.danoInjecaoDeDados;
         animacao = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
 
         boxCollider2D.enabled = false;
-        animacao.SetTrigger("RaioDeVeneno");
+        animacao.SetTrigger("InjecaoDeDados");
     }
 
     public void ativarCollider()
@@ -35,12 +35,11 @@ public class InjecaoDeDados : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Jogador"))
         {
-            // Obtém o componente VidaJogador diretamente do objeto que colidiu
+            // Obtem o componente VidaJogador diretamente do objeto que colidiu
             VidaJogador vidaJogador = collision.GetComponent<VidaJogador>();
             if (vidaJogador != null && !VidaJogador.invulneravel)
             {
                 vidaJogador.tomarDano(dano);
-                vidaJogador.envenenar(veneno);
             }
         }
     }

@@ -8,11 +8,12 @@ public class ExplosaoDeDados : MonoBehaviour
     public CircleCollider2D circleCollider2D;
     [SerializeField] private LayerMask layerJogador;
 
-    public int dano;
+    public float dano;
 
     // Start is called before the first frame update
     void Start()
     {
+        dano = BossControlador.danoExplosaoDeDados;
         animacao = GetComponent<Animator>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         circleCollider2D.enabled = false;

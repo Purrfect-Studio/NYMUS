@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
+using static SeletorDeDificuldade;
 
 public class BossControlador : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class BossControlador : MonoBehaviour
     public GameObject projetilFirewall;
     [Header("Atributos 'Firewall'")]
     public float velocidadeFirewall;
-    public float danoFirewall;
+    public static float danoFirewall;
     [SerializeField] public static float velocidadeFirewallX; // Força do tiro
     public float duracaoDoFirewall; // Tempo que o tiro fica no ar até ser destruído 
     [Header("GameObject da Arma 'Firewall'")]
@@ -45,7 +46,7 @@ public class BossControlador : MonoBehaviour
     [Header("GameObject da Arma 'Injecao de Dados'")]
     public Transform armaInjecaoDeDados; // Posição de onde o projétil será disparado
     [Header("Configuracoes Injecao de Dados")]
-    public float danoInjecaoDeDados;
+    public static float danoInjecaoDeDados;
 
     [Header("EXPLOSAO DE DADOS")]
     [Header("Projetil do Prefab 'Explosao de Dados'")]
@@ -55,7 +56,7 @@ public class BossControlador : MonoBehaviour
     [Header("Configuracoes 'Explosao de Dados'")]
     public float intervaloEntreExplosaoDeDados;
     public int quantidadeDeExplosaoDeDados;
-    public float danoExplosaoDeDados;
+    public static float danoExplosaoDeDados;
     private bool executarExplosaoDeDados = false;
     private float contadorExplosaoDeDados;
     private int quantidadeDeExplosaoDeDadosExecutadas = 0;
@@ -70,12 +71,23 @@ public class BossControlador : MonoBehaviour
         vidaBoss = GetComponent<VidaBoss>();
         
         contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
+
+        danoInjecaoDeDados = SeletorDeDificuldade.danoInjecaoDeDados;
+        danoFirewall = SeletorDeDificuldade.danoFirewall;
+        danoExplosaoDeDados = SeletorDeDificuldade.danoExplosaoDeDados;
+        quantidadeDeExplosaoDeDados = SeletorDeDificuldade.quantidadeDeExplosaoDeDados;
+        
+        cooldownAtaque = SeletorDeDificuldade.cooldownAtaqueVirut;
+        cooldownAtaqueFrenesi = SeletorDeDificuldade.cooldownAtaqueFrenesiVirut;
+
         //Definindo ataques disponíveis iniciais
         ataquesDisponiveis.Add(ataquesBoss.Firewall);
         ataquesDisponiveis.Add(ataquesBoss.InjecaoDeDados);
         ataquesDisponiveis.Add(ataquesBoss.ExplosaoDeDados);
-        // if vida <50%, adicionarAtaque(ataquesBoss.InvocarInimigo) ...
-
+        /*if(SeletorDeDificuldade.dificuldadeEscolhida == dificuldadesExistentes.Dificil)
+        {
+            ataquesDisponiveis.Add(ataquesBoss.novoAtaque);
+        }*/
     }
 
     // Update is called once per frame
@@ -137,8 +149,10 @@ public class BossControlador : MonoBehaviour
                 explosaoDeDados[quantidadeDeExplosaoDeDadosExecutadas] = Instantiate(projetilExplosaoDeDados);
                 explosaoDeDados[quantidadeDeExplosaoDeDadosExecutadas].transform.position = jogador.transform.position; //armaExplosaoDeDados.position; 
                 Destroy(explosaoDeDados[quantidadeDeExplosaoDeDadosExecutadas].gameObject, 1.5f);
+
                 contadorExplosaoDeDados = intervaloEntreExplosaoDeDados;
                 quantidadeDeExplosaoDeDadosExecutadas++;
+
                 if (quantidadeDeExplosaoDeDadosExecutadas == quantidadeDeExplosaoDeDados)
                 {
                     quantidadeDeExplosaoDeDadosExecutadas = 0;
