@@ -131,6 +131,10 @@ public class PlayerControlador : MonoBehaviour
 
             CairDaPlataforma();
         }
+        else
+        {
+            rigidBody2D.velocity = Vector2.zero;
+        }
     }
 
     void andar()
@@ -357,6 +361,7 @@ public class PlayerControlador : MonoBehaviour
         podeMover = false; // Impede que o jogador se mova
         estaPulando = false; // Impede que o jogador pule
         rigidBody2D.velocity = Vector2.zero; // Zera a velocidade do jogador
+        rigidBody2D.gravityScale = 50;
         animacao.SetBool("estaPulando", false); // Desativa a animação de pulo
         animacao.SetBool("estaAndando", false); // Desativa a animação de ataque
         animacao.SetBool("tomarDano", false); // Desativa a animação de ataque
@@ -365,6 +370,7 @@ public class PlayerControlador : MonoBehaviour
     public void LiberarMovimentacao()
     {
         podeMover = true; // Permite que o jogador se mova novamente
+        rigidBody2D.gravityScale = gravidade;
         VidaJogador.invulneravel = false;
     }
 
