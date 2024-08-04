@@ -17,7 +17,7 @@ public class TerminarCutscene : MonoBehaviour
 
     IEnumerator verificarTerminacao()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (terminadorDialogo.acabouDialogo == true)
         {
             eventoTerminar.Invoke();
