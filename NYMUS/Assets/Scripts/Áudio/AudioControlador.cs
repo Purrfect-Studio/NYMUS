@@ -25,14 +25,14 @@ public class AudioControlador : MonoBehaviour
 
     private void GerenciarInstancia()
     {
-        if (Instancia != null && Instancia != this)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if (Instancia == null)
         {
             Instancia = this;
             DontDestroyOnLoad(gameObject);
+        }
+        else if (Instancia != this)
+        {
+            Destroy(gameObject);
         }
     }
 
