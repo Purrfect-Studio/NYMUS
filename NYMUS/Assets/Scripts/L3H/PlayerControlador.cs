@@ -141,8 +141,17 @@ public class PlayerControlador : MonoBehaviour
     {
         //<- = -1
         //-> = 1
+        
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
+        }
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position -= new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
+        }
         direcao = Input.GetAxis("Horizontal");
-        rigidBody2D.velocity = new Vector2(direcao * velocidade, rigidBody2D.velocity.y);
+        //rigidBody2D.velocity = new Vector2(direcao * velocidade, rigidBody2D.velocity.y);
         // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
         if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
