@@ -141,12 +141,11 @@ public class PlayerControlador : MonoBehaviour
     {
         //<- = -1
         //-> = 1
-        
-        if(Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
         }
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.position -= new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
         }
@@ -374,6 +373,7 @@ public class PlayerControlador : MonoBehaviour
         animacao.SetBool("estaPulando", false); // Desativa a animação de pulo
         animacao.SetBool("estaAndando", false); // Desativa a animação de ataque
         animacao.SetBool("tomarDano", false); // Desativa a animação de ataque
+        animacao.Play("Parado");
     }
 
     public void LiberarMovimentacao()
