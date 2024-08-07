@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; // Adicionado para TextMeshPro
 
 public class DialogoControlador : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class DialogoControlador : MonoBehaviour
     [Header("Imagem")]
     public Image fotoPersonagem; // Imagem do personagem que está falando
     [Header("Texto do Dialogo")]
-    public Text textoFala; // Texto do diálogo
+    public TextMeshProUGUI textoFala; // Texto do diálogo
     [Header("Nome do personagem")]
-    public Text nomePersonagem; // Nome do personagem que está falando
+    public TextMeshProUGUI nomePersonagem; // Nome do personagem que está falando
 
     [Header("Configuracoes")]
     public float velocidadeDigitacao; // Velocidade que as letras do texto aparecem
@@ -28,6 +29,12 @@ public class DialogoControlador : MonoBehaviour
     private Coroutine corrotinaEscrever;
     private PlayerControlador L3h;
 
+    private void Start()
+    {
+        fotoPersonagem = dialogoObj.transform.Find("Foto").GetComponent<Image>();
+        textoFala = dialogoObj.transform.Find("Fala").GetComponent<TextMeshProUGUI>();
+        nomePersonagem = dialogoObj.transform.Find("nomePersonagem").GetComponent<TextMeshProUGUI>();
+    }
     private void Awake()
     {
         try
@@ -46,6 +53,12 @@ public class DialogoControlador : MonoBehaviour
 
     public void IniciarDialogo(List<Fala> falas)
     {
+        if (dialogoObj == null || textoFala == null || nomePersonagem == null || fotoPersonagem == null)
+        {
+            Debug.LogError("Algum componente não foi atribuído no inspector.");
+            return;
+        }
+
         // Inicializa o diálogo e bloqueia a movimentação do personagem
         dialogoObj.SetActive(true);
         this.falas = falas;
@@ -62,10 +75,16 @@ public class DialogoControlador : MonoBehaviour
 
     private void AtualizarInterface(Fala fala)
     {
+        if (fala == null)
+        {
+            Debug.LogError("Fala está nula.");
+            return;
+        }
+
         // Atualiza a interface com a imagem, nome e texto do personagem
-        fotoPersonagem.sprite = fala.imagemPersonagem;
-        nomePersonagem.text = fala.nomePersonagem;
-        textoFala.text = "";
+        if (fotoPersonagem != null) fotoPersonagem.sprite = fala.imagemPersonagem;
+        if (nomePersonagem != null) nomePersonagem.text = fala.nomePersonagem;
+        if (textoFala != null) textoFala.text = "";
     }
 
     IEnumerator EscreverFala()
