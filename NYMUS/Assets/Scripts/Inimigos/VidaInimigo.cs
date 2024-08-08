@@ -15,8 +15,8 @@ public class VidaInimigo : MonoBehaviour
     [Header("GameObject do inimigo")]
     public GameObject inimigo;
 
-    [Header("RigidBody")]
-    public Rigidbody2D rb;   // rb = rigidbody
+    //[Header("RigidBody")]
+    //public Rigidbody2D rb;   // rb = rigidbody
 
     [Header("Knockback")]
     private KnockBack knockBack;
@@ -36,6 +36,7 @@ public class VidaInimigo : MonoBehaviour
     [Header("Tipo de Inimigo")]
     public bool slime;
     public bool morcego;
+    public bool fantasma;
 
     
 
@@ -53,7 +54,9 @@ public class VidaInimigo : MonoBehaviour
         podeMover = true;
         invulneravel = false;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
+        inimigo = this.gameObject;
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        sprite = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<KnockBack>();
         if(animacao != null)
         {

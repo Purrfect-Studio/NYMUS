@@ -12,6 +12,7 @@ public class KnockBack : MonoBehaviour
     private void Start()
     {
         jogador = GameObject.FindWithTag("Jogador");
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     public void PlayKnockback()
