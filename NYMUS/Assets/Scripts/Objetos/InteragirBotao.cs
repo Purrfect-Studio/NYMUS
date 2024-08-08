@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class InteragirBotao : MonoBehaviour
 {
     [Header("Jogador")]
+    private GameObject objetoJogador;
     [SerializeField] private PlayerControlador jogador;
     [SerializeField] private UnityEvent botaoApertado;
 
@@ -18,6 +19,8 @@ public class InteragirBotao : MonoBehaviour
 
     private void Start()
     {
+        objetoJogador = GameObject.FindGameObjectWithTag("Jogador");
+        jogador = objetoJogador.GetComponent<PlayerControlador>();
         podeExecutar = false;
         if (tecla != null)
         {
