@@ -8,49 +8,41 @@ public class GrudarObjeto : MonoBehaviour
     [Header("Jogador")]
     public Transform posicaoJogador;
     public GameObject jogador;
-
-    //[Header("Distancia Minima")]
-    //public float distanciaMinimaJogadorCaixa = 1f; // Distância mínima entre o jogador e a caixa
+    public PlayerControlador playerControlador;
 
     [Header("Bool de apoio")]
     public static bool jogadorEstaGrudadoEmUmaCaixa; // Verifica se o jogador está grudado em alguma caixa
     public bool caixaEstaSendoEmpurrada; //Verifica se a caixa específica está sendo empurrada
 
-    //private Vector3 diferencaPosicao; // Armazena a diferença de posição inicial entre o jogador e a caixa
-
+    [Header("Caixa")]
+    private Rigidbody2D rigidbody2d;
+    private BoxCollider2D boxCollider2d;
+    private float gravidade;
+    private float posicaoX;
     void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        playerControlador = jogador.GetComponent<PlayerControlador>();
         posicaoJogador = jogador.GetComponent<Transform>();
+
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        gravidade = rigidbody2d.gravityScale;
+        boxCollider2d = GetComponent<BoxCollider2D>();
+
         jogadorEstaGrudadoEmUmaCaixa = false;
         caixaEstaSendoEmpurrada = false;
         // Calcula a diferença de posição inicial entre o jogador e a caixa
         //diferencaPosicao = transform.position - posicaoJogador.position;
     }
 
-    void Update()
+    private void Update()
     {
-        // Se a caixa estiver grudada, atualiza continuamente sua posição para seguir o jogador
-        /*if (caixaEstaSendoEmpurrada == true)
+        if(caixaEstaSendoEmpurrada)
         {
-            //AtualizarPosicao();
-        }*/
-    }
-
-    /*private void AtualizarPosicao()
-    {
-        // Calcula a nova posição da caixa com base na posição atual do jogador e na diferença de posição inicial
-        Vector3 novaPosicao = posicaoJogador.position + diferencaPosicao;
-
-        // Mantém a distância mínima entre o jogador e a caixa
-        if (Vector3.Distance(novaPosicao, posicaoJogador.position) < distanciaMinimaJogadorCaixa)
-        {
-            novaPosicao = posicaoJogador.position + (novaPosicao - posicaoJogador.position).normalized * distanciaMinimaJogadorCaixa;
+            posicaoX = transform.position.x;
+            transform.position = new Vector2(posicaoX, jogador.transform.position.y);
         }
-
-        // Define a nova posição da caixa
-        transform.position = novaPosicao;
-    }*/
+    }
 
     public void Grudar()
     {
@@ -68,7 +60,8 @@ public class GrudarObjeto : MonoBehaviour
                 Debug.Log("Grudou");
                 caixaEstaSendoEmpurrada = true;  // Define que esta caixa está grudada no jogador
                 jogadorEstaGrudadoEmUmaCaixa = true;
-                //diferencaPosicao = transform.position - posicaoJogador.position;
+                playerControlador.rigidBody2D.gravityScale = 50;
+                //rigidbody2d.gravityScale = 0;
                 if((transform.position.x - posicaoJogador.position.x < 0) && PlayerControlador.olhandoDireita == true || (transform.position.x - posicaoJogador.position.x > 0) && PlayerControlador.olhandoDireita == false)
                 {
                     PlayerControlador.olhandoDireita = !PlayerControlador.olhandoDireita;
@@ -86,5 +79,7 @@ public class GrudarObjeto : MonoBehaviour
         caixaEstaSendoEmpurrada = false;
         jogadorEstaGrudadoEmUmaCaixa = false; //jogador parou de empurrar
         transform.parent = null;
+        playerControlador.rigidBody2D.gravityScale = playerControlador.gravidade;
+        //rigidbody2d.gravityScale = gravidade;
     }
 }

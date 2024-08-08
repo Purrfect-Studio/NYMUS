@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PlayerControlador : MonoBehaviour
 {
     [Header("RigidBody")]
-    private Rigidbody2D rigidBody2D;   // rb = rigidbody
+    public Rigidbody2D rigidBody2D;   // rb = rigidbody
     [Header("BoxCollider")]
     private BoxCollider2D boxCollider2D; // bc = box collider 
     [Header("Animator")]
@@ -36,7 +36,7 @@ public class PlayerControlador : MonoBehaviour
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
     public int quantidadeDePulosExtras;
     public int puloExtra;       // Quantidade de pulos que o jogador pode dar
-    private float gravidade;
+    public float gravidade;
 
     [Header("Ataque")]
     public float dano;

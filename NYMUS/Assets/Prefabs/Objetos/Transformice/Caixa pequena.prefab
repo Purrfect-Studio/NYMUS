@@ -109,7 +109,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 1376dc1fbd762234c9c8072f934e14fb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &6673981174358497525
 BoxCollider2D:
@@ -206,7 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posicaoJogador: {fileID: 0}
-  distanciaMinimaJogadorCaixa: 1
+  jogador: {fileID: 0}
+  playerControlador: {fileID: 0}
   caixaEstaSendoEmpurrada: 0
 --- !u!114 &6437277204312646855
 MonoBehaviour:
@@ -234,7 +235,7 @@ MonoBehaviour:
   - {x: 0.2734375, y: -0.2734375, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 72850
+  m_InstanceId: 69062
   m_LocalBounds:
     m_Center: {x: 0.0000019073486, y: 0.00000011920929, z: 0}
     m_Extent: {x: 0.2734356, y: 0.27343762, z: 0}
