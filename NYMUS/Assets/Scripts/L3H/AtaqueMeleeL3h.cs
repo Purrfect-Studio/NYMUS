@@ -13,6 +13,7 @@ public class AtaqueMeleeL3h : MonoBehaviour
         jogador = GameObject.FindGameObjectWithTag("Jogador");
         playerControlador = jogador.GetComponent<PlayerControlador>();
         circleCollider = GetComponent<CircleCollider2D>();
+        desativarCircleCollider();
     }
 
     private void OnTriggerEnter2D(Collider2D acertarInimigo)
