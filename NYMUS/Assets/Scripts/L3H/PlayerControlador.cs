@@ -126,7 +126,7 @@ public class PlayerControlador : MonoBehaviour
             if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
             {
                 verificarPuloDuplo();
-                ataque();
+                //ataque();
             }
 
             CairDaPlataforma();
@@ -245,7 +245,6 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
-    private BossControlador bossControlador;
     void ataque()
     {
         if(Input.GetKeyDown(KeyCode.F))

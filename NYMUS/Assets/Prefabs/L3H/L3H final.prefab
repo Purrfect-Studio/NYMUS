@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6861670330181198321}
   - component: {fileID: 5810218152108997341}
   - component: {fileID: 7009900899256420945}
+  - component: {fileID: 1419671661579301665}
+  - component: {fileID: 3537955052216386973}
   m_Layer: 8
   m_Name: pontoAtaque
   m_TagString: Untagged
@@ -100,12 +102,43 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1419671661579301665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861670330181198320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3baf87eb19ff3fe4281cfbe1d91ac6c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jogador: {fileID: 0}
+  playerControlador: {fileID: 0}
+  circleCollider: {fileID: 0}
+--- !u!58 &3537955052216386973
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861670330181198320}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.031808037, y: 0.017892225}
+  serializedVersion: 2
+  m_Radius: 0.44632402
 --- !u!1 &6861670330375925667
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +402,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 100066
+  m_InstanceId: 68954
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}
