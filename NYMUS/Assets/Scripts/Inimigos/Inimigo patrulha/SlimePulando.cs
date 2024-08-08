@@ -10,6 +10,7 @@ public class SlimePulando : MonoBehaviour
     private float direcao;
     public float cooldownPulo;
     private float cooldownRestantePulo;
+    public bool olhandoParaEsquerda;
 
     [Header("Elementos do slime")]
     private Rigidbody2D rigidbody2d;
@@ -44,6 +45,16 @@ public class SlimePulando : MonoBehaviour
         {
             cooldownRestantePulo = cooldownPulo;
         }
+        if (olhandoParaEsquerda && direcao == 1 || !olhandoParaEsquerda && direcao == -1)
+        {
+            flipSprite();
+        }
+    }
+
+    public void flipSprite()
+    {
+        olhandoParaEsquerda = !olhandoParaEsquerda;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     public float direcaoDoPulo()

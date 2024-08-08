@@ -1,80 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2640444129964086623
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6262003078700047505}
-  - component: {fileID: 3554026624417471837}
-  - component: {fileID: 4114470831565733498}
-  m_Layer: 0
-  m_Name: detectaInimigo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6262003078700047505
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2640444129964086623}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.237, y: -0.004, z: 0}
-  m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.125}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2769989527036415934}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3554026624417471837
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2640444129964086623}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01103878, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.116942406, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &4114470831565733498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2640444129964086623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d973c528aee011242a16e0bcab4a1216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bcInimigo: {fileID: 3554026624417471837}
-  layerInimigo:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &2769989527036415872
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,8 +11,6 @@ GameObject:
   - component: {fileID: 2769989527036415934}
   - component: {fileID: 2769989527036415873}
   - component: {fileID: 2769989527036415935}
-  - component: {fileID: 2769989527036415930}
-  - component: {fileID: 2769989527036415933}
   - component: {fileID: 2769989527036415931}
   - component: {fileID: 2769989527036415928}
   - component: {fileID: 7560373794268620884}
@@ -95,6 +18,7 @@ GameObject:
   - component: {fileID: 1859872676135152912}
   - component: {fileID: 1770009262535194308}
   - component: {fileID: 1271441254688161041}
+  - component: {fileID: 2490377653966570968}
   m_Layer: 9
   m_Name: Patrulha (1)
   m_TagString: Inimigo
@@ -113,8 +37,7 @@ Transform:
   m_LocalPosition: {x: -4.125154, y: -2.034433, z: -8.84}
   m_LocalScale: {x: 6, y: 6, z: 8}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6262003078700047505}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,58 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &2769989527036415930
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2769989527036415872}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.1801816, y: 0.04353276}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.31}
-    newSize: {x: 0.5, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.018944427, y: 0.20551765}
-  m_EdgeRadius: 0
---- !u!61 &2769989527036415933
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2769989527036415872}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.17562464, y: -0.14800991}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.31}
-    newSize: {x: 0.5, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.037032664, y: 0.1504071}
-  m_EdgeRadius: 0
 --- !u!58 &2769989527036415931
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -256,9 +127,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0065715713, y: 0.013840696}
+  m_Offset: {x: 0.019377392, y: 0.010038137}
   serializedVersion: 2
-  m_Radius: 0.13788038
+  m_Radius: 0.14846928
 --- !u!50 &2769989527036415928
 Rigidbody2D:
   serializedVersion: 4
@@ -317,11 +188,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   olhandoParaEsquerda: 0
   velocidade: 4
-  bCparede: {fileID: 2769989527036415930}
-  bcChao: {fileID: 2769989527036415933}
+  direcao: 1
+  rigidbody2d: {fileID: 2769989527036415928}
+  offset: {x: 0.6, y: -0.4}
   layerChao:
     serializedVersion: 2
     m_Bits: 64
+  layerInimigo:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &1859872676135152912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,3 +243,19 @@ MonoBehaviour:
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 0
+--- !u!58 &2490377653966570968
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769989527036415872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0048891706, y: -0.02086401}
+  serializedVersion: 2
+  m_Radius: 0.12788105

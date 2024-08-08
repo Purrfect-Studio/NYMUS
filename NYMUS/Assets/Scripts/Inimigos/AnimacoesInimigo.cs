@@ -21,9 +21,9 @@ public class AnimacoesInimigo : MonoBehaviour
 
     void morrer()
     {
-        if(vidaInimigo.vidaAtual <= 0)
+        /*if(vidaInimigo.vidaAtual <= 0)
         {
             animacao.SetTrigger("estaMorto");
-        }
+        }*/
     }
 }

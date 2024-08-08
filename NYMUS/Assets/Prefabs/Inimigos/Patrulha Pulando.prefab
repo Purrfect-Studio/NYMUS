@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2064080510754166139}
   - component: {fileID: 379594901756339112}
   - component: {fileID: 428107292689685165}
+  - component: {fileID: 5554851458359966213}
   m_Layer: 9
   m_Name: Patrulha Pulando
   m_TagString: Inimigo
@@ -126,9 +127,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002872015, y: 0.0043299403}
+  m_Offset: {x: 0.010072727, y: 0.0043299403}
   serializedVersion: 2
-  m_Radius: 0.14275262
+  m_Radius: 0.13555191
 --- !u!50 &3800828331445148405
 Rigidbody2D:
   serializedVersion: 4
@@ -239,3 +240,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   raioDetecao: 27
+--- !u!58 &5554851458359966213
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800828331445148365}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.013203835, y: -0.000003947472}
+  serializedVersion: 2
+  m_Radius: 0.1575904

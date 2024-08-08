@@ -7,61 +7,107 @@ public class InimigoPatrulha : MonoBehaviour
     [Header("Movimentacao")]
     public bool olhandoParaEsquerda;
     public float velocidade;
+    public int direcao = 1;
+    public Rigidbody2D rigidbody2d;
+    public Vector2 offset;
     private float variavelDeSuporte;
-    [Header("Box Collider da Parede")]
-    public BoxCollider2D bCparede; // bc = box collider
-    [Header("Box Collider do Chao")]
-    public BoxCollider2D bcChao; // bc = box collider
+    
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao;
+    [SerializeField] private LayerMask layerInimigo;
+
+    private RaycastHit2D paredeDireita;
+    private RaycastHit2D paredeEsquerda;
+    private RaycastHit2D chaoDireita;
+    private RaycastHit2D chaoEsquerda;
+    private RaycastHit2D inimigoDireita;
+    private RaycastHit2D inimigoEsquerda;
+
 
     void Start()
     {
         olhandoParaEsquerda = true;
         variavelDeSuporte = velocidade;
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         if (VidaInimigo.podeMover == true)
         {
-            Patrulha();
+            DetectarColisoesParede();
+            DetectarColisoesChao();
+            //DetectarColisoesInimigo();
+            Mover();
+        }
+        if (!olhandoParaEsquerda && direcao == 1 || olhandoParaEsquerda && direcao == -1)
+        {
+            flipSprite();
         }
     }
 
-    private bool parede()
+    public void Mover()
     {
-        RaycastHit2D parede = Physics2D.BoxCast(bCparede.bounds.center, bCparede.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
-        return parede.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
+        rigidbody2d.velocity = new Vector2(velocidade * direcao, rigidbody2d.velocity.y);
     }
 
-    private bool chao()
+    public void flipSprite()
     {
-        RaycastHit2D chao = Physics2D.BoxCast(bcChao.bounds.center, bcChao.bounds.size, 0, Vector2.down, 0.05f, layerChao); // Cria um segundo box collider para reconhecer o chao
-        return chao.collider != null; //Retorna um valor verdadeiro, dizendo que encostou no chao
+        olhandoParaEsquerda = !olhandoParaEsquerda;
+        transform.Rotate(0f, 180f, 0f);
     }
-    
-    public void Patrulha()
+
+    public void DetectarColisoesChao()
     {
-        transform.Translate(Vector2.right * velocidade * Time.deltaTime);
-        if(DetectaInimigo.encontrouInimigo == true)
+        chaoDireita = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), Vector2.down, 1f, layerChao);
+        Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), Vector2.down, Color.red);
+        if(chaoDireita.collider == null)
         {
-            StartCoroutine("aumentarVelocidade");
+            direcao = -1;
         }
-        if (chao() == false || parede() == true || DetectaInimigo.encontrouInimigo == true)
+
+        chaoEsquerda = Physics2D.Raycast(new Vector2(transform.position.x - offset.x, transform.position.y + offset.y), Vector2.down, 1f, layerChao);
+        Debug.DrawRay(new Vector2(transform.position.x - offset.x, transform.position.y + offset.y), Vector2.down, Color.red);
+        if (chaoEsquerda.collider == null)
         {
-            if (olhandoParaEsquerda == false)
-            {
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                olhandoParaEsquerda = true;
-            }
-            else
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                olhandoParaEsquerda = false;
-            }
-            DetectaInimigo.encontrouInimigo = false;
+            direcao = 1;
         }
+    }
+
+    /*public void DetectarColisoesInimigo()
+    {
+        inimigoDireita = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), Vector2.right, 1f, layerInimigo);
+        Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), Vector2.right, Color.blue);
+        if (inimigoDireita.collider != null)
+        {
+            direcao = -1;
+        }
+
+        inimigoEsquerda = Physics2D.Raycast(new Vector2(transform.position.x - offset.x, transform.position.y + offset.y), Vector2.left, 1f, layerInimigo);
+        Debug.DrawRay(new Vector2(transform.position.x - offset.x, transform.position.y + offset.y), Vector2.left, Color.blue);
+        if (inimigoEsquerda.collider != null)
+        {
+            direcao = 1;
+        }
+    }*/
+
+
+    public void DetectarColisoesParede()
+    {
+        paredeDireita = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), Vector2.right, 1.5f, layerChao);
+        Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), Vector2.right, Color.yellow);
+        if (paredeDireita.collider != null)
+        {
+            direcao = -1;
+        }
+
+        paredeEsquerda = Physics2D.Raycast(new Vector2(transform.position.x - offset.x, transform.position.y + offset.y), Vector2.left, 1.5f, layerChao);
+        Debug.DrawRay(new Vector2(transform.position.x - offset.x, transform.position.y + offset.y), Vector2.left, Color.yellow);
+        if (paredeEsquerda.collider != null)
+        {
+            direcao = 1;
+        }
+        
     }
 
     IEnumerator aumentarVelocidade()
