@@ -14,6 +14,7 @@ public class irAteJogador : MonoBehaviour
     private void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        procurarJogador = GetComponent<ProcurarJogador>();
     }
     // Update is called once per frame
     void Update()
