@@ -20,12 +20,15 @@ public class InimigoDanoDeColisao : MonoBehaviour
         vidaInimigo = GetComponent<VidaInimigo>();
         jogador = GameObject.FindWithTag("Jogador");
 
-        if(vidaInimigo.slime == true)
+        if(vidaInimigo.slime)
         {
             danoNoJogador = SeletorDeDificuldade.danoSlime;
-        }else if(vidaInimigo.morcego == true)
+        }else if(vidaInimigo.morcego)
         {
             danoNoJogador = SeletorDeDificuldade.danoMorcego;
+        }else if (vidaInimigo.fantasma)
+        {
+            danoNoJogador = SeletorDeDificuldade.danoFantasma;
         }
     }
 

@@ -25,8 +25,7 @@ public class PatrulhaPulando : MonoBehaviour
 
     void Start()
     {
-        olhandoParaEsquerda = true;
-        
+        olhandoParaEsquerda = true; 
     }
 
     void Update()

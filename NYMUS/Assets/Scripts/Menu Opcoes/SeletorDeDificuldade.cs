@@ -23,6 +23,10 @@ public class SeletorDeDificuldade : MonoBehaviour
     [SerializeField] public static float vidaMorcego;
     [SerializeField] public static float danoMorcego;
 
+    [Header("Fantasma")]
+    [SerializeField] public static float vidaFantasma;
+    [SerializeField] public static float danoFantasma;
+
 
 
     [Header("Valores dos Bosses")]
@@ -68,6 +72,10 @@ public class SeletorDeDificuldade : MonoBehaviour
                 vidaMorcego = 20;
                 danoMorcego = 10;
 
+                //Fantasma
+                vidaFantasma = 15;
+                danoFantasma = 10;
+
                 //Bosses
                 //Virut
                 vidaMaximaVirut = 175;
@@ -89,6 +97,10 @@ public class SeletorDeDificuldade : MonoBehaviour
                 vidaMorcego = 25;
                 danoMorcego = 15;
 
+                //Fantasma
+                vidaFantasma = 20;
+                danoFantasma = 15;
+
                 //Bosses
                 //Virut
                 vidaMaximaVirut = 200;
@@ -109,6 +121,10 @@ public class SeletorDeDificuldade : MonoBehaviour
                 //Morcego
                 vidaMorcego = 30;
                 danoMorcego = 20;
+
+                //Fantasma
+                vidaFantasma = 30;
+                danoFantasma = 20;
 
                 //Bosses
                 //Virut

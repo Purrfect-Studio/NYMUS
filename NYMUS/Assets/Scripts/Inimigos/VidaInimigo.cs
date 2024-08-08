@@ -12,15 +12,12 @@ public class VidaInimigo : MonoBehaviour
     [SerializeField] public static bool invulneravel;
     [SerializeField] public static bool podeMover;
 
-    [Header("GameObject do inimigo")]
-    public GameObject inimigo;
-
     //[Header("RigidBody")]
     //public Rigidbody2D rb;   // rb = rigidbody
 
     [Header("Knockback")]
     private KnockBack knockBack;
-    public float forcaKnockbackX;
+    public float forcaKnockbackX = 1f;
     public float forcaKnockbackY = 1f;
     public static int direcaoDoKnockback; // 1 eh pra direita e -1 pra esquerda
 
@@ -43,21 +40,25 @@ public class VidaInimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(slime == true)
+        if(slime)
         {
             vidaMaxima = SeletorDeDificuldade.vidaSlime;
-        }else if(morcego == true)
+        }else if(morcego)
         {
             vidaMaxima = SeletorDeDificuldade.vidaMorcego;
+        }else if(fantasma)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaFantasma;
         }
 
         podeMover = true;
         invulneravel = false;
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
-        inimigo = this.gameObject;
+
         jogador = GameObject.FindGameObjectWithTag("Jogador");
         sprite = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<KnockBack>();
+
         if(animacao != null)
         {
             animacao = GetComponent<Animator>();
@@ -122,6 +123,6 @@ public class VidaInimigo : MonoBehaviour
     {
         podeMover = false;
         yield return new WaitForSeconds(1f);
-        Destroy(inimigo);
+        Destroy(gameObject);
     }
 }

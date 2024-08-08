@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3774189002837180844}
   - component: {fileID: 3774189002837180847}
   - component: {fileID: 3774189002837180849}
+  - component: {fileID: 6406519963342328990}
   m_Layer: 0
   m_Name: Fantasma
   m_TagString: Untagged
@@ -142,8 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   procurarJogador: {fileID: 3774189002837180841}
   jogador: {fileID: 0}
-  vidaInimigo: {fileID: 0}
-  playerControlador: {fileID: 0}
   velocidade: 5
 --- !u!114 &3774189002837180841
 MonoBehaviour:
@@ -218,4 +217,19 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   forca: 10
   delay: 0.15
+  jogador: {fileID: 0}
+--- !u!114 &6406519963342328990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774189002837180838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d13a974d74e72418fa478082cfecbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  irAteJogador: {fileID: 0}
+  vidaInimigo: {fileID: 0}
   jogador: {fileID: 0}

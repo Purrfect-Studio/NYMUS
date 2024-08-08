@@ -8,43 +8,23 @@ public class irAteJogador : MonoBehaviour
     public ProcurarJogador procurarJogador;
     [Header("Jogador")]
     public GameObject jogador;
-    public VidaInimigo vidaInimigo;
-    public PlayerControlador playerControlador;
 
     public float velocidade;
 
     private void Start()
     {
-        if(GetComponent<VidaInimigo>() != null)
-        {
-            vidaInimigo = GetComponent<VidaInimigo>();
-        }
         jogador = GameObject.FindGameObjectWithTag("Jogador");
-        playerControlador = jogador.GetComponent<PlayerControlador>();
     }
     // Update is called once per frame
     void Update()
     {
-        if(vidaInimigo != null)
+        if(procurarJogador.procurarJogador() == true)
         {
-            if (vidaInimigo.fantasma == true && procurarJogador.procurarJogador() == true)
-            {
-                if (transform.position.x - jogador.transform.position.x < 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x > 0 && !PlayerControlador.olhandoDireita)
-                {
-                    irJogador();
-                }
-            }
-        }        
-        else
-        {
-            if(procurarJogador.procurarJogador() == true)
-            {
-                irJogador();
-            }
+            irJogador();
         }
     }
 
-    void irJogador()
+    public void irJogador()
     {
         transform.position = Vector2.MoveTowards(transform.position, jogador.transform.position, velocidade * Time.deltaTime);
     }
