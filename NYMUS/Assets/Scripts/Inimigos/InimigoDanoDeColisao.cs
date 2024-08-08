@@ -26,9 +26,12 @@ public class InimigoDanoDeColisao : MonoBehaviour
         }else if(vidaInimigo.morcego)
         {
             danoNoJogador = SeletorDeDificuldade.danoMorcego;
-        }else if (vidaInimigo.fantasma)
+        }else if(vidaInimigo.fantasma)
         {
             danoNoJogador = SeletorDeDificuldade.danoFantasma;
+        }else if(vidaInimigo.inimigoProjetilParabola)
+        {
+            danoNoJogador = SeletorDeDificuldade.danoInimigoProjetilParabola;
         }
     }
 

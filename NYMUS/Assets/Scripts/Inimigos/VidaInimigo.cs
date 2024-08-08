@@ -34,6 +34,7 @@ public class VidaInimigo : MonoBehaviour
     public bool slime;
     public bool morcego;
     public bool fantasma;
+    public bool inimigoProjetilParabola;
 
     
 
@@ -49,6 +50,9 @@ public class VidaInimigo : MonoBehaviour
         }else if(fantasma)
         {
             vidaMaxima = SeletorDeDificuldade.vidaFantasma;
+        }else if(inimigoProjetilParabola)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaInimigoProjetilParabola;
         }
 
         podeMover = true;
