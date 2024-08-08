@@ -30,13 +30,14 @@ public class VidaInimigo : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite;
 
+    [Header("Inimigo")]
+    private GameObject inimigo;
+
     [Header("Tipo de Inimigo")]
     public bool slime;
     public bool morcego;
     public bool fantasma;
-    public bool inimigoProjetilParabola;
-
-    
+    public bool inimigoProjetilParabola;    
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,7 @@ public class VidaInimigo : MonoBehaviour
         jogador = GameObject.FindGameObjectWithTag("Jogador");
         sprite = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<KnockBack>();
+        inimigo = this.gameObject;
 
         if(animacao != null)
         {
@@ -127,6 +129,7 @@ public class VidaInimigo : MonoBehaviour
     {
         podeMover = false;
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 }

@@ -133,7 +133,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.031808037, y: 0.017892225}
@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144ff364b99c995489d981460e075df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody2D: {fileID: 0}
   velocidade: 15
   layerChao:
     serializedVersion: 2
@@ -308,6 +309,7 @@ MonoBehaviour:
   tempoPulo: 0.2
   quantidadeDePulosExtras: 0
   puloExtra: 0
+  gravidade: 0
   dano: 5
   pontoDeAtaque: {fileID: 6861670330181198320}
   alcanceAtaque: 1.66
@@ -402,7 +404,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 68954
+  m_InstanceId: 58178
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}

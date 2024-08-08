@@ -43,13 +43,13 @@ public class InimigoDanoDeColisao : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (colisaoJogador(collision))
         {
             CausarDanoNoJogador(collision);
         }
-    }
+    }*/
 
     public void CausarDanoNoJogador(Collider2D collision)
     {
