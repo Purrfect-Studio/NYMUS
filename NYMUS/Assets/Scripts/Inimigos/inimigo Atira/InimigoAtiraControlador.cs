@@ -85,13 +85,13 @@ public class InimigoAtiraControlador : MonoBehaviour
                 {
                     olhandoEsquerda = true;
                     transform.Rotate(0f, 180f, 0f);
-                    atirar.velocidadeTiro *= -1;
+                    atirar.velocidadeTirox *= -1;
                 }
                 else if (jogador != null && jogador.transform.position.x > transform.position.x && olhandoEsquerda)
                 {
                     olhandoEsquerda = false;
                     transform.Rotate(0f, 180f, 0f);
-                    atirar.velocidadeTiro *= -1;
+                    atirar.velocidadeTirox *= -1;
                 }
             }
         }
