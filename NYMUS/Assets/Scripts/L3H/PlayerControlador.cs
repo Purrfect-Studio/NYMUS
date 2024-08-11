@@ -45,14 +45,15 @@ public class PlayerControlador : MonoBehaviour
 
     [Header("Ataque Ranged")]
     public bool possuiAtaqueRanged;
+    public BarraDeEnergia barraDeEnergia;
     public GameObject projetilL3h;
     public float danoAtaqueRanged;
     public float velocidadeAtaqueRanged;
     public float duracaoAtaqueRanged;
-    public int quantidadeMaximaAtaqueRanged;
-    private int quantidadeRestanteAtaqueRanged;
-    public float cooldownParaRestaurarAtaqueRanged;
-    private float cooldownRestanteParaRestaurarAtaqueRanged;
+    public float energiaMaximaAtaqueRanged;
+    private float energiaRestanteAtaqueRanged;
+    //public float cooldownParaRestaurarEnergia;
+    //private float cooldownRestanteParaRestaurarEnergia;
     public float cooldownEntreAtaquesRanged;
     private float cooldownRestanteEntreAtaquesRanged;
     [SerializeField] public static float danoRanged;
@@ -78,6 +79,10 @@ public class PlayerControlador : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         animacao = GetComponent<Animator>();
         inventario = GetComponent<Inventario>();
+        if(possuiAtaqueRanged)
+        {
+            barraDeEnergia.definirEnergiaMaxima(energiaMaximaAtaqueRanged);
+        }
 
         podeMover = true;
         estaSubindoEscada = false;
@@ -93,8 +98,8 @@ public class PlayerControlador : MonoBehaviour
         direcao = 1;
 
         danoRanged = danoAtaqueRanged;
-        quantidadeRestanteAtaqueRanged = quantidadeMaximaAtaqueRanged;
-        cooldownRestanteParaRestaurarAtaqueRanged = cooldownParaRestaurarAtaqueRanged;
+        energiaRestanteAtaqueRanged = energiaMaximaAtaqueRanged;
+        //cooldownRestanteParaRestaurarEnergia = cooldownParaRestaurarEnergia;
         cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
 
         Physics2D.IgnoreLayerCollision(8, 13, false);
@@ -272,10 +277,11 @@ public class PlayerControlador : MonoBehaviour
 
     void ataqueRanged()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && quantidadeRestanteAtaqueRanged > 0 && cooldownRestanteEntreAtaquesRanged <= 0)
+        if (Input.GetKeyDown(KeyCode.Q) && energiaRestanteAtaqueRanged > 0 /*&& cooldownRestanteEntreAtaquesRanged <= 0*/)
         {
-            quantidadeRestanteAtaqueRanged--;
-            cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
+            energiaRestanteAtaqueRanged--;
+            barraDeEnergia.ajustarBarraDeEnergia(energiaRestanteAtaqueRanged);
+            //cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
             if (velocidadeAtaqueRanged > 0 && !olhandoDireita || velocidadeAtaqueRanged < 0 && olhandoDireita)
             {
                 velocidadeAtaqueRanged *= -1;
@@ -293,19 +299,20 @@ public class PlayerControlador : MonoBehaviour
 
     void restaurarQuantidadeAtaqueRangedDisponiveis()
     {
-        if (quantidadeRestanteAtaqueRanged < quantidadeMaximaAtaqueRanged)
+        if (energiaRestanteAtaqueRanged < energiaMaximaAtaqueRanged)
         {
-            cooldownRestanteParaRestaurarAtaqueRanged -= Time.deltaTime;
-            if (cooldownRestanteParaRestaurarAtaqueRanged <= 0)
-            {
-                quantidadeRestanteAtaqueRanged++;
-                cooldownRestanteParaRestaurarAtaqueRanged = cooldownParaRestaurarAtaqueRanged;
-            }
+            energiaRestanteAtaqueRanged += Time.deltaTime/2;
+            barraDeEnergia.ajustarBarraDeEnergia(energiaRestanteAtaqueRanged);
+            //if (cooldownRestanteParaRestaurarEnergia <= 0)
+            //{
+            //    energiaRestanteAtaqueRanged++;
+            //    cooldownRestanteParaRestaurarEnergia = cooldownParaRestaurarEnergia;
+            //}
         }
-        if(cooldownRestanteEntreAtaquesRanged > -1)
-        {
-            cooldownRestanteEntreAtaquesRanged -= Time.deltaTime;
-        }
+        //if(cooldownRestanteEntreAtaquesRanged > -1)
+        //{
+        //    cooldownRestanteEntreAtaquesRanged -= Time.deltaTime;
+        //}
         
     }
 

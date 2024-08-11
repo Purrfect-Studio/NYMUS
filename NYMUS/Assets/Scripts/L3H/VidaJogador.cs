@@ -39,6 +39,7 @@ public class VidaJogador : MonoBehaviour
         estaMorto = false;
         vidaAtual = vidaMaxima; //Coloca o L3h na vida maxima quando comeca a fase
         invulneravel = false;   //Desativa a invulnerabilidade
+        
         barraDeVida.definirVidaMaxima(vidaMaxima);
         sprite = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
