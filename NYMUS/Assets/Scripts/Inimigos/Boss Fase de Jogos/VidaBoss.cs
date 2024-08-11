@@ -52,12 +52,20 @@ public class VidaBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(invulnerabilidade == true)
+        if(Virut)
+        {
+            updateVirut();
+        }
+    }
+
+    void updateVirut()
+    {
+        if (invulnerabilidade == true)
         {
             invulneravel = true;
         }
 
-        if (vidaAtual <= vidaMaxima/2 && frenesi == false)
+        if (vidaAtual <= vidaMaxima / 2 && frenesi == false)
         {
             StartCoroutine(frenesiAtivado());
             frenesi = true;
