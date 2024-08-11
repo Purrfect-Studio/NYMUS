@@ -32,6 +32,9 @@ public class VidaBoss : MonoBehaviour
 
     public float tempoParaLevantar;
 
+    [Header("Nome Boss")]
+    public bool Virut;
+
 
     // Start is called before the first frame update
     void Start()

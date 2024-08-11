@@ -38,10 +38,24 @@ public class PlayerControlador : MonoBehaviour
     public int puloExtra;       // Quantidade de pulos que o jogador pode dar
     public float gravidade;
 
-    [Header("Ataque")]
+    [Header("Ataque Melee")]
     public float dano;
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
     public float alcanceAtaque;     // Area de alcance do ataque
+
+    [Header("Ataque Ranged")]
+    public bool possuiAtaqueRanged;
+    public GameObject projetilL3h;
+    public float danoAtaqueRanged;
+    public float velocidadeAtaqueRanged;
+    public float duracaoAtaqueRanged;
+    public int quantidadeMaximaAtaqueRanged;
+    private int quantidadeRestanteAtaqueRanged;
+    public float cooldownParaRestaurarAtaqueRanged;
+    private float cooldownRestanteParaRestaurarAtaqueRanged;
+    public float cooldownEntreAtaquesRanged;
+    private float cooldownRestanteEntreAtaquesRanged;
+    [SerializeField] public static float danoRanged;
 
     [Header("Escada")]
     public bool estaSubindoEscada;
@@ -77,6 +91,11 @@ public class PlayerControlador : MonoBehaviour
 
         olhandoDireita = true;
         direcao = 1;
+
+        danoRanged = danoAtaqueRanged;
+        quantidadeRestanteAtaqueRanged = quantidadeMaximaAtaqueRanged;
+        cooldownRestanteParaRestaurarAtaqueRanged = cooldownParaRestaurarAtaqueRanged;
+        cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
 
         Physics2D.IgnoreLayerCollision(8, 13, false);
     }
@@ -126,6 +145,10 @@ public class PlayerControlador : MonoBehaviour
             if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
             {
                 verificarPuloDuplo();
+                if (possuiAtaqueRanged)
+                {
+                    ataqueRanged();
+                }
                 //ataque();
             }
 
@@ -135,6 +158,8 @@ public class PlayerControlador : MonoBehaviour
         {
             rigidBody2D.velocity = Vector2.zero;
         }
+
+        restaurarQuantidadeAtaqueRangedDisponiveis();
     }
 
     void andar()
@@ -245,7 +270,46 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
-    void ataque()
+    void ataqueRanged()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && quantidadeRestanteAtaqueRanged > 0 && cooldownRestanteEntreAtaquesRanged <= 0)
+        {
+            quantidadeRestanteAtaqueRanged--;
+            cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
+            if (velocidadeAtaqueRanged > 0 && !olhandoDireita || velocidadeAtaqueRanged < 0 && olhandoDireita)
+            {
+                velocidadeAtaqueRanged *= -1;
+            }
+            GameObject temp = Instantiate(projetilL3h);
+            temp.transform.position = pontoDeAtaque.transform.position;
+            temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
+            if(velocidadeAtaqueRanged < 0)
+            {
+                temp.transform.Rotate(0f, 180f, 0f);
+            }
+            Destroy(temp.gameObject, duracaoAtaqueRanged); 
+        }
+    }
+
+    void restaurarQuantidadeAtaqueRangedDisponiveis()
+    {
+        if (quantidadeRestanteAtaqueRanged < quantidadeMaximaAtaqueRanged)
+        {
+            cooldownRestanteParaRestaurarAtaqueRanged -= Time.deltaTime;
+            if (cooldownRestanteParaRestaurarAtaqueRanged <= 0)
+            {
+                quantidadeRestanteAtaqueRanged++;
+                cooldownRestanteParaRestaurarAtaqueRanged = cooldownParaRestaurarAtaqueRanged;
+            }
+        }
+        if(cooldownRestanteEntreAtaquesRanged > -1)
+        {
+            cooldownRestanteEntreAtaquesRanged -= Time.deltaTime;
+        }
+        
+    }
+
+    /*void ataque()
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
@@ -276,7 +340,7 @@ public class PlayerControlador : MonoBehaviour
 
             }
         }
-    }
+    }*/
 
     void interagir()
     {
