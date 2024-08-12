@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 9118235994474184914}
   - component: {fileID: 6897006039620468888}
   - component: {fileID: 3903909736224668908}
+  - component: {fileID: 3204291920750437488}
   m_Layer: 9
   m_Name: inimigo projetil parabula
   m_TagString: Untagged
@@ -263,6 +264,23 @@ MonoBehaviour:
   morcego: 0
   fantasma: 0
   inimigoProjetilParabola: 1
+--- !u!114 &3204291920750437488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715531820002707444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91def9fc5d0575346b46aa37fd925762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jogador: {fileID: 0}
+  layerJogador:
+    serializedVersion: 2
+    m_Bits: 256
+  raioDetecao: 35
 --- !u!1 &6715531821569636715
 GameObject:
   m_ObjectHideFlags: 0
