@@ -37,6 +37,10 @@ public class PlayerControlador : MonoBehaviour
     public int quantidadeDePulosExtras;
     public int puloExtra;       // Quantidade de pulos que o jogador pode dar
     public float gravidade;
+    [Header("CoyoteTime")]
+    [SerializeField] private float tempoMaximoCoyote = 0.1f;
+    [SerializeField] private bool coyoteTime;
+    private float tempoCoyote = 0;
 
     [Header("Ataque Melee")]
     public float dano;
@@ -66,7 +70,6 @@ public class PlayerControlador : MonoBehaviour
     [Header("Chave")]
     public Inventario inventario;
     public bool estaInteragindo { get; set; }
-
 
     // Start is called before the first frame update
     void Start()
@@ -159,6 +162,19 @@ public class PlayerControlador : MonoBehaviour
         }
 
         restaurarEnergia();
+        if(!estaChao() && coyoteTime)
+        {
+            tempoCoyote += Time.deltaTime;
+            if(tempoCoyote > tempoMaximoCoyote)
+            {
+                coyoteTime = false;
+            }
+        }
+        if(estaChao())
+        {
+            coyoteTime = true;
+            tempoCoyote = 0;
+        }
     }
 
     void andar()
@@ -215,7 +231,7 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && estaChao() == true || Input.GetKeyDown(KeyCode.W) && estaChao() == true || Input.GetKeyDown(KeyCode.UpArrow) && estaChao() == true)
+        if (Input.GetKeyDown(KeyCode.Space) && (estaChao() == true || coyoteTime)|| Input.GetKeyDown(KeyCode.W) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.UpArrow) && (estaChao() == true || coyoteTime))
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
