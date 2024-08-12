@@ -58,6 +58,16 @@ public class PlayerControlador : MonoBehaviour
     private float contadorCarregarAtaqueRanged;
     public float definirTipoTiro;
 
+    [Header("Dash")]
+    public bool possuiDash;
+    public float forcaDashX;
+    public float forcaDashY;
+    public float tempoMaximoDash;
+    public float cooldownDash;
+    private bool podeDarDash = true;
+    private bool estaUsandoDash; 
+    private TrailRenderer trailRenderer;
+
     [Header("Escada")]
     public bool estaSubindoEscada;
     public bool estaDescendoEscada;
@@ -78,12 +88,14 @@ public class PlayerControlador : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         animacao = GetComponent<Animator>();
         inventario = GetComponent<Inventario>();
+        trailRenderer = GetComponent<TrailRenderer>();
         if(possuiAtaqueRanged)
         {
             barraDeEnergia.definirEnergiaMaxima(energiaMaxima);
         }
 
         podeMover = true;
+        estaUsandoDash = false;
         estaSubindoEscada = false;
         estaDescendoEscada = false;
         podeInteragirEscada = false;
@@ -147,10 +159,21 @@ public class PlayerControlador : MonoBehaviour
             interagir();
             if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
             {
-                verificarPuloDuplo();
+                if (possuiPuloDuplo)
+                {
+                    inputPuloDuplo();
+                }
+                else
+                {
+                    inputPuloSimples();
+                }
                 if (possuiAtaqueRanged)
                 {
                     ataqueRanged();
+                }
+                if (possuiDash)
+                {
+                    inputDash();
                 }
             }
 
@@ -179,10 +202,14 @@ public class PlayerControlador : MonoBehaviour
 
     void andar()
     {
+        if (estaUsandoDash)
+        {
+            return;
+        }
         //<- = -1
         //-> = 1
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
+        {            
             transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
         }
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -193,12 +220,19 @@ public class PlayerControlador : MonoBehaviour
 
         if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
-           olhandoDireita = !olhandoDireita;
-           transform.Rotate(0f, 180f, 0f);
+            Flip();
         }
         //se estiver olhando a a direita e andando para a esquerda
         //ou olhando para a esquerda e andando para a direita
         //gira o sprite e inverte a variavel olhandoDireita
+    }
+
+    void Flip()
+    {
+        olhandoDireita = !olhandoDireita;
+        float x = transform.localScale.x;
+        x*=-1;
+        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
     }
 
     void pulo()
@@ -216,35 +250,26 @@ public class PlayerControlador : MonoBehaviour
         }
     }
 
-
-    void verificarPuloDuplo()
-    {
-        if (possuiPuloDuplo == true) // verifica se o jogador possui pulo duplo para escolher qual metodo de pulo chamar
-        {
-            inputPuloDuplo();
-        }
-        else
-        {
-            inputPuloSimples();
-        }        
-    }
-
     void inputPuloSimples()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (estaChao() == true || coyoteTime)|| Input.GetKeyDown(KeyCode.W) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.UpArrow) && (estaChao() == true || coyoteTime))
+        if (estaUsandoDash)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && (estaChao() == true || coyoteTime) /*|| Input.GetKeyDown(KeyCode.W) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.UpArrow) && (estaChao() == true || coyoteTime)*/)
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
         }
 
-        if (Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true)
+        if (Input.GetKey(KeyCode.Space) && estaPulando == true/* || Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true*/)
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKeyUp(KeyCode.Space) /*|| Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow)*/)
         {
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
@@ -254,6 +279,10 @@ public class PlayerControlador : MonoBehaviour
 
     void inputPuloDuplo()
     {
+        if (estaUsandoDash)
+        {
+            return;
+        }
         if (estaChao() == true)
         {
             //se o jogador encosta no chao reseta a quantidade de pulos
@@ -282,6 +311,75 @@ public class PlayerControlador : MonoBehaviour
             estaPulando = false;
             contadorTempoPulo = tempoPulo;
         }
+    }
+
+    void inputDash()
+    {
+        if (podeDarDash)
+        {
+            if (Input.GetKeyDown(KeyCode.G) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)))
+            {
+                StartCoroutine("DashDiagonal");
+            }
+            else if (Input.GetKeyDown(KeyCode.G) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)))
+            {
+                StartCoroutine("DashCima");
+            }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                StartCoroutine("DashReto");
+            }
+        }
+        
+    }
+
+    IEnumerator DashCima()
+    {
+        podeDarDash = false;
+        estaUsandoDash = true;
+        rigidBody2D.gravityScale = 0f;
+        rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y * forcaDashY);
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(tempoMaximoDash);
+        estaUsandoDash = false;
+        rigidBody2D.gravityScale = gravidade;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(cooldownDash);
+        podeDarDash = true;
+    }
+
+    IEnumerator DashDiagonal()
+    {
+        podeDarDash = false;
+        estaUsandoDash = true;
+        rigidBody2D.gravityScale = 0f;
+        forcaDashX -= 5f;
+        forcaDashY -= 5f;
+        rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y * forcaDashY);
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(tempoMaximoDash);
+        estaUsandoDash = false;
+        rigidBody2D.gravityScale = gravidade;
+        trailRenderer.emitting = false;
+        forcaDashY += 5f;
+        forcaDashX += 5f;
+        yield return new WaitForSeconds(cooldownDash);
+        podeDarDash = true;
+    }
+
+    IEnumerator DashReto()
+    {
+        podeDarDash = false;
+        estaUsandoDash = true;
+        rigidBody2D.gravityScale = 0f;
+        rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y);
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(tempoMaximoDash);
+        estaUsandoDash = false;
+        rigidBody2D.gravityScale = gravidade;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(cooldownDash);
+        podeDarDash = true;
     }
 
     void ataqueRanged()
