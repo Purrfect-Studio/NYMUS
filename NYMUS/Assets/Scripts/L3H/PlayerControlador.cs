@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class PlayerControlador : MonoBehaviour
 {
     [Header("RigidBody")]
-    public Rigidbody2D rigidBody2D;   // rb = rigidbody
+    public Rigidbody2D rigidBody2D;
     [Header("BoxCollider")]
-    private BoxCollider2D boxCollider2D; // bc = box collider 
+    private BoxCollider2D boxCollider2D;
     [Header("Animator")]
     private Animator animacao;
 
@@ -24,9 +24,9 @@ public class PlayerControlador : MonoBehaviour
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
     [Header("Layer da Escada")]
-    [SerializeField] private LayerMask layerEscada;
+    [SerializeField] private LayerMask layerEscada; //Variavel de apoio para rechonhecer a layer da escada
     [Header("Layer da Plataforma")]
-    [SerializeField] private LayerMask layerPlataforma;
+    [SerializeField] private LayerMask layerPlataforma; //Variavel de apoio para rechonhecer a layer da plataforma one-way
 
     [Header("Pulo")]
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
@@ -46,17 +46,13 @@ public class PlayerControlador : MonoBehaviour
     [Header("Ataque Ranged")]
     public bool possuiAtaqueRanged;
     public BarraDeEnergia barraDeEnergia;
-    public GameObject projetilL3h;
-    public float danoAtaqueRanged;
+    public GameObject[] projetilL3h;
     public float velocidadeAtaqueRanged;
     public float duracaoAtaqueRanged;
-    public float energiaMaximaAtaqueRanged;
-    private float energiaRestanteAtaqueRanged;
-    //public float cooldownParaRestaurarEnergia;
-    //private float cooldownRestanteParaRestaurarEnergia;
-    public float cooldownEntreAtaquesRanged;
-    private float cooldownRestanteEntreAtaquesRanged;
-    [SerializeField] public static float danoRanged;
+    public float energiaMaxima;
+    private float energiaRestante;
+    private float contadorCarregarAtaqueRanged;
+    public float definirTipoTiro;
 
     [Header("Escada")]
     public bool estaSubindoEscada;
@@ -81,7 +77,7 @@ public class PlayerControlador : MonoBehaviour
         inventario = GetComponent<Inventario>();
         if(possuiAtaqueRanged)
         {
-            barraDeEnergia.definirEnergiaMaxima(energiaMaximaAtaqueRanged);
+            barraDeEnergia.definirEnergiaMaxima(energiaMaxima);
         }
 
         podeMover = true;
@@ -97,10 +93,9 @@ public class PlayerControlador : MonoBehaviour
         olhandoDireita = true;
         direcao = 1;
 
-        danoRanged = danoAtaqueRanged;
-        energiaRestanteAtaqueRanged = energiaMaximaAtaqueRanged;
-        //cooldownRestanteParaRestaurarEnergia = cooldownParaRestaurarEnergia;
-        cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
+        energiaRestante = energiaMaxima;
+        definirTipoTiro = 0;
+        contadorCarregarAtaqueRanged = 0;
 
         Physics2D.IgnoreLayerCollision(8, 13, false);
     }
@@ -154,7 +149,6 @@ public class PlayerControlador : MonoBehaviour
                 {
                     ataqueRanged();
                 }
-                //ataque();
             }
 
             CairDaPlataforma();
@@ -164,7 +158,7 @@ public class PlayerControlador : MonoBehaviour
             rigidBody2D.velocity = Vector2.zero;
         }
 
-        restaurarQuantidadeAtaqueRangedDisponiveis();
+        restaurarEnergia();
     }
 
     void andar()
@@ -180,8 +174,7 @@ public class PlayerControlador : MonoBehaviour
             transform.position -= new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
         }
         direcao = Input.GetAxis("Horizontal");
-        //rigidBody2D.velocity = new Vector2(direcao * velocidade, rigidBody2D.velocity.y);
-        // O primeiro parâmetro da Vector recebe o valor de força aplicada no vetor. A direção pega se o valor é positivo (direita) ou negativo (esquerda) e aplica a velocidade
+
         if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
            olhandoDireita = !olhandoDireita;
@@ -277,77 +270,76 @@ public class PlayerControlador : MonoBehaviour
 
     void ataqueRanged()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && energiaRestanteAtaqueRanged > 0 /*&& cooldownRestanteEntreAtaquesRanged <= 0*/)
+        if(Input.GetKey(KeyCode.Q) && energiaRestante > 0)
         {
-            energiaRestanteAtaqueRanged--;
-            barraDeEnergia.ajustarBarraDeEnergia(energiaRestanteAtaqueRanged);
-            //cooldownRestanteEntreAtaquesRanged = cooldownEntreAtaquesRanged;
+            contadorCarregarAtaqueRanged += Time.deltaTime;
+            if(contadorCarregarAtaqueRanged >= 1)
+            {
+                contadorCarregarAtaqueRanged = 0;
+                if(definirTipoTiro < 2)
+                {
+                    definirTipoTiro += 1;
+                }
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Q) && energiaRestante > 0)
+        {
             if (velocidadeAtaqueRanged > 0 && !olhandoDireita || velocidadeAtaqueRanged < 0 && olhandoDireita)
             {
                 velocidadeAtaqueRanged *= -1;
             }
-            GameObject temp = Instantiate(projetilL3h);
-            temp.transform.position = pontoDeAtaque.transform.position;
-            temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
-            if(velocidadeAtaqueRanged < 0)
+
+            if (definirTipoTiro == 2 && energiaRestante >= 3)
             {
-                temp.transform.Rotate(0f, 180f, 0f);
+                energiaRestante -= 3;
+                barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+                GameObject temp = Instantiate(projetilL3h[2]);
+                temp.transform.position = pontoDeAtaque.transform.position;
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
+                if (velocidadeAtaqueRanged < 0)
+                {
+                    temp.transform.Rotate(0f, 180f, 0f);
+                }
+                Destroy(temp.gameObject, duracaoAtaqueRanged);
+            }else if (definirTipoTiro == 1 && energiaRestante >= 2)
+            {
+                energiaRestante -= 2;
+                barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+                GameObject temp = Instantiate(projetilL3h[1]);
+                temp.transform.position = pontoDeAtaque.transform.position;
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
+                if (velocidadeAtaqueRanged < 0)
+                {
+                    temp.transform.Rotate(0f, 180f, 0f);
+                }
+                Destroy(temp.gameObject, duracaoAtaqueRanged);
+            }else if (definirTipoTiro == 0 && energiaRestante >= 1)
+            {
+                energiaRestante -= 1;
+                barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+                GameObject temp = Instantiate(projetilL3h[0]);
+                temp.transform.position = pontoDeAtaque.transform.position;
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
+                if (velocidadeAtaqueRanged < 0)
+                {
+                    temp.transform.Rotate(0f, 180f, 0f);
+                }
+                Destroy(temp.gameObject, duracaoAtaqueRanged);
             }
-            Destroy(temp.gameObject, duracaoAtaqueRanged); 
+
+            definirTipoTiro = 0;
+            contadorCarregarAtaqueRanged = 0;
         }
     }
 
-    void restaurarQuantidadeAtaqueRangedDisponiveis()
+    void restaurarEnergia()
     {
-        if (energiaRestanteAtaqueRanged < energiaMaximaAtaqueRanged)
+        if (energiaRestante < energiaMaxima)
         {
-            energiaRestanteAtaqueRanged += Time.deltaTime/2;
-            barraDeEnergia.ajustarBarraDeEnergia(energiaRestanteAtaqueRanged);
-            //if (cooldownRestanteParaRestaurarEnergia <= 0)
-            //{
-            //    energiaRestanteAtaqueRanged++;
-            //    cooldownRestanteParaRestaurarEnergia = cooldownParaRestaurarEnergia;
-            //}
-        }
-        //if(cooldownRestanteEntreAtaquesRanged > -1)
-        //{
-        //    cooldownRestanteEntreAtaquesRanged -= Time.deltaTime;
-        //}
-        
+            energiaRestante += Time.deltaTime/2;
+            barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+        }        
     }
-
-    /*void ataque()
-    {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            Collider2D acertarInimigo = Physics2D.OverlapCircle(pontoDeAtaque.transform.position, alcanceAtaque);
-            if(acertarInimigo != null)
-            {
-                VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
-                if(inimigo != null && VidaInimigo.invulneravel == false)
-                {
-                    inimigo.tomarDano(dano);
-                }
-                VidaBoss boss = acertarInimigo.GetComponent<VidaBoss>();
-                if (boss != null && VidaBoss.invulneravel == false && VidaBoss.invulnerabilidade == false)
-                {
-                    Debug.Log("Acertei o boss");
-                    boss.tomarDano(dano);
-                }
-                if(acertarInimigo.CompareTag("PortaBoss") && VidaBoss.invulnerabilidade == true)
-                {
-                    int index = int.Parse(acertarInimigo.name);
-                    GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
-                    VidaBoss DerrubarBoss = Boss.GetComponent<VidaBoss>();
-                    GameObject PortaVirut = GameObject.FindGameObjectWithTag("ControladorPortasVirut");
-                    PortaVirut portaVirut = PortaVirut.GetComponent<PortaVirut>();
-                    portaVirut.jogadorDesativaPorta(index);
-                    DerrubarBoss.derrubarBoss();
-                }
-
-            }
-        }
-    }*/
 
     void interagir()
     {

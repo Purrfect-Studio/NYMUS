@@ -8,12 +8,11 @@ public class ProjetilL3H : MonoBehaviour
     public CircleCollider2D Collider2D;
     [Header("Inimigo")]
     [SerializeField] private LayerMask layerInimigo;
-    private float dano;
+    public float dano;
     // Start is called before the first frame update
     void Start()
     {
         Collider2D = GetComponent<CircleCollider2D>();
-        dano = PlayerControlador.danoRanged;
         Physics2D.IgnoreLayerCollision(8, 8, true);
     }
 

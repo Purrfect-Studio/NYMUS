@@ -315,12 +315,14 @@ MonoBehaviour:
   alcanceAtaque: 1.66
   possuiAtaqueRanged: 1
   barraDeEnergia: {fileID: 0}
-  projetilL3h: {fileID: 6104821924723603345, guid: 37b73782f531da648afc75afa16b2ae4, type: 3}
-  danoAtaqueRanged: 5
+  projetilL3h:
+  - {fileID: 6104821924723603345, guid: 37b73782f531da648afc75afa16b2ae4, type: 3}
+  - {fileID: 6104821924723603345, guid: 1a7b98ec44d620e4e843cb24986dae2e, type: 3}
+  - {fileID: 6104821924723603345, guid: cd64f999e34cfe24f850236b31aeb5ca, type: 3}
   velocidadeAtaqueRanged: 15
   duracaoAtaqueRanged: 3
-  energiaMaximaAtaqueRanged: 4
-  cooldownEntreAtaquesRanged: 0.5
+  energiaMaxima: 5
+  definirTipoTiro: 0
   estaSubindoEscada: 0
   estaDescendoEscada: 0
   podeInteragirEscada: 0
