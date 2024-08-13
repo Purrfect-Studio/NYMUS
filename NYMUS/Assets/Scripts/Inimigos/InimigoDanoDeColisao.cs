@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class InimigoDanoDeColisao : MonoBehaviour
 {
-    [Header("Collider 2D")]
-    public Collider2D Collider2D;
+    //[Header("Collider 2D")]
+    //public Collider2D Collider2D;
 
     [Header("Jogador")]
     [SerializeField] private LayerMask layerJogador;
@@ -48,6 +48,14 @@ public class InimigoDanoDeColisao : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (colisaoJogador2(collision))
+        {
+            CausarDanoNoJogador2(collision);
+        }
+    }
+
     /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (colisaoJogador(collision))
@@ -73,7 +81,29 @@ public class InimigoDanoDeColisao : MonoBehaviour
         }
     }
 
+    public void CausarDanoNoJogador2(Collision2D collision)
+    {
+        vidaJogador = collision.gameObject.GetComponent<VidaJogador>();
+        if (vidaJogador != null && !VidaJogador.invulneravel)
+        {
+            if (transform.position.x <= jogador.transform.position.x)
+            {
+                VidaJogador.knockbackParaDireita = -1;
+            }
+            else
+            {
+                VidaJogador.knockbackParaDireita = 1;
+            }
+            vidaJogador.tomarDano(danoNoJogador);
+        }
+    }
+
     private bool colisaoJogador(Collider2D collision)
+    {
+        return collision.gameObject.CompareTag("Jogador");
+    }
+
+    private bool colisaoJogador2(Collision2D collision)
     {
         return collision.gameObject.CompareTag("Jogador");
     }
