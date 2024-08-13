@@ -6,18 +6,16 @@ public class MusicasScript : MonoBehaviour
 {
     [Header("Musicas")]
     public AudioClip[] trilhasSonoras;
+    public AudioSource tocadorMusica;
 
     [Header("Configuracoes Opcionais")]
     public bool comecarAutomaticamente = true;
     public float duracaoFade = 3;
 
-    private AudioControlador audioControlador;
-    private AudioSource tocadorMusica;
 
     private void Start()
     {
-        audioControlador = AudioControlador.Instancia;
-        tocadorMusica = audioControlador.tocadorMusica;
+        
 
         if (comecarAutomaticamente && trilhasSonoras.Length > 0)
         {
@@ -25,8 +23,8 @@ public class MusicasScript : MonoBehaviour
             FadeInVolume();
         }
 
-        // Configura o slider para alterar o volume da música
-      
+   
+        
     }
 
     public void TrocarMusica(int indiceArrayMusicas)
@@ -38,13 +36,13 @@ public class MusicasScript : MonoBehaviour
     public void FadeOutVolume(bool fadeRapido = false)
     {
         float duracaoFadeOut = fadeRapido ? duracaoFade / 2 : duracaoFade;
-        StartCoroutine(FadeVolume(tocadorMusica, duracaoFadeOut, tocadorMusica.volume, 0));
+        StartCoroutine(FadeVolume(tocadorMusica, duracaoFadeOut, 1, 0));
     }
 
     public void FadeInVolume(bool fadeRapido = false)
     {
         float duracaoFadeIn = fadeRapido ? duracaoFade / 2 : duracaoFade;
-        StartCoroutine(FadeVolume(tocadorMusica, duracaoFadeIn, 0, audioControlador.volumeMusicaConfiguracao));
+        StartCoroutine(FadeVolume(tocadorMusica, duracaoFadeIn, 0, 1));
     }
 
     private IEnumerator TrocarMusicaAtrasada(int indiceArrayMusicas)

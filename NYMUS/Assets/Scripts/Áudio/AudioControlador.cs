@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class AudioControlador : MonoBehaviour
 {
     public static AudioControlador Instancia { get; private set; }
 
-    [Header("Players de áudio")]
-    public AudioSource tocadorMusica;
-    public AudioSource tocadorEfeitoAudio;
+    [Header("Mixers de áudio")]
+    public AudioMixerGroup grupoPrincipal;
+    public AudioMixerGroup grupoMusicas; // Grupo do mixer para músicas
+    public AudioMixerGroup grupoSFX; // Grupo do mixer para efeitos sonoros
 
     [Header("Volumes")]
+    public float volumeGeralConfiguracao = 1;
     public float volumeMusicaConfiguracao = 1;
     public float volumeEfeitosAudioConfiguracao = 1;
 
@@ -20,7 +23,6 @@ public class AudioControlador : MonoBehaviour
     private void Awake()
     {
         GerenciarInstancia();
-        EncontrarAudioSources();
     }
 
     private void GerenciarInstancia()
@@ -32,53 +34,54 @@ public class AudioControlador : MonoBehaviour
         }
         else if (Instancia != this)
         {
-            Destroy(gameObject);
+            Destroy(Instancia.gameObject); // Destrói a instância antiga em vez de destruir a nova
+            Instancia = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
-    private void EncontrarAudioSources()
+
+    // Muda o volume da música através do AudioMixerGroup
+    public void MudarVolumeGeral(float valorSlider)
     {
-        AudioSource[] audioSources = GetComponents<AudioSource>();
-        HashSet<AudioSource> audioSourceSet = new HashSet<AudioSource>(audioSources);
-
-        if (audioSourceSet.Count >= 2)
-        {
-            AudioSource[] uniqueAudioSources = new AudioSource[2];
-            audioSourceSet.CopyTo(uniqueAudioSources);
-            tocadorMusica = uniqueAudioSources[0];
-            tocadorEfeitoAudio = uniqueAudioSources[1];
-        }
-        else
-        {
-            Debug.LogWarning("Não há AudioSources suficientes no objeto para inicializar ambos os tocadores de música e efeito.");
-        }
+        float volume = Mathf.Lerp(-80f, 0f, valorSlider / valorMaximoSlider); // Converte o valor do slider para o intervalo -80dB a 0dB
+        grupoPrincipal.audioMixer.SetFloat("VolumeGlobal", volume);
+        volumeGeralConfiguracao = valorSlider / valorMaximoSlider;
     }
 
-    // Muda o volume da música
     public void MudarVolumeMusica(float valorSlider)
     {
-        float volume = valorSlider / valorMaximoSlider; // Converte o valor do slider para o intervalo 0-1
-        volumeMusicaConfiguracao = Mathf.Clamp(volume, 0, 1); // Garante que o valor esteja dentro do intervalo permitido
-        tocadorMusica.volume = volumeMusicaConfiguracao;
+        float volume = Mathf.Lerp(-80f, 0f, valorSlider / valorMaximoSlider); // Converte o valor do slider para o intervalo -80dB a 0dB
+        grupoMusicas.audioMixer.SetFloat("VolumeMusica", volume);
+        volumeMusicaConfiguracao = valorSlider / valorMaximoSlider;
     }
 
-    // Muda o volume dos efeitos sonoros
+    // Muda o volume dos efeitos sonoros através do AudioMixerGroup
     public void MudarVolumeEfeitos(float valorSlider)
     {
-        float volume = valorSlider / valorMaximoSlider; // Converte o valor do slider para o intervalo 0-1
-        volumeEfeitosAudioConfiguracao = Mathf.Clamp(volume, 0, 1); // Garante que o valor esteja dentro do intervalo permitido
-        tocadorEfeitoAudio.volume = volumeEfeitosAudioConfiguracao;
+        float volume = Mathf.Lerp(-80f, 0f, valorSlider / valorMaximoSlider); // Converte o valor do slider para o intervalo -80dB a 0dB
+        grupoSFX.audioMixer.SetFloat("VolumeEfeitos", volume);
+        volumeEfeitosAudioConfiguracao = valorSlider / valorMaximoSlider;
     }
 
     // Configura o slider para mudar o volume da música
+    public void ConfigurarSliderVolumeGeral(Slider slider)
+    {
+        slider.onValueChanged.AddListener(MudarVolumeGeral);
+        slider.value = volumeGeralConfiguracao * valorMaximoSlider;
+    }
+
     public void ConfigurarSliderVolumeMusica(Slider slider)
     {
         slider.onValueChanged.AddListener(MudarVolumeMusica);
+        slider.value = volumeMusicaConfiguracao * valorMaximoSlider;
     }
 
     // Configura o slider para mudar o volume dos efeitos sonoros
     public void ConfigurarSliderVolumeEfeitos(Slider slider)
     {
         slider.onValueChanged.AddListener(MudarVolumeEfeitos);
+        slider.value = volumeEfeitosAudioConfiguracao * valorMaximoSlider;
     }
+
 }

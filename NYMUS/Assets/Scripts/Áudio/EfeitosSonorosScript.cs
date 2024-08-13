@@ -31,9 +31,9 @@ public class EfeitosSonorosScript : MonoBehaviour
     }*/
 
     private void Start()
-    {
+    {/*
         audioControlador = AudioControlador.Instancia;
-        tocadorEfeitoAudio = audioControlador.tocadorEfeitoAudio;
+        tocadorEfeitoAudio = audioControlador.tocadorEfeitoAudio;*/
     }
 
     public void TocarEfeitoSonoro(int indiceEfeito)
