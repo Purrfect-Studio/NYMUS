@@ -150,7 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inimigoEsmaga: {fileID: 6295935492612661827}
   posicaoInicial: {x: 0, y: 0}
-  velocidade: 15
+  velocidadeVoltar: 10
+  velocidadeDescer: 10
 --- !u!61 &6295935492612661835
 BoxCollider2D:
   m_ObjectHideFlags: 0

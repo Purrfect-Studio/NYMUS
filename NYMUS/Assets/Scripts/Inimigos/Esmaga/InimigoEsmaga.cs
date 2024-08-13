@@ -7,7 +7,8 @@ public class InimigoEsmaga : MonoBehaviour
     public GameObject inimigoEsmaga;
     public Vector2 posicaoInicial;
     private bool estaMovendo;
-    public float velocidade;
+    public float velocidadeVoltar;
+    public float velocidadeDescer = 7;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class InimigoEsmaga : MonoBehaviour
     {
         if (estaMovendo == true)
         {
-            inimigoEsmaga.transform.position = Vector2.MoveTowards(inimigoEsmaga.transform.position, posicaoInicial, velocidade * Time.deltaTime);
+            inimigoEsmaga.transform.position = Vector2.MoveTowards(inimigoEsmaga.transform.position, posicaoInicial, velocidadeVoltar * Time.deltaTime);
         }
     }
 
@@ -27,7 +28,7 @@ public class InimigoEsmaga : MonoBehaviour
         if (collision.gameObject.CompareTag("Jogador"))
         {
             inimigoEsmaga.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            inimigoEsmaga.GetComponent<Rigidbody2D>().gravityScale = 7;
+            inimigoEsmaga.GetComponent<Rigidbody2D>().gravityScale = velocidadeDescer;
             inimigoEsmaga.GetComponent<Rigidbody2D>().mass = 400;
         }
     }
