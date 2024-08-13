@@ -36,9 +36,12 @@ public class ControladorInimigos : MonoBehaviour
             if (inimigos[i].gameObject.activeSelf == false)
             {
                 inimigos[i].gameObject.SetActive(true);
-                vidaInimigo = inimigos[i].GetComponent<VidaInimigo>();
-                vidaInimigo.vidaAtual = vidaInimigo.vidaMaxima;
-                VidaInimigo.podeMover = true;
+                if (inimigos[i].GetComponent<VidaInimigo>() != null)
+                {
+                    vidaInimigo = inimigos[i].GetComponent<VidaInimigo>();
+                    vidaInimigo.vidaAtual = vidaInimigo.vidaMaxima;
+                    VidaInimigo.podeMover = true;
+                }
             }
         }
         yield return new WaitForSeconds(1.5f);

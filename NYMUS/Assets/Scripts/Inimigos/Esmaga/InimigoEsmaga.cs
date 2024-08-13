@@ -10,14 +10,19 @@ public class InimigoEsmaga : MonoBehaviour
     public float velocidadeVoltar;
     public float velocidadeDescer = 7;
 
+    [Header("Armadilha ou Inimigo")]
+    public bool armadilha;
+    public bool inimigo;
+
     private void Start()
     {
         posicaoInicial = transform.position;
+        inimigoEsmaga = gameObject;
     }
 
     void Update()
     {
-        if (estaMovendo == true)
+        if (estaMovendo == true && inimigo)
         {
             inimigoEsmaga.transform.position = Vector2.MoveTowards(inimigoEsmaga.transform.position, posicaoInicial, velocidadeVoltar * Time.deltaTime);
         }
@@ -41,7 +46,21 @@ public class InimigoEsmaga : MonoBehaviour
             inimigoEsmaga.GetComponent<Rigidbody2D>().gravityScale = 0;
             inimigoEsmaga.GetComponent<Rigidbody2D>().mass = 0;
 
-            estaMovendo = true;
+            if (inimigo)
+            {
+                estaMovendo = true;
+            }
+            if(armadilha)
+            {
+                StartCoroutine("Desativar");
+            }
         }
+    }
+
+    IEnumerator Desativar()
+    {
+        yield return new WaitForSeconds(0.5f);
+        transform.position = posicaoInicial;
+        gameObject.SetActive(false);
     }
 }
