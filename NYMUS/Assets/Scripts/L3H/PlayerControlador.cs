@@ -56,6 +56,8 @@ public class PlayerControlador : MonoBehaviour
     public float energiaMaxima;
     private float energiaRestante;
     private float contadorCarregarAtaqueRanged;
+    private bool podeRestaurarEnergia = true;
+    private float reduzirEnergiaEnquantoCarrega;
     public float definirTipoTiro;
 
     [Header("Dash")]
@@ -184,7 +186,11 @@ public class PlayerControlador : MonoBehaviour
             rigidBody2D.velocity = Vector2.zero;
         }
 
-        restaurarEnergia();
+        if (possuiAtaqueRanged && podeRestaurarEnergia)
+        {
+            restaurarEnergia();
+        }
+        
         if(!estaChao() && coyoteTime)
         {
             tempoCoyote += Time.deltaTime;
@@ -256,20 +262,20 @@ public class PlayerControlador : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && (estaChao() == true || coyoteTime) /*|| Input.GetKeyDown(KeyCode.W) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.UpArrow) && (estaChao() == true || coyoteTime)*/)
+        if (Input.GetKeyDown(KeyCode.Space) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.W) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.UpArrow) && (estaChao() == true || coyoteTime))
         {
             // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
             estaPulando = true;
         }
 
-        if (Input.GetKey(KeyCode.Space) && estaPulando == true/* || Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true*/)
+        if (Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true)
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
             rigidBody2D.velocity = Vector2.up * forcaPulo;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) /*|| Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow)*/)
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
         {
             //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
             estaPulando = false;
@@ -386,27 +392,34 @@ public class PlayerControlador : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Q) && energiaRestante > 0)
         {
+            podeRestaurarEnergia = false;
             contadorCarregarAtaqueRanged += Time.deltaTime;
-            if(contadorCarregarAtaqueRanged >= 1)
+            if (contadorCarregarAtaqueRanged >= 1)
             {
                 contadorCarregarAtaqueRanged = 0;
-                if(definirTipoTiro < 2)
+                if (definirTipoTiro < 2)
                 {
                     definirTipoTiro += 1;
                 }
             }
+            if (reduzirEnergiaEnquantoCarrega < 2 && energiaRestante > 0.1f)
+            {
+                reduzirEnergiaEnquantoCarrega += Time.deltaTime;
+                energiaRestante -= Time.deltaTime;
+                barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+            }           
         }
-        if (Input.GetKeyUp(KeyCode.Q) && energiaRestante > 0)
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             if (velocidadeAtaqueRanged > 0 && !olhandoDireita || velocidadeAtaqueRanged < 0 && olhandoDireita)
             {
                 velocidadeAtaqueRanged *= -1;
             }
 
-            if (definirTipoTiro == 2 && energiaRestante >= 3)
+            if (definirTipoTiro == 2)
             {
-                energiaRestante -= 3;
-                barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+                //energiaRestante -= 3;
+                //barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
                 GameObject temp = Instantiate(projetilL3h[2]);
                 temp.transform.position = pontoDeAtaque.transform.position;
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
@@ -415,10 +428,10 @@ public class PlayerControlador : MonoBehaviour
                     temp.transform.Rotate(0f, 180f, 0f);
                 }
                 Destroy(temp.gameObject, duracaoAtaqueRanged);
-            }else if (definirTipoTiro == 1 && energiaRestante >= 2)
+            }else if (definirTipoTiro == 1)
             {
-                energiaRestante -= 2;
-                barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
+                //energiaRestante -= 2;
+                //barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
                 GameObject temp = Instantiate(projetilL3h[1]);
                 temp.transform.position = pontoDeAtaque.transform.position;
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
@@ -427,9 +440,9 @@ public class PlayerControlador : MonoBehaviour
                     temp.transform.Rotate(0f, 180f, 0f);
                 }
                 Destroy(temp.gameObject, duracaoAtaqueRanged);
-            }else if (definirTipoTiro == 0 && energiaRestante >= 1)
+            }else if (energiaRestante >= 0.5f)
             {
-                energiaRestante -= 1;
+                energiaRestante -= 0.5f;
                 barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
                 GameObject temp = Instantiate(projetilL3h[0]);
                 temp.transform.position = pontoDeAtaque.transform.position;
@@ -443,6 +456,8 @@ public class PlayerControlador : MonoBehaviour
 
             definirTipoTiro = 0;
             contadorCarregarAtaqueRanged = 0;
+            reduzirEnergiaEnquantoCarrega = 0;
+            podeRestaurarEnergia = true;
         }
     }
 
