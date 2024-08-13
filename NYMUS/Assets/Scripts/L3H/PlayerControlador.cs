@@ -323,15 +323,15 @@ public class PlayerControlador : MonoBehaviour
     {
         if (podeDarDash)
         {
-            if (Input.GetKeyDown(KeyCode.G) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)))
             {
                 StartCoroutine("DashDiagonal");
             }
-            else if (Input.GetKeyDown(KeyCode.G) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)))
+            else if (Input.GetKeyDown(KeyCode.LeftShift) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)))
             {
                 StartCoroutine("DashCima");
             }
-            else if (Input.GetKeyDown(KeyCode.G))
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 StartCoroutine("DashReto");
             }
