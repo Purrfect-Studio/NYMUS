@@ -9,6 +9,7 @@ public class Serra : MonoBehaviour
     private int indexPontos = 0;
     private Vector2 novaPosicao;
     public float velocidade;
+    private float velocidadeGiro = 1000;
 
     public bool pararPorUmTempo = false;
     public float tempoParado;
@@ -27,7 +28,7 @@ public class Serra : MonoBehaviour
 
     private void giroDaSerra()
     {
-        eixoZ += Time.deltaTime * 1000;
+        eixoZ += Time.deltaTime * velocidadeGiro;
         transform.rotation = Quaternion.Euler(0, 0, eixoZ);
     }
 

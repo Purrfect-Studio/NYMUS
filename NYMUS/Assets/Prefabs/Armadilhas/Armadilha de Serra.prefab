@@ -111,7 +111,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 946294361, guid: 5d94cc5d14a46ab4a869f3a5b9dcda05, type: 3}
+  m_Sprite: {fileID: -267345476, guid: 017a9f3ce50b59f4fb1f0ee9f2e86b08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c1be0161a20c24e86cdb6628162339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider2D: {fileID: 5932132873678267264}
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
@@ -153,9 +152,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0531922}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4468078
+  m_Radius: 0.34885642
 --- !u!114 &5932132873678267266
 MonoBehaviour:
   m_ObjectHideFlags: 0
