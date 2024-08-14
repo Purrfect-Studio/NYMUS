@@ -12,9 +12,6 @@ public class VidaInimigo : MonoBehaviour
     [SerializeField] public static bool invulneravel;
     [SerializeField] public static bool podeMover;
 
-    //[Header("RigidBody")]
-    //public Rigidbody2D rb;   // rb = rigidbody
-
     [Header("Knockback")]
     private KnockBack knockBack;
     public float forcaKnockbackX = 1f;
@@ -127,8 +124,9 @@ public class VidaInimigo : MonoBehaviour
 
     IEnumerator morreu()
     {
-        podeMover = false;
+        podeMover = false; 
         yield return new WaitForSeconds(1f);
+        ControladorDroparItens.Instancia.instanciarDrop(transform.position.x, transform.position.y, transform.position.z);
         gameObject.SetActive(false);
         //Destroy(gameObject);
     }
