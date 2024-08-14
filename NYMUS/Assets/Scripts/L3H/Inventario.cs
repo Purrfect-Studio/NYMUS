@@ -15,13 +15,19 @@ public class Inventario : MonoBehaviour
     static public bool temChaveEspecial;
 
     [Header("Moeda")]
-    static public TextMeshProUGUI textoMoeda;
-    static public int moedasTotal;
-    
+    public TextMeshProUGUI textoMoeda;
+    static public int moedasTotal;   
 
     private void Start()
     {
         temChaveEspecial = false;
+    }
+    private void Update()
+    {
+        if (textoMoeda != null)
+        {
+            ajustarContadorMoeda();
+        }
     }
     public static void receberChave()
     {
@@ -37,11 +43,13 @@ public class Inventario : MonoBehaviour
     public static void receberMoeda(int valor)
     {
         moedasTotal += valor;
-        textoMoeda.text = moedasTotal.ToString();
     }
     public static void subtrairMoeda(int valor)
     {
         moedasTotal -= valor;
+    }
+    public void ajustarContadorMoeda()
+    {
         textoMoeda.text = moedasTotal.ToString();
     }
 
