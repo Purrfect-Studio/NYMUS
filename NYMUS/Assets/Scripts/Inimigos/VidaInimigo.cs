@@ -30,6 +30,9 @@ public class VidaInimigo : MonoBehaviour
     [Header("Inimigo")]
     private GameObject inimigo;
 
+    [Header("Drops")]
+    public bool podeDroparItem;
+
     [Header("Tipo de Inimigo")]
     public bool slime;
     public bool morcego;
@@ -126,7 +129,10 @@ public class VidaInimigo : MonoBehaviour
     {
         podeMover = false; 
         yield return new WaitForSeconds(1f);
-        ControladorDroparItens.Instancia.instanciarDrop(transform.position.x, transform.position.y, transform.position.z);
+        if (podeDroparItem)
+        {
+            ControladorDroparItens.Instancia.instanciarDrop(transform.position.x, transform.position.y, transform.position.z);
+        }
         gameObject.SetActive(false);
         //Destroy(gameObject);
     }
