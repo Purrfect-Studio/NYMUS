@@ -37,6 +37,7 @@ public class PlayerControlador : MonoBehaviour
     public int quantidadeDePulosExtras;
     public int puloExtra;       // Quantidade de pulos que o jogador pode dar
     public float gravidade;
+
     [Header("CoyoteTime")]
     [SerializeField] private float tempoMaximoCoyote = 0.1f;
     [SerializeField] private bool coyoteTime;
@@ -47,21 +48,25 @@ public class PlayerControlador : MonoBehaviour
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
     public float alcanceAtaque;     // Area de alcance do ataque
 
+    [Header("Energia")]
+    public BarraDeEnergia barraDeEnergia;
+    public float energiaMaxima;
+    public float velocidadeRegeneracaoDeEnergia;
+    private float energiaRestante;
+    private bool podeRestaurarEnergia = true;
+    private float reduzirEnergiaEnquantoCarrega;
+
     [Header("Ataque Ranged")]
     public bool possuiAtaqueRanged;
-    public BarraDeEnergia barraDeEnergia;
     public GameObject[] projetilL3h;
     public float velocidadeAtaqueRanged;
     public float duracaoAtaqueRanged;
-    public float energiaMaxima;
-    private float energiaRestante;
-    private float contadorCarregarAtaqueRanged;
-    private bool podeRestaurarEnergia = true;
-    private float reduzirEnergiaEnquantoCarrega;
     public float definirTipoTiro;
+    private float contadorCarregarAtaqueRanged;
 
     [Header("Dash")]
     public bool possuiDash;
+    public float energiaNecessariaParaDash;
     public float forcaDashX;
     public float forcaDashY;
     public float tempoMaximoDash;
@@ -79,7 +84,7 @@ public class PlayerControlador : MonoBehaviour
     [Header("CheckPoint")]
     public GameObject ultimoCheckpoint;
 
-    [Header("Chave")]
+    [Header("Inventario")]
     public Inventario inventario;
     public bool estaInteragindo { get; set; }
 
@@ -91,7 +96,7 @@ public class PlayerControlador : MonoBehaviour
         animacao = GetComponent<Animator>();
         inventario = GetComponent<Inventario>();
         trailRenderer = GetComponent<TrailRenderer>();
-        if(possuiAtaqueRanged)
+        if(possuiAtaqueRanged || possuiDash)
         {
             barraDeEnergia.definirEnergiaMaxima(energiaMaxima);
         }
@@ -321,7 +326,7 @@ public class PlayerControlador : MonoBehaviour
 
     void inputDash()
     {
-        if (podeDarDash)
+        if (podeDarDash && energiaRestante >= energiaNecessariaParaDash)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)))
             {
@@ -346,6 +351,8 @@ public class PlayerControlador : MonoBehaviour
         rigidBody2D.gravityScale = 0f;
         rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y * forcaDashY);
         trailRenderer.emitting = true;
+        energiaRestante -= energiaNecessariaParaDash;
+        barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(tempoMaximoDash);
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
@@ -363,6 +370,8 @@ public class PlayerControlador : MonoBehaviour
         forcaDashY -= 5f;
         rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y * forcaDashY);
         trailRenderer.emitting = true;
+        energiaRestante -= energiaNecessariaParaDash;
+        barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(tempoMaximoDash);
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
@@ -380,6 +389,8 @@ public class PlayerControlador : MonoBehaviour
         rigidBody2D.gravityScale = 0f;
         rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y);
         trailRenderer.emitting = true;
+        energiaRestante -= energiaNecessariaParaDash;
+        barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(tempoMaximoDash);
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
@@ -418,8 +429,6 @@ public class PlayerControlador : MonoBehaviour
 
             if (definirTipoTiro == 2)
             {
-                //energiaRestante -= 3;
-                //barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
                 GameObject temp = Instantiate(projetilL3h[2]);
                 temp.transform.position = pontoDeAtaque.transform.position;
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
@@ -430,8 +439,6 @@ public class PlayerControlador : MonoBehaviour
                 Destroy(temp.gameObject, duracaoAtaqueRanged);
             }else if (definirTipoTiro == 1)
             {
-                //energiaRestante -= 2;
-                //barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
                 GameObject temp = Instantiate(projetilL3h[1]);
                 temp.transform.position = pontoDeAtaque.transform.position;
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
@@ -465,7 +472,7 @@ public class PlayerControlador : MonoBehaviour
     {
         if (energiaRestante < energiaMaxima)
         {
-            energiaRestante += Time.deltaTime/2;
+            energiaRestante += Time.deltaTime*velocidadeRegeneracaoDeEnergia;
             barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         }        
     }

@@ -315,6 +315,8 @@ MonoBehaviour:
   dano: 5
   pontoDeAtaque: {fileID: 6861670330181198320}
   alcanceAtaque: 1.66
+  energiaMaxima: 5
+  velocidadeRegeneracaoDeEnergia: 0.5
   possuiAtaqueRanged: 0
   barraDeEnergia: {fileID: 0}
   projetilL3h:
@@ -323,9 +325,9 @@ MonoBehaviour:
   - {fileID: 6104821924723603345, guid: cd64f999e34cfe24f850236b31aeb5ca, type: 3}
   velocidadeAtaqueRanged: 15
   duracaoAtaqueRanged: 3
-  energiaMaxima: 5
   definirTipoTiro: 0
   possuiDash: 0
+  energiaNecessariaParaDash: 2
   forcaDashX: 15
   forcaDashY: 10
   tempoMaximoDash: 0.5
@@ -352,10 +354,10 @@ MonoBehaviour:
   vidaAtual: 0
   barraDeVida: {fileID: 0}
   nomeDaFaseVoltada: Menu
+  tomeiDano: 0
+  podeReviver: 0
   escudoMaximo: 50
   escudoAtual: 0
-  possuiEscudo: 0
-  tomeiDano: 0
   forcaKnockbackX: 10
   forcaKnockbackY: 10
 --- !u!95 &6861670330375925674
@@ -424,7 +426,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54252
+  m_InstanceId: 56080
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}
