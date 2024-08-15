@@ -12,10 +12,16 @@ public class VidaJogador : MonoBehaviour
     public BarraDeVida barraDeVida;
     public static bool estaMorto;
     public string nomeDaFaseVoltada = "Menu";
+    public bool tomeiDano;
+    public bool podeReviver;
+
+    [Header("Escudo")]
+    public float escudoMaximo;
+    public float escudoAtual;
+    private float sobredanoNoEscudo;
 
     [Header("Invulnerabilidade")]
-    public static bool invulneravel;                //Liga e desliga a invulnerabilidade
-    public bool tomeiDano;
+    public static bool invulneravel;                //Liga e desliga a invulnerabilidade    
 
     [Header("Sprite")]
     private SpriteRenderer sprite; //Sprite do L3H
@@ -62,6 +68,33 @@ public class VidaJogador : MonoBehaviour
         }
     }
 
+    public void receberEscudo(float valor)
+    {
+        if(escudoAtual+valor > escudoMaximo)
+        {
+            escudoAtual = escudoMaximo;
+        }
+        else
+        {
+            escudoAtual += valor;
+        }
+    }
+
+    public void removerEscudo()
+    {
+        escudoAtual = 0;
+    }
+
+    public void receberRevive()
+    {
+        podeReviver = true;
+    }
+
+    public void removerRevive()
+    {
+        podeReviver = false;
+    }
+
     public void envenenar(int veneno)
     {
         StartCoroutine(Veneno(veneno));
@@ -83,18 +116,40 @@ public class VidaJogador : MonoBehaviour
     public void tomarDano(float danoTomado)
     {
         tomeiDano = true;
-        vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
+        if(escudoAtual > 0)
+        {
+            if(escudoAtual - danoTomado < 0)
+            {
+                sobredanoNoEscudo = danoTomado - escudoAtual;
+                escudoAtual = 0;
+            }
+            else
+            {
+                escudoAtual -= danoTomado;
+            }
+        }
+        if (sobredanoNoEscudo > 0)
+        {
+            vidaAtual -= sobredanoNoEscudo;
+            sobredanoNoEscudo = 0;
+            PlayerControlador.estaPulando = false;
+            Knockback();                        // chama o metodo de knockback
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
+        }
+        else
+        {
+            vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
+            PlayerControlador.estaPulando = false;
+            Knockback();                        // chama o metodo de knockback
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
+        }
         if (vidaAtual <= 0)
         {
             morrer(); // se a vida chegar a 0 chama o metodo de morrer
         }
-        PlayerControlador.estaPulando = false;
-        Knockback();                        // chama o metodo de knockback
-        barraDeVida.ajustarBarraDeVida(vidaAtual);
         StartCoroutine("Invulnerabilidade");// chama a co-rotina "Invulnerabilidade"
-        StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
-        //Debug.Log("Jogador tomou dano: " + danoTomado);
-        //Debug.Log("Vida atual: " + vidaAtual);
     }
 
     void Knockback()
@@ -130,9 +185,18 @@ public class VidaJogador : MonoBehaviour
 
     void morrer()
     {
-        playerControlador.TravarMovimentacao();
-        PlayerControlador.podeMover = false; // desativa a movimentacao do jogador
-        StartCoroutine("morreu"); // chama a co-rotina "morreu"
+        if (!podeReviver)
+        {
+            playerControlador.TravarMovimentacao();
+            PlayerControlador.podeMover = false; // desativa a movimentacao do jogador
+            StartCoroutine("morreu"); // chama a co-rotina "morreu"
+        }
+        else
+        {
+            vidaAtual = vidaMaxima;
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            removerRevive();
+        }
     }
 
     IEnumerator morreu()

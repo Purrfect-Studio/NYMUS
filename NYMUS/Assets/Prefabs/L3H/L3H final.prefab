@@ -352,6 +352,9 @@ MonoBehaviour:
   vidaAtual: 0
   barraDeVida: {fileID: 0}
   nomeDaFaseVoltada: Menu
+  escudoMaximo: 50
+  escudoAtual: 0
+  possuiEscudo: 0
   tomeiDano: 0
   forcaKnockbackX: 10
   forcaKnockbackY: 10
@@ -421,7 +424,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 106910
+  m_InstanceId: 54252
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}
@@ -457,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201eff9d77afb904ba0b9ecf7d6eeb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textoMoeda: {fileID: 0}
 --- !u!96 &4832200254683308510
 TrailRenderer:
   serializedVersion: 2
