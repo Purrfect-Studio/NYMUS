@@ -16,6 +16,7 @@ public class VidaJogador : MonoBehaviour
     public bool podeReviver;
 
     [Header("Escudo")]
+    public BarraDeEscudo barraDeEscudo;
     public float escudoMaximo;
     public float escudoAtual;
     private float sobredanoNoEscudo;
@@ -47,6 +48,7 @@ public class VidaJogador : MonoBehaviour
         invulneravel = false;   //Desativa a invulnerabilidade
         
         barraDeVida.definirVidaMaxima(vidaMaxima);
+        barraDeEscudo.definirEscudoMaximo(escudoMaximo);
         sprite = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         playerControlador = GetComponent<PlayerControlador>();
@@ -78,11 +80,13 @@ public class VidaJogador : MonoBehaviour
         {
             escudoAtual += valor;
         }
+        barraDeEscudo.ajustarBarraDeEscudo(escudoAtual);
     }
 
     public void removerEscudo()
     {
         escudoAtual = 0;
+        barraDeEscudo.ajustarBarraDeEscudo(escudoAtual);
     }
 
     public void receberRevive()
@@ -127,6 +131,15 @@ public class VidaJogador : MonoBehaviour
             {
                 escudoAtual -= danoTomado;
             }
+            barraDeEscudo.ajustarBarraDeEscudo(escudoAtual);
+        }
+        else
+        {
+            vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
+            PlayerControlador.estaPulando = false;
+            Knockback();                        // chama o metodo de knockback
+            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
         }
         if (sobredanoNoEscudo > 0)
         {
@@ -137,14 +150,7 @@ public class VidaJogador : MonoBehaviour
             barraDeVida.ajustarBarraDeVida(vidaAtual);
             StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
         }
-        else
-        {
-            vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
-            PlayerControlador.estaPulando = false;
-            Knockback();                        // chama o metodo de knockback
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
-            StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
-        }
+        
         if (vidaAtual <= 0)
         {
             morrer(); // se a vida chegar a 0 chama o metodo de morrer
