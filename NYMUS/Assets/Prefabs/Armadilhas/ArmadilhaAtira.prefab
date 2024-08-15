@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39fdb2f26a49c6439739217bb0e7965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ligado: 1
   atirar: {fileID: 6355635329109112809}
   procuraJogador: 0
   procurarJogador: {fileID: 0}
@@ -121,9 +122,11 @@ MonoBehaviour:
   balaProjetil: {fileID: 5201063190086497743, guid: 0c67b41c1ee28d24e9261edb7a7178d4, type: 3}
   arma:
   - {fileID: 8023712518813621939}
-  velocidadeTiro: -10
+  velocidadeTirox: 10
+  velocidadeTiroy: 0
   duracaoDoTiro: 3
   delayParaInstanciarProjetil: 0
+  atirarParabola: 0
 --- !u!1 &8023712518813621938
 GameObject:
   m_ObjectHideFlags: 0
