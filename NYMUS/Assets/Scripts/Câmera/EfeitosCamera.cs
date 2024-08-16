@@ -9,8 +9,8 @@ public class EfeitosCamera : MonoBehaviour
     private float tamanhoNormal;
 
     private bool estaComZoom = false;
-    float tamanhoFinal = 10f; // Depois tentar colocar esse valor como parâmetro no método
-    float delay = 3; // Depois tentar colocar esse valor como parâmetro no método
+    public float tamanhoFinal = 10f; // Depois tentar colocar esse valor como parâmetro no método
+    public float delay = 3; // Depois tentar colocar esse valor como parâmetro no método
     // Start is called before the first frame update
     void Start()
     {
