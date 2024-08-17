@@ -55,7 +55,7 @@ public class AnimacoesL3H : MonoBehaviour
 
     void andar()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.D) /*Input.GetAxisRaw("Horizontal") != 0*/)
         {
             animacao.SetBool("estaAndando", true);
         }

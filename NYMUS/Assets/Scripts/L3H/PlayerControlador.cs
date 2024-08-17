@@ -219,15 +219,15 @@ public class PlayerControlador : MonoBehaviour
         }
         //<- = -1
         //-> = 1
+        direcao = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {            
-            transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
-        }
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            transform.position += new Vector3(direcao * velocidade * Time.deltaTime, 0, 0);
+        }else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.position -= new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(-direcao * velocidade * Time.deltaTime, 0, 0);
         }
-        direcao = Input.GetAxis("Horizontal");
+        
 
         if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
@@ -250,7 +250,7 @@ public class PlayerControlador : MonoBehaviour
     {
         if (estaPulando == true) 
         {
-            if (contadorTempoPulo > 0 && possuiPuloDuplo == false || possuiPuloDuplo == true && (puloExtra > 0 && contadorTempoPulo > 0)) // se estaPulando for true e o tempo do pulo for maior que zero:
+            if (contadorTempoPulo > 0 && possuiPuloDuplo == false || possuiPuloDuplo == true && puloExtra > 1 && contadorTempoPulo > 0) // se estaPulando for true e o tempo do pulo for maior que zero:
             {
                 rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
             }
