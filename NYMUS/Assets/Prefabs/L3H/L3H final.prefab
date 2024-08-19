@@ -315,10 +315,10 @@ MonoBehaviour:
   dano: 5
   pontoDeAtaque: {fileID: 6861670330181198320}
   alcanceAtaque: 1.66
+  barraDeEnergia: {fileID: 0}
   energiaMaxima: 5
   velocidadeRegeneracaoDeEnergia: 0.5
   possuiAtaqueRanged: 0
-  barraDeEnergia: {fileID: 0}
   projetilL3h:
   - {fileID: 6104821924723603345, guid: 37b73782f531da648afc75afa16b2ae4, type: 3}
   - {fileID: 6104821924723603345, guid: 1a7b98ec44d620e4e843cb24986dae2e, type: 3}
@@ -356,6 +356,7 @@ MonoBehaviour:
   nomeDaFaseVoltada: Menu
   tomeiDano: 0
   podeReviver: 0
+  barraDeEscudo: {fileID: 0}
   escudoMaximo: 50
   escudoAtual: 0
   forcaKnockbackX: 10
@@ -396,7 +397,7 @@ MonoBehaviour:
   animacao: {fileID: 6861670330375925674}
   layerChao:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8256
   layerPlataforma:
     serializedVersion: 2
     m_Bits: 0
@@ -426,7 +427,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 56080
+  m_InstanceId: 57052
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}
@@ -502,8 +503,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -823832083
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Time: 2
   m_Parameters:

@@ -14,6 +14,9 @@ public class PlayerControlador : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     [Header("Animator")]
     private Animator animacao;
+    [Header("SpriteRenderer")]
+    private SpriteRenderer spriteRenderer;
+    private Color corOriginal;
 
     [Header("Andar")]
     public int velocidade;   // Velocidade maxima do jogador
@@ -72,7 +75,7 @@ public class PlayerControlador : MonoBehaviour
     public float tempoMaximoDash;
     public float cooldownDash;
     private bool podeDarDash = true;
-    private bool estaUsandoDash; 
+    private bool estaUsandoDash;
     private TrailRenderer trailRenderer;
 
     [Header("Escada")]
@@ -96,7 +99,8 @@ public class PlayerControlador : MonoBehaviour
         animacao = GetComponent<Animator>();
         inventario = GetComponent<Inventario>();
         trailRenderer = GetComponent<TrailRenderer>();
-        if(possuiAtaqueRanged || possuiDash)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (possuiAtaqueRanged || possuiDash)
         {
             barraDeEnergia.definirEnergiaMaxima(energiaMaxima);
         }
@@ -120,6 +124,7 @@ public class PlayerControlador : MonoBehaviour
         contadorCarregarAtaqueRanged = 0;
 
         Physics2D.IgnoreLayerCollision(8, 13, false);
+        corOriginal = spriteRenderer.color;
     }
 
     private bool estaPlataforma()
@@ -149,7 +154,7 @@ public class PlayerControlador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(podeMover == true)
+        if (podeMover == true)
         {
             verificarSubirEscada();
             if (podeInteragirEscada == true)
@@ -191,7 +196,7 @@ public class PlayerControlador : MonoBehaviour
             rigidBody2D.velocity = Vector2.zero;
         }
 
-        if (possuiAtaqueRanged && podeRestaurarEnergia)
+        if ((possuiAtaqueRanged || possuiDash) && podeRestaurarEnergia)
         {
             restaurarEnergia();
         }
@@ -350,7 +355,7 @@ public class PlayerControlador : MonoBehaviour
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
         rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y * forcaDashY);
-        trailRenderer.emitting = true;
+        trailRenderer.emitting = true;       
         energiaRestante -= energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(tempoMaximoDash);
@@ -359,6 +364,10 @@ public class PlayerControlador : MonoBehaviour
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(cooldownDash);
         podeDarDash = true;
+        spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = corOriginal;
+        
     }
 
     IEnumerator DashDiagonal()
@@ -366,8 +375,8 @@ public class PlayerControlador : MonoBehaviour
         podeDarDash = false;
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
-        forcaDashX -= 5f;
-        forcaDashY -= 5f;
+        forcaDashX -= 3f;
+        forcaDashY -= 3f;
         rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y * forcaDashY);
         trailRenderer.emitting = true;
         energiaRestante -= energiaNecessariaParaDash;
@@ -376,10 +385,13 @@ public class PlayerControlador : MonoBehaviour
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
         trailRenderer.emitting = false;
-        forcaDashY += 5f;
-        forcaDashX += 5f;
+        forcaDashY += 3f;
+        forcaDashX += 3f;
         yield return new WaitForSeconds(cooldownDash);
         podeDarDash = true;
+        spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = corOriginal;
     }
 
     IEnumerator DashReto()
@@ -397,6 +409,9 @@ public class PlayerControlador : MonoBehaviour
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(cooldownDash);
         podeDarDash = true;
+        spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = corOriginal;
     }
 
     void ataqueRanged()

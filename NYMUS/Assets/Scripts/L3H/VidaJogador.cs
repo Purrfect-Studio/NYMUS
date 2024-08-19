@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class VidaJogador : MonoBehaviour
 {
     [Header("Vida")]
-    public float vidaMaxima;                        // Vida maxima do L3H
+    public float vidaMaxima;      // Vida maxima do L3H
     public float vidaAtual;       // Vida atual do L3H
     public BarraDeVida barraDeVida;
     public static bool estaMorto;

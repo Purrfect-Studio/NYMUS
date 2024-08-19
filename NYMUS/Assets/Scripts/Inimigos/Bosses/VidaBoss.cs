@@ -34,6 +34,7 @@ public class VidaBoss : MonoBehaviour
 
     [Header("Nome Boss")]
     public bool Virut;
+    public bool Trojan;
 
 
     // Start is called before the first frame update
