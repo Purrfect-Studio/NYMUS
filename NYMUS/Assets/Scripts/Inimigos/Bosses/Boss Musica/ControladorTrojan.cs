@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ControladorTrojan : MonoBehaviour
 {
+    public static bool podeExecutarAcoes;
     // Start is called before the first frame update
     void Start()
     {

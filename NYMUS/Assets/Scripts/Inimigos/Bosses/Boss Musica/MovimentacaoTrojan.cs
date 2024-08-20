@@ -18,6 +18,7 @@ public class MovimentacaoTrojan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(9, 13, true);
         animacao = GetComponent<Animator>();
         cooldownRestanteDefinirNovaPosicao = cooldownDefinirNovaPosicao;
         definirPosicaoAlvo();

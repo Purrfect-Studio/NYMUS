@@ -56,7 +56,45 @@ public class VidaBoss : MonoBehaviour
         if(Virut)
         {
             updateVirut();
+        }else if(Trojan)
+        {
+            updateTrojan();
         }
+    }
+
+    void updateTrojan()
+    {
+        if (invulnerabilidade == true)
+        {
+            invulneravel = true;
+        }
+
+        if (vidaAtual <= vidaMaxima / 2 && frenesi == false)
+        {
+            StartCoroutine(frenesiAtivado());
+            frenesi = true;
+        }
+    }
+
+    public void derrubarTrojan()
+    {
+        //animacao.SetTrigger("Desativar");
+        invulnerabilidade = false;
+        invulneravel = false;
+        rigidbody2d.gravityScale = 8f;
+        MovimentacaoTrojan.podeMover = false;
+        ControladorTrojan.podeExecutarAcoes = false;
+        StartCoroutine("LevantarTrojan");
+    }
+
+    IEnumerator LevantarTrojan()
+    {
+        yield return new WaitForSeconds(tempoParaLevantar);
+        animacao.SetTrigger("Ativar");
+        invulnerabilidade = true;
+        rigidbody2d.gravityScale = 0f;
+        ControladorTrojan.podeExecutarAcoes = true;
+        MovimentacaoTrojan.podeMover = true;
     }
 
     void updateVirut()
