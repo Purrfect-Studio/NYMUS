@@ -123,6 +123,7 @@ MonoBehaviour:
   jogador: {fileID: 0}
   playerControlador: {fileID: 0}
   circleCollider: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 5e2b1b99a3f2cad4cb352abb1047d37f, type: 2}
 --- !u!58 &3537955052216386973
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 0}
-  velocidade: 15
+  playerData: {fileID: 11400000, guid: 5e2b1b99a3f2cad4cb352abb1047d37f, type: 2}
   layerChao:
     serializedVersion: 2
     m_Bits: 8256
@@ -305,37 +306,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   possuiPuloDuplo: 0
-  forcaPulo: 14
   tempoPulo: 0.2
   quantidadeDePulosExtras: 0
   puloExtra: 0
   gravidade: 0
   tempoMaximoCoyote: 0.1
   coyoteTime: 0
-  dano: 5
   pontoDeAtaque: {fileID: 6861670330181198320}
-  alcanceAtaque: 1.66
   barraDeEnergia: {fileID: 0}
-  energiaMaxima: 5
-  velocidadeRegeneracaoDeEnergia: 0.5
-  possuiAtaqueRanged: 0
   projetilL3h:
   - {fileID: 6104821924723603345, guid: 37b73782f531da648afc75afa16b2ae4, type: 3}
   - {fileID: 6104821924723603345, guid: 1a7b98ec44d620e4e843cb24986dae2e, type: 3}
   - {fileID: 6104821924723603345, guid: cd64f999e34cfe24f850236b31aeb5ca, type: 3}
-  velocidadeAtaqueRanged: 15
-  duracaoAtaqueRanged: 3
-  definirTipoTiro: 0
-  possuiDash: 0
-  energiaNecessariaParaDash: 2
-  forcaDashX: 15
-  forcaDashY: 10
-  tempoMaximoDash: 0.5
-  cooldownDash: 2
   estaSubindoEscada: 0
   estaDescendoEscada: 0
   podeInteragirEscada: 0
-  velocidadeEscada: 13
   ultimoCheckpoint: {fileID: 0}
   inventario: {fileID: 6563516998424386374}
 --- !u!114 &6861670330375925673
@@ -350,15 +335,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e53c0c884206184f8ded69e858f39f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
-  vidaAtual: 0
+  playerData: {fileID: 11400000, guid: 5e2b1b99a3f2cad4cb352abb1047d37f, type: 2}
   barraDeVida: {fileID: 0}
   nomeDaFaseVoltada: Menu
   tomeiDano: 0
   podeReviver: 0
   barraDeEscudo: {fileID: 0}
-  escudoMaximo: 50
-  escudoAtual: 0
   forcaKnockbackX: 10
   forcaKnockbackY: 10
 --- !u!95 &6861670330375925674
@@ -395,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animacao: {fileID: 6861670330375925674}
+  playerData: {fileID: 11400000, guid: 5e2b1b99a3f2cad4cb352abb1047d37f, type: 2}
   layerChao:
     serializedVersion: 2
     m_Bits: 8256
@@ -427,7 +410,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 57052
+  m_InstanceId: 54998
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}

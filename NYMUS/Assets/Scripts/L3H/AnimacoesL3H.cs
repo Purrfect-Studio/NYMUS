@@ -10,6 +10,7 @@ public class AnimacoesL3H : MonoBehaviour
     private PlayerControlador playerControlador;
     private VidaJogador vidaJogador;
     private Animator animacaoPontoDeAtaque;
+    public PlayerData playerData;
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao;
     [Header("Layer da Plataforma")]
@@ -107,7 +108,7 @@ public class AnimacoesL3H : MonoBehaviour
 
     void morrer()
     {
-        if (vidaJogador.vidaAtual <= 0)
+        if (playerData.vidaAtual <= 0)
         {
             animacao.SetTrigger("estaMorto");
         }

@@ -7,6 +7,7 @@ public class AtaqueMeleeL3h : MonoBehaviour
     public GameObject jogador;
     public PlayerControlador playerControlador;
     public CircleCollider2D circleCollider;
+    public PlayerData playerData;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +25,13 @@ public class AtaqueMeleeL3h : MonoBehaviour
             VidaInimigo inimigo = acertarInimigo.GetComponent<VidaInimigo>();
             if (inimigo != null && VidaInimigo.invulneravel == false)
             {
-                inimigo.tomarDano(playerControlador.dano);
+                inimigo.tomarDano(playerData.dano);
             }
             VidaBoss boss = acertarInimigo.GetComponent<VidaBoss>();
             if (boss != null && VidaBoss.invulneravel == false && VidaBoss.invulnerabilidade == false)
             {
                 Debug.Log("Acertei o boss");
-                boss.tomarDano(playerControlador.dano);
+                boss.tomarDano(playerData.dano);
             }
             if (acertarInimigo.CompareTag("PortaBoss") && VidaBoss.invulnerabilidade == true)
             {

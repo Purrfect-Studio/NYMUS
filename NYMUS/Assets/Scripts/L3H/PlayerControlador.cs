@@ -17,9 +17,10 @@ public class PlayerControlador : MonoBehaviour
     [Header("SpriteRenderer")]
     private SpriteRenderer spriteRenderer;
     private Color corOriginal;
+    [Header("PlayerData")]
+    public PlayerData playerData;
 
     [Header("Andar")]
-    public int velocidade;   // Velocidade maxima do jogador
     private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
     public static bool olhandoDireita;           // Direcao para girar o sprite
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
@@ -33,7 +34,6 @@ public class PlayerControlador : MonoBehaviour
 
     [Header("Pulo")]
     public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
-    public float forcaPulo;          // Quanto maior o valor mais alto o pulo
     public float tempoPulo;          // Tempo maximo do pulo antes de cair
     public static bool estaPulando;  // Diz se o jogador esta pulando ou nao
     private float contadorTempoPulo; // Contador de qunato tempo esta pulando
@@ -47,33 +47,20 @@ public class PlayerControlador : MonoBehaviour
     private float tempoCoyote = 0;
 
     [Header("Ataque Melee")]
-    public float dano;
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
-    public float alcanceAtaque;     // Area de alcance do ataque
 
     [Header("Energia")]
     public BarraDeEnergia barraDeEnergia;
-    public float energiaMaxima;
-    public float velocidadeRegeneracaoDeEnergia;
     private float energiaRestante;
     private bool podeRestaurarEnergia = true;
     private float reduzirEnergiaEnquantoCarrega;
 
     [Header("Ataque Ranged")]
-    public bool possuiAtaqueRanged;
     public GameObject[] projetilL3h;
-    public float velocidadeAtaqueRanged;
-    public float duracaoAtaqueRanged;
-    public float definirTipoTiro;
+    private float definirTipoTiro;
     private float contadorCarregarAtaqueRanged;
 
     [Header("Dash")]
-    public bool possuiDash;
-    public float energiaNecessariaParaDash;
-    public float forcaDashX;
-    public float forcaDashY;
-    public float tempoMaximoDash;
-    public float cooldownDash;
     private bool podeDarDash = true;
     private bool estaUsandoDash;
     private TrailRenderer trailRenderer;
@@ -82,7 +69,6 @@ public class PlayerControlador : MonoBehaviour
     public bool estaSubindoEscada;
     public bool estaDescendoEscada;
     public bool podeInteragirEscada;
-    public float velocidadeEscada;
 
     [Header("CheckPoint")]
     public GameObject ultimoCheckpoint;
@@ -90,6 +76,7 @@ public class PlayerControlador : MonoBehaviour
     [Header("Inventario")]
     public Inventario inventario;
     public bool estaInteragindo { get; set; }
+
 
     // Start is called before the first frame update
     void Start()
@@ -100,9 +87,9 @@ public class PlayerControlador : MonoBehaviour
         inventario = GetComponent<Inventario>();
         trailRenderer = GetComponent<TrailRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (possuiAtaqueRanged || possuiDash)
+        if (playerData.possuiAtaqueRanged || playerData.possuiDash)
         {
-            barraDeEnergia.definirEnergiaMaxima(energiaMaxima);
+            barraDeEnergia.definirEnergiaMaxima(playerData.energiaMaxima);
         }
 
         podeMover = true;
@@ -119,7 +106,7 @@ public class PlayerControlador : MonoBehaviour
         olhandoDireita = true;
         direcao = 1;
 
-        energiaRestante = energiaMaxima;
+        energiaRestante = playerData.energiaMaxima;
         definirTipoTiro = 0;
         contadorCarregarAtaqueRanged = 0;
 
@@ -171,6 +158,10 @@ public class PlayerControlador : MonoBehaviour
             interagir();
             if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
             {
+                /*if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    inputPulo();
+                } */               
                 if (possuiPuloDuplo)
                 {
                     inputPuloDuplo();
@@ -179,11 +170,11 @@ public class PlayerControlador : MonoBehaviour
                 {
                     inputPuloSimples();
                 }
-                if (possuiAtaqueRanged)
+                if (playerData.possuiAtaqueRanged)
                 {
                     ataqueRanged();
                 }
-                if (possuiDash)
+                if (playerData.possuiDash)
                 {
                     inputDash();
                 }
@@ -196,7 +187,7 @@ public class PlayerControlador : MonoBehaviour
             rigidBody2D.velocity = Vector2.zero;
         }
 
-        if ((possuiAtaqueRanged || possuiDash) && podeRestaurarEnergia)
+        if ((playerData.possuiAtaqueRanged || playerData.possuiDash) && podeRestaurarEnergia)
         {
             restaurarEnergia();
         }
@@ -227,10 +218,10 @@ public class PlayerControlador : MonoBehaviour
         direcao = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {            
-            transform.position += new Vector3(direcao * velocidade * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(direcao * playerData.velocidade * Time.deltaTime, 0, 0);
         }else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.position -= new Vector3(-direcao * velocidade * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(-direcao * playerData.velocidade * Time.deltaTime, 0, 0);
         }
         
 
@@ -251,13 +242,23 @@ public class PlayerControlador : MonoBehaviour
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
     }
 
+    
+    /*void inputPulo()
+    {
+        if(rigidBody2D.velocity.y < 0)
+        {
+            force -= rigidBody2D.velocity.y;
+        }
+        rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y + ((force + (0.5f * Time.fixedDeltaTime * -gravityStrength)) / rigidBody2D.mass));
+    }*/
+
     void pulo()
     {
         if (estaPulando == true) 
         {
             if (contadorTempoPulo > 0 && possuiPuloDuplo == false || possuiPuloDuplo == true && puloExtra > 1 && contadorTempoPulo > 0) // se estaPulando for true e o tempo do pulo for maior que zero:
             {
-                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
+                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, playerData.forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
             }
             else
             {
@@ -282,7 +283,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
-            rigidBody2D.velocity = Vector2.up * forcaPulo;
+            rigidBody2D.velocity = Vector2.up * playerData.forcaPulo;
         }
 
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
@@ -318,7 +319,7 @@ public class PlayerControlador : MonoBehaviour
         {
             // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
             contadorTempoPulo -= Time.deltaTime;
-            rigidBody2D.velocity = Vector2.up * forcaPulo;
+            rigidBody2D.velocity = Vector2.up * playerData.forcaPulo;
         }
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
@@ -331,7 +332,7 @@ public class PlayerControlador : MonoBehaviour
 
     void inputDash()
     {
-        if (podeDarDash && energiaRestante >= energiaNecessariaParaDash)
+        if (podeDarDash && energiaRestante >= playerData.energiaNecessariaParaDash)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)))
             {
@@ -354,15 +355,15 @@ public class PlayerControlador : MonoBehaviour
         podeDarDash = false;
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
-        rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y * forcaDashY);
+        rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y * playerData.forcaDashY);
         trailRenderer.emitting = true;       
-        energiaRestante -= energiaNecessariaParaDash;
+        energiaRestante -= playerData.energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
-        yield return new WaitForSeconds(tempoMaximoDash);
+        yield return new WaitForSeconds(playerData.tempoMaximoDash);
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
         trailRenderer.emitting = false;
-        yield return new WaitForSeconds(cooldownDash);
+        yield return new WaitForSeconds(playerData.cooldownDash);
         podeDarDash = true;
         spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
         yield return new WaitForSeconds(0.2f);
@@ -375,19 +376,19 @@ public class PlayerControlador : MonoBehaviour
         podeDarDash = false;
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
-        forcaDashX -= 3f;
-        forcaDashY -= 3f;
-        rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y * forcaDashY);
+        playerData.forcaDashX -= 3f;
+        playerData.forcaDashY -= 3f;
+        rigidBody2D.velocity = new Vector2(transform.localScale.x * playerData.forcaDashX, transform.localScale.y * playerData.forcaDashY);
         trailRenderer.emitting = true;
-        energiaRestante -= energiaNecessariaParaDash;
+        energiaRestante -= playerData.energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
-        yield return new WaitForSeconds(tempoMaximoDash);
+        yield return new WaitForSeconds(playerData.tempoMaximoDash);
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
         trailRenderer.emitting = false;
-        forcaDashY += 3f;
-        forcaDashX += 3f;
-        yield return new WaitForSeconds(cooldownDash);
+        playerData.forcaDashY += 3f;
+        playerData.forcaDashX += 3f;
+        yield return new WaitForSeconds(playerData.cooldownDash);
         podeDarDash = true;
         spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
         yield return new WaitForSeconds(0.2f);
@@ -399,15 +400,15 @@ public class PlayerControlador : MonoBehaviour
         podeDarDash = false;
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
-        rigidBody2D.velocity = new Vector2(transform.localScale.x * forcaDashX, transform.localScale.y);
+        rigidBody2D.velocity = new Vector2(transform.localScale.x * playerData.forcaDashX, transform.localScale.y);
         trailRenderer.emitting = true;
-        energiaRestante -= energiaNecessariaParaDash;
+        energiaRestante -= playerData.energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
-        yield return new WaitForSeconds(tempoMaximoDash);
+        yield return new WaitForSeconds(playerData.tempoMaximoDash);
         estaUsandoDash = false;
         rigidBody2D.gravityScale = gravidade;
         trailRenderer.emitting = false;
-        yield return new WaitForSeconds(cooldownDash);
+        yield return new WaitForSeconds(playerData.cooldownDash);
         podeDarDash = true;
         spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
         yield return new WaitForSeconds(0.2f);
@@ -437,43 +438,43 @@ public class PlayerControlador : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            if (velocidadeAtaqueRanged > 0 && !olhandoDireita || velocidadeAtaqueRanged < 0 && olhandoDireita)
+            if (playerData.velocidadeAtaqueRanged > 0 && !olhandoDireita || playerData.velocidadeAtaqueRanged < 0 && olhandoDireita)
             {
-                velocidadeAtaqueRanged *= -1;
+                playerData.velocidadeAtaqueRanged *= -1;
             }
 
             if (definirTipoTiro == 2)
             {
                 GameObject temp = Instantiate(projetilL3h[2]);
                 temp.transform.position = pontoDeAtaque.transform.position;
-                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
-                if (velocidadeAtaqueRanged < 0)
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(playerData.velocidadeAtaqueRanged, 0);
+                if (playerData.velocidadeAtaqueRanged < 0)
                 {
                     temp.transform.Rotate(0f, 180f, 0f);
                 }
-                Destroy(temp.gameObject, duracaoAtaqueRanged);
+                Destroy(temp.gameObject, playerData.duracaoAtaqueRanged);
             }else if (definirTipoTiro == 1)
             {
                 GameObject temp = Instantiate(projetilL3h[1]);
                 temp.transform.position = pontoDeAtaque.transform.position;
-                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
-                if (velocidadeAtaqueRanged < 0)
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(playerData.velocidadeAtaqueRanged, 0);
+                if (playerData.velocidadeAtaqueRanged < 0)
                 {
                     temp.transform.Rotate(0f, 180f, 0f);
                 }
-                Destroy(temp.gameObject, duracaoAtaqueRanged);
+                Destroy(temp.gameObject, playerData.duracaoAtaqueRanged);
             }else if (energiaRestante >= 0.5f)
             {
                 energiaRestante -= 0.5f;
                 barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
                 GameObject temp = Instantiate(projetilL3h[0]);
                 temp.transform.position = pontoDeAtaque.transform.position;
-                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeAtaqueRanged, 0);
-                if (velocidadeAtaqueRanged < 0)
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(playerData.velocidadeAtaqueRanged, 0);
+                if (playerData.velocidadeAtaqueRanged < 0)
                 {
                     temp.transform.Rotate(0f, 180f, 0f);
                 }
-                Destroy(temp.gameObject, duracaoAtaqueRanged);
+                Destroy(temp.gameObject, playerData.duracaoAtaqueRanged);
             }
 
             definirTipoTiro = 0;
@@ -485,9 +486,9 @@ public class PlayerControlador : MonoBehaviour
 
     void restaurarEnergia()
     {
-        if (energiaRestante < energiaMaxima)
+        if (energiaRestante < playerData.energiaMaxima)
         {
-            energiaRestante += Time.deltaTime*velocidadeRegeneracaoDeEnergia;
+            energiaRestante += Time.deltaTime*playerData.velocidadeRegeneracaoDeEnergia;
             barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         }        
     }
@@ -509,11 +510,11 @@ public class PlayerControlador : MonoBehaviour
         {
             if (estaDescendoEscada == true)
             {
-                rigidBody2D.velocity = Vector2.down * velocidadeEscada;
+                rigidBody2D.velocity = Vector2.down * playerData.velocidadeEscada;
             }
             if (estaSubindoEscada == true)
             {
-                rigidBody2D.velocity = Vector2.up * velocidadeEscada;
+                rigidBody2D.velocity = Vector2.up * playerData.velocidadeEscada;
             }
         }
         else
@@ -573,7 +574,7 @@ public class PlayerControlador : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(pontoDeAtaque.transform.position, alcanceAtaque);
+        Gizmos.DrawWireSphere(pontoDeAtaque.transform.position, playerData.alcanceAtaque);
     }
 
     public void TravarMovimentacao()

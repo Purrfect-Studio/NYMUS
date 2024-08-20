@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e7c00dfe3520f46a49f3f9748e0532, type: 3}
+  m_Name: Player Data
+  m_EditorClassIdentifier: 
+  vidaMaxima: 100
+  vidaAtual: 10
+  escudoMaximo: 50
+  forcaKnockbackX: 25
+  forcaKnockbackY: 25
+  velocidade: 15
+  forcaPulo: 15
+  jumpHeight: 0
+  jumpTimeToApex: 0
+  gravityStrength: NaN
+  gravityScale: NaN
+  force: NaN
+  jumpForce: NaN
+  energiaMaxima: 5
+  velocidadeRegeneracaoDeEnergia: 0.5
+  possuiDash: 0
+  forcaDashX: 15
+  forcaDashY: 10
+  energiaNecessariaParaDash: 2
+  tempoMaximoDash: 0.2
+  cooldownDash: 2
+  dano: 0
+  alcanceAtaque: 0
+  possuiAtaqueRanged: 0
+  velocidadeAtaqueRanged: 15
+  duracaoAtaqueRanged: 3
+  velocidadeEscada: 13

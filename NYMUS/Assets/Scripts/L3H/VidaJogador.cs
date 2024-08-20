@@ -6,19 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class VidaJogador : MonoBehaviour
 {
+    [Header("PlayerData")]
+    public PlayerData playerData;
     [Header("Vida")]
-    public float vidaMaxima;      // Vida maxima do L3H
-    public float vidaAtual;       // Vida atual do L3H
     public BarraDeVida barraDeVida;
     public static bool estaMorto;
     public string nomeDaFaseVoltada = "Menu";
-    public bool tomeiDano;
-    public bool podeReviver;
+    [HideInInspector] public bool tomeiDano;
+    [HideInInspector] public bool podeReviver;
 
     [Header("Escudo")]
     public BarraDeEscudo barraDeEscudo;
-    public float escudoMaximo;
-    public float escudoAtual;
+    private float escudoAtual;
     private float sobredanoNoEscudo;
 
     [Header("Invulnerabilidade")]
@@ -33,8 +32,6 @@ public class VidaJogador : MonoBehaviour
     private PlayerControlador playerControlador;
 
     [Header("Knockback")]
-    public float forcaKnockbackX;          // Forca do knockback
-    public float forcaKnockbackY;          // Forca do knockback
     public static int knockbackParaDireita;         // Direcao do knockback
 
     [Header("RigidBody")]
@@ -43,12 +40,11 @@ public class VidaJogador : MonoBehaviour
     // Start é ativado no primeiro frame de cada fase
     void Start()
     {
-        estaMorto = false;
-        vidaAtual = vidaMaxima; //Coloca o L3h na vida maxima quando comeca a fase
+        barraDeVida.definirVidaMaxima(playerData.vidaMaxima, playerData.vidaAtual);
+
+        estaMorto = false;       
         invulneravel = false;   //Desativa a invulnerabilidade
-        
-        barraDeVida.definirVidaMaxima(vidaMaxima);
-        barraDeEscudo.definirEscudoMaximo(escudoMaximo);
+        barraDeEscudo.definirEscudoMaximo(playerData.escudoMaximo);
         sprite = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         playerControlador = GetComponent<PlayerControlador>();
@@ -59,22 +55,22 @@ public class VidaJogador : MonoBehaviour
 
     public void curar(float cura)
     {
-        if (vidaAtual < vidaMaxima) // verifica se a vida atual [e menor que a vida maxima
+        if (playerData.vidaAtual < playerData.vidaMaxima) // verifica se a vida atual [e menor que a vida maxima
         {
-            vidaAtual += cura; // soma a cura na vida maxima
-            if(vidaAtual > vidaMaxima) // verifica se a vida atual ficou maior que a vida maxima
+            playerData.vidaAtual += cura; // soma a cura na vida maxima
+            if(playerData.vidaAtual > playerData.vidaMaxima) // verifica se a vida atual ficou maior que a vida maxima
             {
-                vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
+                playerData.vidaAtual = playerData.vidaMaxima; // define a vida atual como a vida maxima
             }
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
         }
     }
 
     public void receberEscudo(float valor)
     {
-        if(escudoAtual+valor > escudoMaximo)
+        if(escudoAtual+valor > playerData.escudoMaximo)
         {
-            escudoAtual = escudoMaximo;
+            escudoAtual = playerData.escudoMaximo;
         }
         else
         {
@@ -108,8 +104,8 @@ public class VidaJogador : MonoBehaviour
     {
         for (int i = 0; i < veneno; i++)
         {
-            vidaAtual -= 1;
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            playerData.vidaAtual -= 1;
+            barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
             sprite.color = corRoxo;
             yield return new WaitForSeconds(0.2f);
             sprite.color = corOriginal;
@@ -135,23 +131,23 @@ public class VidaJogador : MonoBehaviour
         }
         else
         {
-            vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
+            playerData.vidaAtual -= danoTomado;            // subtrai o dano recebido da vida atual
             PlayerControlador.estaPulando = false;
             Knockback();                        // chama o metodo de knockback
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
             StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
         }
         if (sobredanoNoEscudo > 0)
         {
-            vidaAtual -= sobredanoNoEscudo;
+            playerData.vidaAtual -= sobredanoNoEscudo;
             sobredanoNoEscudo = 0;
             PlayerControlador.estaPulando = false;
             Knockback();                        // chama o metodo de knockback
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
             StartCoroutine("PararMovimentacao");// chama a co-rotina "PararMovimentacao"
         }
         
-        if (vidaAtual <= 0)
+        if (playerData.vidaAtual <= 0)
         {
             morrer(); // se a vida chegar a 0 chama o metodo de morrer
         }
@@ -160,7 +156,7 @@ public class VidaJogador : MonoBehaviour
 
     void Knockback()
     {
-        rigidBody2D.AddForce(new Vector2(forcaKnockbackX * -knockbackParaDireita, forcaKnockbackY), ForceMode2D.Impulse); // aplica uma forca na diagonal para empurrar o jogador para longe do inimigo
+        rigidBody2D.AddForce(new Vector2(playerData.forcaKnockbackX * -knockbackParaDireita, playerData.forcaKnockbackY), ForceMode2D.Impulse); // aplica uma forca na diagonal para empurrar o jogador para longe do inimigo
     }
 
     IEnumerator Invulnerabilidade()
@@ -199,8 +195,8 @@ public class VidaJogador : MonoBehaviour
         }
         else
         {
-            vidaAtual = vidaMaxima;
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            playerData.vidaAtual = playerData.vidaMaxima;
+            barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
             removerRevive();
         }
     }
@@ -214,9 +210,9 @@ public class VidaJogador : MonoBehaviour
         if (playerControlador.ultimoCheckpoint != null)
         {
             transform.position = new Vector2(playerControlador.ultimoCheckpoint.transform.position.x, playerControlador.ultimoCheckpoint.transform.position.y);
-            vidaAtual = vidaMaxima;
+            playerData.vidaAtual = playerData.vidaMaxima;
             estaMorto = false;
-            barraDeVida.ajustarBarraDeVida(vidaAtual);
+            barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
         }
         else
         {
