@@ -71,4 +71,5 @@ public class MovimentacaoTrojan : MonoBehaviour
     {
         return Random.Range(0, pontosMovimentacao.Length-1);
     }
+
 }

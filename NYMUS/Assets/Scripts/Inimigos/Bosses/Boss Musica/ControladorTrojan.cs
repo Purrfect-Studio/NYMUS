@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControladorTrojan : MonoBehaviour
 {
     public static bool podeExecutarAcoes;
+    public float delayParaIniciarAcoes;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,11 @@ public class ControladorTrojan : MonoBehaviour
     void Update()
     {
         
+    }
+
+    IEnumerator DelayParaIniciarAcoes()
+    {
+        yield return new WaitForSeconds(delayParaIniciarAcoes);
+        podeExecutarAcoes = true;
     }
 }
