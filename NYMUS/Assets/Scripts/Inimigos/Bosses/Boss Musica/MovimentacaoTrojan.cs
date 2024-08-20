@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovimentacaoTrojan : MonoBehaviour
 {
     public GameObject[] pontosMovimentacao;
-    public int indexPontoMovimento;
+    private int indexPontoMovimento;
     public static bool podeMover;
 
     private VidaBoss vidaBoss;
@@ -16,7 +16,7 @@ public class MovimentacaoTrojan : MonoBehaviour
     
     public float cooldownDefinirNovaPosicao;
     public float cooldownDefinirNovaPosicaoFrenesi;
-    public float cooldownRestanteDefinirNovaPosicao;
+    private float cooldownRestanteDefinirNovaPosicao;
 
     private Vector3 posicaoAlvo;
     // Start is called before the first frame update
@@ -29,7 +29,6 @@ public class MovimentacaoTrojan : MonoBehaviour
         cooldownRestanteDefinirNovaPosicao = cooldownDefinirNovaPosicao;
         definirPosicaoAlvo();
 
-        podeMover = true;
         podeAtivarAnimacaoSumir = true;
     }
 

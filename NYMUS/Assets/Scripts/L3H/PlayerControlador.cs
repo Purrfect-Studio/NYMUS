@@ -494,7 +494,7 @@ public class PlayerControlador : MonoBehaviour
 
     void interagir()
     {
-        if (Input.GetButtonDown("Interagir"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             estaInteragindo = true;
         }

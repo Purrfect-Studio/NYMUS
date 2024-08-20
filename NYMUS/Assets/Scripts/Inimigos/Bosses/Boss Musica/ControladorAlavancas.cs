@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ControladorAlavancas : MonoBehaviour
 {
-    public GameObject controladorAlavancas;
+    private GameObject controladorAlavancas;
     public Transform[] alavancas;
     public bool[] alavancasBool;
-    public int contadorAlavancasDesativadas = 0;
+    private int contadorAlavancasDesativadas = 0;
 
+    public static bool podeAtivarAlavancas = true;
     public float cooldownAtivarAlavancas;
-    public float cooldownRestanteAtivarAlavancas;
+    private float cooldownRestanteAtivarAlavancas;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,7 @@ public class ControladorAlavancas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(contadorAlavancasDesativadas == alavancas.Length)
+        if(contadorAlavancasDesativadas == alavancas.Length && podeAtivarAlavancas == true)
         {
             cooldownRestanteAtivarAlavancas -= Time.deltaTime;
             if(cooldownRestanteAtivarAlavancas < 0)
@@ -36,6 +37,7 @@ public class ControladorAlavancas : MonoBehaviour
                 ativarAlavancas();
                 contadorAlavancasDesativadas = 0;
                 cooldownRestanteAtivarAlavancas = cooldownAtivarAlavancas;
+                podeAtivarAlavancas = false;
             }
         }
     }
@@ -52,6 +54,15 @@ public class ControladorAlavancas : MonoBehaviour
         {
             alavancas[i].gameObject.SetActive(true);
             alavancasBool[i] = true;
+        }
+    }
+
+    public void desativarAlavancas()
+    {
+        for (int i = 0; i < alavancas.Length; i++)
+        {
+            alavancas[i].gameObject.SetActive(false);
+            alavancasBool[i] = false;
         }
     }
 }

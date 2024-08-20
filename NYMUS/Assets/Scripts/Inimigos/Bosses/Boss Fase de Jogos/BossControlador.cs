@@ -111,8 +111,6 @@ public class BossControlador : MonoBehaviour
 
         ExecutarExplosaoDeDados();
         iniciarAtaque();
-
-        
     }
 
     void iniciarAtaque()
