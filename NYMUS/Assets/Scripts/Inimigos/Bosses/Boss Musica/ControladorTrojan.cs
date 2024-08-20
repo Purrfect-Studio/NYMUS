@@ -14,10 +14,13 @@ public class ControladorTrojan : MonoBehaviour
     [Header("Componentes")]
     private VidaBoss vidaBoss;
     private MovimentacaoTrojan movimentacaoTrojan;
+    private Animator animacao;
 
     [Header("Variaveis de controle")]
-    public static bool podeExecutarAcoes;
     public float delayParaIniciarAcoes;
+    public static bool podeExecutarAcoes;
+    private bool podeExecutarAnimacaoAtaque;
+    
 
     [Header("Variaver de apoio")]
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
@@ -31,6 +34,7 @@ public class ControladorTrojan : MonoBehaviour
     {
         vidaBoss = GetComponent<VidaBoss>();
         movimentacaoTrojan = GetComponent<MovimentacaoTrojan>();
+        //animacao = GetComponent<Animator>();
 
         ataquesDisponiveis.Add(ataquesBoss.ataque1);
         ataquesDisponiveis.Add(ataquesBoss.ataque2);
@@ -38,6 +42,7 @@ public class ControladorTrojan : MonoBehaviour
 
         podeExecutarAcoes = false;
         MovimentacaoTrojan.podeMover = false;
+        podeExecutarAnimacaoAtaque = true;
 
         cooldownRestanteParaAtacar = cooldownParaAtacar;
     }
@@ -49,10 +54,17 @@ public class ControladorTrojan : MonoBehaviour
         {
             cooldownRestanteParaAtacar -= Time.deltaTime;
 
+            if(cooldownRestanteParaAtacar <= 0.6f && podeExecutarAnimacaoAtaque)
+            {
+                podeExecutarAnimacaoAtaque = false;
+                //animacao.setTrigger("Atacar");
+            }
+
             if(cooldownRestanteParaAtacar <= 0)
             {
                 ExecutarAtaque(EscolherAtaqueAtual());
                 cooldownRestanteParaAtacar = cooldownParaAtacar;
+                podeExecutarAnimacaoAtaque = true;
             }
         }
         if (vidaBoss.frenesi)
@@ -103,6 +115,11 @@ public class ControladorTrojan : MonoBehaviour
     public ataquesBoss EscolherAtaqueAtual()
     {
         return ataquesDisponiveis[Random.Range(0, ataquesDisponiveis.Count)];
+    }
+
+    public void LigarNovoAtaque(ataquesBoss ataqueNovo)
+    {
+        ataquesDisponiveis.Add(ataqueNovo);
     }
 
     public void delayParaIniciarAcao()
