@@ -8,10 +8,14 @@ public class MovimentacaoTrojan : MonoBehaviour
     public int indexPontoMovimento;
     public static bool podeMover;
 
+    private VidaBoss vidaBoss;
+
     private Animator animacao;
     private bool podeAtivarAnimacaoSumir;
 
+    
     public float cooldownDefinirNovaPosicao;
+    public float cooldownDefinirNovaPosicaoFrenesi;
     public float cooldownRestanteDefinirNovaPosicao;
 
     private Vector3 posicaoAlvo;
@@ -20,8 +24,11 @@ public class MovimentacaoTrojan : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(9, 13, true);
         animacao = GetComponent<Animator>();
+        vidaBoss = GetComponent<VidaBoss>();
+
         cooldownRestanteDefinirNovaPosicao = cooldownDefinirNovaPosicao;
         definirPosicaoAlvo();
+
         podeMover = true;
         podeAtivarAnimacaoSumir = true;
     }
@@ -52,6 +59,10 @@ public class MovimentacaoTrojan : MonoBehaviour
         {
             podeAtivarAnimacaoSumir = false;
             animacao.SetTrigger("Sumir");
+        }
+        if (vidaBoss.frenesi)
+        {
+            cooldownDefinirNovaPosicao = cooldownDefinirNovaPosicaoFrenesi;
         }
     }
 

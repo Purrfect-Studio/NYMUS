@@ -90,7 +90,7 @@ public class VidaBoss : MonoBehaviour
     IEnumerator LevantarTrojan()
     {
         yield return new WaitForSeconds(tempoParaLevantar);
-        animacao.SetTrigger("Ativar");
+        //animacao.SetTrigger("Ativar");
         invulnerabilidade = true;
         rigidbody2d.gravityScale = 0f;
         ControladorTrojan.podeExecutarAcoes = true;

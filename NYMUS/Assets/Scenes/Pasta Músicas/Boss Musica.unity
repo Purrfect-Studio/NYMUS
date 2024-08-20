@@ -3263,6 +3263,7 @@ MonoBehaviour:
   alavancasBool: 
   contadorAlavancasDesativadas: 0
   cooldownAtivarAlavancas: 5
+  cooldownRestanteAtivarAlavancas: 0
 --- !u!1 &208809696
 GameObject:
   m_ObjectHideFlags: 0
@@ -6619,6 +6620,7 @@ MonoBehaviour:
   - {fileID: 2030883373}
   indexPontoMovimento: 0
   cooldownDefinirNovaPosicao: 4
+  cooldownDefinirNovaPosicaoFrenesi: 2.5
   cooldownRestanteDefinirNovaPosicao: 0
 --- !u!114 &323274396
 MonoBehaviour:
