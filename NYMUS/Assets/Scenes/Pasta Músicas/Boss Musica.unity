@@ -2048,18 +2048,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1377125523}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 200392938}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1377125519}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -2067,11 +2091,35 @@ PrefabInstance:
       value: travar
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: desativarAlavanca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Fechadura, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ControladorAlavancas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -2199,18 +2247,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 466477983}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 200392938}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 466477979}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -2218,11 +2290,43 @@ PrefabInstance:
       value: travar
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: desativarAlavanca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Fechadura, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ControladorAlavancas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -2785,18 +2889,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2059005046}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 200392938}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 2059005042}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -2804,11 +2932,39 @@ PrefabInstance:
       value: travar
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: desativarAlavanca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Fechadura, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ControladorAlavancas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -3061,6 +3217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 200392937}
+  - component: {fileID: 200392938}
   m_Layer: 0
   m_Name: Alavancas
   m_TagString: Untagged
@@ -3089,6 +3246,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200392938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200392936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f641ef72a70f2342907304d2d32e412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorAlavancas: {fileID: 0}
+  alavancas: []
+  alavancasBool: 
+  contadorAlavancasDesativadas: 0
+  cooldownAtivarAlavancas: 5
 --- !u!1 &208809696
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,6 +5859,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &239662042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+  m_PrefabInstance: {fileID: 2113998632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &240800071
 GameObject:
   m_ObjectHideFlags: 0
@@ -7244,12 +7423,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2945823905324789774, guid: cbc1255d2b9851a4aa145ae369664584, type: 3}
   m_PrefabInstance: {fileID: 452526686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &466477979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+  m_PrefabInstance: {fileID: 87481799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &466477983 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6771891095072012836, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
   m_PrefabInstance: {fileID: 87481799}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 466477979}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5851812022d5afb468fb6a4fb4163b12, type: 3}
@@ -8774,18 +8958,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1046388865}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 200392938}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1046388861}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -8793,11 +9001,39 @@ PrefabInstance:
       value: travar
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: desativarAlavanca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Fechadura, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ControladorAlavancas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -8895,12 +9131,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1046388861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+  m_PrefabInstance: {fileID: 1004227424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1046388865 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6771891095072012836, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
   m_PrefabInstance: {fileID: 1004227424}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1046388861}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5851812022d5afb468fb6a4fb4163b12, type: 3}
@@ -9940,18 +10181,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1437155380}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 200392938}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1437155376}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -9959,11 +10224,39 @@ PrefabInstance:
       value: travar
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: desativarAlavanca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Fechadura, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ControladorAlavancas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -10224,12 +10517,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e4a7e47059baed44998a94edfe0625e, type: 3}
+--- !u!1 &1377125519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+  m_PrefabInstance: {fileID: 70792447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1377125523 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6771891095072012836, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
   m_PrefabInstance: {fileID: 70792447}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1377125519}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5851812022d5afb468fb6a4fb4163b12, type: 3}
@@ -10330,12 +10628,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d697b290c1b1f34680b8daab3a326cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1437155376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+  m_PrefabInstance: {fileID: 1298804170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1437155380 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6771891095072012836, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
   m_PrefabInstance: {fileID: 1298804170}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1437155376}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5851812022d5afb468fb6a4fb4163b12, type: 3}
@@ -47536,12 +47839,17 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &2059005042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+  m_PrefabInstance: {fileID: 182822665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2059005046 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6771891095072012836, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
   m_PrefabInstance: {fileID: 182822665}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2059005042}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5851812022d5afb468fb6a4fb4163b12, type: 3}
@@ -48001,18 +48309,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2113998637}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 200392938}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 239662042}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -48020,11 +48352,39 @@ PrefabInstance:
       value: travar
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: desativarAlavanca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Fechadura, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ControladorAlavancas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
       propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771891095072012842, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
+      propertyPath: botaoApertado.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6771891095072012843, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
@@ -48043,7 +48403,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6771891095072012836, guid: 55be2b2e9f6526446a8d83bfb79bfd21, type: 3}
   m_PrefabInstance: {fileID: 2113998632}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 239662042}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5851812022d5afb468fb6a4fb4163b12, type: 3}
