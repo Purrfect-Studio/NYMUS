@@ -16,7 +16,9 @@ public class AnimacoesL3H : MonoBehaviour
     [Header("Layer da Plataforma")]
     [SerializeField] private LayerMask layerPlataforma;
     [Header("BoxCollider")]
-    private BoxCollider2D boxCollider2D; 
+    private BoxCollider2D boxCollider2D;
+
+    private bool podeExecutarAnimacaoPulo;
 
     private bool contadorParaAnimacaoDeTomarDano;
 
@@ -27,6 +29,7 @@ public class AnimacoesL3H : MonoBehaviour
         vidaJogador = this.GetComponent<VidaJogador>();
         boxCollider2D = this.GetComponent<BoxCollider2D>();
         contadorParaAnimacaoDeTomarDano = false;
+        podeExecutarAnimacaoPulo = true;
     }
     void Update()
     {
@@ -74,12 +77,17 @@ public class AnimacoesL3H : MonoBehaviour
     {
         if (PlayerControlador.estaPulando == true)
         {
-            animacao.SetBool("estaChao", false);
-            animacao.SetBool("estaPlataforma", false);
-            animacao.SetBool("estaPulando", true);
+            if (podeExecutarAnimacaoPulo)
+            {
+                animacao.SetBool("estaChao", false);
+                animacao.SetBool("estaPlataforma", false);
+                animacao.SetBool("estaPulando", true);
+                podeExecutarAnimacaoPulo = false;
+            }
         }
         else
         {
+            podeExecutarAnimacaoPulo = true;
             animacao.SetBool("estaPulando", false);
             if (estaChao())
             {

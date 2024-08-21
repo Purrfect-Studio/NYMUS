@@ -21,7 +21,7 @@ public class PlayerControlador : MonoBehaviour
     public PlayerData playerData;
 
     [Header("Andar")]
-    private float direcao;   // Direcao que o jogador esta se movimentando (esquerda(-1) ou direita(1))
+    public Vector2 direcao;
     public static bool olhandoDireita;           // Direcao para girar o sprite
     public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
 
@@ -33,21 +33,22 @@ public class PlayerControlador : MonoBehaviour
     [SerializeField] private LayerMask layerPlataforma; //Variavel de apoio para rechonhecer a layer da plataforma one-way
 
     [Header("Pulo")]
-    public bool possuiPuloDuplo;     // true = ativa o pulo duplo / false = desativa o pulo duplo
-    public float tempoPulo;          // Tempo maximo do pulo antes de cair
     public static bool estaPulando;  // Diz se o jogador esta pulando ou nao
-    private float contadorTempoPulo; // Contador de qunato tempo esta pulando
-    public int quantidadeDePulosExtras;
-    public int puloExtra;       // Quantidade de pulos que o jogador pode dar
-    public float gravidade;
-
-    [Header("CoyoteTime")]
-    [SerializeField] private float tempoMaximoCoyote = 0.1f;
-    [SerializeField] private bool coyoteTime;
-    private float tempoCoyote = 0;
+    [SerializeField] private Transform _groundCheckPoint;
+    [SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
+    //Jump
+    private bool cortarPulo;
+    private bool estaCaindoPulo;
+    #region timers pulo
+    public float ultimaVezNoChao { get; private set; }
+    public float ultimaVezQuePressionouPular { get; private set; }
+    #endregion
 
     [Header("Ataque Melee")]
     public GameObject pontoDeAtaque; // Ponto de onde se origina o ataque
+
+    [Header("Pulo Duplo")]
+    public bool podeExecutarPuloDuplo;
 
     [Header("Energia")]
     public BarraDeEnergia barraDeEnergia;
@@ -77,7 +78,6 @@ public class PlayerControlador : MonoBehaviour
     public Inventario inventario;
     public bool estaInteragindo { get; set; }
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -99,12 +99,7 @@ public class PlayerControlador : MonoBehaviour
         podeInteragirEscada = false;
         estaPulando = false;
 
-        contadorTempoPulo = tempoPulo;
-        puloExtra = quantidadeDePulosExtras;
-        gravidade = rigidBody2D.gravityScale;
-
         olhandoDireita = true;
-        direcao = 1;
 
         energiaRestante = playerData.energiaMaxima;
         definirTipoTiro = 0;
@@ -112,6 +107,9 @@ public class PlayerControlador : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(8, 13, false);
         corOriginal = spriteRenderer.color;
+
+        playerData.gravityScale = rigidBody2D.gravityScale;
+        SetGravityScale(playerData.gravityScale);
     }
 
     private bool estaPlataforma()
@@ -131,16 +129,79 @@ public class PlayerControlador : MonoBehaviour
         if (podeMover == true)
         {
             andar();
-            if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
-            {
-                pulo();
-            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Timers
+        ultimaVezNoChao -= Time.deltaTime;
+        ultimaVezQuePressionouPular -= Time.deltaTime;
+        #endregion
+
+        #region input movimento
+        direcao.x = Input.GetAxis("Horizontal");
+        direcao.y = Input.GetAxisRaw("Vertical");
+        #endregion
+
+        #region collision checks
+        if (!estaPulando)
+        {
+            //Ground Check
+            if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, layerChao) && !estaPulando) //checks if set box overlaps with ground
+            {
+                ultimaVezNoChao = playerData.coyoteTime; //if so sets the lastGrounded to coyoteTime
+                podeExecutarPuloDuplo = false;
+            }
+        }
+        #endregion
+
+        #region JUMP CHECKS
+        if (estaPulando && rigidBody2D.velocity.y < 0)
+        {
+            estaPulando = false;
+        }
+
+        if (ultimaVezNoChao > 0 && !estaPulando)
+        {
+            cortarPulo = false;
+
+            if (!estaPulando)
+                estaCaindoPulo = false;
+        }
+
+        //pulo
+        if (podePular() && ultimaVezQuePressionouPular > 0)
+        {
+            estaPulando = true;
+            cortarPulo = false;
+            estaCaindoPulo = false;
+            pulo();
+        }
+        #endregion
+
+        #region GRAVITY
+        if (cortarPulo)
+        {
+            //maior gravidade apos soltar o botao de pulo
+            SetGravityScale(playerData.gravityScale * playerData.multiplicadorGravidadeCortarPulo);
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, Mathf.Max(rigidBody2D.velocity.y, -playerData.velocidadeMaximaCaindo));
+        }
+
+        if (rigidBody2D.velocity.y < 0)
+        {
+            //maior gravidade se estiver caindo
+            SetGravityScale(playerData.gravityScale * playerData.multiplicadorGravidadeCaindo);
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, Mathf.Max(rigidBody2D.velocity.y, -playerData.velocidadeMaximaCaindo));
+        }
+        else
+        {
+            //gravidade padrao se estiver parado
+            SetGravityScale(playerData.gravityScale);
+        }
+        #endregion
+
         if (podeMover == true)
         {
             verificarSubirEscada();
@@ -150,7 +211,7 @@ public class PlayerControlador : MonoBehaviour
             }
             else
             {
-                rigidBody2D.gravityScale = gravidade;
+                rigidBody2D.gravityScale = playerData.gravityScale;
                 estaSubindoEscada = false;
                 estaDescendoEscada = false;
             }
@@ -158,22 +219,27 @@ public class PlayerControlador : MonoBehaviour
             interagir();
             if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
             {
-                /*if(Input.GetKeyDown(KeyCode.Space))
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !podeExecutarPuloDuplo)
                 {
                     inputPulo();
-                } */               
-                if (possuiPuloDuplo)
-                {
-                    inputPuloDuplo();
                 }
-                else
+                if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
                 {
-                    inputPuloSimples();
+                    inputUpPulo();
                 }
+                if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && podeExecutarPuloDuplo && playerData.possuiPuloDuplo)
+                {
+                    estaPulando = true;
+                    cortarPulo = false;
+                    estaCaindoPulo = false;
+                    puloDuplo();
+                }
+
                 if (playerData.possuiAtaqueRanged)
                 {
                     ataqueRanged();
                 }
+
                 if (playerData.possuiDash)
                 {
                     inputDash();
@@ -190,21 +256,7 @@ public class PlayerControlador : MonoBehaviour
         if ((playerData.possuiAtaqueRanged || playerData.possuiDash) && podeRestaurarEnergia)
         {
             restaurarEnergia();
-        }
-        
-        if(!estaChao() && coyoteTime)
-        {
-            tempoCoyote += Time.deltaTime;
-            if(tempoCoyote > tempoMaximoCoyote)
-            {
-                coyoteTime = false;
-            }
-        }
-        if(estaChao())
-        {
-            coyoteTime = true;
-            tempoCoyote = 0;
-        }
+        }       
     }
 
     void andar()
@@ -213,19 +265,17 @@ public class PlayerControlador : MonoBehaviour
         {
             return;
         }
-        //<- = -1
-        //-> = 1
-        direcao = Input.GetAxis("Horizontal");
+
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {            
-            transform.position += new Vector3(direcao * playerData.velocidade * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
         }else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.position -= new Vector3(-direcao * playerData.velocidade * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(-direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
         }
         
 
-        if (direcao > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+        if (direcao.x > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao.x < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
             Flip();
         }
@@ -242,93 +292,89 @@ public class PlayerControlador : MonoBehaviour
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
     }
 
-    
-    /*void inputPulo()
+    //teste pulo
+    public void SetGravityScale(float scale)
     {
-        if(rigidBody2D.velocity.y < 0)
+        rigidBody2D.gravityScale = scale;
+    }
+
+    private bool podePular()
+    {
+        return ultimaVezNoChao > 0 && !estaPulando;
+    }
+
+    private void pulo()
+    {
+        if (estaUsandoDash)
         {
+            return;
+        }
+        //Ensures we can't call Jump multiple times from one press
+        ultimaVezQuePressionouPular = 0;
+        ultimaVezNoChao = 0;
+        cortarPulo = false;
+        if (playerData.possuiPuloDuplo)
+        {
+            podeExecutarPuloDuplo = true;
+        }
+        #region Perform Jump
+        //We increase the force applied if we are falling
+        //This means we'll always feel like we jump the same amount 
+        //(setting the player's Y velocity to 0 beforehand will likely work the same, but I find this more elegant :D)
+        float force = playerData.forcaPulo;
+        if (rigidBody2D.velocity.y < 0)
             force -= rigidBody2D.velocity.y;
-        }
-        rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y + ((force + (0.5f * Time.fixedDeltaTime * -gravityStrength)) / rigidBody2D.mass));
-    }*/
 
-    void pulo()
-    {
-        if (estaPulando == true) 
-        {
-            if (contadorTempoPulo > 0 && possuiPuloDuplo == false || possuiPuloDuplo == true && puloExtra > 1 && contadorTempoPulo > 0) // se estaPulando for true e o tempo do pulo for maior que zero:
-            {
-                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, playerData.forcaPulo); //Aplica uma força vertical no jogador para faze-lo pular
-            }
-            else
-            {
-                estaPulando = false; // quando o contador do tempo do pulo chegar a 0 estaPulando=false
-            }
-        }
+        rigidBody2D.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+        #endregion
     }
 
-    void inputPuloSimples()
+    private void puloDuplo()
     {
         if (estaUsandoDash)
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.W) && (estaChao() == true || coyoteTime) || Input.GetKeyDown(KeyCode.UpArrow) && (estaChao() == true || coyoteTime))
-        {
-            // se o jogador preciona W ou Espaco e ele esta no chao estaPulando=true
-            estaPulando = true;
-        }
+        //Ensures we can't call Jump multiple times from one press
+        ultimaVezQuePressionouPular = 0;
+        ultimaVezNoChao = 0;
+        cortarPulo = false;
+        podeExecutarPuloDuplo = false;
+        #region Perform Jump
+        //We increase the force applied if we are falling
+        //This means we'll always feel like we jump the same amount 
+        //(setting the player's Y velocity to 0 beforehand will likely work the same, but I find this more elegant :D)
+        float force = playerData.forcaPulo;
+        if (rigidBody2D.velocity.y < 0)
+            force -= rigidBody2D.velocity.y;
 
-        if (Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true)
-        {
-            // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
-            contadorTempoPulo -= Time.deltaTime;
-            rigidBody2D.velocity = Vector2.up * playerData.forcaPulo;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
-            estaPulando = false;
-            contadorTempoPulo = tempoPulo;
-        }
+        rigidBody2D.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+        #endregion
     }
 
-    void inputPuloDuplo()
+    public void inputPulo()
     {
-        if (estaUsandoDash)
-        {
-            return;
-        }
-        if (estaChao() == true)
-        {
-            //se o jogador encosta no chao reseta a quantidade de pulos
-            puloExtra = quantidadeDePulosExtras;
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) && puloExtra > 0 || Input.GetKeyDown(KeyCode.Space) && puloExtra > 0 || Input.GetKeyDown(KeyCode.UpArrow) && puloExtra > 0)
-        {
-            // se o jogador preciona W ou Espaco e a quantidade de pulos disponiveis for maior que 0-
-            // estaPulando=true reseta o tempo do pulo e diminui 1 na quantidadePulos
-            estaPulando = true;
-            contadorTempoPulo = tempoPulo;
-            puloExtra--;
-        }
-
-        if (Input.GetKey(KeyCode.W) && estaPulando == true || Input.GetKey(KeyCode.Space) && estaPulando == true || Input.GetKey(KeyCode.UpArrow) && estaPulando == true)
-        {
-            // se o jogador segura W ou Espaco e estaPulando=true comeca a diminuir o contador do tempo de pulo e cria um vetor de velocidade para cima
-            contadorTempoPulo -= Time.deltaTime;
-            rigidBody2D.velocity = Vector2.up * playerData.forcaPulo;
-        }
-
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            //quando o jogador solta o W ou o Espaco faz o jogador cair com estaPulando=false e reseta o contador de tempo do pulo
-            estaPulando = false;
-            contadorTempoPulo = tempoPulo;
-        }
+        ultimaVezQuePressionouPular = playerData.tempoBufferInputPulo;
     }
+
+    public void inputUpPulo()
+    {
+        if (rigidBody2D.velocity.y > 0)
+        {
+            rigidBody2D.AddForce(Vector2.down * rigidBody2D.velocity.y * (1 - playerData.multiplicadorGravidadeCortarPulo), ForceMode2D.Impulse);
+        }
+        cortarPulo = true;
+        ultimaVezQuePressionouPular = 0;
+    }
+
+    #region EDITOR METHODS
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(_groundCheckPoint.position, _groundCheckSize);
+        Gizmos.color = Color.blue;
+    }
+    #endregion
 
     void inputDash()
     {
@@ -361,7 +407,7 @@ public class PlayerControlador : MonoBehaviour
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(playerData.tempoMaximoDash);
         estaUsandoDash = false;
-        rigidBody2D.gravityScale = gravidade;
+        rigidBody2D.gravityScale = playerData.gravityScale;
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(playerData.cooldownDash);
         podeDarDash = true;
@@ -384,7 +430,7 @@ public class PlayerControlador : MonoBehaviour
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(playerData.tempoMaximoDash);
         estaUsandoDash = false;
-        rigidBody2D.gravityScale = gravidade;
+        rigidBody2D.gravityScale = playerData.gravityScale;
         trailRenderer.emitting = false;
         playerData.forcaDashY += 3f;
         playerData.forcaDashX += 3f;
@@ -406,7 +452,7 @@ public class PlayerControlador : MonoBehaviour
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
         yield return new WaitForSeconds(playerData.tempoMaximoDash);
         estaUsandoDash = false;
-        rigidBody2D.gravityScale = gravidade;
+        rigidBody2D.gravityScale = playerData.gravityScale;
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(playerData.cooldownDash);
         podeDarDash = true;
@@ -593,7 +639,7 @@ public class PlayerControlador : MonoBehaviour
     public void LiberarMovimentacao()
     {
         podeMover = true; // Permite que o jogador se mova novamente
-        rigidBody2D.gravityScale = gravidade;
+        rigidBody2D.gravityScale = playerData.gravityScale;
         VidaJogador.invulneravel = false;
     }
 
@@ -640,7 +686,7 @@ public class PlayerControlador : MonoBehaviour
         if (collision.transform.tag == "Escada")
         {
            podeInteragirEscada = false;
-           rigidBody2D.gravityScale = gravidade;
+           rigidBody2D.gravityScale = playerData.gravityScale;
         }
     }
 }

@@ -60,8 +60,6 @@ public class GrudarObjeto : MonoBehaviour
                 Debug.Log("Grudou");
                 caixaEstaSendoEmpurrada = true;  // Define que esta caixa está grudada no jogador
                 jogadorEstaGrudadoEmUmaCaixa = true;
-                playerControlador.rigidBody2D.gravityScale = 50;
-                //rigidbody2d.gravityScale = 0;
                 if((transform.position.x - posicaoJogador.position.x < 0) && PlayerControlador.olhandoDireita == true || (transform.position.x - posicaoJogador.position.x > 0) && PlayerControlador.olhandoDireita == false)
                 {
                     PlayerControlador.olhandoDireita = !PlayerControlador.olhandoDireita;
@@ -79,7 +77,5 @@ public class GrudarObjeto : MonoBehaviour
         caixaEstaSendoEmpurrada = false;
         jogadorEstaGrudadoEmUmaCaixa = false; //jogador parou de empurrar
         transform.parent = null;
-        playerControlador.rigidBody2D.gravityScale = playerControlador.gravidade;
-        //rigidbody2d.gravityScale = gravidade;
     }
 }

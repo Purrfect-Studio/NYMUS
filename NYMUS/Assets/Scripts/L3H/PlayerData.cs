@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Player Data")] //Create a new playerData object by right clicking in the Project Menu then Create/Player/Player Data and drag onto the player
+[CreateAssetMenu(menuName = "Player Data")]
 public class PlayerData : ScriptableObject
 {
     [Header("Vida")]
@@ -21,15 +21,22 @@ public class PlayerData : ScriptableObject
     public float velocidade;
 
     [Header("Pulo")]
-    public float forcaPulo;
+    public float alturaPulo; // altura maxima do pulo
+    public float tempoAteAlturaMaximaPulo; //tempo para alcancar a altura maxima
+    public float tempoBufferInputPulo; //buffer de input antes de chegar no chao
+    [HideInInspector] public float forcaPulo; // forca do pulo
+    [Range(0.01f, 0.5f)] public float coyoteTime; //pode pular depois de sair do chao
+    public float multiplicadorGravidadeCortarPulo; //multiplicador de quando o jogador soltar o botao de pulo enquanto esta pulando
 
-    [Header("Teste pulo")]
-    public float jumpHeight;
-    public float jumpTimeToApex;
+
+    [Header("Gravidade")]
+    public float multiplicadorGravidadeCaindo; //multiplicador de gravidade quando o jogador estiver caindo
+    public float velocidadeMaximaCaindo; //velocidade maxima de queda
     [HideInInspector] public float gravityStrength;
     [HideInInspector] public float gravityScale;
-    [HideInInspector] public float force;
-    [HideInInspector] public float jumpForce;
+
+    [Header("Pulo duplo")]
+    public bool possuiPuloDuplo;
 
     [Header("Energia")]
     public float energiaMaxima;
@@ -59,10 +66,10 @@ public class PlayerData : ScriptableObject
     {
         vidaAtual = vidaMaxima;
 
-        //teste pulo 
-        gravityStrength = -(2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
-        gravityScale = gravityStrength / Physics2D.gravity.y;
-        jumpForce = Mathf.Abs(gravityStrength) * jumpTimeToApex;
-        force = jumpForce;
+        //pulo 
+        gravityStrength = -(2 * alturaPulo) / (tempoAteAlturaMaximaPulo * tempoAteAlturaMaximaPulo);
+        //gravityScale = gravityStrength / Physics2D.gravity.y;
+
+        forcaPulo = Mathf.Abs(gravityStrength) * tempoAteAlturaMaximaPulo;
     }
 }

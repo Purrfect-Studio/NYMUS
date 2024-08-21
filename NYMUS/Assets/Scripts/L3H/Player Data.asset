@@ -13,18 +13,22 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   vidaMaxima: 100
-  vidaAtual: 10
+  vidaAtual: 100
+  vidaAnteriorL3h: 0
   escudoMaximo: 50
   forcaKnockbackX: 25
   forcaKnockbackY: 25
   velocidade: 15
-  forcaPulo: 15
-  jumpHeight: 0
-  jumpTimeToApex: 0
-  gravityStrength: NaN
-  gravityScale: NaN
-  force: NaN
-  jumpForce: NaN
+  alturaPulo: 15
+  tempoAteAlturaMaximaPulo: 1
+  tempoBufferInputPulo: 0.2
+  forcaPulo: 30
+  coyoteTime: 0.2
+  multiplicadorGravidadeCortarPulo: 0.5
+  gravityStrength: -30
+  gravityScale: 2.0387359
+  multiplicadorGravidadeCaindo: 10
+  velocidadeMaximaCaindo: 10000
   energiaMaxima: 5
   velocidadeRegeneracaoDeEnergia: 0.5
   possuiDash: 0
