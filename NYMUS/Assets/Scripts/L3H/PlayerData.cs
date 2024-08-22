@@ -52,7 +52,6 @@ public class PlayerData : ScriptableObject
 
     [Header("Ataque Melee")]
     public float dano;
-    public float alcanceAtaque;
 
     [Header("Ataque Ranged")]
     public bool possuiAtaqueRanged;

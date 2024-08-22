@@ -618,11 +618,6 @@ public class PlayerControlador : MonoBehaviour
         return colisao.collider != null; 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(pontoDeAtaque.transform.position, playerData.alcanceAtaque);
-    }
-
     public void TravarMovimentacao()
     {
         VidaJogador.invulneravel = true;
