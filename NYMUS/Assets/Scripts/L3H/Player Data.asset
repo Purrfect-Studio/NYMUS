@@ -21,12 +21,12 @@ MonoBehaviour:
   velocidade: 15
   alturaPulo: 15
   tempoAteAlturaMaximaPulo: 1
-  tempoBufferInputPulo: 0.2
+  tempoBufferInputPulo: 0.3
   forcaPulo: 30
   coyoteTime: 0.2
   multiplicadorGravidadeCortarPulo: 0.5
-  multiplicadorGravidadeCaindo: 10
-  velocidadeMaximaCaindo: 10000
+  multiplicadorGravidadeCaindo: 2
+  velocidadeMaximaCaindo: 500
   gravityStrength: -30
   gravityScale: 5
   possuiPuloDuplo: 0

@@ -37,7 +37,7 @@ public class PlayerControlador : MonoBehaviour
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
     //Jump
-    private bool cortarPulo;
+    public bool cortarPulo;
     private bool estaCaindoPulo;
     #region timers pulo
     public float ultimaVezNoChao { get; private set; }
@@ -187,9 +187,9 @@ public class PlayerControlador : MonoBehaviour
             //maior gravidade apos soltar o botao de pulo
             SetGravityScale(playerData.gravityScale * playerData.multiplicadorGravidadeCortarPulo);
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, Mathf.Max(rigidBody2D.velocity.y, -playerData.velocidadeMaximaCaindo));
+            cortarPulo = false;
         }
-
-        if (rigidBody2D.velocity.y < 0)
+        else if (rigidBody2D.velocity.y < 0)
         {
             //maior gravidade se estiver caindo
             SetGravityScale(playerData.gravityScale * playerData.multiplicadorGravidadeCaindo);
@@ -211,7 +211,7 @@ public class PlayerControlador : MonoBehaviour
             }
             else
             {
-                rigidBody2D.gravityScale = playerData.gravityScale;
+                //rigidBody2D.gravityScale = playerData.gravityScale;
                 estaSubindoEscada = false;
                 estaDescendoEscada = false;
             }
