@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,18 @@ public class ControladorTrojan : MonoBehaviour
     private VidaBoss vidaBoss;
     private MovimentacaoTrojan movimentacaoTrojan;
     private Animator animacao;
+    public ControladorAlavancas controladorAlavancas;
+    public GameObject espinhosAlavancasObject;
+    private Transform[] espinhosAlavanca;
+    public GameObject avisoEspinhoObject;
+    private Transform[] avisoEspinho;
+    private bool podeDesativarEspinhos;
 
     [Header("Variaveis de controle")]
     public float delayParaIniciarAcoes;
     public static bool podeExecutarAcoes;
     private bool podeExecutarAnimacaoAtaque;
     
-
     [Header("Variaver de apoio")]
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
 
@@ -43,8 +49,21 @@ public class ControladorTrojan : MonoBehaviour
         podeExecutarAcoes = false;
         MovimentacaoTrojan.podeMover = false;
         podeExecutarAnimacaoAtaque = true;
+        podeDesativarEspinhos = true;
 
         cooldownRestanteParaAtacar = cooldownParaAtacar;
+
+        espinhosAlavanca = new Transform[espinhosAlavancasObject.transform.childCount];
+        for (int i = 0; i < espinhosAlavanca.Length; i++)
+        {
+            espinhosAlavanca[i] = espinhosAlavancasObject.transform.GetChild(i);
+        }
+
+        avisoEspinho = new Transform[avisoEspinhoObject.transform.childCount];
+        for (int i = 0; i < avisoEspinho.Length; i++)
+        {
+            avisoEspinho[i] = avisoEspinhoObject.transform.GetChild(i);
+        }
     }
 
     // Update is called once per frame
@@ -73,6 +92,10 @@ public class ControladorTrojan : MonoBehaviour
         }
 
         iniciarAtaque();
+        if(controladorAlavancas.todasAlavancasDesativadas && podeDesativarEspinhos)
+        {
+            desativarEspinhos();
+        }
     }
 
     void iniciarAtaque()
@@ -114,13 +137,44 @@ public class ControladorTrojan : MonoBehaviour
 
     public ataquesBoss EscolherAtaqueAtual()
     {
-        return ataquesDisponiveis[Random.Range(0, ataquesDisponiveis.Count)];
+        return ataquesDisponiveis[UnityEngine.Random.Range(0, ataquesDisponiveis.Count)];
     }
 
     public void LigarNovoAtaque(ataquesBoss ataqueNovo)
     {
         ataquesDisponiveis.Add(ataqueNovo);
     }
+
+    public void ativarEspinho(int index)
+    {
+        StartCoroutine(ativaEspinho(index));
+    }
+
+    IEnumerator ativaEspinho(int index)
+    {
+        yield return new WaitForSeconds(vidaBoss.tempoParaLevantar);
+        avisoEspinho[index].gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        espinhosAlavanca[index].gameObject.SetActive(true);
+        avisoEspinho[index].gameObject.SetActive(false);
+    }
+
+    public void desativarEspinhos()
+    {
+        podeDesativarEspinhos = false;
+        StartCoroutine("desativaEspinhos");
+    }
+
+    IEnumerator desativaEspinhos()
+    {
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < espinhosAlavanca.Length; i++)
+        {
+            espinhosAlavanca[i].gameObject.SetActive(true);
+        }
+        podeDesativarEspinhos = true;
+    }
+
 
     public void delayParaIniciarAcao()
     {

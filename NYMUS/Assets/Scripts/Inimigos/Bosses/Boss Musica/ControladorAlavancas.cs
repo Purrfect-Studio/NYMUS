@@ -8,13 +8,16 @@ public class ControladorAlavancas : MonoBehaviour
     public Transform[] alavancas;
     public bool[] alavancasBool;
     private int contadorAlavancasDesativadas = 0;
+    public float cooldownParaAtivarAlavanca;
 
+    public bool todasAlavancasDesativadas;
     public static bool podeAtivarAlavancas = true;
     public float cooldownAtivarAlavancas;
     private float cooldownRestanteAtivarAlavancas;
     // Start is called before the first frame update
     void Start()
     {
+        todasAlavancasDesativadas = false;
         controladorAlavancas = this.gameObject;
         alavancas = new Transform[controladorAlavancas.transform.childCount];
         alavancasBool = new bool[controladorAlavancas.transform.childCount];
@@ -31,6 +34,7 @@ public class ControladorAlavancas : MonoBehaviour
     {
         if(contadorAlavancasDesativadas == alavancas.Length && podeAtivarAlavancas == true)
         {
+            todasAlavancasDesativadas = true;
             cooldownRestanteAtivarAlavancas -= Time.deltaTime;
             if(cooldownRestanteAtivarAlavancas < 0)
             {
@@ -46,6 +50,20 @@ public class ControladorAlavancas : MonoBehaviour
     {
         alavancasBool[index] = false;
         contadorAlavancasDesativadas++;
+        StartCoroutine(cooldownAtivarAlavanca());
+    }
+
+    IEnumerator cooldownAtivarAlavanca()
+    {
+        for(int i = 0; i < alavancas.Length; i++)
+        {
+            alavancas[i].GetComponent<InteragirBotao>().enabled = false;
+        }
+        yield return new WaitForSeconds(cooldownParaAtivarAlavanca);
+        for (int i = 0; i < alavancas.Length; i++)
+        {
+            alavancas[i].GetComponent<InteragirBotao>().enabled = true;
+        }
     }
 
     public void ativarAlavancas()
@@ -55,6 +73,7 @@ public class ControladorAlavancas : MonoBehaviour
             alavancas[i].gameObject.SetActive(true);
             alavancasBool[i] = true;
         }
+        todasAlavancasDesativadas = false;
     }
 
     public void desativarAlavancas()
@@ -64,5 +83,6 @@ public class ControladorAlavancas : MonoBehaviour
             alavancas[i].gameObject.SetActive(false);
             alavancasBool[i] = false;
         }
+        todasAlavancasDesativadas = true;
     }
 }

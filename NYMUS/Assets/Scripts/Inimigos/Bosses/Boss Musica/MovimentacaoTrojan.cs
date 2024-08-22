@@ -13,7 +13,6 @@ public class MovimentacaoTrojan : MonoBehaviour
     private Animator animacao;
     private bool podeAtivarAnimacaoSumir;
 
-    
     public float cooldownDefinirNovaPosicao;
     public float cooldownDefinirNovaPosicaoFrenesi;
     private float cooldownRestanteDefinirNovaPosicao;
