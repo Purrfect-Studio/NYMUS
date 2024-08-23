@@ -11,7 +11,6 @@ public class ControladorAlavancas : MonoBehaviour
     public float cooldownParaAtivarAlavanca;
 
     public bool todasAlavancasDesativadas;
-    public static bool podeAtivarAlavancas = true;
     public float cooldownAtivarAlavancas;
     private float cooldownRestanteAtivarAlavancas;
     // Start is called before the first frame update
@@ -32,7 +31,7 @@ public class ControladorAlavancas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(contadorAlavancasDesativadas == alavancas.Length && podeAtivarAlavancas == true)
+        if(contadorAlavancasDesativadas == alavancas.Length)
         {
             todasAlavancasDesativadas = true;
             cooldownRestanteAtivarAlavancas -= Time.deltaTime;
@@ -41,7 +40,6 @@ public class ControladorAlavancas : MonoBehaviour
                 ativarAlavancas();
                 contadorAlavancasDesativadas = 0;
                 cooldownRestanteAtivarAlavancas = cooldownAtivarAlavancas;
-                podeAtivarAlavancas = false;
             }
         }
     }

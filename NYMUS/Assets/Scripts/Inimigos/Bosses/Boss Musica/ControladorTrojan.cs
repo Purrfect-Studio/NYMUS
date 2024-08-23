@@ -21,7 +21,9 @@ public class ControladorTrojan : MonoBehaviour
     private Transform[] espinhosAlavanca;
     public GameObject avisoEspinhoObject;
     private Transform[] avisoEspinho;
-    private bool podeDesativarEspinhos;
+    private float contadorEspinhosAtivados;
+    private float cooldownDesativarEspinhos;
+    private float cooldownRestanteDesativarEspinhos;
 
     [Header("Variaveis de controle")]
     public float delayParaIniciarAcoes;
@@ -49,8 +51,10 @@ public class ControladorTrojan : MonoBehaviour
         podeExecutarAcoes = false;
         MovimentacaoTrojan.podeMover = false;
         podeExecutarAnimacaoAtaque = true;
-        podeDesativarEspinhos = true;
+        contadorEspinhosAtivados = 0;
 
+        cooldownDesativarEspinhos = vidaBoss.tempoParaLevantar;
+        cooldownRestanteDesativarEspinhos = cooldownDesativarEspinhos;
         cooldownRestanteParaAtacar = cooldownParaAtacar;
 
         espinhosAlavanca = new Transform[espinhosAlavancasObject.transform.childCount];
@@ -92,9 +96,18 @@ public class ControladorTrojan : MonoBehaviour
         }
 
         iniciarAtaque();
-        if(controladorAlavancas.todasAlavancasDesativadas && podeDesativarEspinhos)
+
+        if(contadorEspinhosAtivados == espinhosAlavanca.Length)
         {
-            desativarEspinhos();
+            //Debug.Log("contadorEspinhosAtivados == espinhosAlavanca.Length");
+            cooldownRestanteDesativarEspinhos -= Time.deltaTime;
+            if (cooldownRestanteDesativarEspinhos <= 0)
+            {
+                //Debug.Log("cooldownRestanteDesativarEspinhos <= 0");
+                desativarEspinhos();
+                contadorEspinhosAtivados = 0;
+                cooldownRestanteDesativarEspinhos = cooldownDesativarEspinhos;
+            }
         }
     }
 
@@ -157,11 +170,11 @@ public class ControladorTrojan : MonoBehaviour
         yield return new WaitForSeconds(2f);
         espinhosAlavanca[index].gameObject.SetActive(true);
         avisoEspinho[index].gameObject.SetActive(false);
+        contadorEspinhosAtivados++;
     }
 
     public void desativarEspinhos()
     {
-        podeDesativarEspinhos = false;
         StartCoroutine("desativaEspinhos");
     }
 
@@ -170,9 +183,8 @@ public class ControladorTrojan : MonoBehaviour
         yield return new WaitForSeconds(1);
         for (int i = 0; i < espinhosAlavanca.Length; i++)
         {
-            espinhosAlavanca[i].gameObject.SetActive(true);
+            espinhosAlavanca[i].gameObject.SetActive(false);
         }
-        podeDesativarEspinhos = true;
     }
 
 
