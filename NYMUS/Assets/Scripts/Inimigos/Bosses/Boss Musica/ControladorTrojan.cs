@@ -7,7 +7,6 @@ public class ControladorTrojan : MonoBehaviour
 {
     public enum ataquesBoss
     {
-        ataque1,
         ataque2,
         ataque3,
     }
@@ -21,9 +20,11 @@ public class ControladorTrojan : MonoBehaviour
     private Transform[] espinhosAlavanca;
     public GameObject avisoEspinhoObject;
     private Transform[] avisoEspinho;
+    public GameObject pontosLaserObject;
+    private Transform[] pontosLaser;
     private float contadorEspinhosAtivados;
-    private float cooldownDesativarEspinhos;
-    private float cooldownRestanteDesativarEspinhos;
+    //private float cooldownDesativarEspinhos;
+    //private float cooldownRestanteDesativarEspinhos;
 
     [Header("Variaveis de controle")]
     public float delayParaIniciarAcoes;
@@ -37,6 +38,15 @@ public class ControladorTrojan : MonoBehaviour
     public float cooldownParaAtacar;
     public float cooldownAtaqueFrenesi;
     private float cooldownRestanteParaAtacar;
+
+    [Header("Laser")]
+    public GameObject projetilLaser;
+    public int quantidadeAtivacoesLaser;
+    private int quantidadeLaserAtivados;
+    public float cooldownExecutarLaser;
+    private float cooldownRestanteExecutarLaser;
+    private int[] indexLaser = new int[2];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +54,6 @@ public class ControladorTrojan : MonoBehaviour
         movimentacaoTrojan = GetComponent<MovimentacaoTrojan>();
         //animacao = GetComponent<Animator>();
 
-        ataquesDisponiveis.Add(ataquesBoss.ataque1);
         ataquesDisponiveis.Add(ataquesBoss.ataque2);
         ataquesDisponiveis.Add(ataquesBoss.ataque3);
 
@@ -52,9 +61,9 @@ public class ControladorTrojan : MonoBehaviour
         MovimentacaoTrojan.podeMover = false;
         podeExecutarAnimacaoAtaque = true;
         contadorEspinhosAtivados = 0;
+        quantidadeLaserAtivados = 0;
 
-        cooldownDesativarEspinhos = vidaBoss.tempoParaLevantar;
-        cooldownRestanteDesativarEspinhos = cooldownDesativarEspinhos;
+        cooldownRestanteExecutarLaser = cooldownExecutarLaser;
         cooldownRestanteParaAtacar = cooldownParaAtacar;
 
         espinhosAlavanca = new Transform[espinhosAlavancasObject.transform.childCount];
@@ -68,12 +77,18 @@ public class ControladorTrojan : MonoBehaviour
         {
             avisoEspinho[i] = avisoEspinhoObject.transform.GetChild(i);
         }
+
+        pontosLaser = new Transform[pontosLaserObject.transform.childCount];
+        for (int i = 0; i < pontosLaser.Length; i++)
+        {
+            pontosLaser[i] = pontosLaserObject.transform.GetChild(i);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (podeExecutarAcoes)
+        if (podeExecutarAcoes && contadorEspinhosAtivados != espinhosAlavanca.Length)
         {
             cooldownRestanteParaAtacar -= Time.deltaTime;
 
@@ -99,14 +114,23 @@ public class ControladorTrojan : MonoBehaviour
 
         if(contadorEspinhosAtivados == espinhosAlavanca.Length)
         {
-            //Debug.Log("contadorEspinhosAtivados == espinhosAlavanca.Length");
-            cooldownRestanteDesativarEspinhos -= Time.deltaTime;
-            if (cooldownRestanteDesativarEspinhos <= 0)
+            cooldownRestanteExecutarLaser -= Time.deltaTime;
+
+            if (cooldownRestanteExecutarLaser <= 0)
+            {
+                executarLaser();
+                cooldownRestanteExecutarLaser = cooldownExecutarLaser;
+                podeExecutarAnimacaoAtaque = true;
+                quantidadeLaserAtivados += 1;
+            }
+            if (quantidadeLaserAtivados == quantidadeAtivacoesLaser)
             {
                 //Debug.Log("cooldownRestanteDesativarEspinhos <= 0");
                 desativarEspinhos();
                 contadorEspinhosAtivados = 0;
-                cooldownRestanteDesativarEspinhos = cooldownDesativarEspinhos;
+                quantidadeLaserAtivados = 0;
+                cooldownRestanteExecutarLaser = cooldownExecutarLaser;
+                podeExecutarAnimacaoAtaque = true;
             }
         }
     }
@@ -127,15 +151,24 @@ public class ControladorTrojan : MonoBehaviour
         }
     }
 
+    public void executarLaser()
+    {
+        Debug.Log("executarLaser");
+        if (escolherPontosDoLaser())
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject injecaoDeDados = Instantiate(projetilLaser);
+                injecaoDeDados.transform.position = pontosLaser[indexLaser[i]].position;
+                Destroy(injecaoDeDados.gameObject, 4f);
+            }
+        }
+    }
+
     public void ExecutarAtaque(ataquesBoss ataque)
     {
         switch (ataque)
         {
-            case ataquesBoss.ataque1:
-                Debug.Log("Boss está executando ataque1");
-                
-                break;
-
             case ataquesBoss.ataque2:
                 Debug.Log("Boss está executando ataque2");
                 
@@ -151,6 +184,16 @@ public class ControladorTrojan : MonoBehaviour
     public ataquesBoss EscolherAtaqueAtual()
     {
         return ataquesDisponiveis[UnityEngine.Random.Range(0, ataquesDisponiveis.Count)];
+    }
+
+    public bool escolherPontosDoLaser()
+    {
+        indexLaser[0] = UnityEngine.Random.Range(0, 3);
+        do
+        {
+            indexLaser[1] = UnityEngine.Random.Range(0, 3);
+        } while (indexLaser[1] == indexLaser[0]);
+        return true;
     }
 
     public void LigarNovoAtaque(ataquesBoss ataqueNovo)

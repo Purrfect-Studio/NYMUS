@@ -23,8 +23,6 @@ public class BossControlador : MonoBehaviour
     private float cooldownRestanteAtaque;
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
     private GameObject jogador;
-    private Animator animatorPortas;
-    private Collider2D collider2DPortas;
     private bool podeAtivarAnimacaoDeAtaque;
     private Animator animacao;
     private VidaBoss vidaBoss;
@@ -186,9 +184,9 @@ public class BossControlador : MonoBehaviour
 
             case ataquesBoss.InjecaoDeDados:
                 //Debug.Log("Boss está executando InjecaoDeDados");
-                GameObject raioDeVeneno = Instantiate(projetilInjecaoDeDados);
-                raioDeVeneno.transform.position = armaInjecaoDeDados.position;
-                Destroy(raioDeVeneno.gameObject, 2.5f);
+                GameObject injecaoDeDados = Instantiate(projetilInjecaoDeDados);
+                injecaoDeDados.transform.position = armaInjecaoDeDados.position;
+                Destroy(injecaoDeDados.gameObject, 2.5f);
                 break;
 
             case ataquesBoss.ExplosaoDeDados:
