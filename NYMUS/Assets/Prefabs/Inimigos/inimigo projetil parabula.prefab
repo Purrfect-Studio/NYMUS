@@ -81,8 +81,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -999627611
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -622838323, guid: 111b102ba84a41944988e4ecdc29edd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -235,7 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c1be0161a20c24e86cdb6628162339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider2D: {fileID: 8757189185613858663}
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
@@ -260,6 +259,7 @@ MonoBehaviour:
   animacao: {fileID: 0}
   jogador: {fileID: 0}
   sprite: {fileID: 0}
+  podeDroparItem: 0
   slime: 0
   morcego: 0
   fantasma: 0
