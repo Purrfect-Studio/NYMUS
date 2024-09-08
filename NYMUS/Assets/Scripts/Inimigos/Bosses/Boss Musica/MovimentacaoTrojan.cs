@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class MovimentacaoTrojan : MonoBehaviour
     public GameObject[] pontosMovimentacao;
     private int indexPontoMovimento;
     public static bool podeMover;
+    public bool copia = false;
 
     private VidaBoss vidaBoss;
 
@@ -23,7 +25,10 @@ public class MovimentacaoTrojan : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(9, 13, true);
         animacao = GetComponent<Animator>();
-        vidaBoss = GetComponent<VidaBoss>();
+        if(!copia)
+        {
+            vidaBoss = GetComponent<VidaBoss>();
+        }
 
         cooldownRestanteDefinirNovaPosicao = cooldownDefinirNovaPosicao;
         definirPosicaoAlvo();
@@ -58,9 +63,12 @@ public class MovimentacaoTrojan : MonoBehaviour
             podeAtivarAnimacaoSumir = false;
             animacao.SetTrigger("Sumir");
         }
-        if (vidaBoss.frenesi)
+        if (!copia)
         {
-            cooldownDefinirNovaPosicao = cooldownDefinirNovaPosicaoFrenesi;
+            if (vidaBoss.frenesi)
+            {
+                cooldownDefinirNovaPosicao = cooldownDefinirNovaPosicaoFrenesi;
+            }
         }
     }
 

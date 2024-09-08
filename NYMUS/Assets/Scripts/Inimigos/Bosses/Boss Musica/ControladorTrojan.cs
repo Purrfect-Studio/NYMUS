@@ -10,11 +10,16 @@ public class ControladorTrojan : MonoBehaviour
         Laser,
         ataque3,
     }
+    [Header("Cópias")]
+    public GameObject[] copias = new GameObject[2];
+    public bool podeAtivarCopia1;
+    public bool podeAtivarCopia2;
 
     [Header("Componentes")]
     private VidaBoss vidaBoss;
     private MovimentacaoTrojan movimentacaoTrojan;
     private Animator animacao;
+
     [Header("Espinhos Alavanca")]
     public ControladorAlavancas controladorAlavancas;
     public GameObject espinhosAlavancasObject;
@@ -22,6 +27,7 @@ public class ControladorTrojan : MonoBehaviour
     public GameObject avisoEspinhoObject;
     private Transform[] avisoEspinho;
     private float contadorEspinhosAtivados;
+
     [Header("Laser Espinhos Ativos")]
     public GameObject pontosLaserEspinhoObject;
     private Transform[] pontosLaserEspinho;
@@ -71,6 +77,13 @@ public class ControladorTrojan : MonoBehaviour
 
         cooldownRestanteExecutarLaserEspinho = cooldownExecutarLaserEspinho;
         cooldownRestanteParaAtacar = cooldownParaAtacar;
+
+        for (int i = 0; i < copias.Length; i++)
+        {
+            copias[i].SetActive(false);
+        }
+        podeAtivarCopia1 = true;
+        podeAtivarCopia2 = true;
 
         espinhosAlavanca = new Transform[espinhosAlavancasObject.transform.childCount];
         for (int i = 0; i < espinhosAlavanca.Length; i++)
@@ -139,6 +152,17 @@ public class ControladorTrojan : MonoBehaviour
                 podeExecutarAnimacaoAtaque = true;
             }
         }
+
+        if(podeAtivarCopia1 && vidaBoss.vidaAtual <= vidaBoss.vidaMaxima / 2)
+        {
+            podeAtivarCopia1 = false;
+            copias[0].SetActive(true);
+        }
+        if (podeAtivarCopia2 && vidaBoss.vidaAtual <= vidaBoss.vidaMaxima / 3)
+        {
+            podeAtivarCopia2 = false;
+            copias[1].SetActive(true);
+        }
     }
 
     void iniciarAtaque()
@@ -206,7 +230,7 @@ public class ControladorTrojan : MonoBehaviour
 
     public int escolherPontoLaser()
     {
-        return UnityEngine.Random.Range(-1, pontosLaser.Length);
+        return UnityEngine.Random.Range(0, 2);
     }
 
     public void LigarNovoAtaque(ataquesBoss ataqueNovo)
