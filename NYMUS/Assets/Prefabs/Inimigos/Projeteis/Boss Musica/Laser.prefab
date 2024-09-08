@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3174847459273001352}
   - component: {fileID: 5664292171209943627}
   m_Layer: 9
-  m_Name: Injecao de Dados 1
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3174847459273001356}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.18, y: -0.18, z: -0.2475011}
-  m_LocalScale: {x: 8.9, y: 54.4, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 21, y: 17.8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3174847459273001354
 Animator:
   serializedVersion: 5
@@ -45,7 +45,7 @@ Animator:
   m_GameObject: {fileID: 3174847459273001356}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 87368f9fde78b68438500d704b03cd94, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58585572faa7f81418432f884fb29d47, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -98,7 +98,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: -1721194106, guid: afdde690371135646af9db271cf16a21, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.20947522, g: 0.7924528, b: 0.12335351, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
