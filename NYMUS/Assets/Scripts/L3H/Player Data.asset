@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   vidaMaxima: 100
-  vidaAtual: 20
+  vidaAtual: 85
   vidaAnteriorL3h: 0
   escudoMaximo: 50
   forcaKnockbackX: 25
   forcaKnockbackY: 25
-  velocidade: 15
+  velocidade: 900
   alturaPulo: 15
   tempoAteAlturaMaximaPulo: 1
   tempoBufferInputPulo: 0.3
@@ -36,8 +36,8 @@ MonoBehaviour:
   forcaDashX: 15
   forcaDashY: 10
   energiaNecessariaParaDash: 2
-  tempoMaximoDash: 0.2
-  cooldownDash: 2
+  tempoMaximoDash: 0.3
+  cooldownDash: 1.5
   dano: 5
   possuiAtaqueRanged: 0
   velocidadeAtaqueRanged: 15
