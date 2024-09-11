@@ -7,7 +7,7 @@ public class PlayerData : ScriptableObject
 {
     [Header("Vida")]
     public float vidaMaxima;
-    [HideInInspector] public float vidaAtual;
+    public float vidaAtual;
     public float vidaAnteriorL3h;
 
     [Header("Escudo")]

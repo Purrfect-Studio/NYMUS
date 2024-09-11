@@ -6,19 +6,31 @@ public class InjecaoDeDados : MonoBehaviour
 {
     public Animator animacao;
     public BoxCollider2D boxCollider2D;
-    public VidaJogador vidaJogador;
     [SerializeField] private LayerMask layerJogador;
 
     public float dano;
 
+    [Header("Boss")]
+    public bool Virut;
+    public bool Trojan;
+
     void Start()
     {
-        dano = BossControlador.danoInjecaoDeDados;
+        if (Virut)
+        {
+            dano = BossControlador.danoInjecaoDeDados;
+        }else if (Trojan)
+        {
+            dano = 15;
+        }
         animacao = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
 
         boxCollider2D.enabled = false;
-        animacao.SetTrigger("InjecaoDeDados");
+        if(animacao != null)
+        {
+            animacao.SetTrigger("InjecaoDeDados");
+        }
     }
 
     public void ativarCollider()

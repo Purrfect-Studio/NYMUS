@@ -115,6 +115,7 @@ public class VidaJogador : MonoBehaviour
 
     public void tomarDano(float danoTomado)
     {
+        Debug.Log("Jogador tomou dano: " + danoTomado);
         tomeiDano = true;
         if(escudoAtual > 0)
         {
