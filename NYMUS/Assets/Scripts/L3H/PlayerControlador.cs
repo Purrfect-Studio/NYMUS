@@ -266,16 +266,20 @@ public class PlayerControlador : MonoBehaviour
             return;
         }
 
-        rigidBody2D.velocity = new Vector2(direcao.x * playerData.velocidade * Time.deltaTime, rigidBody2D.velocity.y);
+        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            rigidBody2D.velocity = new Vector2(direcao.x * playerData.velocidade * Time.deltaTime, rigidBody2D.velocity.y);
+        }
+        //direcao.x != 0
 
-        /*if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        /*if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) 
         {            
             transform.position += new Vector3(direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
         }else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.position -= new Vector3(-direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
         }*/
-        
+
 
         if (direcao.x > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao.x < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
         {
