@@ -41,5 +41,13 @@ public class Choque : MonoBehaviour
                 vidaBoss.derrubarTrojan();
             }
         }
+        if(collision.CompareTag("Copia Trojan"))
+        {
+            MovimentacaoTrojan movimentacaoTrojan = collision.gameObject.GetComponent<MovimentacaoTrojan>();
+            if(movimentacaoTrojan != null)
+            {
+                movimentacaoTrojan.derrubarCopiaTrojan();
+            }
+        }
     }
 }
