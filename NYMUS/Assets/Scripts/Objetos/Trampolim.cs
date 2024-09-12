@@ -32,7 +32,7 @@ public class Trampolim : MonoBehaviour
             }
             if (direita)
             {
-                rigidbody2D.AddForce(new Vector2(1 * forcaPuloLado, 0f), ForceMode2D.Impulse);
+                rigidbody2D.AddForce(new Vector2(rigidbody2D.velocity.x + forcaPuloLado, 0f), ForceMode2D.Impulse);
             }
             if (esquerda)
             {

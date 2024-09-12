@@ -261,24 +261,20 @@ public class PlayerControlador : MonoBehaviour
 
     void andar()
     {
-        if (estaUsandoDash)
-        {
-            return;
-        }
 
-        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        /*if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             rigidBody2D.velocity = new Vector2(direcao.x * playerData.velocidade * Time.deltaTime, rigidBody2D.velocity.y);
-        }
+        }*/
         //direcao.x != 0
 
-        /*if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) 
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) 
         {            
             transform.position += new Vector3(direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
         }else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.position -= new Vector3(-direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
-        }*/
+        }
 
 
         if (direcao.x > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao.x < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
@@ -407,7 +403,8 @@ public class PlayerControlador : MonoBehaviour
         podeDarDash = false;
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
-        rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y + (transform.localScale.y * playerData.forcaDashY));
+        rigidBody2D.AddForce(new Vector2(transform.localScale.x, transform.localScale.y + (transform.localScale.y * playerData.forcaDashY)), ForceMode2D.Impulse);
+        //rigidBody2D.velocity = new Vector2(transform.localScale.x, transform.localScale.y + (transform.localScale.y * playerData.forcaDashY));
         trailRenderer.emitting = true;       
         energiaRestante -= playerData.energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
@@ -430,7 +427,8 @@ public class PlayerControlador : MonoBehaviour
         rigidBody2D.gravityScale = 0f;
         playerData.forcaDashX -= 3f;
         playerData.forcaDashY -= 3f;
-        rigidBody2D.velocity = new Vector2(transform.localScale.x + (transform.localScale.x * playerData.forcaDashX), transform.localScale.y + (transform.localScale.y * playerData.forcaDashY));
+        rigidBody2D.AddForce(new Vector2(transform.localScale.x + (transform.localScale.x * playerData.forcaDashX), transform.localScale.y + (transform.localScale.y * playerData.forcaDashY)), ForceMode2D.Impulse);
+        //rigidBody2D.velocity = new Vector2(transform.localScale.x + (transform.localScale.x * playerData.forcaDashX), transform.localScale.y + (transform.localScale.y * playerData.forcaDashY));
         trailRenderer.emitting = true;
         energiaRestante -= playerData.energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
@@ -452,7 +450,8 @@ public class PlayerControlador : MonoBehaviour
         podeDarDash = false;
         estaUsandoDash = true;
         rigidBody2D.gravityScale = 0f;
-        rigidBody2D.velocity = new Vector2(transform.localScale.x + (transform.localScale.x * playerData.forcaDashX), transform.localScale.y);
+        rigidBody2D.AddForce(new Vector2(transform.localScale.x * playerData.forcaDashX, transform.localScale.y), ForceMode2D.Impulse);
+        //rigidBody2D.velocity = new Vector2(transform.localScale.x + (transform.localScale.x * playerData.forcaDashX), transform.localScale.y);
         trailRenderer.emitting = true;
         energiaRestante -= playerData.energiaNecessariaParaDash;
         barraDeEnergia.ajustarBarraDeEnergia(energiaRestante);
