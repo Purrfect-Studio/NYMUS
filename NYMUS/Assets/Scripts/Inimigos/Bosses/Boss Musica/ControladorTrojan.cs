@@ -124,10 +124,10 @@ public class ControladorTrojan : MonoBehaviour
                 podeExecutarAnimacaoAtaque = true;
             }
         }
-        if (vidaBoss.frenesi)
+        /*if (vidaBoss.frenesi)
         {
             cooldownParaAtacar = cooldownAtaqueFrenesi;
-        }
+        }*/
 
         iniciarAtaque();
 

@@ -9,11 +9,15 @@ public class MovimentacaoTrojan : MonoBehaviour
     private int indexPontoMovimento;
     public static bool podeMover;
     public bool copia = false;
+    public float cura;
 
+    private GameObject Trojan;
     private VidaBoss vidaBoss;
+    private Rigidbody2D rigidbody2d;
 
     private Animator animacao;
     private bool podeAtivarAnimacaoSumir;
+    public float tempoParaLevantarCopia;
 
     public float cooldownDefinirNovaPosicao;
     public float cooldownDefinirNovaPosicaoFrenesi;
@@ -23,8 +27,11 @@ public class MovimentacaoTrojan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Trojan = GameObject.FindGameObjectWithTag("Boss");
+        vidaBoss = Trojan.GetComponent<VidaBoss>();
         Physics2D.IgnoreLayerCollision(9, 13, true);
         animacao = GetComponent<Animator>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         if(!copia)
         {
             vidaBoss = GetComponent<VidaBoss>();
@@ -34,6 +41,8 @@ public class MovimentacaoTrojan : MonoBehaviour
         definirPosicaoAlvo();
 
         podeAtivarAnimacaoSumir = true;
+        Physics2D.IgnoreLayerCollision(9, 9, true);
+        tempoParaLevantarCopia = vidaBoss.tempoParaLevantar;
     }
 
     void Update()
@@ -87,6 +96,21 @@ public class MovimentacaoTrojan : MonoBehaviour
     public int definirIndex()
     {
         return Random.Range(0, pontosMovimentacao.Length-1);
+    }
+
+    public void derrubarCopiaTrojan()
+    {
+        vidaBoss.curarTrojan(cura);
+        rigidbody2d.gravityScale = 8f;
+        podeMover = false;
+        StartCoroutine("LevantarCopiaTrojan");
+    }
+
+    IEnumerator LevantarCopiaTrojan()
+    {
+        yield return new WaitForSeconds(tempoParaLevantarCopia);
+        rigidbody2d.gravityScale = 0f;
+        podeMover = true;
     }
 
 }

@@ -76,6 +76,7 @@ public class VidaBoss : MonoBehaviour
         }
     }
 
+
     public void derrubarTrojan()
     {
         //animacao.SetTrigger("Desativar");
@@ -146,6 +147,19 @@ public class VidaBoss : MonoBehaviour
         BossControlador.podeExecutarAcoes = true;
         MovimentacaoBoss.podeMover = true;
         MovimentacaoBoss.seguindoJogador = true;
+    }
+
+    public void curarTrojan(float cura)
+    {
+        if (vidaAtual + cura > vidaMaxima)
+        {
+            vidaAtual = vidaMaxima;
+        }
+        else
+        {
+            vidaAtual += cura;
+        }
+        barraDeVidaBoss.ajustarBarraDeVida(vidaAtual);
     }
 
     public void tomarDano(float dano)
