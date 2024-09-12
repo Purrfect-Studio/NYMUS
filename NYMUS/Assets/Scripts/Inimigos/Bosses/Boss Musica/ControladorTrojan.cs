@@ -8,7 +8,8 @@ public class ControladorTrojan : MonoBehaviour
     public enum ataquesBoss
     {
         Laser,
-        ataque3,
+        invocarInimigo,
+        confusao,
     }
     [Header("Cópias")]
     public GameObject[] copias = new GameObject[2];
@@ -58,6 +59,14 @@ public class ControladorTrojan : MonoBehaviour
     [Header("Laser Espinho")]
     public GameObject projetilLaser;
 
+    [Header("Invocar Inimigo")]
+    public GameObject invocarInimigoObject;
+    private Transform[] pontosInvocarInimigo;
+    public GameObject[] arrayInimigos;
+
+    [Header("Confusao Trojan")]
+    public GameObject projetilConfusaoTrojan;
+
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +76,9 @@ public class ControladorTrojan : MonoBehaviour
         //animacao = GetComponent<Animator>();
 
         ataquesDisponiveis.Add(ataquesBoss.Laser);
-        ataquesDisponiveis.Add(ataquesBoss.ataque3);
+        ataquesDisponiveis.Add(ataquesBoss.invocarInimigo);
+        ataquesDisponiveis.Add(ataquesBoss.confusao);
+
 
         podeExecutarAcoes = false;
         MovimentacaoTrojan.podeMover = false;
@@ -102,6 +113,12 @@ public class ControladorTrojan : MonoBehaviour
         {
             pontosLaserEspinho[i] = pontosLaserEspinhoObject.transform.GetChild(i);
         }
+
+        pontosInvocarInimigo = new Transform[invocarInimigoObject.transform.childCount];
+        for (int i = 0; i < pontosInvocarInimigo.Length; i++)
+        {
+            pontosInvocarInimigo[i] = invocarInimigoObject.transform.GetChild(i);
+        }
     }
 
     // Update is called once per frame
@@ -119,8 +136,8 @@ public class ControladorTrojan : MonoBehaviour
 
             if(cooldownRestanteParaAtacar <= 0)
             {
-                ExecutarAtaque(EscolherAtaqueAtual());
                 cooldownRestanteParaAtacar = cooldownParaAtacar;
+                ExecutarAtaque(EscolherAtaqueAtual());
                 podeExecutarAnimacaoAtaque = true;
             }
         }
@@ -201,21 +218,51 @@ public class ControladorTrojan : MonoBehaviour
         {
             case ataquesBoss.Laser:
                 Debug.Log("Boss está executando Laser");
+                cooldownRestanteParaAtacar += 3f;
                 GameObject projetilLaser = Instantiate(this.projetilLaser);
-                projetilLaser.transform.position = pontosLaser[escolherPontoLaser()].position;
+                int index = escolherPontoLaser();
+                projetilLaser.transform.position = pontosLaser[index].position;
+                if (index == 2 || index == 3)
+                {
+                    projetilLaser.transform.rotation = new Quaternion(0, 0, 180f, 0);
+                }
                 Destroy(projetilLaser.gameObject, 3.5f);
                 break;
 
-            case ataquesBoss.ataque3:
-                Debug.Log("Boss está executando ataque3");
+            case ataquesBoss.invocarInimigo:
+                Debug.Log("Boss está executando invocarInimigo");
+                GameObject invocarInimigo = Instantiate(arrayInimigos[UnityEngine.Random.Range(0, arrayInimigos.Length)]);
+                invocarInimigo.transform.position = pontosInvocarInimigo[UnityEngine.Random.Range(0, pontosInvocarInimigo.Length)].position;
+                break;
 
+            case ataquesBoss.confusao:
+                Debug.Log("Boss está executando confusao");
+                GameObject confusaoTrojan = Instantiate(projetilConfusaoTrojan);
+                confusaoTrojan.transform.position = gameObject.transform.position;
+                Destroy(confusaoTrojan.gameObject, 6f);
                 break;
         }
     }
 
     public ataquesBoss EscolherAtaqueAtual()
     {
-        return ataquesDisponiveis[UnityEngine.Random.Range(0, ataquesDisponiveis.Count)];
+        int index;
+        int i = UnityEngine.Random.Range(0, 11);
+
+        if (i < 7)
+        {
+            index = 0;
+        }
+        else if (i < 10)
+        {
+            index = 1;
+        }
+        else
+        {
+            index = 2;
+        }
+
+        return ataquesDisponiveis[index];
     }
 
     public bool escolherPontosDoLaserEspinho()
@@ -230,7 +277,7 @@ public class ControladorTrojan : MonoBehaviour
 
     public int escolherPontoLaser()
     {
-        return UnityEngine.Random.Range(0, 2);
+        return UnityEngine.Random.Range(0, 4);
     }
 
     public void LigarNovoAtaque(ataquesBoss ataqueNovo)

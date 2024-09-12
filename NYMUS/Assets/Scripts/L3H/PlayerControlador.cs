@@ -78,6 +78,10 @@ public class PlayerControlador : MonoBehaviour
     public Inventario inventario;
     public bool estaInteragindo { get; set; }
 
+    [Header("Efeitos")]
+    public bool confusao;
+    public SpriteRenderer efeitoVisualConfusao;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -110,6 +114,8 @@ public class PlayerControlador : MonoBehaviour
 
         playerData.gravityScale = rigidBody2D.gravityScale;
         SetGravityScale(playerData.gravityScale);
+
+        efeitoVisualConfusao.enabled = false;
     }
 
     private bool estaPlataforma()
@@ -267,20 +273,40 @@ public class PlayerControlador : MonoBehaviour
             rigidBody2D.velocity = new Vector2(direcao.x * playerData.velocidade * Time.deltaTime, rigidBody2D.velocity.y);
         }*/
         //direcao.x != 0
-
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) 
-        {            
-            transform.position += new Vector3(direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
-        }else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (confusao)
         {
-            transform.position -= new Vector3(-direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                transform.position -= new Vector3(direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                transform.position += new Vector3(-direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
+            }
+
+            if (direcao.x < 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao.x > 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+            {
+                Flip();
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                transform.position += new Vector3(direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                transform.position -= new Vector3(-direcao.x * playerData.velocidade * Time.deltaTime, 0, 0);
+            }
+
+            if (direcao.x > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao.x < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
+            {
+                Flip();
+            }
         }
 
-
-        if (direcao.x > 0 && olhandoDireita == false && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false || direcao.x < 0 && olhandoDireita == true && GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false)
-        {
-            Flip();
-        }
+        
         //se estiver olhando a a direita e andando para a esquerda
         //ou olhando para a esquerda e andando para a direita
         //gira o sprite e inverte a variavel olhandoDireita
@@ -319,6 +345,7 @@ public class PlayerControlador : MonoBehaviour
         {
             podeExecutarPuloDuplo = true;
         }
+
         #region Perform Jump
         //We increase the force applied if we are falling
         //This means we'll always feel like we jump the same amount 
@@ -663,6 +690,33 @@ public class PlayerControlador : MonoBehaviour
     {
         ultimoCheckpoint = checkpoint;
     }
+
+    #region Efeitos
+    public void causarConfusao(float duracao)
+    {
+        confusao = true;
+        efeitoVisualConfusao.enabled = true;
+        StartCoroutine(removerConfusao(duracao));
+    }
+
+    IEnumerator removerConfusao(float duracao)
+    {
+        yield return new WaitForSeconds(duracao-2);
+        for(int i = 0; i < 5; i++)
+        {
+            efeitoVisualConfusao.enabled = !efeitoVisualConfusao.enabled;
+            yield return new WaitForSeconds(0.2f);
+        }
+        
+        for(int i = 0; i < 10; i++)
+        {
+            efeitoVisualConfusao.enabled = !efeitoVisualConfusao.enabled;
+            yield return new WaitForSeconds(0.1f);
+        }
+        efeitoVisualConfusao.enabled = false;
+        confusao = false;
+    }
+    #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
