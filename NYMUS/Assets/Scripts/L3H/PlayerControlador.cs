@@ -49,6 +49,7 @@ public class PlayerControlador : MonoBehaviour
 
     [Header("Pulo Duplo")]
     public bool podeExecutarPuloDuplo;
+    public bool resetPulo;
 
     [Header("Energia")]
     public BarraDeEnergia barraDeEnergia;
@@ -62,7 +63,7 @@ public class PlayerControlador : MonoBehaviour
     private float contadorCarregarAtaqueRanged;
 
     [Header("Dash")]
-    private bool podeDarDash = true;
+    [HideInInspector] public bool podeDarDash = true;
     private bool estaUsandoDash;
     private TrailRenderer trailRenderer;
 
@@ -159,6 +160,7 @@ public class PlayerControlador : MonoBehaviour
             {
                 ultimaVezNoChao = playerData.coyoteTime; //if so sets the lastGrounded to coyoteTime
                 podeExecutarPuloDuplo = false;
+                resetPulo = false;
             }
         }
         #endregion
@@ -225,7 +227,7 @@ public class PlayerControlador : MonoBehaviour
             interagir();
             if (GrudarObjeto.jogadorEstaGrudadoEmUmaCaixa == false && estaSubindoEscada == false && estaDescendoEscada == false)
             {
-                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !podeExecutarPuloDuplo)
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !podeExecutarPuloDuplo && !resetPulo)
                 {
                     inputPulo();
                 }
@@ -233,13 +235,21 @@ public class PlayerControlador : MonoBehaviour
                 {
                     inputUpPulo();
                 }
-                if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && podeExecutarPuloDuplo && playerData.possuiPuloDuplo)
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && resetPulo)
+                {
+                    estaPulando = true;
+                    cortarPulo = false;
+                    estaCaindoPulo = false;
+                    ResetPulo();
+                }
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && podeExecutarPuloDuplo && playerData.possuiPuloDuplo && !resetPulo)
                 {
                     estaPulando = true;
                     cortarPulo = false;
                     estaCaindoPulo = false;
                     puloDuplo();
                 }
+
 
                 if (playerData.possuiAtaqueRanged)
                 {
@@ -360,6 +370,29 @@ public class PlayerControlador : MonoBehaviour
 
     private void puloDuplo()
     {
+        if (estaUsandoDash || resetPulo)
+        {
+            return;
+        }
+        //Ensures we can't call Jump multiple times from one press
+        ultimaVezQuePressionouPular = 0;
+        ultimaVezNoChao = 0;
+        cortarPulo = false;
+        podeExecutarPuloDuplo = false;
+        #region Perform Jump
+        //We increase the force applied if we are falling
+        //This means we'll always feel like we jump the same amount 
+        //(setting the player's Y velocity to 0 beforehand will likely work the same, but I find this more elegant :D)
+        float force = playerData.forcaPulo;
+        if (rigidBody2D.velocity.y < 0)
+            force -= rigidBody2D.velocity.y;
+
+        rigidBody2D.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+        #endregion
+    }
+
+    private void ResetPulo()
+    {
         if (estaUsandoDash)
         {
             return;
@@ -368,6 +401,7 @@ public class PlayerControlador : MonoBehaviour
         ultimaVezQuePressionouPular = 0;
         ultimaVezNoChao = 0;
         cortarPulo = false;
+        resetPulo = false;
         podeExecutarPuloDuplo = false;
         #region Perform Jump
         //We increase the force applied if we are falling
