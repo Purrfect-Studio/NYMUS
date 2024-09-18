@@ -15,8 +15,8 @@ public class PlayerControlador : MonoBehaviour
     [Header("Animator")]
     private Animator animacao;
     [Header("SpriteRenderer")]
-    private SpriteRenderer spriteRenderer;
-    private Color corOriginal;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public Color corOriginal;
     [Header("PlayerData")]
     public PlayerData playerData;
 

@@ -20,6 +20,14 @@ public class RefletirJogador : MonoBehaviour
     {
         Vector2 direction = (jogador.transform.position - transform.position).normalized;
         rigidbody2d.AddForce(direction * forca, ForceMode2D.Impulse);
+        StartCoroutine(piscar());
+    }
+
+    IEnumerator piscar()
+    {
+        playerControlador.spriteRenderer.color = new Color(r: (100 / 255f), g: (149 / 255f), b: (237 / 255f));
+        yield return new WaitForSeconds(0.2f);
+        playerControlador.spriteRenderer.color = playerControlador.corOriginal;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
