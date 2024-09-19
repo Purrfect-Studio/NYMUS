@@ -218,7 +218,7 @@ public class ControladorTrojan : MonoBehaviour
         {
             case ataquesBoss.Laser:
                 Debug.Log("Boss está executando Laser");
-                cooldownRestanteParaAtacar += 3f;
+                cooldownRestanteParaAtacar += 3.5f;
                 GameObject projetilLaser = Instantiate(this.projetilLaser);
                 int index = escolherPontoLaser();
                 projetilLaser.transform.position = pontosLaser[index].position;
@@ -226,7 +226,7 @@ public class ControladorTrojan : MonoBehaviour
                 {
                     projetilLaser.transform.rotation = new Quaternion(0, 0, 180f, 0);
                 }
-                Destroy(projetilLaser.gameObject, 3.5f);
+                Destroy(projetilLaser.gameObject, 4f);
                 break;
 
             case ataquesBoss.invocarInimigo:
@@ -253,7 +253,7 @@ public class ControladorTrojan : MonoBehaviour
         {
             index = 0;
         }
-        else if (i < 10)
+        else if (i < 9)
         {
             index = 1;
         }
