@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8934785878955421409}
   - component: {fileID: 3725904167908498558}
   - component: {fileID: 1278436304617676488}
+  - component: {fileID: 454441685823236922}
   - component: {fileID: 7951124927510260733}
   - component: {fileID: 7653808801220544626}
   - component: {fileID: 301490536631643510}
@@ -104,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d13a974d74e72418fa478082cfecbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishing: 1
+  email: 0
 --- !u!114 &8934785878955421409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,9 +143,11 @@ MonoBehaviour:
   animacao: {fileID: 0}
   jogador: {fileID: 0}
   sprite: {fileID: 0}
+  podeDroparItem: 0
   slime: 0
   morcego: 0
   fantasma: 1
+  inimigoProjetilParabola: 0
 --- !u!114 &1278436304617676488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,12 +160,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c1be0161a20c24e86cdb6628162339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider2D: {fileID: 301490536631643510}
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
   jogador: {fileID: 0}
-  danoNoJogador: 0
+  danoNoJogador: 5
+--- !u!114 &454441685823236922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6016666459908853642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90106040cf0641446928951c8e102b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cura: 5
 --- !u!114 &7951124927510260733
 MonoBehaviour:
   m_ObjectHideFlags: 0

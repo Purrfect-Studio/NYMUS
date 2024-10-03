@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Fantasma : MonoBehaviour
 {
+    [Header("Email Bom ou Ruim")]
+    public bool fishing;
+    public bool email;
+
     private bool olhandoParaEsquerda;
     private irAteJogador irAteJogador;
     private VidaInimigo vidaInimigo;
     private GameObject jogador;
     private MoverEntrePontos moverEntrePontos;
     private ProcurarJogador procurarJogador;
+    private InimigoDanoDeColisao danoDeColisao;
+    private CuraCoracao curaCoracao;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +23,24 @@ public class Fantasma : MonoBehaviour
         jogador = GameObject.FindGameObjectWithTag("Jogador");
         vidaInimigo = GetComponent<VidaInimigo>();
         procurarJogador = GetComponent<ProcurarJogador>();
+        danoDeColisao = GetComponent<InimigoDanoDeColisao>();
+        curaCoracao = GetComponent<CuraCoracao>();
         if(GetComponent<MoverEntrePontos>() != null)
         {
             moverEntrePontos = GetComponent<MoverEntrePontos>();
+        }
+        if(fishing)
+        {
+            danoDeColisao.enabled = true;
+            curaCoracao.cura = 0;
+            curaCoracao.enabled = false;
+
+        }
+        if (email)
+        {
+            danoDeColisao.danoNoJogador = 0;
+            danoDeColisao.enabled = false;
+            curaCoracao.enabled = true;
         }
     }
 
@@ -28,7 +49,7 @@ public class Fantasma : MonoBehaviour
     {
         if (vidaInimigo.fantasma == true)
         {
-            if (transform.position.x - jogador.transform.position.x < 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x > 0 && !PlayerControlador.olhandoDireita)
+            if ((transform.position.x - jogador.transform.position.x < 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x > 0 && !PlayerControlador.olhandoDireita) && fishing || (transform.position.x - jogador.transform.position.x > 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x < 0 && !PlayerControlador.olhandoDireita) && email)
             {
                 irAteJogador.enabled = true; 
             }

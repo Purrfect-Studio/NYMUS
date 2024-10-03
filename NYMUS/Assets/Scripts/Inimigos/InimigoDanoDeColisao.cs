@@ -77,7 +77,10 @@ public class InimigoDanoDeColisao : MonoBehaviour
             {
                 VidaJogador.knockbackParaDireita = 1;
             }
-            vidaJogador.tomarDano(danoNoJogador);
+            if(danoNoJogador != 0)
+            {
+                vidaJogador.tomarDano(danoNoJogador);
+            }
         }
     }
 
