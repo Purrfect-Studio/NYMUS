@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   vidaMaxima: 100
-  vidaAtual: 100
+  vidaAtual: -10
   vidaAnteriorL3h: 0
   escudoMaximo: 50
   forcaKnockbackX: 25
@@ -32,7 +32,7 @@ MonoBehaviour:
   possuiPuloDuplo: 0
   energiaMaxima: 5
   velocidadeRegeneracaoDeEnergia: 0.5
-  possuiDash: 0
+  possuiDash: 1
   forcaDashX: 13
   forcaDashY: 8
   energiaNecessariaParaDash: 2
