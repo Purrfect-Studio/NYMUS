@@ -37,7 +37,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6016666459908853642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.57, y: 0.47, z: -0.48782283}
+  m_LocalPosition: {x: 46.9, y: 3, z: -0.48782283}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -167,7 +167,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jogador: {fileID: 0}
-  danoNoJogador: 10
+  danoNoJogador: 30
 --- !u!114 &454441685823236922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +320,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9202287a5ab902047999a5fbee8af624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  falas: []
+  falas:
+  - nomePersonagem: 'De: Caixa de SPAM'
+    chaveTexto: Internet-Fishing2
+    imagemPersonagem: {fileID: -1896015274, guid: aea6e44ae0065c341bf4a807e5fd2371, type: 3}
+  - nomePersonagem: L3h
+    chaveTexto: Internet-RespostaFishing
+    imagemPersonagem: {fileID: 21300000, guid: de6820ed1bd95d94aa9dbc47c38fd2ab, type: 3}
   travado: 0
   dialogoControlador: {fileID: 0}
 --- !u!1 &6166516919374493789
