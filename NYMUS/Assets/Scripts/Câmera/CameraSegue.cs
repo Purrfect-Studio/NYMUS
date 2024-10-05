@@ -16,13 +16,23 @@ public class CameraSegue : MonoBehaviour
     private Vector3 destinoCamera; // Posição de destino da câmera quando não estiver seguindo o jogador
     private bool seguindoJogador = true; // Flag para indicar se a câmera está seguindo o jogador
 
+    [Header("Fase Internet")]
+    public bool TravarY;
+
     private void FixedUpdate()
     {
         if (seguindoJogador)
         {
             Vector3 novaPosicao = jogador.position + new Vector3(0, 0, -10); // Afasta a câmera do cenário
             novaPosicao = Vector3.Lerp(transform.position, novaPosicao, delayTempo); // Delay para a câmera chegar no jogador
-            transform.position = new Vector3(Mathf.Clamp(novaPosicao.x, minX, maxX), novaPosicao.y, novaPosicao.z);
+            if (!TravarY)
+            {
+                transform.position = new Vector3(Mathf.Clamp(novaPosicao.x, minX, maxX), novaPosicao.y, novaPosicao.z);
+            }
+            else
+            {
+                transform.position = new Vector3(Mathf.Clamp(novaPosicao.x, minX, maxX), transform.position.y, novaPosicao.z);
+            }
             // Limita o posicionamento horizontal da câmera
         }
         else
