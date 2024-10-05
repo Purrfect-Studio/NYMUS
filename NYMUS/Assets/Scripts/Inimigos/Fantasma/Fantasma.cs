@@ -16,6 +16,7 @@ public class Fantasma : MonoBehaviour
     private ProcurarJogador procurarJogador;
     private InimigoDanoDeColisao danoDeColisao;
     private CuraCoracao curaCoracao;
+    private Animator animacao;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,8 @@ public class Fantasma : MonoBehaviour
         procurarJogador = GetComponent<ProcurarJogador>();
         danoDeColisao = GetComponent<InimigoDanoDeColisao>();
         curaCoracao = GetComponent<CuraCoracao>();
+        animacao = GetComponent<Animator>();
+
         if(GetComponent<MoverEntrePontos>() != null)
         {
             moverEntrePontos = GetComponent<MoverEntrePontos>();
@@ -51,11 +54,27 @@ public class Fantasma : MonoBehaviour
         {
             if ((transform.position.x - jogador.transform.position.x < 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x > 0 && !PlayerControlador.olhandoDireita) && fishing || (transform.position.x - jogador.transform.position.x > 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x < 0 && !PlayerControlador.olhandoDireita) && email)
             {
-                irAteJogador.enabled = true; 
+                irAteJogador.enabled = true;
+                if(fishing)
+                {
+                    animacao.SetBool("AbrirEmail", false);
+                }
+                if(email)
+                {
+                    animacao.SetBool("AbrirEmail", true);
+                }
             }
             else
             {
                 irAteJogador.enabled = false;
+                if (fishing)
+                {
+                    animacao.SetBool("AbrirEmail", true);
+                }
+                if (email)
+                {
+                    animacao.SetBool("AbrirEmail", false);
+                }
             }
 
             if(moverEntrePontos != null)
