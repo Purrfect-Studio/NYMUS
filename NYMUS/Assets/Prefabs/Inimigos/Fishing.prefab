@@ -19,8 +19,9 @@ GameObject:
   - component: {fileID: 7653808801220544626}
   - component: {fileID: 301490536631643510}
   - component: {fileID: 2702101627126003401}
+  - component: {fileID: 718358850049771978}
   m_Layer: 9
-  m_Name: Fantasma
+  m_Name: Fishing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: -999627611
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -622838323, guid: 111b102ba84a41944988e4ecdc29edd0, type: 3}
+  m_Sprite: {fileID: -1896015274, guid: aea6e44ae0065c341bf4a807e5fd2371, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -255,6 +256,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &718358850049771978
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6016666459908853642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec67d83b572c0744a80d8be03943b71d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6166516919374493789
 GameObject:
   m_ObjectHideFlags: 0
