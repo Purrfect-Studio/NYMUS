@@ -124,7 +124,7 @@ MonoBehaviour:
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
-  raioDetecao: 20
+  raioDetecao: 45
 --- !u!114 &3725904167908498558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90106040cf0641446928951c8e102b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cura: 5
+  cura: 10
 --- !u!114 &7951124927510260733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   procurarJogador: {fileID: 0}
   jogador: {fileID: 0}
-  velocidade: 5
+  velocidade: 12
 --- !u!114 &7653808801220544626
 MonoBehaviour:
   m_ObjectHideFlags: 0
