@@ -1140,50 +1140,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1278436304617676488, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: danoNoJogador
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
       propertyPath: dialogoControlador
       value: 
       objectReference: {fileID: 1496983158}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.data[0].chaveTexto
-      value: Internet-Fishing2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.data[1].chaveTexto
-      value: Internet-RespostaFishing
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.data[0].nomePersonagem
-      value: 'De: Caixa de SPAM'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.data[1].nomePersonagem
-      value: L3h
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.data[0].imagemPersonagem
-      value: 
-      objectReference: {fileID: -1896015274, guid: aea6e44ae0065c341bf4a807e5fd2371, type: 3}
-    - target: {fileID: 2677117908976555866, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: falas.Array.data[1].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: de6820ed1bd95d94aa9dbc47c38fd2ab, type: 3}
-    - target: {fileID: 3605264103632169970, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 46.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605264103632169970, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6166516919374493789, guid: 6fb26f4f8db117746a080be847d6262b, type: 3}
       propertyPath: m_Name
       value: Fishing (6)
