@@ -11,11 +11,13 @@ public class MovimentacaoTrojan : MonoBehaviour
     public bool copia = false;
     public float cura;
 
+    public ControladorTrojan controladorTrojan;
     private GameObject Trojan;
     private VidaBoss vidaBoss;
     private Rigidbody2D rigidbody2d;
 
     private Animator animacao;
+    public static bool executarAnimacaoAtaqueCopia;
     private bool podeAtivarAnimacaoSumir;
     public float tempoParaLevantarCopia;
 
@@ -78,6 +80,11 @@ public class MovimentacaoTrojan : MonoBehaviour
             {
                 cooldownDefinirNovaPosicao = cooldownDefinirNovaPosicaoFrenesi;
             }
+        }
+        if (copia && executarAnimacaoAtaqueCopia)
+        {
+            executarAnimacaoAtaqueCopia = false;
+            animacao.SetTrigger("Atacar");
         }
     }
 

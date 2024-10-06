@@ -38,7 +38,7 @@ public class ControladorTrojan : MonoBehaviour
     [Header("Variaveis de controle")]
     public float delayParaIniciarAcoes;
     public static bool podeExecutarAcoes;
-    private bool podeExecutarAnimacaoAtaque;
+    [HideInInspector] public bool podeExecutarAnimacaoAtaque;
     
     [Header("Variaver de apoio")]
     private List<ataquesBoss> ataquesDisponiveis = new List<ataquesBoss>();
@@ -73,7 +73,7 @@ public class ControladorTrojan : MonoBehaviour
     {
         vidaBoss = GetComponent<VidaBoss>();
         movimentacaoTrojan = GetComponent<MovimentacaoTrojan>();
-        //animacao = GetComponent<Animator>();
+        animacao = GetComponent<Animator>();
 
         ataquesDisponiveis.Add(ataquesBoss.Laser);
         ataquesDisponiveis.Add(ataquesBoss.invocarInimigo);
@@ -82,7 +82,7 @@ public class ControladorTrojan : MonoBehaviour
 
         podeExecutarAcoes = false;
         MovimentacaoTrojan.podeMover = false;
-        podeExecutarAnimacaoAtaque = true;
+        podeExecutarAnimacaoAtaque = false;
         contadorEspinhosAtivados = 0;
         quantidadeLaserEspinhoAtivados = 0;
 
@@ -128,19 +128,14 @@ public class ControladorTrojan : MonoBehaviour
         {
             cooldownRestanteParaAtacar -= Time.deltaTime;
 
-            if(cooldownRestanteParaAtacar <= 0.6f && podeExecutarAnimacaoAtaque)
-            {
-                podeExecutarAnimacaoAtaque = false;
-                //animacao.setTrigger("Atacar");
-            }
-
             if(cooldownRestanteParaAtacar <= 0)
             {
-                cooldownRestanteParaAtacar = cooldownParaAtacar;
-                ExecutarAtaque(EscolherAtaqueAtual());
                 podeExecutarAnimacaoAtaque = true;
+                cooldownRestanteParaAtacar = cooldownParaAtacar;
+                ExecutarAtaque(EscolherAtaqueAtual());              
             }
         }
+
         /*if (vidaBoss.frenesi)
         {
             cooldownParaAtacar = cooldownAtaqueFrenesi;
@@ -170,7 +165,16 @@ public class ControladorTrojan : MonoBehaviour
             }
         }
 
-        if(podeAtivarCopia1 && vidaBoss.vidaAtual <= vidaBoss.vidaMaxima / 2)
+        if (podeExecutarAnimacaoAtaque)
+        {
+            MovimentacaoTrojan.podeMover = false;
+            podeExecutarAnimacaoAtaque = false;
+            MovimentacaoTrojan.executarAnimacaoAtaqueCopia = true;
+            animacao.SetTrigger("Atacar");
+            StartCoroutine("voltarMovimentacao");
+        }
+
+        if (podeAtivarCopia1 && vidaBoss.vidaAtual <= vidaBoss.vidaMaxima / 2)
         {
             podeAtivarCopia1 = false;
             copias[0].SetActive(true);
@@ -180,6 +184,12 @@ public class ControladorTrojan : MonoBehaviour
             podeAtivarCopia2 = false;
             copias[1].SetActive(true);
         }
+    }
+
+    IEnumerator voltarMovimentacao()
+    {
+        yield return new WaitForSeconds(0.2f);
+        MovimentacaoTrojan.podeMover = true;
     }
 
     void iniciarAtaque()
