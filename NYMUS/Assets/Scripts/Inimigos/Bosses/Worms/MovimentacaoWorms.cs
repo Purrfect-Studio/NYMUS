@@ -37,7 +37,7 @@ public class MovimentacaoWorms : MonoBehaviour
         if (seguindoJogador)
         {
             Vector3 novaPosicao = jogador.transform.position; // Afasta a câmera do cenário
-            if (transform.position.x - jogador.transform.position.x > 10 || transform.position.x - jogador.transform.position.x < -10)
+            if (transform.position.x - jogador.transform.position.x > 15 || transform.position.x - jogador.transform.position.x < -15)
             {
                 novaPosicao = Vector3.Lerp(transform.position, novaPosicao, delayTempo); // Delay para a câmera chegar no jogador
                 transform.position = new Vector3(Mathf.Clamp(novaPosicao.x, minX, maxX), transform.position.y, novaPosicao.z);
