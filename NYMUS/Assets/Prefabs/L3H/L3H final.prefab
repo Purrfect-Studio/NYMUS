@@ -381,6 +381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  corOriginal: {r: 0, g: 0, b: 0, a: 0}
   playerData: {fileID: 11400000, guid: 5e2b1b99a3f2cad4cb352abb1047d37f, type: 2}
   direcao: {x: 0, y: 0}
   layerChao:
@@ -393,15 +395,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   _groundCheckPoint: {fileID: 145667854500756015}
-  _groundCheckSize: {x: 1.8, y: 3.3}
+  _groundCheckSize: {x: 1.44, y: 3.3}
   cortarPulo: 0
   pontoDeAtaque: {fileID: 6861670330181198320}
   podeExecutarPuloDuplo: 0
+  resetPulo: 0
   barraDeEnergia: {fileID: 0}
   projetilL3h:
   - {fileID: 6104821924723603345, guid: 37b73782f531da648afc75afa16b2ae4, type: 3}
   - {fileID: 6104821924723603345, guid: 1a7b98ec44d620e4e843cb24986dae2e, type: 3}
   - {fileID: 6104821924723603345, guid: cd64f999e34cfe24f850236b31aeb5ca, type: 3}
+  podeDarDash: 1
   estaSubindoEscada: 0
   estaDescendoEscada: 0
   podeInteragirEscada: 0
@@ -494,7 +498,7 @@ MonoBehaviour:
   - {x: 0.625, y: -0.625, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 43556
+  m_InstanceId: 105208
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.625, y: 0.625, z: 0}
