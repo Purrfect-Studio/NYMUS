@@ -531,6 +531,7 @@ public class PlayerControlador : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Q) && energiaRestante > 0)
         {
+            animacao.SetBool("estaAtacandoRanged", true);
             podeRestaurarEnergia = false;
             contadorCarregarAtaqueRanged += Time.deltaTime;
             if (contadorCarregarAtaqueRanged >= 1)
@@ -554,6 +555,8 @@ public class PlayerControlador : MonoBehaviour
             {
                 playerData.velocidadeAtaqueRanged *= -1;
             }
+
+            animacao.SetBool("estaAtacandoRanged", false);
 
             if (definirTipoTiro == 2)
             {
