@@ -12,6 +12,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Escudo")]
     public float escudoMaximo;
+    public float escudoPermanente;
 
     [Header("Knockback")]
     public float forcaKnockbackX;

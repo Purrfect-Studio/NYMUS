@@ -752,6 +752,25 @@ public class PlayerControlador : MonoBehaviour
     }
     #endregion
 
+    public void receberPuloDuplo()
+    {
+        playerData.possuiPuloDuplo = true;
+    }
+
+    public void aumentarDano(float novoDano)
+    {
+        playerData.dano += novoDano;
+    }
+
+    public void receberEscudoPermanente(float novoEscudoPermanente)
+    {
+        playerData.escudoPermanente += novoEscudoPermanente;
+        VidaJogador vida = GetComponent<VidaJogador>();
+        vida.barraDeEscudo.ajustarBarraDeEscudo(novoEscudoPermanente);
+        vida.receberEscudo(novoEscudoPermanente);
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.tag == "PlataformaMove")

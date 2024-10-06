@@ -45,12 +45,19 @@ public class VidaJogador : MonoBehaviour
         estaMorto = false;       
         invulneravel = false;   //Desativa a invulnerabilidade
         barraDeEscudo.definirEscudoMaximo(playerData.escudoMaximo);
+        
         sprite = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         playerControlador = GetComponent<PlayerControlador>();
 
         corRoxo = new Color (r: (138 / 255f), g: (43 / 255f), b: (226 / 255f));
         corOriginal = sprite.color;
+
+        if(playerData.escudoPermanente != 0)
+        {
+            barraDeEscudo.ajustarBarraDeEscudo(playerData.escudoPermanente);
+            escudoAtual = playerData.escudoPermanente;
+        }
     }
 
     public void curar(float cura)
@@ -198,6 +205,8 @@ public class VidaJogador : MonoBehaviour
         {
             playerData.vidaAtual = playerData.vidaMaxima;
             barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
+            escudoAtual = playerData.escudoPermanente;
+            barraDeEscudo.ajustarBarraDeEscudo(playerData.escudoPermanente);
             removerRevive();
         }
     }
@@ -214,6 +223,8 @@ public class VidaJogador : MonoBehaviour
             playerData.vidaAtual = playerData.vidaMaxima;
             estaMorto = false;
             barraDeVida.ajustarBarraDeVida(playerData.vidaAtual);
+            escudoAtual = playerData.escudoPermanente;
+            barraDeEscudo.ajustarBarraDeEscudo(playerData.escudoPermanente);
         }
         else
         {
