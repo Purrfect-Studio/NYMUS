@@ -128,7 +128,7 @@ public class VidaInimigo : MonoBehaviour
     IEnumerator morreu()
     {
         podeMover = false; 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         if (podeDroparItem)
         {
             ControladorDroparItens.Instancia.instanciarDrop(transform.position.x, transform.position.y, transform.position.z);
