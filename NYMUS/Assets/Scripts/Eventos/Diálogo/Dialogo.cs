@@ -22,6 +22,10 @@ public class Dialogo : MonoBehaviour
     {
         travado = true;
     }
+    public void DesTravarDialogo()
+    {
+        travado = false;
+    }
 
     public void Falar()
     {
