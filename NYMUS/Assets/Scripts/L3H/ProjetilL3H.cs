@@ -37,7 +37,7 @@ public class ProjetilL3H : MonoBehaviour
                 vidaBoss.tomarDano(dano);
             }
         }
-        if(collision.gameObject.CompareTag("Chao") || collision.gameObject.CompareTag("Inimigo") || collision.gameObject.CompareTag("Boss"))
+        if(!collision.CompareTag("Plataforma"))
         {
             Destroy(gameObject);
         }
