@@ -167,11 +167,9 @@ public class ControladorTrojan : MonoBehaviour
 
         if (podeExecutarAnimacaoAtaque)
         {
-            MovimentacaoTrojan.podeMover = false;
             podeExecutarAnimacaoAtaque = false;
             MovimentacaoTrojan.executarAnimacaoAtaqueCopia = true;
             animacao.SetTrigger("Atacar");
-            StartCoroutine("voltarMovimentacao");
         }
 
         if (podeAtivarCopia1 && vidaBoss.vidaAtual <= vidaBoss.vidaMaxima / 2)
@@ -184,12 +182,6 @@ public class ControladorTrojan : MonoBehaviour
             podeAtivarCopia2 = false;
             copias[1].SetActive(true);
         }
-    }
-
-    IEnumerator voltarMovimentacao()
-    {
-        yield return new WaitForSeconds(0.2f);
-        MovimentacaoTrojan.podeMover = true;
     }
 
     void iniciarAtaque()
