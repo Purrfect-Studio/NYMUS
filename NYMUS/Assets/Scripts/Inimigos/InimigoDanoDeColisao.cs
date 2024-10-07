@@ -10,11 +10,14 @@ public class InimigoDanoDeColisao : MonoBehaviour
     public GameObject jogador;
     public float danoNoJogador;
     private VidaJogador vidaJogador;
-    private VidaInimigo vidaInimigo;
+    public VidaInimigo vidaInimigo;
 
     private void Start()
     {
-        vidaInimigo = GetComponent<VidaInimigo>();
+        if(vidaInimigo == null)
+        {
+            vidaInimigo = GetComponent<VidaInimigo>();
+        }
         jogador = GameObject.FindWithTag("Jogador");
         if(vidaInimigo != null)
         {

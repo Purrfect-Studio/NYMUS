@@ -170,10 +170,12 @@ MonoBehaviour:
   animacao: {fileID: 2769989527036415935}
   jogador: {fileID: 0}
   sprite: {fileID: 2769989527036415873}
+  podeDroparItem: 0
   slime: 1
   morcego: 0
   fantasma: 0
   inimigoProjetilParabola: 0
+  touro: 0
 --- !u!114 &7137310785737719722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,12 +239,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c1be0161a20c24e86cdb6628162339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider2D: {fileID: 2769989527036415931}
   layerJogador:
     serializedVersion: 2
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 0
+  vidaInimigo: {fileID: 0}
 --- !u!58 &2490377653966570968
 CircleCollider2D:
   m_ObjectHideFlags: 0
