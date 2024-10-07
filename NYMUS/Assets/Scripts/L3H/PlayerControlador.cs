@@ -694,9 +694,9 @@ public class PlayerControlador : MonoBehaviour
         estaPulando = false; // Impede que o jogador pule
         rigidBody2D.velocity = Vector2.zero; // Zera a velocidade do jogador
         rigidBody2D.gravityScale = 50;
-        animacao.SetBool("estaPulando", false); // Desativa a animação de pulo
-        animacao.SetBool("estaAndando", false); // Desativa a animação de ataque
-        animacao.SetBool("tomarDano", false); // Desativa a animação de ataque
+        animacao.SetBool("estaPulando", false); // Desativa a animaï¿½ï¿½o de pulo
+        animacao.SetBool("estaAndando", false); // Desativa a animaï¿½ï¿½o de ataque
+        animacao.SetBool("tomarDano", false); // Desativa a animaï¿½ï¿½o de ataque
         animacao.Play("Parado");
     }
 
@@ -763,6 +763,10 @@ public class PlayerControlador : MonoBehaviour
     public void aumentarDano(float novoDano)
     {
         playerData.dano += novoDano;
+    }
+    public void receberAtaqueRanged()
+    {
+        playerData.possuiAtaqueRanged = true;
     }
 
     public void receberEscudoPermanente(float novoEscudoPermanente)

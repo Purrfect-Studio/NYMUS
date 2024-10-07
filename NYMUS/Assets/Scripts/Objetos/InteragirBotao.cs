@@ -12,6 +12,7 @@ public class InteragirBotao : MonoBehaviour
     [SerializeField] private UnityEvent botaoApertado;
 
     public bool podeExecutar;
+    public bool travado;
 
     [Header("Tecla")]
     public GameObject tecla;
@@ -32,7 +33,7 @@ public class InteragirBotao : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jogador.estaInteragindo && podeExecutar)
+        if (jogador.estaInteragindo && podeExecutar && !travado)
         {
             botaoApertado.Invoke();
         }
@@ -49,7 +50,7 @@ public class InteragirBotao : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) //Entrou no range de interação
+    private void OnTriggerStay2D(Collider2D collision) //Entrou no range de interaï¿½ï¿½o
     {
         if (collision.gameObject.CompareTag("Jogador"))
         {
@@ -57,7 +58,7 @@ public class InteragirBotao : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) //Saiu do range de interação
+    private void OnTriggerExit2D(Collider2D collision) //Saiu do range de interaï¿½ï¿½o
     {
         if (collision.gameObject.CompareTag("Jogador"))
         {
@@ -68,4 +69,13 @@ public class InteragirBotao : MonoBehaviour
             }
         }
     }
+    public void destravar()
+    {
+        travado = false;
+    }
+    public void travar()
+    {
+        travado = true;
+    }
+    
 }
