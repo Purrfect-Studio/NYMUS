@@ -39,7 +39,6 @@ public class VidaInimigo : MonoBehaviour
     public bool fantasma;
     public bool inimigoProjetilParabola;
     public bool touro;
-    public bool alvo;
 
     // Start is called before the first frame update
     void Start()
@@ -83,10 +82,9 @@ public class VidaInimigo : MonoBehaviour
         Debug.Log("Tomei dano" + dano);
         vidaAtual -= dano;
         StartCoroutine("Piscar");
-        if (vidaAtual <= 0 && !alvo)
+        if (vidaAtual <= 0)
         {
             StartCoroutine("morreu");
-            knockBack.PlayKnockback();
         }
         else
         {
