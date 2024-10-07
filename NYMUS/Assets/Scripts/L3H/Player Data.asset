@@ -30,7 +30,7 @@ MonoBehaviour:
   velocidadeMaximaCaindo: 40
   gravityStrength: -30
   gravityScale: 5
-  possuiPuloDuplo: 0
+  possuiPuloDuplo: 1
   energiaMaxima: 5
   velocidadeRegeneracaoDeEnergia: 0.5
   possuiDash: 1
@@ -41,6 +41,6 @@ MonoBehaviour:
   cooldownDash: 1.5
   dano: 5
   possuiAtaqueRanged: 1
-  velocidadeAtaqueRanged: 15
+  velocidadeAtaqueRanged: -15
   duracaoAtaqueRanged: 3
   velocidadeEscada: 13
