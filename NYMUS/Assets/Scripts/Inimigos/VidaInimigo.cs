@@ -37,7 +37,8 @@ public class VidaInimigo : MonoBehaviour
     public bool slime;
     public bool morcego;
     public bool fantasma;
-    public bool inimigoProjetilParabola;    
+    public bool inimigoProjetilParabola;
+    public bool touro;
 
     // Start is called before the first frame update
     void Start()

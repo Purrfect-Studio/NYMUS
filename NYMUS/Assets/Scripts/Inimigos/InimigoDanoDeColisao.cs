@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class InimigoDanoDeColisao : MonoBehaviour
 {
-    //[Header("Collider 2D")]
-    //public Collider2D Collider2D;
-
     [Header("Jogador")]
     [SerializeField] private LayerMask layerJogador;
     public GameObject jogador;
@@ -42,7 +39,7 @@ public class InimigoDanoDeColisao : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (colisaoJogador(collision))
+        if (colisaoJogador(collision) && !vidaInimigo.touro)
         {
             CausarDanoNoJogador(collision);
         }

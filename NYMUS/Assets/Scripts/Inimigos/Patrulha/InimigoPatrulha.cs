@@ -33,13 +33,14 @@ public class InimigoPatrulha : MonoBehaviour
 
     void Update()
     {
-        if (VidaInimigo.podeMover == true)
-        {
+
+        //if (VidaInimigo.podeMover == true)
+        //{
             DetectarColisoesParede();
             DetectarColisoesChao();
             //DetectarColisoesInimigo();
             Mover();
-        }
+        //}
         if (!olhandoParaEsquerda && direcao == 1 || olhandoParaEsquerda && direcao == -1)
         {
             flipSprite();
