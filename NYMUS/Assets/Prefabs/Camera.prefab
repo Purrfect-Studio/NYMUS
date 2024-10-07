@@ -101,7 +101,9 @@ MonoBehaviour:
   jogador: {fileID: 0}
   minX: -60
   maxX: 500
-  delayTempo: 0.1
+  delayTempo: 0.05
+  velocidadeDeIrPraPontos: 0
+  TravarY: 0
 --- !u!114 &2694224860925114708
 MonoBehaviour:
   m_ObjectHideFlags: 0
