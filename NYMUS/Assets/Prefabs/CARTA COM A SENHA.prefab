@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565111901736564971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -129.69023, y: -3.610195, z: 0}
-  m_LocalScale: {x: 0.12033983, y: 0.12033983, z: 0.12033983}
+  m_LocalPosition: {x: -0.01, y: 0.85, z: 0}
+  m_LocalScale: {x: 1.1648535, y: 1.1648535, z: 1.1648535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 565111901918562769}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1539475813
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1319693872, guid: 1ed5ea6f3d9f13546877f39ad252b385, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 565111901918562771}
   - component: {fileID: 565111901918562770}
   - component: {fileID: 565111901918562797}
+  - component: {fileID: 3353824739636806859}
   m_Layer: 0
   m_Name: CARTA COM A SENHA
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565111901918562796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1077.7, y: 30, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.3098, y: 8.3098, z: 8.3098}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -182,7 +183,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -212,8 +213,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   falas:
   - nomePersonagem: 
-    chaveTexto: 
-    imagemPersonagem: {fileID: 0}
+    chaveTexto: FaseDocumentos34
+    imagemPersonagem: {fileID: 1817976467, guid: 0406a08cce4f5634db9e07b25d298e9d, type: 3}
+  - nomePersonagem: L3h
+    chaveTexto: FaseDocumentos35
+    imagemPersonagem: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
+  - nomePersonagem: NYMUS
+    chaveTexto: FaseDocumentos36
+    imagemPersonagem: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+  - nomePersonagem: NYMUS
+    chaveTexto: FaseDocumentos37
+    imagemPersonagem: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+  - nomePersonagem: NYMUS
+    chaveTexto: FaseDocumentos38
+    imagemPersonagem: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+  - nomePersonagem: NYMUS
+    chaveTexto: FaseDocumentos39
+    imagemPersonagem: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
   travado: 0
   dialogoControlador: {fileID: 3070303048233010457, guid: d165c0829f578814896bab7dcb71bd4e, type: 3}
 --- !u!114 &565111901918562797
@@ -244,18 +260,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1845264207929296262, guid: 9f7f945adb9d9f047aa4e99101b10a4c, type: 3}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 3353824739636806859}
+        m_TargetAssemblyTypeName: carta, Assembly-CSharp
+        m_MethodName: metodo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   podeExecutar: 0
   travado: 0
   tecla: {fileID: 565111901736564971}
+--- !u!114 &3353824739636806859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565111901918562796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a867d3bf0f8794783af7e36996fabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texto: {fileID: 0}
