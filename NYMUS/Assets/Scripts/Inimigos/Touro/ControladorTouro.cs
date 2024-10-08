@@ -22,6 +22,7 @@ public class ControladorTouro : MonoBehaviour
     private int direcaoArrancada;
     public bool podeArrancada;
     public float tempoAtordoado;
+    private float cooldownArrancada;
 
     [Header("Layer do Jogador")]
     public LayerMask layerJogador; // Layer do jogador
@@ -56,7 +57,18 @@ public class ControladorTouro : MonoBehaviour
             DetectarColisoesParede();
         }
 
-        DetectarJogador();
+        if(cooldownArrancada > -0.5f)
+        {
+            cooldownArrancada -=Time.deltaTime;
+        }
+        if(cooldownArrancada <= 0 && !podeArrancada)
+        {
+            DetectarJogador();
+        }
+            
+        
+
+        
     }
 
     public void arrancada()
@@ -85,6 +97,7 @@ public class ControladorTouro : MonoBehaviour
         yield return new WaitForSeconds(tempoAtordoado);
         animacao.SetBool("Atordoado", false);
         patrulha.enabled = true;
+        cooldownArrancada = 0.5f;
     }
 
     private void OnDrawGizmos()
@@ -95,7 +108,7 @@ public class ControladorTouro : MonoBehaviour
 
     public void DetectarJogador()
     {
-        jogadorDireita = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(20, 0), 40f, layerJogador);
+        jogadorDireita = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(20, 0), 20f, layerJogador);
         Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(20, 0), Color.blue);
 
         if (jogadorDireita.collider != null && direcaoArrancada == 1 && !podeArrancada)
@@ -103,7 +116,7 @@ public class ControladorTouro : MonoBehaviour
             enchergou = true;
         }
 
-        jogadorEsquerda = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(-20, 0), 40f, layerJogador);
+        jogadorEsquerda = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(-20, 0), 20f, layerJogador);
         Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(-20, 0), Color.blue);
 
         if (jogadorEsquerda.collider != null && direcaoArrancada == -1 && !podeArrancada)
