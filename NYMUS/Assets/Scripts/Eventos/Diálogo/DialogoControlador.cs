@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Adicionado para TextMeshPro
+using TMPro;
+using System; // Adicionado para TextMeshPro
 
 public class DialogoControlador : MonoBehaviour
 {
     [Header("GameObject do Dialogo")]
-    public GameObject dialogoObj; // Objeto do diálogo na interface
+    public GameObject dialogoObj; // Objeto do diï¿½logo na interface
     [Header("Imagem")]
-    public Image fotoPersonagem; // Imagem do personagem que está falando
+    public Image fotoPersonagem; // Imagem do personagem que estï¿½ falando
     [Header("Texto do Dialogo")]
-    public TextMeshProUGUI textoFala; // Texto do diálogo
+    public TextMeshProUGUI textoFala; // Texto do diï¿½logo
     [Header("Nome do personagem")]
-    public TextMeshProUGUI nomePersonagem; // Nome do personagem que está falando
+    public TextMeshProUGUI nomePersonagem; // Nome do personagem que estï¿½ falando
 
     [Header("Configuracoes")]
     public float velocidadeDigitacao; // Velocidade que as letras do texto aparecem
-    private List<Fala> falas; // Lista de falas que compõem o diálogo
-    private int index; // Índice da fala atual
+    private List<Fala> falas; // Lista de falas que compï¿½em o diï¿½logo
+    private int index; // ï¿½ndice da fala atual
 
     [Header("Para Cutscene")]
     public bool acabouDialogo = false;
 
-    // Flag para verificar se uma fala está sendo escrita no momento
+    // Flag para verificar se uma fala estï¿½ sendo escrita no momento
     private bool escrevendoFala;
-    // Variável para armazenar a corrotina ativa
+    // Variï¿½vel para armazenar a corrotina ativa
     private Coroutine corrotinaEscrever;
     private PlayerControlador L3h;
 
@@ -42,7 +43,7 @@ public class DialogoControlador : MonoBehaviour
             L3h = FindObjectOfType<PlayerControlador>();
             if (L3h == null)
             {
-                throw new System.Exception("PlayerControlador não encontrado na cena.");
+                throw new System.Exception("PlayerControlador nï¿½o encontrado na cena.");
             }
         }
         catch (System.Exception ex)
@@ -55,11 +56,11 @@ public class DialogoControlador : MonoBehaviour
     {
         if (dialogoObj == null || textoFala == null || nomePersonagem == null || fotoPersonagem == null)
         {
-            Debug.LogError("Algum componente não foi atribuído no inspector.");
+            Debug.LogError("Algum componente nï¿½o foi atribuï¿½do no inspector.");
             return;
         }
 
-        // Inicializa o diálogo e bloqueia a movimentação do personagem
+        // Inicializa o diï¿½logo e bloqueia a movimentaï¿½ï¿½o do personagem
         dialogoObj.SetActive(true);
         this.falas = falas;
         index = 0;
@@ -77,7 +78,7 @@ public class DialogoControlador : MonoBehaviour
     {
         if (fala == null)
         {
-            Debug.LogError("Fala está nula.");
+            Debug.LogError("Fala estï¿½ nula.");
             return;
         }
 
@@ -130,14 +131,14 @@ public class DialogoControlador : MonoBehaviour
 
     private void ProximaFala()
     {
-        // Passa para a próxima fala
+        // Passa para a prï¿½xima fala
         index++;
         corrotinaEscrever = StartCoroutine(EscreverFala());
     }
 
     public void PularDialogo()
     {
-        // Pula todo o diálogo e mostra a última fala
+        // Pula todo o diï¿½logo e mostra a ï¿½ltima fala
         if (corrotinaEscrever != null)
         {
             StopCoroutine(corrotinaEscrever);
@@ -154,19 +155,20 @@ public class DialogoControlador : MonoBehaviour
 
     private void FinalizarDialogo()
     {
-        // Limpa o diálogo e libera a movimentação do personagem
+        // Limpa o diï¿½logo e libera a movimentaï¿½ï¿½o do personagem
         acabouDialogo = true;
         dialogoObj.SetActive(false);
 
         if (L3h != null)
         {
             L3h.LiberarMovimentacao();
+            Debug.Log("Liberando movi");
         }
     }
 
     private IEnumerator EsperarEFinalizar()
     {
-        // Espera um curto período antes de finalizar o diálogo
+        // Espera um curto perï¿½odo antes de finalizar o diï¿½logo
         yield return new WaitForSeconds(0.1f);
         FinalizarDialogo();
     }

@@ -690,6 +690,7 @@ public class PlayerControlador : MonoBehaviour
 
     public void TravarMovimentacao()
     {
+        Debug.Log("Travando Movimentação");
         VidaJogador.invulneravel = true;
         podeMover = false; // Impede que o jogador se mova
         estaPulando = false; // Impede que o jogador pule
@@ -699,10 +700,12 @@ public class PlayerControlador : MonoBehaviour
         animacao.SetBool("estaAndando", false); // Desativa a anima��o de ataque
         animacao.SetBool("tomarDano", false); // Desativa a anima��o de ataque
         animacao.Play("Parado");
+
     }
 
     public void LiberarMovimentacao()
     {
+        Debug.Log("Soltando Movimentação");
         podeMover = true; // Permite que o jogador se mova novamente
         rigidBody2D.gravityScale = playerData.gravityScale;
         VidaJogador.invulneravel = false;
@@ -714,8 +717,7 @@ public class PlayerControlador : MonoBehaviour
     }
 
     IEnumerator travarPorUmTempo(float tempo)
-    {
-
+    {   
         podeMover = false;
         VidaJogador.invulneravel = true;
         rigidBody2D.velocity = Vector2.zero; // Zera a velocidade do jogador
