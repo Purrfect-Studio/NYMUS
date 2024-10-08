@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 5607170135697275839}
     - target: {fileID: 4377306495457457538, guid: d165c0829f578814896bab7dcb71bd4e, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4377306495457457538, guid: d165c0829f578814896bab7dcb71bd4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -201,6 +201,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d165c0829f578814896bab7dcb71bd4e, type: 3}
+--- !u!114 &86393115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4617929488516016742, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
+  m_PrefabInstance: {fileID: 2500381085832542474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7316eb28dd06fe043934c86c27ff73bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &187450078
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &187450079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -502,325 +513,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &352178812
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: dialogoControlador
-      value: 
-      objectReference: {fileID: 1343576797}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[0].texto
-      value: "-Este \xE9 um acesso antecipado de NYMUS. Esta demonstra\xE7\xE3o cont\xE9m
-        imagens e v\xEDdeos que poodem ser prejudiciais para pessoas com epilepsia
-        fotossens\xEDvel."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[1].texto
-      value: "-O jogo come\xE7a a seguir."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[2].texto
-      value: "-\xC9 assim mesmo?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[3].texto
-      value: "-Isso mesmo. J\xE1 estamos quase l\xE1."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[4].texto
-      value: "-Geralmente n\xE3o \xE9 assim que se remove v\xEDrus do computador,
-        mas voltaremos ao m\xE9todo arcaico."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[5].texto
-      value: "-Vamos remov\xEA-lo manualmente. De forma literal mesmo."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[6].texto
-      value: "-Estou me sentindo meio esquisito. Ent\xE3o \xE9 assim que \xE9 entrar
-        em um computador?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[7].texto
-      value: '-Exatamente. E vamos direto para o nosso objetivo: a pasta de jogos.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[8].texto
-      value: "-Vamos ter que verificar qual jogo est\xE1 com o problema primeiro.
-        E ent\xE3o vamos ver como retirar o v\xEDrus."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[9].texto
-      value: "-Eu n\xE3o devia ter baixado aquele jogo por um site n\xE3o confi\xE1vel
-        . Tava todo mundo jogando e eu so queria fazer parte disso tamb\xE9m..."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[10].texto
-      value: "-Isso acontece. Mas existem consequ\xEAncias. Parece que alguns outros
-        jogos come\xE7aram a dar problema tamb\xE9m ent\xE3o precisamos investigar."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[11].texto
-      value: "-Mas n\xE3o se preocuppe com isso. Eu estarei te vendo daqui e estarei
-        com voc\xEA te ajudando."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[12].texto
-      value: "-Talvez n\xE3o v\xE1 ser uma tarefa t\xE3o dif\xEDcil afinal n\xE9..."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[13].texto
-      value: "-Vamos l\xE1. Estou pronto."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[0].chaveTexto
-      value: cutsceneInicial1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[1].chaveTexto
-      value: cutsceneInicial2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[2].chaveTexto
-      value: cutsceneInicial100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[3].chaveTexto
-      value: cutsceneInicial3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[4].chaveTexto
-      value: cutsceneInicial4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[5].chaveTexto
-      value: cutsceneInicial5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[6].chaveTexto
-      value: cutsceneInicial6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[7].chaveTexto
-      value: cutsceneInicial7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[8].chaveTexto
-      value: cutsceneInicial8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[9].chaveTexto
-      value: cutsceneInicial9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[10].chaveTexto
-      value: cutsceneInicial10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[11].chaveTexto
-      value: cutsceneInicial11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[12].chaveTexto
-      value: cutsceneInicial12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[13].chaveTexto
-      value: cutsceneInicial13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[14].chaveTexto
-      value: cutsceneInicial14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[0].nomePersonagem
-      value: ALERTA!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[1].nomePersonagem
-      value: ALERTA!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[2].nomePersonagem
-      value: Sistema
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[3].nomePersonagem
-      value: L3h
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[4].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[5].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[6].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[7].nomePersonagem
-      value: L3h
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[8].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[9].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[10].nomePersonagem
-      value: L3h
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[11].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[12].nomePersonagem
-      value: NYMUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[13].nomePersonagem
-      value: L3h
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[14].nomePersonagem
-      value: L3h
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[0].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 6b5cbd266b8b69d499619f4545c14716, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[1].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 6b5cbd266b8b69d499619f4545c14716, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[2].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: f7a1c7b7c5fb8c341b09bf231ca1fe4f, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[3].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[4].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[5].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[6].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[7].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[8].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[9].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[10].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 1274ea04bff54de40b3ee8ca6021eb82, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[11].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[12].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[13].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
-    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: falas.Array.data[14].imagemPersonagem
-      value: 
-      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 19.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.40148395
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529597754438908283, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_Name
-      value: Mensagem
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047514594839947791, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8659483422860446794, guid: 572d7de869923be43bf9573f50666352, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8659483422860446794, guid: 572d7de869923be43bf9573f50666352, type: 3}
-    - {fileID: 8047514594839947791, guid: 572d7de869923be43bf9573f50666352, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 572d7de869923be43bf9573f50666352, type: 3}
 --- !u!1001 &780035378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -830,7 +522,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3056152291915398624, guid: 711ea53b75ec6aa42a476f5cc3f19411, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3056152291915398624, guid: 711ea53b75ec6aa42a476f5cc3f19411, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1113,49 +805,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1045110680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6529597754438908283, guid: 572d7de869923be43bf9573f50666352, type: 3}
-  m_PrefabInstance: {fileID: 352178812}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1045110681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045110680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0225eae59832134cb9c2a0cf24c0c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  evento:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1045110684}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Falar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1045110684 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
-  m_PrefabInstance: {fileID: 352178812}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045110680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9202287a5ab902047999a5fbee8af624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1343576797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3070303048233010457, guid: d165c0829f578814896bab7dcb71bd4e, type: 3}
@@ -1369,6 +1018,484 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1001 &1467501233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: dialogoControlador
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[0].texto
+      value: -CONSEGUI!! EU DERROTEI O VIRUT!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[1].texto
+      value: "-L3h, eu acho que talvez n\xE3o tenha dado tudo certo..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[2].texto
+      value: "-Eu derrotei ele!!! voc\xEA viu?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[3].texto
+      value: "-Chegamos tarde. Voc\xEA viu como ele ja estava presente nos outros
+        jogos."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[4].texto
+      value: "-Mas eu acabei com ele. Eu n\xE3o me importo com os outros jogos que
+        foram corrompidos, eu posso reinstal\xE1-los depois..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[5].texto
+      value: "-Temo que ele tenha ido al\xE9m da pasta de jogos. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[6].texto
+      value: "-L3h, voc\xEA viu. O c\xF3digo dele se espalhou e j\xE1 deve ter alcan\xE7ado
+        todos os lugares do seu computador."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[7].texto
+      value: "-Mas ele n\xE3o est\xE1 mais aqui. Eu retirei ele do computador. Por
+        que tem que ser t\xE3o dif\xEDcil? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[8].texto
+      value: "-Vou contar a verdade para voc\xEA. Quando voc\xEA derrotou o Virut,
+        eu vi alguns arquivos corrompidos se espalhando freneticamente."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[9].texto
+      value: "-Dificilmente v\xEDrus de computador v\xEAm sozinhos. Esse Virut estava
+        infectado com v\xE1rios outros v\xEDrus que a esse ponto j\xE1 devem ter
+        infectado seu computador inteiro."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[10].texto
+      value: "-Mas calma. N\xF3s j\xE1 enfrentamos a raiz principal do problema.
+        \xC9 prov\xE1vel que os v\xEDrus n\xE3o v\xE3o mais se ploriferar pelo computador."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[11].texto
+      value: "-Mas se eles j\xE1 infectaram o computador inteiro, que diferen\xE7a
+        faz se eles ainda est\xE3o se ploriferando?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[12].texto
+      value: "-\xC9 interessante saber disso porque agora sabemos que tudo que removermos
+        do computador ser\xE1 realmente desinfectado."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[13].texto
+      value: "-Agora cabe a n\xF3s desinfect\xE1-lo. Por completo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[14].texto
+      value: -Por completo?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[15].texto
+      value: -Por completo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[16].texto
+      value: '-Olha, vai ser trabalhoso, mas divertido! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[17].texto
+      value: "-Al\xE9m disso, um passo j\xE1 foi dado. A pasta de jogos j\xE1 foi
+        limpa."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[18].texto
+      value: "-Vamos fazer tipo o trabalho de um antiv\xEDrus? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[19].texto
+      value: -Vamos!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[20].texto
+      value: "-Isso mesmo! Vamos para a pr\xF3xima pasta agora. Vai ser uma aventura
+        divertida!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[21].texto
+      value: -Continua...?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[0].chaveTexto
+      value: FaseJogosCutsceneFinal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[1].chaveTexto
+      value: FaseJogosCutsceneFinal2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[2].chaveTexto
+      value: FaseJogosCutsceneFinal3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[3].chaveTexto
+      value: FaseJogosCutsceneFinal4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[4].chaveTexto
+      value: FaseJogosCutsceneFinal5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[5].chaveTexto
+      value: FaseJogosCutsceneFinal6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[6].chaveTexto
+      value: FaseJogosCutsceneFinal7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[7].chaveTexto
+      value: FaseJogosCutsceneFinal8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[8].chaveTexto
+      value: FaseJogosCutsceneFinal9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[9].chaveTexto
+      value: FaseJogosCutsceneFinal10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[10].chaveTexto
+      value: FaseJogosCutsceneFinal11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[11].chaveTexto
+      value: FaseJogosCutsceneFinal12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[12].chaveTexto
+      value: FaseJogosCutsceneFinal13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[13].chaveTexto
+      value: FaseJogosCutsceneFinal14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[14].chaveTexto
+      value: FaseJogosCutsceneFinal15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[15].chaveTexto
+      value: FaseJogosCutsceneFinal16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[16].chaveTexto
+      value: FaseJogosCutsceneFinal17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[17].chaveTexto
+      value: FaseJogosCutsceneFinal18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[18].chaveTexto
+      value: FaseJogosCutsceneFinal19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[19].chaveTexto
+      value: FaseJogosCutsceneFinal20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[20].chaveTexto
+      value: FaseJogosCutsceneFinal20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[0].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[1].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[2].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[3].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[4].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[5].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[6].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[7].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[8].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[9].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[10].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[11].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[12].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[13].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[14].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[15].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[16].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[17].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[18].nomePersonagem
+      value: L3h
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[19].nomePersonagem
+      value: NYMUS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[20].nomePersonagem
+      value: Jorel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[21].nomePersonagem
+      value: Jorel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[0].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ca0ce897c11dc64d81197d6dfbc6b15, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[1].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[2].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ca0ce897c11dc64d81197d6dfbc6b15, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[3].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[4].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: eb5159e686bc8844095f5ea2081765d3, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[5].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[6].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[7].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: e32b1ac0bd38b1244923b2a327d5e07f, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[8].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[9].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[10].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[11].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 1274ea04bff54de40b3ee8ca6021eb82, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[12].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[13].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[14].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: eb5159e686bc8844095f5ea2081765d3, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[15].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[16].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[17].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[18].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f61c64905611564f9029b0a8cd8c32e, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[19].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f1220b852986db42ae2c74daaef6bc5, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[20].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: b52a7ed2beaadb144ba0add8eb307525, type: 3}
+    - target: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: falas.Array.data[21].imagemPersonagem
+      value: 
+      objectReference: {fileID: 21300000, guid: b52a7ed2beaadb144ba0add8eb307525, type: 3}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.40148395
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908281, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529597754438908283, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_Name
+      value: Mensagem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047514594839947791, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659483422860446794, guid: 572d7de869923be43bf9573f50666352, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8659483422860446794, guid: 572d7de869923be43bf9573f50666352, type: 3}
+    - {fileID: 8047514594839947791, guid: 572d7de869923be43bf9573f50666352, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 572d7de869923be43bf9573f50666352, type: 3}
+--- !u!1 &1469008550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6529597754438908283, guid: 572d7de869923be43bf9573f50666352, type: 3}
+  m_PrefabInstance: {fileID: 1467501233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1469008551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469008550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0225eae59832134cb9c2a0cf24c0c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evento:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1469008552}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Falar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1469008552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6529597754438908280, guid: 572d7de869923be43bf9573f50666352, type: 3}
+  m_PrefabInstance: {fileID: 1467501233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469008550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9202287a5ab902047999a5fbee8af624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1486429822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1845264207611478465, guid: 9f7f945adb9d9f047aa4e99101b10a4c, type: 3}
@@ -1578,7 +1705,7 @@ SpriteRenderer:
   m_SortingLayerID: 1539475813
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c2d68d4ccc8ed74280c71bbd071946d, type: 3}
+  m_Sprite: {fileID: -1788105272, guid: 7544045be0b3ca14d9671cbbc9da5435, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1598,11 +1725,11 @@ Transform:
   m_GameObject: {fileID: 2100396024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.12, y: 0.16, z: 0}
-  m_LocalScale: {x: 2.5998, y: 2.5998, z: 2.5998}
+  m_LocalScale: {x: 0.20995986, y: 0.20995986, z: 0.20995986}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2500381085832542474
 PrefabInstance:
@@ -1659,33 +1786,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617929488516016742, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
+      propertyPath: nomeDaFase
+      value: Lobby
+      objectReference: {fileID: 0}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: terminadorDialogo
       value: 
       objectReference: {fileID: 1343576797}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 187450081}
+      objectReference: {fileID: 86393115}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_interactable
+      value: CarregarNivel
       objectReference: {fileID: 0}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: EntrarFase, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
@@ -1695,9 +1826,7 @@ PrefabInstance:
       propertyPath: eventoTerminar.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4617929488516016742, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
-    - {fileID: 7429218950334703229, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3909ffead71ae8b488084d2e9d9e7042, type: 3}
 --- !u!1001 &5607170135697275838
 PrefabInstance:
@@ -1708,7 +1837,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1845264207611478465, guid: 9f7f945adb9d9f047aa4e99101b10a4c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1845264207611478466, guid: 9f7f945adb9d9f047aa4e99101b10a4c, type: 3}
       propertyPath: m_RootOrder
