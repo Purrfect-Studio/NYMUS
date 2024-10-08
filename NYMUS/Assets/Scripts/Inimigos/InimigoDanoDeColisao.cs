@@ -42,7 +42,7 @@ public class InimigoDanoDeColisao : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (colisaoJogador(collision) && !vidaInimigo.touro)
+        if (colisaoJogador(collision))
         {
             CausarDanoNoJogador(collision);
         }
