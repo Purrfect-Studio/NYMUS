@@ -1,3 +1,4 @@
+using Cainos.LucidEditor;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,7 +24,7 @@ public class PlayerControlador : MonoBehaviour
     [Header("Andar")]
     public Vector2 direcao;
     public static bool olhandoDireita;           // Direcao para girar o sprite
-    public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
+    [ShowInInspector]public static bool podeMover;    // Diz se o jogador pode se movimentar ou nao
 
     [Header("Layer do Chao")]
     [SerializeField] private LayerMask layerChao; //Variavel de apoio para rechonhecer a layer do chao
@@ -764,9 +765,14 @@ public class PlayerControlador : MonoBehaviour
     {
         playerData.dano += novoDano;
     }
+
     public void receberAtaqueRanged()
     {
         playerData.possuiAtaqueRanged = true;
+    }
+    public void receberDash()
+    {
+        playerData.possuiDash = true;
     }
 
     public void receberEscudoPermanente(float novoEscudoPermanente)
