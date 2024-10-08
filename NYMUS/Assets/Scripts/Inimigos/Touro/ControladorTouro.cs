@@ -14,12 +14,15 @@ public class ControladorTouro : MonoBehaviour
     public Vector2 offset;
     private RaycastHit2D paredeDireita;
     private RaycastHit2D paredeEsquerda;
+    private RaycastHit2D jogadorDireita;
+    private RaycastHit2D jogadorEsquerda;
 
     [Header("Arrancada")]
     public float velocidadeArrancada;
     private int direcaoArrancada;
     public bool podeArrancada;
     public float tempoAtordoado;
+    private float cooldownArrancada;
 
     [Header("Layer do Jogador")]
     public LayerMask layerJogador; // Layer do jogador
@@ -44,6 +47,7 @@ public class ControladorTouro : MonoBehaviour
         {
             patrulha.enabled = false;
             podeArrancada = true;
+            enchergou = false;
             animacao.SetBool("estaPuto", true);
         }
 
@@ -52,6 +56,19 @@ public class ControladorTouro : MonoBehaviour
             arrancada();
             DetectarColisoesParede();
         }
+
+        if(cooldownArrancada > -0.5f)
+        {
+            cooldownArrancada -=Time.deltaTime;
+        }
+        if(cooldownArrancada <= 0 && !podeArrancada)
+        {
+            DetectarJogador();
+        }
+            
+        
+
+        
     }
 
     public void arrancada()
@@ -80,6 +97,7 @@ public class ControladorTouro : MonoBehaviour
         yield return new WaitForSeconds(tempoAtordoado);
         animacao.SetBool("Atordoado", false);
         patrulha.enabled = true;
+        cooldownArrancada = 0.5f;
     }
 
     private void OnDrawGizmos()
@@ -88,7 +106,26 @@ public class ControladorTouro : MonoBehaviour
         //Gizmos.DrawWireCube(transform.position, tamanho);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void DetectarJogador()
+    {
+        jogadorDireita = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(20, 0), 20f, layerJogador);
+        Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(20, 0), Color.blue);
+
+        if (jogadorDireita.collider != null && direcaoArrancada == 1 && !podeArrancada)
+        {
+            enchergou = true;
+        }
+
+        jogadorEsquerda = Physics2D.Raycast(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(-20, 0), 20f, layerJogador);
+        Debug.DrawRay(new Vector2(transform.position.x + offset.x, transform.position.y + offset.y), new Vector2(-20, 0), Color.blue);
+
+        if (jogadorEsquerda.collider != null && direcaoArrancada == -1 && !podeArrancada)
+        {
+            enchergou = true;
+        }
+    }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Jogador"))
         {
@@ -98,5 +135,5 @@ public class ControladorTouro : MonoBehaviour
         {
             enchergou = false;
         }
-    }
+    }*/
 }

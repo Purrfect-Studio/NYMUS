@@ -20,8 +20,8 @@ public class ProjetilL3H : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Inimigo"))
         {           
-            Collider2D colisaoInimigo = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerInimigo);
-            VidaInimigo vidaInimigo = colisaoInimigo.GetComponent<VidaInimigo>();
+            //Collider2D colisaoInimigo = Physics2D.OverlapBox(Collider2D.bounds.center, Collider2D.bounds.size, 0, layerInimigo);
+            VidaInimigo vidaInimigo = collision.GetComponent<VidaInimigo>();
             if (vidaInimigo != null && VidaInimigo.invulneravel == false)
             {
                 vidaInimigo.tomarDano(dano);
@@ -37,7 +37,7 @@ public class ProjetilL3H : MonoBehaviour
                 vidaBoss.tomarDano(dano);
             }
         }
-        if(collision.gameObject.CompareTag("Chao") || collision.gameObject.CompareTag("Inimigo") || collision.gameObject.CompareTag("Boss"))
+        if(!collision.CompareTag("Plataforma"))
         {
             Destroy(gameObject);
         }

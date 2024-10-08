@@ -2,11 +2,15 @@
     "textos": [
         {
             "chave": "cutsceneInicial1",
-            "texto": "-Este é um acesso antecipado de NYMUS. Esta demonstração contém imagens e vídeos que podem ser prejudiciais para pessoas com epilepsia fotossensível."
+            "texto": "-Este jogo contém imagens e vídeos que podem ser prejudiciais para pessoas com epilepsia fotossensível."
         },
         {
             "chave": "cutsceneInicial2",
             "texto": "-O jogo começa a seguir."
+        },
+        {
+            "chave": "cutsceneInicial100",
+            "texto": "-Carregando..."
         },
         {
             "chave": "cutsceneInicial3",
@@ -534,7 +538,7 @@
         },
         {
             "chave": "FaseJogosCutsceneFinal8",
-            "texto": "-Mas ele não está mais aqui. Eu retirei ele do computador. Poor que tem que ser tão difícil?"
+            "texto": "-Mas ele não está mais aqui. Eu retirei ele do computador. Por que tem que ser tão difícil?"
         },
         {
             "chave": "FaseJogosCutsceneFinal9",
@@ -546,7 +550,7 @@
         },
         {
             "chave": "FaseJogosCutsceneFinal11",
-            "texto": "-Mas calma. Nós já enfrentamos a raiz principal do problema. Éprovável que os vírus não vão mais se ploriferar pelo seu computador."
+            "texto": "-Mas calma. Nós já enfrentamos a raiz principal do problema. É provável que os vírus não vão mais se ploriferar pelo seu computador."
         },
         {
             "chave": "FaseJogosCutsceneFinal12",
@@ -554,7 +558,7 @@
         },
         {
             "chave": "FaseJogosCutsceneFinal13",
-            "texto": "-É interessante saber disso porque agora sabemos que tudoque removermos do seu computador será realmente desinfectado."
+            "texto": "-É interessante saber disso porque agora sabemos que tudo que removermos do seu computador será realmente desinfectado."
         },
         {
             "chave": "FaseJogosCutsceneFinal14",
@@ -592,9 +596,36 @@
 
         {
             "chave": "Lobby1",
-            "texto": "-Venha L3h, por aqui!"
+            "texto": "-Então quer dizer que o computador não está livre de vírus mesmo depois de apagarmos o jogo?"
         },
-
+        {
+            "chave": "Lobby2",
+            "texto": "-É, não conseguimos evitar que o virut se espalhasse… Agora a gente precisa encontrar em qual pasta estão os outros malwares."
+        },
+        {
+            "chave": "Lobby3",
+            "texto": "-Você consegue identificar quais pastas foram corrompidas ou coisa assim?"
+        },
+        {
+            "chave": "Lobby4",
+            "texto": "-Claro, como um antivírus eu consigo analisar o computador em busca de arquivos maliciosos e comparar com uma lista de assinaturas conhecidas. "
+        },
+        {
+            "chave": "Lobby5",
+            "texto": "-Alguns outros até usam a análise comportamental para identificar atividades suspeitas. Me dá um tempinho pra eu analisar aqui… Pronto, tem mais essas duas pastas aqui!"
+        },
+        {
+            "chave": "Lobby6",
+            "texto": "-Minha pasta de músicas?!"
+        },
+        {
+            "chave": "Lobby7",
+            "texto": "-Pois é. Não consegui entender direito o que tem com ela mas algo definitivamente não tá certo, vamos lá antes que as coisas piorem."
+        },
+        {
+            "chave": "Lobby8",
+            "texto": "-A última ali parece ser sua pasta de documentos. Vamos deixar ela por último."
+        },
 
         {
             "chave": "FaseMusicas1",
@@ -815,6 +846,38 @@
             "chave": "Internet-RespostaFishing1",
             "texto": "-Essa doeu..."
         },
+        {
+            "chave": "LobbyMusicas1",
+            "texto": "-FINALMENTE!!"
+        },
+        {
+            "chave": "LobbyMusicas2",
+            "texto": "-Aquele cavalo de tróia era perigoso mesmo..."
+        },
+        {
+            "chave": "LobbyMusicas3",
+            "texto": "-Realmente. Esse tipo de vírus é especialista em se passar por outras coisas. Por isso temos que estar sempre atentos..."
+        },
+        {
+            "chave": "LobbyMusicas4",
+            "texto": "-Parece que a barra de verificação avançou. Já limpamos 66% das ameaças."
+        },
+        {
+            "chave": "LobbyMusicas5",
+            "texto": "-Então só falta a pasta de documentos agora..."
+        },
+        {
+            "chave": "LobbyMusicas6",
+            "texto": "-Isso mesmo. Consigo detectar uma forte presença de vírus lá."
+        },
+        {
+            "chave": "LobbyMusicas7",
+            "texto": "-Os arquivos parecem estar super pesados, mas é difícil afirmar."
+        },
+        {
+            "chave": "LobbyMusicas8",
+            "texto": "-Vamos!"
+        },
 
 
 
@@ -904,7 +967,7 @@
 },
 {
    "chave": "FaseDocumentos22",
-   "texto": "-Parece estar resurado... O que era?"
+   "texto": "-Parece estar censurado... O que era?"
 },
 {
    "chave": "FaseDocumentos23",
@@ -933,7 +996,200 @@
 {
    "chave": "Templo1",
    "texto": "Conclua o desafio e siga a jornada"
+},
+{
+   "chave": "Templo2",
+   "texto": "(A pedra começa a tremer e um sigilo azul começa a brilhar...)"
+},
+{
+   "chave": "Templo3",
+   "texto": "-Me sinto... poderoso."
+},
+{
+   "chave": "Templo4",
+   "texto": "Você conseguiu resgatar o arquivo. Ele parece ter sido perdido pela corrupção."
+},
+{
+   "chave": "Templo5",
+   "texto": "-Ele será de grande ajuda para você. Este driver permite você canalizar seu poder para eliminar as ameaças"
+},
+{
+   "chave": "Templo6",
+   "texto": "-Talvez seja de algum antigo antivírus seu, pois parece ser ótimo contra vírus."
+},
+{
+   "chave": "Templo7",
+   "texto": "-Segure o botão Q para jogar projéteis que descriptografam os arquivos."
+},
+{
+   "chave": "Templo8",
+   "texto": "-Aparentemente este tiro terá três níveis, variando de acordo com a duração do carregamento."
+},
+{
+   "chave": "Templo9",
+   "texto": "-Vou testá-lo."
+},
+{
+   "chave": "FaseDocumentos29",
+   "texto": "-Mandou bem enfrentando aquilo."
+},
+{
+   "chave": "FaseDocumentos30",
+   "texto": "-Sinto que estamos chegando mais perto do vírus principal."
+},
+{
+   "chave": "FaseDocumentos31",
+   "texto": "-Não sei você... mas o ambiente por aqui parece meio pesado, não?"
+},
+{
+   "chave": "FaseDocumentos32",
+   "texto": "-Talvez algum vírus que sobrecarregue os arquivos e pastas... Difícil afirmar agora."
+},
+{
+   "chave": "FaseDocumentos33",
+   "texto": "-Vamos seguir para tentar encontrar mais pistas."
+},
+{
+   "chave": "FaseDocumentos34",
+   "texto": "Senha do cofre - 8241"
+},
+{
+   "chave": "FaseDocumentos35",
+   "texto": "-Encontrei a senha! Agora acho que deu tudo certo..."
+},
+{
+   "chave": "FaseDocumentos36",
+   "texto": "-WORMS são muito perigosos. Eles são conhecidos por se multiplicarem incessantemente até esgotar a memória do seu computador"
+},
+{
+   "chave": "FaseDocumentos37",
+   "texto": "-Temos que sair daqui imediatamente. Esse lugar todo vai ser arruinado em instantes"
+},
+{
+   "chave": "FaseDocumentos38",
+   "texto": "-Ou seja. CORRA!"
+},
+{
+   "chave": "FaseDocumentos39",
+   "texto": "-Eu já anotei a senha aqui na sua tela."
+},
+{
+   "chave": "LobbyFinal1",
+   "texto": "-Ufa..."
+},
+{
+   "chave": "LobbyFinal2",
+   "texto": "-Ainda bem que consegui fugir a tempo..."
+},
+{
+   "chave": "LobbyFinal3",
+   "texto": "-Acho que falhamos na missão..."
+},
+{
+   "chave": "LobbyFinal4",
+   "texto": "-A pasta de documentos foi completamente corrompida pelos worms."
+},
+{
+   "chave": "LobbyFinal5",
+   "texto": "-Mas e agora? O que devemos fazer??"
+},
+{
+   "chave": "LobbyFinal6",
+   "texto": "-Em casos assim, não há escapatória. A única coisa que podemos pensar em fazer é diminuir os danos."
+},
+{
+   "chave": "LobbyFinal7",
+   "texto": "-Como assim?"
+},
+{
+   "chave": "LobbyFinal8",
+   "texto": "-A pasta de documentos deve ser excluída imediatamente."
+},
+{
+   "chave": "LobbyFinal29",
+   "texto": "-Mas isso não é um problema, já que temos os backups para nos ajudarem"
+},
+{
+   "chave": "LobbyFinal9",
+   "texto": "-Backups?"
+},
+{
+   "chave": "LobbyFinal10",
+   "texto": "-Backups são versões salvas de seus arquivos, que podem ser restauradas mesmo depois de perdê-los."
+},
+{
+   "chave": "LobbyFinal11",
+   "texto": "-Você fez o backup, certo?"
+},
+{
+   "chave": "LobbyFinal12",
+   "texto": "-..."
+},
+{
+   "chave": "LobbyFinal13",
+   "texto": "-Eu não acredito..."
+},
+{
+   "chave": "LobbyFinal14",
+   "texto": "-Como eu ia saber???"
+},
+{
+   "chave": "LobbyFinal15",
+   "texto": "-Aí que tá. Não tem como saber..."
+},
+{
+   "chave": "LobbyFinal16",
+   "texto": "-Por isso você tem que fazer o backup regularmente!!!"
+},
+{
+   "chave": "LobbyFinal17",
+   "texto": "-Eu entendi, entendi... Vou começar a fazer backups no meu computador a partir de hoje."
+},
+{
+   "chave": "LobbyFinal18",
+   "texto": "-Estou excluindo sua pasta de documentos agora. Farei isso antes de os worms se ploriferarem para o resto do computador."
+},
+{
+   "chave": "LobbyFinal19",
+   "texto": "-E com isso, acho que finalizamos a limpeza do computador."
+},
+{
+   "chave": "LobbyFinal20",
+   "texto": "-Olha, salvamos a maior parte dos documentos. Acho que tivemos um saldo positivo então."
+},
+{
+   "chave": "LobbyFinal21",
+   "texto": "-Com certeza. Irei tomar muito mais cuidado com as ameaças digitais a partir de hoje."
+},
+{
+   "chave": "LobbyFinal22",
+   "texto": "-Sim, isso é muito importante."
+},
+{
+   "chave": "LobbyFinal23",
+   "texto": "-Virut, Cavalo de tróia, Fishings, Worms, Vírus de arquivo..."
+},
+{
+   "chave": "LobbyFinal24",
+   "texto": "-Esses que nós vimos são apenas algumas das diversas ameaças que existem no mundo digital."
+},
+{
+   "chave": "LobbyFinal25",
+   "texto": "-Por isso temos que estar sempre atualizados quanto à isso."
+},
+{
+   "chave": "LobbyFinal26",
+   "texto": "-Entendi. Vamos sair daqui agora, já não aguento mais..."
+},
+{
+   "chave": "LobbyFinal27",
+   "texto": "-Mal posso esperar para usar meu computador de novo!"
+},
+{
+   "chave": "LobbyFinal28",
+   "texto": "-Vamos!"
 }
+
 
   
        

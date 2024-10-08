@@ -8,6 +8,8 @@ public class Fantasma : MonoBehaviour
     public bool fishing;
     public bool email;
 
+    private float velocidade;
+
     private bool olhandoParaEsquerda;
     private irAteJogador irAteJogador;
     private VidaInimigo vidaInimigo;
@@ -27,6 +29,8 @@ public class Fantasma : MonoBehaviour
         danoDeColisao = GetComponent<InimigoDanoDeColisao>();
         curaCoracao = GetComponent<CuraCoracao>();
         animacao = GetComponent<Animator>();
+
+        velocidade = irAteJogador.velocidade;
 
         if(GetComponent<MoverEntrePontos>() != null)
         {
@@ -50,6 +54,15 @@ public class Fantasma : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerControlador.podeMover == false)
+        {
+            irAteJogador.velocidade = 0;
+        }
+        else
+        {
+            irAteJogador.velocidade = velocidade;
+        }
+
         if (vidaInimigo.fantasma == true)
         {
             if ((transform.position.x - jogador.transform.position.x < 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x > 0 && !PlayerControlador.olhandoDireita) && fishing || (transform.position.x - jogador.transform.position.x > 0 && PlayerControlador.olhandoDireita || transform.position.x - jogador.transform.position.x < 0 && !PlayerControlador.olhandoDireita) && email)
@@ -100,5 +113,16 @@ public class Fantasma : MonoBehaviour
     {
         olhandoParaEsquerda = !olhandoParaEsquerda;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public void desativarDepoisDeUmTempo()
+    {
+        StartCoroutine("Desativar");
+    }
+
+    IEnumerator Desativar()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }

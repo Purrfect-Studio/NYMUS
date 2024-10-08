@@ -15,6 +15,7 @@ public class MovimentacaoWorms : MonoBehaviour
     [Header("Delay para alcançar o Jogador")]
     public float delayTempo; // Delay da câmera chegar no jogador
     private bool seguindoJogador; // Flag para indicar se a câmera está seguindo o jogador
+    private float suporte;
 
     [Header("Velocidade quando tiver perto")]
     public float velocidade;
@@ -24,6 +25,7 @@ public class MovimentacaoWorms : MonoBehaviour
     {
         seguindoJogador = true;
         jogador = GameObject.FindGameObjectWithTag("Jogador");
+        suporte = delayTempo;
     }
 
     // Update is called once per frame
@@ -34,10 +36,18 @@ public class MovimentacaoWorms : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (transform.position.x - jogador.transform.position.x > 150 || transform.position.x - jogador.transform.position.x < -150)
+        {
+            delayTempo = 0.1f;
+        }
+        else
+        {
+            delayTempo = suporte;
+        }
         if (seguindoJogador)
         {
             Vector3 novaPosicao = jogador.transform.position; // Afasta a câmera do cenário
-            if (transform.position.x - jogador.transform.position.x > 15 || transform.position.x - jogador.transform.position.x < -15)
+            if (transform.position.x - jogador.transform.position.x > 20 || transform.position.x - jogador.transform.position.x < -20)
             {
                 novaPosicao = Vector3.Lerp(transform.position, novaPosicao, delayTempo); // Delay para a câmera chegar no jogador
                 transform.position = new Vector3(Mathf.Clamp(novaPosicao.x, minX, maxX), transform.position.y, novaPosicao.z);

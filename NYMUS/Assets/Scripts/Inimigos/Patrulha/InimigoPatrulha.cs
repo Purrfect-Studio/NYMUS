@@ -38,8 +38,10 @@ public class InimigoPatrulha : MonoBehaviour
         //{
             DetectarColisoesParede();
             DetectarColisoesChao();
+
             //DetectarColisoesInimigo();
-            Mover();
+
+        Mover();
         //}
         if (!olhandoParaEsquerda && direcao == 1 || olhandoParaEsquerda && direcao == -1)
         {

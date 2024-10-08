@@ -85,12 +85,15 @@ public class VidaInimigo : MonoBehaviour
         if (vidaAtual <= 0)
         {
             StartCoroutine("morreu");
-            knockBack.PlayKnockback();
         }
         else
         {
             //Knockback();
-            knockBack.PlayKnockback();
+            if(knockBack != null)
+            {
+                knockBack.PlayKnockback();
+            }
+
             StartCoroutine("Invulnerabilidade");
         }   
     }

@@ -20,7 +20,7 @@ public class CuraCoracao : MonoBehaviour
         {
             // Tenta encontrar o componente VidaJogador no objeto colidido
             VidaJogador vidaJogador = collision.GetComponent<VidaJogador>();
-            if (vidaJogador != null)
+            if (vidaJogador != null && cura != 0)
             {
                 // Chama o método de cura no script VidaJogador
                 vidaJogador.curar(cura);
