@@ -32,6 +32,7 @@ public class VidaInimigo : MonoBehaviour
 
     [Header("Drops")]
     public bool podeDroparItem;
+    public GameObject cartaSenha;
 
     [Header("Tipo de Inimigo")]
     public bool slime;
@@ -39,6 +40,7 @@ public class VidaInimigo : MonoBehaviour
     public bool fantasma;
     public bool inimigoProjetilParabola;
     public bool touro;
+    public bool WormsSolitario;
 
     // Start is called before the first frame update
     void Start()
@@ -131,7 +133,12 @@ public class VidaInimigo : MonoBehaviour
 
     IEnumerator morreu()
     {
-        podeMover = false; 
+        podeMover = false;
+        if (WormsSolitario)
+        {
+            GameObject Carta = Instantiate(cartaSenha);
+            Carta.transform.position = gameObject.transform.position;
+        }
         yield return new WaitForSeconds(0.2f);
         if (podeDroparItem)
         {
