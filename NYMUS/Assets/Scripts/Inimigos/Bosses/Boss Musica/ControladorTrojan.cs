@@ -209,7 +209,7 @@ public class ControladorTrojan : MonoBehaviour
             {
                 GameObject projetilLaserEspinho = Instantiate(this.projetilLaserEspinho);
                 projetilLaserEspinho.transform.position = pontosLaserEspinho[indexLaser[i]].position;
-                Destroy(projetilLaserEspinho.gameObject, 4f);
+                Destroy(projetilLaserEspinho.gameObject, 4.7f);
             }
         }
     }
