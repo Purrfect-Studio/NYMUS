@@ -21,7 +21,10 @@ public class Inventario : MonoBehaviour
     private void Start()
     {
         temChaveEspecial = false;
-        ajustarContadorMoeda();
+        if(textoMoeda != null)
+        {
+            ajustarContadorMoeda();
+        }
     }
     private void Update()
     {
