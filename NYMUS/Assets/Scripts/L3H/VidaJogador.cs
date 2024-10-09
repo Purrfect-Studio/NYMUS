@@ -214,7 +214,7 @@ public class VidaJogador : MonoBehaviour
     IEnumerator morreu()
     {
         estaMorto = true;
-        yield return new WaitForSeconds(1.5f); // espera 1.5 segundos
+        yield return new WaitForSeconds(0.8f); // espera 0.8 segundos
         playerControlador.LiberarMovimentacao();
         estaMorto = false;
         if (playerControlador.ultimoCheckpoint != null)
