@@ -31,7 +31,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
         }
         else
         {
-            textosLocalizados.Clear(); // Limpa o dicionário antes de carregar novos textos
+            textosLocalizados.Clear(); // Limpa o dicionï¿½rio antes de carregar novos textos
         }
 
         string caminho = Path.Combine(Application.streamingAssetsPath, $"{idiomaAtual}_textos.json");
@@ -39,7 +39,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
         {
             string conteudoJson = File.ReadAllText(caminho);
 
-            Debug.Log("Conteúdo JSON: " + conteudoJson); // Log para verificar o conteúdo do JSON
+            Debug.Log("Conteï¿½do JSON: " + conteudoJson); // Log para verificar o conteï¿½do do JSON
 
             try
             {
@@ -67,7 +67,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"Arquivo de localização não encontrado: {caminho}");
+            Debug.LogError($"Arquivo de localizaï¿½ï¿½o nï¿½o encontrado: {caminho}");
         }
     }
 
@@ -75,7 +75,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
     {
         if (textosLocalizados == null)
         {
-            Debug.LogError("TextosLocalizados não foi inicializado.");
+            Debug.LogError("TextosLocalizados nï¿½o foi inicializado.");
             return null;
         }
 
@@ -84,7 +84,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
             return texto;
         }
 
-        Debug.LogWarning($"Texto não encontrado para a chave: {chave}");
+        Debug.LogWarning($"Texto nï¿½o encontrado para a chave: {chave}");
         return null;
     }
 
@@ -96,7 +96,7 @@ public class GerenciadorDeLocalizacao : MonoBehaviour
 
     private void NotificarAlteracaoDeIdioma()
     {
-        // Envia um evento ou chama um método para atualizar os textos na UI
+        // Envia um evento ou chama um mï¿½todo para atualizar os textos na UI
         // Exemplo: Mensagens para atualizar a UI
         /*MensagemParaAtualizarUI[] componentesParaAtualizar = FindObjectsOfType<MensagemParaAtualizarUI>();
         foreach (var componente in componentesParaAtualizar)
@@ -112,7 +112,6 @@ public class TextoItem
     public string chave;
     public string texto;
 }
-
 [System.Serializable]
 public class TextosJson
 {
