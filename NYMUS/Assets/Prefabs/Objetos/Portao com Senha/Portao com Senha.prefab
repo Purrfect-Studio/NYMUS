@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5482890098526689654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.83, y: -2.2, z: -0.81176054}
-  m_LocalScale: {x: 3.03, y: 3.03, z: 3.03}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 975439064535275178}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b5cbd266b8b69d499619f4545c14716, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d6a7424e9790e2409a9eca4aed23d25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013407141, y: 0.010050371}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.35, y: 0.36}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.35, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.36}
+  m_Size: {x: 0.6984151, y: 0.87592185}
   m_EdgeRadius: 0
 --- !u!114 &5482890098526689659
 MonoBehaviour:
@@ -142,6 +142,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   podeExecutar: 0
+  travado: 0
   tecla: {fileID: 975439064535275173}
 --- !u!1 &5482890098738894584
 GameObject:
@@ -407,11 +408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4728313242498329037, guid: 0e6125d96e925ae4bbb6f48adc87022e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.012
+      value: -0.025
       objectReference: {fileID: 0}
     - target: {fileID: 4728313242498329037, guid: 0e6125d96e925ae4bbb6f48adc87022e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.576
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4728313242498329037, guid: 0e6125d96e925ae4bbb6f48adc87022e, type: 3}
       propertyPath: m_LocalPosition.z
