@@ -36,8 +36,7 @@ public class PatrulharVoando : MonoBehaviour
 
     void Update()
     {
-        if (VidaInimigo.podeMover == true)
-        {
+
             tempoDesdeUltimoPulo += Time.deltaTime;
 
             if (tempoDesdeUltimoPulo >= intervaloBaterAsas)
@@ -54,7 +53,7 @@ public class PatrulharVoando : MonoBehaviour
             {
                 Mover();
             }
-        }
+ 
 
         VerificarLimites();
         VerificarColisoes();
