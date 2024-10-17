@@ -142,7 +142,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 200
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -171,10 +171,13 @@ MonoBehaviour:
   jogador: {fileID: 0}
   sprite: {fileID: 2769989527036415873}
   podeDroparItem: 0
+  cartaSenha: {fileID: 0}
   slime: 0
   morcego: 0
   fantasma: 0
   inimigoProjetilParabola: 0
+  touro: 0
+  WormsSolitario: 0
 --- !u!114 &7137310785737719722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 2769989527036415928}
-  forca: 2000
+  forca: 15
   delay: 0.5
   jogador: {fileID: 0}
 --- !u!114 &1271441254688161041
@@ -243,6 +246,7 @@ MonoBehaviour:
     m_Bits: 256
   jogador: {fileID: 0}
   danoNoJogador: 5
+  vidaInimigo: {fileID: 0}
 --- !u!58 &2490377653966570968
 CircleCollider2D:
   m_ObjectHideFlags: 0
