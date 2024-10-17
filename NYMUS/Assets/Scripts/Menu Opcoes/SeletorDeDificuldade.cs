@@ -44,6 +44,14 @@ public class SeletorDeDificuldade : MonoBehaviour
     [SerializeField] public static float cooldownAtaqueVirut;
     [SerializeField] public static float cooldownAtaqueFrenesiVirut;
 
+    [Header("TROJAN")]
+    [SerializeField] public static float vidaMaximaTrojan;
+    //[SerializeField] public static float danoInjecaoDeDados;
+    //[SerializeField] public static float danoExplosaoDeDados;
+    //[SerializeField] public static float danoFirewall;
+    [SerializeField] public static int quantidadeDeAtivacoesLaserEspinho;
+    [SerializeField] public static float cooldownAtaqueTrojan;
+    [SerializeField] public static float cooldownAtaqueFrenesiTrojan;
 
     public static SeletorDeDificuldade Instancia { get; private set; }
     private void Awake()
