@@ -31,6 +31,9 @@ public class ConfusaoTrojan : MonoBehaviour
 
         tempoRestantePerseguirJogador = tempoPerseguirJogador;
         definirDirecoes = true;
+
+        duracaoConfusao = SeletorDeDificuldade.duracaoConfusaoTrojan;
+        danoNoJogador = SeletorDeDificuldade.danoProjetilConfusaoTrojan;
     }
 
     // Update is called once per frame

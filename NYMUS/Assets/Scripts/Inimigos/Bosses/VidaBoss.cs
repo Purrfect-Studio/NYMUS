@@ -40,7 +40,14 @@ public class VidaBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vidaMaxima = SeletorDeDificuldade.vidaMaximaVirut;
+        if(Virut)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaMaximaVirut;
+        }else if (Trojan)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaMaximaTrojan;
+        }
+        
         vidaAtual = vidaMaxima; // define a vida atual como a vida maxima
         animacao = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();

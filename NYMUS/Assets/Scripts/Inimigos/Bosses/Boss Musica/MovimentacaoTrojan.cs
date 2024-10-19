@@ -9,6 +9,8 @@ public class MovimentacaoTrojan : MonoBehaviour
     private int indexPontoMovimento;
     public static bool podeMover;
     public bool copia = false;
+    public bool copia1 = false;
+    public bool copia2 = false;
     public float cura;
 
     public ControladorTrojan controladorTrojan;
@@ -39,12 +41,24 @@ public class MovimentacaoTrojan : MonoBehaviour
             vidaBoss = GetComponent<VidaBoss>();
         }
 
+        cooldownDefinirNovaPosicao = SeletorDeDificuldade.cooldownDefinirNovaPosicaoTrojan;
+        cooldownDefinirNovaPosicaoFrenesi = SeletorDeDificuldade.cooldownDefinirNovaPosicaoFrenesiTrojan;
+
         cooldownRestanteDefinirNovaPosicao = cooldownDefinirNovaPosicao;
         definirPosicaoAlvo();
 
         podeAtivarAnimacaoSumir = true;
         Physics2D.IgnoreLayerCollision(9, 9, true);
         tempoParaLevantarCopia = vidaBoss.tempoParaLevantar;
+
+        if (copia1)
+        {
+            cura = SeletorDeDificuldade.curaCloneRosaTrojan;
+        }
+        if(copia2)
+        {
+            cura = SeletorDeDificuldade.curaCloneAzulTrojan;
+        }
     }
 
     void Update()

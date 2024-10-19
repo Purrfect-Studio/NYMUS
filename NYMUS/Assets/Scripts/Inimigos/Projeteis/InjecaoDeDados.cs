@@ -14,6 +14,10 @@ public class InjecaoDeDados : MonoBehaviour
     public bool Virut;
     public bool Trojan;
 
+    [Header("Apenas Trojan")]
+    public bool laserVerde;
+    public bool laserEspinho;
+
     void Start()
     {
         if (Virut)
@@ -21,7 +25,14 @@ public class InjecaoDeDados : MonoBehaviour
             dano = BossControlador.danoInjecaoDeDados;
         }else if (Trojan)
         {
-            dano = 15;
+            if (laserVerde)
+            {
+                dano = SeletorDeDificuldade.danoLaserTrojan;
+            }
+            if (laserEspinho)
+            {
+                dano = SeletorDeDificuldade.danoLaserEspinhoTrojan;
+            }
         }
         animacao = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();

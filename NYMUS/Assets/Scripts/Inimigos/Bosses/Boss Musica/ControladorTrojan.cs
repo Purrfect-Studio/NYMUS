@@ -45,7 +45,7 @@ public class ControladorTrojan : MonoBehaviour
 
     [Header("Ataques")]
     public float cooldownParaAtacar;
-    public float cooldownAtaqueFrenesi;
+    //public float cooldownAtaqueFrenesi;
     private float cooldownRestanteParaAtacar;
 
     [Header("Laser Espinho")]
@@ -79,12 +79,15 @@ public class ControladorTrojan : MonoBehaviour
         ataquesDisponiveis.Add(ataquesBoss.invocarInimigo);
         ataquesDisponiveis.Add(ataquesBoss.confusao);
 
-
         podeExecutarAcoes = false;
         MovimentacaoTrojan.podeMover = false;
         podeExecutarAnimacaoAtaque = false;
         contadorEspinhosAtivados = 0;
         quantidadeLaserEspinhoAtivados = 0;
+
+        quantidadeAtivacoesLaserEspinho = SeletorDeDificuldade.quantidadeDeAtivacoesLaserEspinho;
+        cooldownExecutarLaserEspinho = SeletorDeDificuldade.cooldownExecutarLaserEspinhoTrojan;
+        cooldownParaAtacar = SeletorDeDificuldade.cooldownAtaqueTrojan;
 
         cooldownRestanteExecutarLaserEspinho = cooldownExecutarLaserEspinho;
         cooldownRestanteParaAtacar = cooldownParaAtacar;

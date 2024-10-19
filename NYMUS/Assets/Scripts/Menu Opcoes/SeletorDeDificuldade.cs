@@ -46,12 +46,18 @@ public class SeletorDeDificuldade : MonoBehaviour
 
     [Header("TROJAN")]
     [SerializeField] public static float vidaMaximaTrojan;
-    //[SerializeField] public static float danoInjecaoDeDados;
-    //[SerializeField] public static float danoExplosaoDeDados;
-    //[SerializeField] public static float danoFirewall;
+    [SerializeField] public static float cooldownDefinirNovaPosicaoTrojan;
+    [SerializeField] public static float cooldownDefinirNovaPosicaoFrenesiTrojan;
     [SerializeField] public static int quantidadeDeAtivacoesLaserEspinho;
+    [SerializeField] public static float cooldownExecutarLaserEspinhoTrojan;
     [SerializeField] public static float cooldownAtaqueTrojan;
     [SerializeField] public static float cooldownAtaqueFrenesiTrojan;
+    [SerializeField] public static float danoLaserEspinhoTrojan;
+    [SerializeField] public static float danoLaserTrojan;
+    [SerializeField] public static float danoProjetilConfusaoTrojan;
+    [SerializeField] public static float duracaoConfusaoTrojan;
+    [SerializeField] public static float curaCloneRosaTrojan;
+    [SerializeField] public static float curaCloneAzulTrojan;
 
     public static SeletorDeDificuldade Instancia { get; private set; }
     private void Awake()
@@ -101,6 +107,22 @@ public class SeletorDeDificuldade : MonoBehaviour
                 quantidadeDeExplosaoDeDados = 2;
                 danoFirewall = 20;
                 danoInjecaoDeDados = 13;
+
+                //Trojan
+                vidaMaximaTrojan = 125;
+                cooldownDefinirNovaPosicaoTrojan = 5f;
+                cooldownDefinirNovaPosicaoFrenesiTrojan = 3.5f;
+                quantidadeDeAtivacoesLaserEspinho = 4;
+                cooldownExecutarLaserEspinhoTrojan = 4.5f;
+                cooldownAtaqueTrojan = 5f;
+                //cooldownAtaqueFrenesiTrojan = 3.5f;
+
+                danoLaserEspinhoTrojan = 15;
+                danoLaserTrojan = 10;
+                danoProjetilConfusaoTrojan = 5;
+                duracaoConfusaoTrojan = 3;
+                curaCloneRosaTrojan = 10;
+                curaCloneAzulTrojan = 15;
                 break;
 
             case dificuldadesExistentes.Medio:
@@ -130,6 +152,22 @@ public class SeletorDeDificuldade : MonoBehaviour
                 quantidadeDeExplosaoDeDados = 2;
                 danoFirewall = 25;
                 danoInjecaoDeDados = 15;
+
+                //Trojan
+                vidaMaximaTrojan = 150;
+                cooldownDefinirNovaPosicaoTrojan = 4.5f;
+                cooldownDefinirNovaPosicaoFrenesiTrojan = 3f;
+                quantidadeDeAtivacoesLaserEspinho = 5;
+                cooldownExecutarLaserEspinhoTrojan = 4;
+                cooldownAtaqueTrojan = 4f;
+                //cooldownAtaqueFrenesiTrojan = 2.5f;
+
+                danoLaserEspinhoTrojan = 15;
+                danoLaserTrojan = 13;
+                danoProjetilConfusaoTrojan = 5;
+                duracaoConfusaoTrojan = 4.5f;
+                curaCloneRosaTrojan = 15;
+                curaCloneAzulTrojan = 20;
                 break;
 
             case dificuldadesExistentes.Dificil:
@@ -159,6 +197,22 @@ public class SeletorDeDificuldade : MonoBehaviour
                 quantidadeDeExplosaoDeDados = 3;
                 danoFirewall = 30;
                 danoInjecaoDeDados = 20;
+
+                //Trojan
+                vidaMaximaTrojan = 175;
+                cooldownDefinirNovaPosicaoTrojan = 4;
+                cooldownDefinirNovaPosicaoFrenesiTrojan = 2.5f;
+                quantidadeDeAtivacoesLaserEspinho = 7;
+                cooldownExecutarLaserEspinhoTrojan = 3.8f;
+                cooldownAtaqueTrojan = 3.5f;
+                //cooldownAtaqueFrenesiTrojan = 2;
+
+                danoLaserEspinhoTrojan = 15;
+                danoLaserTrojan = 15;
+                danoProjetilConfusaoTrojan = 5;
+                duracaoConfusaoTrojan = 6;
+                curaCloneRosaTrojan = 20;
+                curaCloneAzulTrojan = 25;
                 break;
         }
     }
