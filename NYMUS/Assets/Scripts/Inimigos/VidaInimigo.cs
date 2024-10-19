@@ -41,22 +41,33 @@ public class VidaInimigo : MonoBehaviour
     public bool inimigoProjetilParabola;
     public bool touro;
     public bool WormsSolitario;
+    public bool cavaleiro;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(slime)
+        if (slime)
         {
             vidaMaxima = SeletorDeDificuldade.vidaSlime;
-        }else if(morcego)
+        }
+        else if (morcego)
         {
             vidaMaxima = SeletorDeDificuldade.vidaMorcego;
-        }else if(fantasma)
+        }
+        else if (fantasma)
         {
             vidaMaxima = SeletorDeDificuldade.vidaFantasma;
-        }else if(inimigoProjetilParabola)
+        }
+        else if (inimigoProjetilParabola)
         {
             vidaMaxima = SeletorDeDificuldade.vidaInimigoProjetilParabola;
+        }
+        else if(cavaleiro)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaCavaleiro;
+        }else if (touro)
+        {
+            vidaMaxima = SeletorDeDificuldade.vidaTouro;
         }
 
         podeMover = true;

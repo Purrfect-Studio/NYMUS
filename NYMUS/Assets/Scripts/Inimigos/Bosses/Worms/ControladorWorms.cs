@@ -34,5 +34,14 @@ public class ControladorWorms : MonoBehaviour
                 vidaJogador.tomarDano(dano);
             }
         }
+
+        if (collision.gameObject.CompareTag("Inimigo"))
+        {
+            VidaInimigo vidaInimigo = collision.gameObject.GetComponent<VidaInimigo>();
+            if (vidaInimigo != null)
+            {
+                vidaInimigo.tomarDano(dano);
+            }
+        }
     }
 }

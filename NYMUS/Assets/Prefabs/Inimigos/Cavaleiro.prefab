@@ -133,11 +133,14 @@ MonoBehaviour:
   jogador: {fileID: 0}
   sprite: {fileID: 0}
   podeDroparItem: 0
+  cartaSenha: {fileID: 0}
   slime: 0
   morcego: 0
   fantasma: 0
   inimigoProjetilParabola: 0
   touro: 0
+  WormsSolitario: 0
+  cavaleiro: 1
 --- !u!114 &2598523227399367587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,3 +328,4 @@ MonoBehaviour:
   jogador: {fileID: 0}
   danoNoJogador: 15
   vidaInimigo: {fileID: 2598523227399367585}
+  cavaleiro: 1

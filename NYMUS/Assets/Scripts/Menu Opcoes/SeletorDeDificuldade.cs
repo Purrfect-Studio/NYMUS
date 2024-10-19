@@ -31,6 +31,13 @@ public class SeletorDeDificuldade : MonoBehaviour
     [SerializeField] public static float vidaInimigoProjetilParabola;
     [SerializeField] public static float danoInimigoProjetilParabola;
 
+    [Header("Cavaleiro")]
+    [SerializeField] public static float vidaCavaleiro;
+    [SerializeField] public static float danoCavaleiro;
+
+    [Header("Touro")]
+    [SerializeField] public static float vidaTouro;
+    [SerializeField] public static float danoTouro;
 
 
     [Header("Valores dos Bosses")]
@@ -98,6 +105,14 @@ public class SeletorDeDificuldade : MonoBehaviour
                 vidaInimigoProjetilParabola = 15;
                 danoInimigoProjetilParabola = 10;
 
+                //Cavaleiro
+                vidaCavaleiro = 45;
+                danoCavaleiro = 10;
+
+                //Touro
+                vidaTouro = 100;
+                danoTouro = 20;
+
                 //Bosses
                 //Virut
                 vidaMaximaVirut = 175;
@@ -143,6 +158,14 @@ public class SeletorDeDificuldade : MonoBehaviour
                 vidaInimigoProjetilParabola = 20;
                 danoInimigoProjetilParabola = 15;
 
+                //Cavaleiro
+                vidaCavaleiro = 50;
+                danoCavaleiro = 15;
+
+                //Touro
+                vidaTouro = 150;
+                danoTouro = 25;
+
                 //Bosses
                 //Virut
                 vidaMaximaVirut = 200;
@@ -187,6 +210,14 @@ public class SeletorDeDificuldade : MonoBehaviour
                 //Inimigo Projetil Parabola
                 vidaInimigoProjetilParabola = 25;
                 danoInimigoProjetilParabola = 15;
+
+                //Cavaleiro
+                vidaCavaleiro = 60;
+                danoCavaleiro = 17;
+
+                //Touro
+                vidaTouro = 175;
+                danoTouro = 30;
 
                 //Bosses
                 //Virut

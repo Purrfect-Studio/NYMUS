@@ -12,6 +12,9 @@ public class InimigoDanoDeColisao : MonoBehaviour
     private VidaJogador vidaJogador;
     public VidaInimigo vidaInimigo;
 
+    [Header("Cavaleiro")]
+    public bool cavaleiro;
+
     private void Start()
     {
         if(vidaInimigo == null)
@@ -36,7 +39,14 @@ public class InimigoDanoDeColisao : MonoBehaviour
             else if (vidaInimigo.inimigoProjetilParabola)
             {
                 danoNoJogador = SeletorDeDificuldade.danoInimigoProjetilParabola;
+            }else if (vidaInimigo.touro)
+            {
+                danoNoJogador = SeletorDeDificuldade.danoTouro;
             }
+        }
+        if (cavaleiro)
+        {
+            danoNoJogador = SeletorDeDificuldade.danoCavaleiro;
         }
     }
 
